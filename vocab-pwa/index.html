@@ -138,7 +138,7 @@ input{width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid var(--l
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-8";
+const APP_VERSION = "2026.10.24-9";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -461,7 +461,7 @@ function stems(w){
   if (w.endsWith("er") || w.endsWith("est")) out.push(w.replace(/(er|est)$/, ""));
   return [...new Set(out.filter(x => x.length > 2))];
 }
-async function lookup(word, story){
+async function lookup(word, story, depth = 0){
   const own = phraseGloss(word, story); if (own) return own;
   if (glossCache[word] !== undefined) return glossCache[word];
   let result = null, reached = false;
@@ -481,6 +481,9 @@ async function lookup(word, story){
     } catch(e){}
   }
   if (!result && !reached) return null; // offline: do not cache
+  // "plural of resident", "simple past of agree": follow to the base word once
+  const form = result && result.match(/^(?:[a-z ]+ · )?(?:plural|past participle|simple past|past tense|present participle|third-person singular[^ ]*|comparative|superlative|alternative (?:form|spelling)|inflection)[a-z ,-]* of (?:the verb |the adjective |the noun )?["“]?([A-Za-z-]+)/i);
+  if (form && form[1] && form[1].toLowerCase() !== word && depth < 1){ const base = await lookup(form[1].toLowerCase(), story, depth + 1); if (base) result = base; }
   glossCache[word] = result || ""; return result || "";
 }
 function sentenceAround(text, word){
