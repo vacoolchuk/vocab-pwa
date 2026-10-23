@@ -138,7 +138,7 @@ input{width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid var(--l
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-7";
+const APP_VERSION = "2026.10.24-8";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -464,16 +464,24 @@ function stems(w){
 async function lookup(word, story){
   const own = phraseGloss(word, story); if (own) return own;
   if (glossCache[word] !== undefined) return glossCache[word];
-  let result = null;
+  let result = null, reached = false;
+  const strip = h => String(h).replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
   for (const s of stems(word)){
+    // 1. Free Dictionary API
     try {
       const r = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + encodeURIComponent(s));
-      if (!r.ok) continue;
-      const j = await r.json(); const m = j[0] && j[0].meanings && j[0].meanings[0]; const d = m && m.definitions && m.definitions[0];
-      if (d){ result = (m.partOfSpeech ? m.partOfSpeech + " · " : "") + d.definition; break; }
-    } catch(e){ break; }
+      reached = true;
+      if (r.ok){ const j = await r.json(); const m = j[0] && j[0].meanings && j[0].meanings[0]; const d = m && m.definitions && m.definitions[0]; if (d){ result = (m.partOfSpeech ? m.partOfSpeech + " · " : "") + d.definition; break; } }
+    } catch(e){}
+    // 2. Wiktionary
+    try {
+      const r = await fetch("https://en.wiktionary.org/api/rest_v1/page/definition/" + encodeURIComponent(s) + "?redirect=true", { headers: { Accept: "application/json" } });
+      reached = true;
+      if (r.ok){ const j = await r.json(); const m = j.en && j.en[0]; const d = m && m.definitions && m.definitions.find(x => strip(x.definition)); if (d){ result = (m.partOfSpeech ? m.partOfSpeech.toLowerCase() + " · " : "") + strip(d.definition); break; } }
+    } catch(e){}
   }
-  glossCache[word] = result; return result;
+  if (!result && !reached) return null; // offline: do not cache
+  glossCache[word] = result || ""; return result || "";
 }
 function sentenceAround(text, word){
   const clean = text.replace(/\{\{([^|]+)\|[^}]+\}\}/g, "$1");
@@ -541,7 +549,7 @@ document.addEventListener("click", async e => {
     if (BY[word]) { t.dataset.act = "peek"; t.dataset.head = word; return t.click(); }
     const already = slideState[i].inboxed.includes(word) || P.inbox.some(x => x.word === word);
     showPop('<p class="w">' + esc(word) + '</p><p class="gloss" id="gloss">…</p>' + (already ? '<p style="font-size:13px;color:var(--text2)">Already in your "want to learn" list.</p>' : '<button class="btn g" data-act="inbox" data-word="' + esc(word) + '" data-i="' + i + '">Add to "want to learn"</button><button class="btn o" data-act="closepop">Not now</button>'));
-    const g = await lookup(word, feed[i].s); const el = document.getElementById("gloss"); if (el) el.textContent = g || "No definition found. Ask Claude.";
+    const g = await lookup(word, feed[i].s); const el = document.getElementById("gloss"); if (el) el.textContent = g ? g : g === "" ? "Not in the dictionary. Ask Claude." : "Dictionary not reachable right now.";
     return;
   }
   if (a === "inbox"){ const word = t.dataset.word; addInbox(word, sentenceAround(feed[i].s.text, word)); slideState[i].inboxed.push(word); hidePop(); render(); return; }
