@@ -341,7 +341,7 @@ function storySlide(f, i){
 }
 function doneSlide(i){
   const t = today(), n = P.days[t] || 0, tmr = dueCount(addDays(t,1));
-  return '<div class="slide" data-i="' + i + '"><div class="done"><p class="big">' + (n ? "🎉" : "☕️") + '</p><h2>' + (n ? "Done for today" : "Nothing due today") + '</h2><p>' + (tmr ? tmr + " word" + (tmr > 1 ? "s" : "") + " due tomorrow." : "Tomorrow is clear too.") + '</p><div class="row"><div class="st"><b>' + n + '</b><span>reviews today</span></div><div class="st"><b>' + streak() + '</b><span>day streak</span></div><div class="st"><b>' + P.inbox.length + '</b><span>to send to Claude</span></div></div><button class="btn o" style="width:auto;padding:10px 18px" data-act="ahead">Review ahead · 10 random</button><p style="margin-top:18px;font-size:11px;color:var(--text3)">v' + APP_VERSION + '</p></div></div>';
+  return '<div class="slide" data-i="' + i + '"><div class="done"><p class="big">' + (n ? "🎉" : "☕️") + '</p><h2>' + (n ? "Done for today" : "Nothing due today") + '</h2><p>' + (tmr ? tmr + " word" + (tmr > 1 ? "s" : "") + " due tomorrow." : "Tomorrow is clear too.") + '</p><div class="row"><div class="st"><b>' + n + '</b><span>reviews today</span></div><div class="st"><b>' + streak() + '</b><span>day streak</span></div><div class="st"><b>' + P.inbox.length + '</b><span>to send to Claude</span></div></div><button class="btn o" style="width:auto;padding:10px 18px" data-act="ahead">Review ahead · 10 random</button></div></div>';
 }
 function renderFeed(){
   let h = '<div id="feed">';
