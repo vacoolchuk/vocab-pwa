@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Vocabulary">
 <meta name="theme-color" content="#111114">
 <link rel="manifest" href="manifest.webmanifest">
@@ -137,7 +137,7 @@ input{width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid var(--l
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-1";
+const APP_VERSION = "2026.10.24-2";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -252,27 +252,44 @@ function speak(text){ if (!window.speechSynthesis) return; speechSynthesis.cance
 function say(m, err){ ui.msg = m; ui.msgErr = !!err; render(); setTimeout(() => { ui.msg = ""; render(); }, 3500); }
 function examplesHTML(d, cls){ return '<div class="ex"><h4>Examples</h4>' + d.examples.map(e => "<p>" + esc(e) + "</p>").join("") + "</div>"; }
 
-/* images: free CC photos from Openverse, fetched once and cached */
+/* images: free CC photos (Openverse, then Wikimedia Commons). Several candidates per word,
+   the first that actually loads is cached. Failures are retried after a day. */
 const imgCache = {};
-async function getImage(w){
-  if (w.image) return w.image;
-  if (!w.imgQuery) return null;
+async function imageCandidates(w){
+  if (w.image) return [w.image];
+  if (!w.imgQuery) return [];
   const k = "wsv.img." + w.word;
-  const c = lsGet(k); if (c) return c === "none" ? null : c;
+  try { const c = JSON.parse(lsGet(k) || "null"); if (c && c.ok) return [c.ok]; if (c && c.none && Date.now() - c.none < 864e5) return []; } catch(e){}
   if (imgCache[w.word]) return imgCache[w.word];
   imgCache[w.word] = (async () => {
-    let url = null;
+    const out = [];
     try {
-      const r = await fetch("https://api.openverse.org/v1/images/?q=" + encodeURIComponent(w.imgQuery) + "&page_size=5&mature=false&license_type=commercial", { headers: { Accept: "application/json" } });
-      const j = await r.json(); const hit = (j.results || []).find(x => x.thumbnail || x.url); if (hit) url = hit.thumbnail || hit.url;
+      const r = await fetch("https://api.openverse.org/v1/images/?q=" + encodeURIComponent(w.imgQuery) + "&page_size=8&mature=false&license_type=commercial&extension=jpg,png", { headers: { Accept: "application/json" } });
+      const j = await r.json();
+      (j.results || []).forEach(x => { if (x.thumbnail) out.push(x.thumbnail); else if (x.url) out.push(x.url); });
     } catch(e){}
-    if (!url) try {
-      const r = await fetch("https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=" + encodeURIComponent("filetype:bitmap " + w.imgQuery) + "&gsrnamespace=6&gsrlimit=5&prop=imageinfo&iiprop=url&iiurlwidth=640&format=json&origin=*");
-      const j = await r.json(); const pg = Object.values((j.query || {}).pages || {})[0]; if (pg && pg.imageinfo) url = pg.imageinfo[0].thumburl;
+    try {
+      const r = await fetch("https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=" + encodeURIComponent("filetype:bitmap " + w.imgQuery) + "&gsrnamespace=6&gsrlimit=4&prop=imageinfo&iiprop=url&iiurlwidth=640&format=json&origin=*");
+      const j = await r.json();
+      Object.values((j.query || {}).pages || {}).forEach(pg => { if (pg.imageinfo && pg.imageinfo[0].thumburl) out.push(pg.imageinfo[0].thumburl); });
     } catch(e){}
-    lsSet(k, url || "none"); return url;
+    if (!out.length) lsSet(k, JSON.stringify({ none: Date.now() }));
+    return out.slice(0, 6);
   })();
   return imgCache[w.word];
+}
+function loadInto(img, w, urls, i){
+  if (!img.isConnected) return;
+  if (i >= urls.length){ lsSet("wsv.img." + w.word, JSON.stringify({ none: Date.now() })); img.remove(); return; }
+  img.onerror = () => loadInto(img, w, urls, i + 1);
+  img.onload = () => { lsSet("wsv.img." + w.word, JSON.stringify({ ok: urls[i] })); img.style.display = "block"; };
+  img.referrerPolicy = "no-referrer"; img.src = urls[i];
+}
+async function getImage(w){ const c = await imageCandidates(w); return c[0] || null; }
+function prefetchImages(){
+  // warm the cache for today's words so cards show photos the moment they appear
+  const words = feed.filter(f => f.type === "word").map(f => f.w).filter(w => w.imgQuery || w.image);
+  words.forEach(async w => { const urls = await imageCandidates(w); if (urls.length){ const im = new Image(); loadInto(im, w, urls, 0); } });
 }
 
 /* ================= render: feed ================= */
@@ -284,8 +301,9 @@ function wordSlide(f, i){
   h += '<div class="body">';
   if (!st.flipped){
     h += '<div class="front" data-act="flip">' + (w.image || w.imgQuery ? '<img data-img="' + esc(w.word) + '" alt="" style="display:none">' : "") + '<p class="w">' + esc(w.word) + '</p><button class="saybtn" data-act="say" data-w="' + esc(w.word) + '">' + esc(w.pronunciation) + ' 🔊</button><p class="hint">Tap to reveal · swipe up for next</p></div>';
+    // (tap anywhere on the back flips it again; buttons stop propagation)
   } else {
-    h += '<div class="back">';
+    h += '<div class="back" data-act="flip">';
     if (w.definitions.length > 1) h += '<div class="mtabs">' + w.definitions.map((_, k) => '<button data-act="def" data-k="' + k + '" class="' + (st.defIdx === k ? "on" : "") + '">Meaning ' + (k+1) + "</button>").join("") + "</div>";
     h += '<div class="row" style="flex-wrap:wrap;margin-bottom:4px"><span class="w">' + esc(w.word) + '</span><span class="ipa" data-act="say" data-w="' + esc(w.word) + '" style="font-size:12px">' + esc(w.pronunciation) + ' 🔊</span></div><span class="tag">' + esc(d.context) + '</span><p class="def">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + "</p>" + examplesHTML(d) + "</div>";
     h += '<div class="rate"><button class="again" data-act="rate" data-g="again">Again<small>today</small></button><button class="hard" data-act="rate" data-g="hard">Hard<small>' + ivlLabel(w.word,"hard") + '</small></button><button class="good" data-act="rate" data-g="good">Good<small>' + ivlLabel(w.word,"good") + '</small></button><button class="easy" data-act="rate" data-g="easy">Easy<small>' + ivlLabel(w.word,"easy") + "</small></button></div>";
@@ -331,7 +349,7 @@ function renderFeed(){
   return h + "</div>";
 }
 function hydrateImages(){
-  document.querySelectorAll("img[data-img]").forEach(async img => { const w = BY[img.dataset.img]; const url = await getImage(w); if (url && img.isConnected){ img.src = url; img.style.display = "block"; } });
+  document.querySelectorAll("img[data-img]").forEach(async img => { const w = BY[img.dataset.img]; const urls = await imageCandidates(w); if (urls.length) loadInto(img, w, urls, 0); else img.remove(); });
 }
 
 /* ================= render: list ================= */
@@ -362,17 +380,16 @@ function renderStats(){
   let h = '<div class="page"><p class="title">Statistics</p>';
   if (ui.banner) h += '<div class="banner ' + (ui.bannerWarn ? "warn" : "") + '"><span>' + esc(ui.banner) + '</span><u data-act="hidebanner">OK</u></div>';
   h += '<div class="stats4"><div class="box"><b style="color:var(--text3)">' + counts.new + '</b><span>New</span></div><div class="box"><b style="color:var(--orange)">' + counts.learning + '</b><span>Learning</span></div><div class="box"><b style="color:#1976D2">' + counts.review + '</b><span>Review</span></div><div class="box"><b style="color:var(--green)">' + counts.known + "</b><span>Known</span></div></div>";
-  h += '<div class="box"><div class="row" style="justify-content:space-between"><h3 style="margin:0">Known ' + pct + '%</h3><span style="font-size:12px;color:var(--text2)">Streak ' + streak() + " days · due tomorrow " + dueCount(addDays(today(),1)) + '</span></div><div style="height:8px;background:var(--line);border-radius:99px;margin-top:10px"><div style="height:100%;width:' + pct + '%;border-radius:99px;background:linear-gradient(90deg,#43A047,#66BB6A)"></div></div><p style="margin:10px 0 0">A word counts as known once its interval reaches ' + KNOWN_IVL + " days.</p></div>";
+  h += '<div class="box"><div class="row" style="justify-content:space-between"><h3 style="margin:0">Known ' + pct + '%</h3><span style="font-size:12px;color:var(--text2)">🔥 ' + streak() + " day streak · " + dueCount(addDays(today(),1)) + ' due tomorrow</span></div><div style="height:8px;background:var(--line);border-radius:99px;margin-top:10px"><div style="height:100%;width:' + pct + '%;border-radius:99px;background:linear-gradient(90deg,#43A047,#66BB6A)"></div></div></div>';
   // inbox
-  h += '<div class="box"><h3>Want to learn (' + P.inbox.length + ')</h3><p>Words you tapped in stories. Send them to Claude, learn them in chat, then say "update the app".</p>';
+  h += '<div class="box"><h3>Want to learn (' + P.inbox.length + ')</h3><p>Words you tapped in stories. Send them to Claude.</p>';
   if (P.inbox.length){
     h += '<ul class="inbox">' + P.inbox.map(i => "<li><div><b>" + esc(i.word) + "</b>" + (i.ctx ? "<small>" + esc(i.ctx) + "</small>" : "") + '</div><u data-act="rminbox" data-w="' + esc(i.word) + '">remove</u></li>').join("") + "</ul>";
     h += '<div class="row"><button class="btn g" data-act="sendinbox">Send to Claude</button><button class="btn o" data-act="copyinbox">Copy</button></div>';
   }
   h += "</div>";
   // backup
-  h += '<div class="box"><h3>Backup</h3><p>Progress is saved on this phone twice (localStorage and IndexedDB). ' + (days === null ? "No file backup yet." : "Last file backup: " + (days === 0 ? "today" : days + " day" + (days > 1 ? "s" : "") + " ago") + ".") + '</p><button class="btn" data-act="export">Save backup file</button><button class="btn o" data-act="importbtn">Restore from backup file</button><input type="file" id="file" accept=".json,application/json" style="display:none">';
-  h += '<button class="btn o" data-act="copycode">Copy known words as text</button>' + (ui.shownCode ? '<p class="msg err">' + esc(ui.shownCode) + "</p>" : "") + '<p style="margin-top:12px">Paste a code or old progress text to add known words:</p><div class="row"><input id="paste" placeholder="redundant|enmity|frail"><button class="btn g sm" data-act="loadcode">Load</button></div></div>';
+  h += '<div class="box"><h3>Backup</h3><p>' + (days === null ? "No backup file yet. Save one now and then." : "Last backup: " + (days === 0 ? "today" : days + " day" + (days > 1 ? "s" : "") + " ago") + ".") + '</p><div class="row"><button class="btn" data-act="export">Save backup</button><button class="btn o" data-act="importbtn">Restore</button></div><input type="file" id="file" accept=".json,application/json" style="display:none">' + (ui.shownCode ? '<p class="msg err">' + esc(ui.shownCode) + "</p>" : "") + '</div>';
   if (ui.msg) h += '<p class="msg ' + (ui.msgErr ? "err" : "") + '">' + esc(ui.msg) + "</p>";
   h += '<p style="text-align:center;font-size:12px;color:var(--text3);margin-top:16px">Version ' + APP_VERSION + ' · <u data-act="reset" style="cursor:pointer">Reset progress</u></p></div>';
   return h;
@@ -383,7 +400,11 @@ function render(){
   const app = document.getElementById("app");
   const keepPaste = document.getElementById("paste") ? document.getElementById("paste").value : "";
   const feedEl = document.getElementById("feed"); const scroll = feedEl ? feedEl.scrollTop : 0;
+  const pageEl = document.querySelector(".page"); const pageScroll = pageEl ? pageEl.scrollTop : 0;
+  const prevView = app.dataset.view;
   app.innerHTML = view === "feed" ? renderFeed() : view === "list" ? renderList() : renderStats();
+  app.dataset.view = view;
+  const pg = document.querySelector(".page"); if (pg && prevView === view) pg.scrollTop = pageScroll;
   document.querySelectorAll("#nav button").forEach(b => b.classList.toggle("on", b.dataset.nav === view));
   const nb = document.querySelector('#nav [data-nav="stats"]'); nb.querySelector("i") && nb.querySelector("i").remove();
   if (P.inbox.length){ const i = document.createElement("i"); i.textContent = P.inbox.length; nb.appendChild(i); }
@@ -454,9 +475,9 @@ document.addEventListener("click", async e => {
   const t = e.target.closest("[data-act]"); if (!t) return;
   const a = t.dataset.act, i = +t.dataset.i, slide = t.closest(".slide"), si = slide ? +slide.dataset.i : -1;
   if (a === "say"){ e.stopPropagation(); return speak(t.dataset.w); }
-  if (a === "flip"){ slideState[si].flipped = true; return rerenderSlide(si); }
+  if (a === "flip"){ slideState[si].flipped = !slideState[si].flipped; slideState[si].defIdx = 0; return rerenderSlide(si); }
   if (a === "def"){ e.stopPropagation(); slideState[si].defIdx = +t.dataset.k; return rerenderSlide(si); }
-  if (a === "rate") return doRate(si, t.dataset.g);
+  if (a === "rate"){ e.stopPropagation(); return doRate(si, t.dataset.g); }
   if (a === "peek"){
     const w = BY[t.dataset.head]; if (!w) return; const st = slideState[i];
     if (!st.peeked.includes(w.word)){ st.peeked.push(w.word); peek(w.word); rerenderSlide(i); }
@@ -504,7 +525,7 @@ async function boot(){
   if (lastV && lastV !== APP_VERSION) ui.banner = "Updated to " + APP_VERSION + ". Progress kept: " + knownN + " known, " + Object.keys(P.cards).length + " cards in total.";
   lsSet("wsv.version", APP_VERSION);
   if (!ui.banner && Object.keys(P.cards).length >= 5 && Date.now() - (P.lastBackup || 0) > 30*864e5){ ui.banner = "Tip: Stats → Save backup file. Five seconds."; ui.bannerWarn = true; }
-  buildFeed(); render();
+  buildFeed(); render(); prefetchImages();
 }
 boot();
 if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
