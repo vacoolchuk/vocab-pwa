@@ -82,6 +82,7 @@ button{font-family:inherit;cursor:pointer}
 #shade.show{display:block}
 #pop .w{font-size:22px;font-weight:700;margin:0 0 4px}
 #pop .ctx{font-size:13px;color:var(--text2);font-style:italic;margin:10px 0 14px;line-height:1.5}
+#pop .gloss{font-size:16px;color:var(--text);margin:6px 0 16px;line-height:1.5}
 /* ---------- nav ---------- */
 #nav{position:fixed;left:0;right:0;bottom:0;height:calc(var(--nav) + var(--sab));padding-bottom:var(--sab);display:flex;background:var(--bg);border-top:1px solid var(--line);z-index:30}
 #nav button{flex:1;border:0;background:transparent;color:var(--text3);font-size:11px;font-weight:600;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
@@ -137,7 +138,7 @@ input{width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid var(--l
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-6";
+const APP_VERSION = "2026.10.24-7";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -441,6 +442,39 @@ function nextSlide(i){ const el = document.querySelector('.slide[data-i="' + (i+
 /* ================= popup ================= */
 function showPop(html){ document.getElementById("pop").innerHTML = html; document.getElementById("pop").classList.add("show"); document.getElementById("shade").classList.add("show"); }
 function hidePop(){ document.getElementById("pop").classList.remove("show"); document.getElementById("shade").classList.remove("show"); }
+/* short definition for any tapped word: my own gloss from the story first, then a free dictionary */
+const glossCache = {};
+function phraseGloss(word, story){
+  const g = (story && story.gloss) || {};
+  if (g[word]) return g[word];
+  const hit = Object.keys(g).find(k => k.includes(" ") && k.split(" ").includes(word)); // part of a glossed phrase
+  return hit ? hit + ": " + g[hit] : null;
+}
+function stems(w){
+  const out = [w];
+  if (w.endsWith("ies")) out.push(w.slice(0,-3) + "y");
+  if (w.endsWith("es")) out.push(w.slice(0,-2));
+  if (w.endsWith("s")) out.push(w.slice(0,-1));
+  if (w.endsWith("ed")) out.push(w.slice(0,-2), w.slice(0,-1), w.slice(0,-3));
+  if (w.endsWith("ing")) out.push(w.slice(0,-3), w.slice(0,-3) + "e", w.slice(0,-4));
+  if (w.endsWith("ly")) out.push(w.slice(0,-2));
+  if (w.endsWith("er") || w.endsWith("est")) out.push(w.replace(/(er|est)$/, ""));
+  return [...new Set(out.filter(x => x.length > 2))];
+}
+async function lookup(word, story){
+  const own = phraseGloss(word, story); if (own) return own;
+  if (glossCache[word] !== undefined) return glossCache[word];
+  let result = null;
+  for (const s of stems(word)){
+    try {
+      const r = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + encodeURIComponent(s));
+      if (!r.ok) continue;
+      const j = await r.json(); const m = j[0] && j[0].meanings && j[0].meanings[0]; const d = m && m.definitions && m.definitions[0];
+      if (d){ result = (m.partOfSpeech ? m.partOfSpeech + " · " : "") + d.definition; break; }
+    } catch(e){ break; }
+  }
+  glossCache[word] = result; return result;
+}
 function sentenceAround(text, word){
   const clean = text.replace(/\{\{([^|]+)\|[^}]+\}\}/g, "$1");
   const s = clean.split(/(?<=[.!?])\s+|\n/).find(s => s.toLowerCase().includes(word)); return s ? s.trim() : "";
@@ -505,9 +539,10 @@ document.addEventListener("click", async e => {
   if (a === "plain"){
     const word = t.dataset.word; if (!word || word.length < 2) return;
     if (BY[word]) { t.dataset.act = "peek"; t.dataset.head = word; return t.click(); }
-    const ctx = sentenceAround(feed[i].s.text, word);
-    if (slideState[i].inboxed.includes(word)) return showPop('<p class="w">' + esc(word) + '</p><p class="ctx">' + esc(ctx) + '</p><p style="font-size:13px;color:var(--text2)">Already in your "want to learn" list.</p>');
-    return showPop('<p class="w">' + esc(word) + '</p><p class="ctx">' + esc(ctx) + '</p><button class="btn g" data-act="inbox" data-word="' + esc(word) + '" data-i="' + i + '">Add to "want to learn"</button><button class="btn o" data-act="closepop">Not now</button>');
+    const already = slideState[i].inboxed.includes(word) || P.inbox.some(x => x.word === word);
+    showPop('<p class="w">' + esc(word) + '</p><p class="gloss" id="gloss">…</p>' + (already ? '<p style="font-size:13px;color:var(--text2)">Already in your "want to learn" list.</p>' : '<button class="btn g" data-act="inbox" data-word="' + esc(word) + '" data-i="' + i + '">Add to "want to learn"</button><button class="btn o" data-act="closepop">Not now</button>'));
+    const g = await lookup(word, feed[i].s); const el = document.getElementById("gloss"); if (el) el.textContent = g || "No definition found. Ask Claude.";
+    return;
   }
   if (a === "inbox"){ const word = t.dataset.word; addInbox(word, sentenceAround(feed[i].s.text, word)); slideState[i].inboxed.push(word); hidePop(); render(); return; }
   if (a === "closepop") return hidePop();

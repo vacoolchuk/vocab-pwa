@@ -119,7 +119,7 @@ When I say **"update the app"**, you:
  "words": ["dampen", "frail"]
 }
 ```
-The `words` array must list every headword used in the text. No em dashes anywhere.
+The `words` array must list every headword used in the text. Add a `"gloss": { "word": "short plain-English definition" }` map for the harder non-vocabulary words you planted (4–6 per story), so a tap shows a definition instantly. Words without a gloss fall back to dictionaryapi.dev. No em dashes anywhere.
 
 ### How I deploy
 1. Unzip `vocab-pwa.zip` to get the folder `vocab-pwa`
