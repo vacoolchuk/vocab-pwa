@@ -29,7 +29,7 @@ button{font-family:inherit;cursor:pointer}
 /* ---------- feed ---------- */
 #feed{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 #feed::-webkit-scrollbar{display:none}
-.slide{height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;padding:calc(var(--sat) + 52px) 18px calc(var(--nav) + var(--sab) + 12px);position:relative}
+.slide{height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;padding:calc(var(--sat) + 14px) 18px calc(var(--nav) + var(--sab) + 12px);position:relative}
 .slide .meta{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--text3);font-weight:600;margin-bottom:10px}
 .tag{display:inline-block;font-size:11px;padding:3px 9px;border-radius:6px;background:#EDE7F6;color:#5C35A8;font-weight:600}
 @media (prefers-color-scheme:dark){.tag{background:#2d2546;color:#c9b8ff}}
@@ -57,7 +57,7 @@ button{font-family:inherit;cursor:pointer}
 .rate small{display:block;font-size:10px;font-weight:500;opacity:.85;margin-top:2px}
 .rated{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg);font-size:20px;font-weight:700;color:var(--green)}
 /* ---------- story ---------- */
-.story{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.story{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;justify-content:center}
 .story h2{margin:6px 0 14px;font-size:24px;font-weight:700;letter-spacing:-.4px}
 .story p{margin:0 0 12px;font-size:17px;line-height:1.65;white-space:pre-wrap}
 .story .t{border-radius:4px;padding:0 1px}
@@ -89,7 +89,7 @@ button{font-family:inherit;cursor:pointer}
 #nav button.on{color:var(--acc)}
 #nav button i{position:absolute;margin-left:28px;margin-top:-6px;background:var(--pink);color:#fff;font-style:normal;font-size:10px;font-weight:700;border-radius:99px;padding:1px 5px}
 /* ---------- pages ---------- */
-.page{height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(var(--sat) + 52px) 16px calc(var(--nav) + var(--sab) + 24px)}
+.page{height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(var(--sat) + 16px) 16px calc(var(--nav) + var(--sab) + 24px)}
 .title{margin:0 0 16px;font-size:24px;font-weight:700;letter-spacing:-.4px;display:flex;align-items:center;gap:10px}
 .title small{margin-left:auto;font-size:12px;color:var(--text3);font-weight:500}
 .list{border-radius:14px;border:1.5px solid var(--line);overflow:hidden}
@@ -137,7 +137,7 @@ input{width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid var(--l
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-3";
+const APP_VERSION = "2026.10.24-4";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -300,7 +300,7 @@ function wordSlide(f, i){
   if (st.rated) return h + '<div class="rated">' + st.rated + "</div></div>";
   h += '<div class="body">';
   if (!st.flipped){
-    h += '<div class="front" data-act="flip">' + (w.image || w.imgQuery ? '<img data-img="' + esc(w.word) + '" alt="" style="display:none">' : "") + '<p class="w">' + esc(w.word) + '</p><button class="saybtn" data-act="say" data-w="' + esc(w.word) + '">' + esc(w.pronunciation) + ' 🔊</button><p class="hint">Tap or swipe sideways to reveal · swipe up for next</p></div>';
+    h += '<div class="front" data-act="flip">' + (w.image || w.imgQuery ? '<img data-img="' + esc(w.word) + '" alt="" style="display:none">' : "") + '<p class="w">' + esc(w.word) + '</p><button class="saybtn" data-act="say" data-w="' + esc(w.word) + '">' + esc(w.pronunciation) + ' 🔊</button></div>';
     // (tap anywhere on the back flips it again; buttons stop propagation)
   } else {
     h += '<div class="back" data-act="flip">';
@@ -341,7 +341,7 @@ function storySlide(f, i){
 }
 function doneSlide(i){
   const t = today(), n = P.days[t] || 0, tmr = dueCount(addDays(t,1));
-  return '<div class="slide" data-i="' + i + '"><div class="done"><p class="big">' + (n ? "🎉" : "☕️") + '</p><h2>' + (n ? "Done for today" : "Nothing due today") + '</h2><p>' + (tmr ? tmr + " word" + (tmr > 1 ? "s" : "") + " due tomorrow." : "Tomorrow is clear too.") + '</p><div class="row"><div class="st"><b>' + n + '</b><span>reviews today</span></div><div class="st"><b>' + streak() + '</b><span>day streak</span></div><div class="st"><b>' + P.inbox.length + '</b><span>to send to Claude</span></div></div><button class="btn o" style="width:auto;padding:10px 18px" data-act="ahead">Review ahead · 10 random</button></div></div>';
+  return '<div class="slide" data-i="' + i + '"><div class="done"><p class="big">' + (n ? "🎉" : "☕️") + '</p><h2>' + (n ? "Done for today" : "Nothing due today") + '</h2><p>' + (tmr ? tmr + " word" + (tmr > 1 ? "s" : "") + " due tomorrow." : "Tomorrow is clear too.") + '</p><div class="row"><div class="st"><b>' + n + '</b><span>reviews today</span></div><div class="st"><b>' + streak() + '</b><span>day streak</span></div><div class="st"><b>' + P.inbox.length + '</b><span>to send to Claude</span></div></div><button class="btn o" style="width:auto;padding:10px 18px" data-act="ahead">Practise 10 more</button></div></div>';
 }
 function renderFeed(){
   let h = '<div id="feed">';
@@ -367,7 +367,7 @@ function renderList(){
 }
 function detailHTML(w){
   const c = card(w.word), d = w.definitions[Math.min(ui.openDef, w.definitions.length-1)];
-  let h = '<div class="detail" data-w="' + esc(w.word) + '"><p class="srs">' + (c && c.reps ? "Next review: " + c.due + " · interval " + c.ivl + " d · seen " + c.reps + "×" : "Not started yet") + '</p>';
+  let h = '<div class="detail" data-w="' + esc(w.word) + '">';
   if (w.definitions.length > 1) h += '<div class="mtabs">' + w.definitions.map((_, k) => '<button data-act="odef" data-k="' + k + '" class="' + (ui.openDef === k ? "on" : "") + '">Meaning ' + (k+1) + "</button>").join("") + "</div>";
   return h + '<span class="tag">' + esc(d.context) + '</span><p class="def">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + "</p>" + examplesHTML(d) + "</div>";
 }
@@ -483,16 +483,6 @@ function importFile(ev){
   r.readAsText(f);
 }
 
-// horizontal swipe on a word card flips it (either direction); vertical swipes stay with the feed
-let touch = null;
-document.addEventListener("touchstart", e => { const s = e.target.closest(".slide"); if (!s || e.touches.length !== 1) { touch = null; return; } touch = { x: e.touches[0].clientX, y: e.touches[0].clientY, i: +s.dataset.i }; }, { passive: true });
-document.addEventListener("touchend", e => {
-  if (!touch) return; const t = e.changedTouches[0]; const dx = t.clientX - touch.x, dy = t.clientY - touch.y; const i = touch.i; touch = null;
-  if (Math.abs(dx) < 60 || Math.abs(dy) > 50 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
-  const f = feed[i]; if (!f || f.type !== "word" || slideState[i].rated) return;
-  slideState[i].flipped = !slideState[i].flipped; slideState[i].defIdx = 0; rerenderSlide(i);
-}, { passive: true });
-
 document.addEventListener("click", async e => {
   const nb = e.target.closest("[data-nav]"); if (nb){ view = nb.dataset.nav; ui.shownCode = ""; render(); return; }
   if (e.target.id === "shade") return hidePop();
@@ -518,7 +508,7 @@ document.addEventListener("click", async e => {
   if (a === "inbox"){ const word = t.dataset.word; addInbox(word, sentenceAround(feed[i].s.text, word)); slideState[i].inboxed.push(word); hidePop(); render(); return; }
   if (a === "closepop") return hidePop();
   if (a === "storydone") return storyDone(i);
-  if (a === "ahead"){ buildFeed(true); render(); return; }
+  if (a === "ahead"){ buildFeed(true); render(); const fe = document.getElementById("feed"); if (fe) fe.scrollTop = 0; return; }
   if (a === "open") return toggleDetail(t.dataset.w);
   if (a === "odef"){ e.stopPropagation(); return switchDetailDef(+t.dataset.k); }
   if (a === "toggle"){ e.stopPropagation(); const w = t.dataset.w; if (status(w) === "known") delete P.cards[w]; else P.cards[w] = knownCard(false); await saveP(); const s = status(w); t.className = "badge " + s; t.textContent = s; const d = document.querySelector('.detail[data-w="' + CSS.escape(w) + '"]'); if (d){ const tmp = document.createElement("div"); tmp.innerHTML = detailHTML(BY[w]); d.replaceWith(tmp.firstChild); } return; }
