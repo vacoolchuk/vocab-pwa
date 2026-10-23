@@ -137,11 +137,11 @@ input{width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid var(--l
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-5";
+const APP_VERSION = "2026.10.24-6";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
-const NEW_PER_DAY = 10, STORY_EVERY = 4, MAX_STORIES = 3, KNOWN_IVL = 30;
+const NEW_PER_DAY = 10, STORY_EVERY = 4, MAX_STORIES = 3, KNOWN_IVL = 30, MAX_IVL = 120;
 
 let WORDS = [], STORIES = [], BY = {};
 let P = null;                 // progress
@@ -193,6 +193,8 @@ async function loadP(){
   legacyKnown(await idbGet(KEY_V3)).forEach(w => known.add(w));
   LEGACY_KEYS.forEach(k => legacyKnown(lsGet(k)).forEach(w => known.add(w)));
   known.forEach(w => { if (!p.cards[w]) p.cards[w] = knownCard(true); });
+  // clamp anything that ran away during testing
+  Object.values(p.cards).forEach(c => { if (c.ivl > MAX_IVL){ c.ivl = MAX_IVL; c.due = addDays(today(), MAX_IVL); } if (c.ease > 3) c.ease = 3; });
   P = p;
   await saveP();
 }
@@ -204,11 +206,13 @@ function status(w){ const c = card(w); if (!c || c.reps === 0) return "new"; if 
 function rate(w, g){
   const c = P.cards[w] || (P.cards[w] = newCard());
   const t = today();
+  const ratedToday = c.lastDay === t && c.reps > 0;   // a second rating on the same day must not compound the interval
   if (g === "again"){ c.lapses++; c.ivl = 0; c.ease = Math.max(1.3, c.ease - 0.2); c.due = t; }
-  else if (g === "hard"){ c.ivl = c.ivl < 1 ? 1 : Math.ceil(c.ivl * 1.2); c.ease = Math.max(1.3, c.ease - 0.15); c.due = addDays(t, c.ivl); }
-  else if (g === "good"){ c.ivl = c.ivl < 1 ? 1 : c.ivl < 3 ? 3 : Math.ceil(c.ivl * c.ease); c.due = addDays(t, c.ivl); }
-  else { c.ivl = c.ivl < 1 ? 3 : Math.ceil(c.ivl * c.ease * 1.3); c.ease += 0.15; c.due = addDays(t, c.ivl); }
-  c.reps++; c.last = Date.now();
+  else if (g === "hard"){ if (!ratedToday) c.ivl = c.ivl < 1 ? 1 : Math.ceil(c.ivl * 1.2); c.ease = Math.max(1.3, c.ease - 0.15); c.due = addDays(t, Math.max(1, c.ivl)); }
+  else if (g === "good"){ if (!ratedToday) c.ivl = c.ivl < 1 ? 1 : c.ivl < 3 ? 3 : Math.ceil(c.ivl * c.ease); c.due = addDays(t, Math.max(1, c.ivl)); }
+  else { if (!ratedToday){ c.ivl = c.ivl < 1 ? 3 : Math.ceil(c.ivl * c.ease * 1.3); c.ease = Math.min(3, c.ease + 0.15); } c.due = addDays(t, Math.max(1, c.ivl)); }
+  if (c.ivl > MAX_IVL){ c.ivl = MAX_IVL; c.due = addDays(t, MAX_IVL); }
+  c.reps++; c.last = Date.now(); c.lastDay = t;
   P.days[t] = (P.days[t] || 0) + 1;
   saveP();
 }
@@ -306,7 +310,7 @@ function wordSlide(f, i){
     h += '<div class="back" data-act="flip">';
     if (w.definitions.length > 1) h += '<div class="mtabs">' + w.definitions.map((_, k) => '<button data-act="def" data-k="' + k + '" class="' + (st.defIdx === k ? "on" : "") + '">Meaning ' + (k+1) + "</button>").join("") + "</div>";
     h += '<div class="row" style="flex-wrap:wrap;margin-bottom:4px"><span class="w">' + esc(w.word) + '</span><span class="ipa" data-act="say" data-w="' + esc(w.word) + '" style="font-size:12px">' + esc(w.pronunciation) + ' 🔊</span></div><span class="tag">' + esc(d.context) + '</span><p class="def">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + "</p>" + examplesHTML(d) + "</div>";
-    h += '<div class="rate"><button class="again" data-act="rate" data-g="again">Again<small>today</small></button><button class="hard" data-act="rate" data-g="hard">Hard<small>' + ivlLabel(w.word,"hard") + '</small></button><button class="good" data-act="rate" data-g="good">Good<small>' + ivlLabel(w.word,"good") + '</small></button><button class="easy" data-act="rate" data-g="easy">Easy<small>' + ivlLabel(w.word,"easy") + "</small></button></div>";
+    h += '<div class="rate"><button class="again" data-act="rate" data-g="again">Again</button><button class="hard" data-act="rate" data-g="hard">Hard</button><button class="good" data-act="rate" data-g="good">Good</button><button class="easy" data-act="rate" data-g="easy">Easy<small>' + ivlLabel(w.word,"easy") + "</small></button></div>";
   }
   return h + "</div></div>";
 }
