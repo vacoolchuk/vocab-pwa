@@ -216,7 +216,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-28";
+const APP_VERSION = "2026.10.24-29";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -334,10 +334,12 @@ function buildFeed(ahead){
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 /* voices: prefer the best British voice installed on the phone; the user can pick one in Stats */
 function ukVoices(){ return (window.speechSynthesis ? speechSynthesis.getVoices() : []).filter(v => /en[-_]GB/i.test(v.lang)); }
-function voiceRank(v){ const n = v.name.toLowerCase(); return (/premium/.test(n) ? 300 : /enhanced/.test(n) ? 200 : 100) + (/siri/.test(n) ? 50 : 0) + (v.localService ? 10 : 0); }
+function voiceKind(v){ const u = ((v.voiceURI || "") + " " + v.name).toLowerCase(); return /premium/.test(u) ? "premium" : /enhanced/.test(u) ? "enhanced" : /compact/.test(u) ? "compact" : ""; }
+function voiceRank(v){ const k = voiceKind(v); return (k === "premium" ? 300 : k === "enhanced" ? 200 : k === "compact" ? 90 : 100) + (/siri/i.test(v.name) ? 50 : 0) + (v.localService ? 10 : 0); }
+function voiceLabel(v){ const k = voiceKind(v); return v.name.replace(/\s*\(en-GB\)$/i, "") + (k ? " · " + k : ""); }
 function bestVoice(){
   const vs = ukVoices(); if (!vs.length) return null;
-  const want = lsGet("wsv.voice"); const chosen = want && vs.find(v => v.name === want); if (chosen) return chosen;
+  const want = lsGet("wsv.voice"); const chosen = want && vs.find(v => (v.voiceURI || v.name) === want); if (chosen) return chosen;
   return [...vs].sort((a,b) => voiceRank(b) - voiceRank(a))[0];
 }
 function speak(text){ if (!window.speechSynthesis) return; speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.lang = "en-GB"; u.rate = .9; const v = bestVoice(); if (v) u.voice = v; speechSynthesis.speak(u); }
@@ -644,8 +646,9 @@ function renderStats(){
   h += '<div class="box"><h3>Voice</h3>';
   if (!vs.length) h += '<p>No British voice found yet. Open the app again after a moment.</p>';
   else {
-    h += '<p>Better voices are free: Settings → Accessibility → Spoken Content → Voices → English (UK), download a Premium or Enhanced one (Daniel, Kate, Serena). The app picks the best installed voice unless you choose.</p>';
-    h += '<select id="voice">' + [...vs].sort((a,b) => voiceRank(b) - voiceRank(a)).map(v => '<option value="' + esc(v.name) + '"' + (cur && cur.name === v.name ? " selected" : "") + '>' + esc(v.name.replace(/\s*\(en-GB\)$/i, "")) + (/premium/i.test(v.name) ? " · premium" : /enhanced/i.test(v.name) ? " · enhanced" : "") + "</option>").join("") + '</select>';
+    h += '<p>Better voices are free: Settings → Accessibility → Spoken Content → Voices → English (UK), download the Enhanced version of Daniel, Arthur, Kate or Serena. The app picks the best installed voice unless you choose.</p>';
+    h += '<select id="voice">' + [...vs].sort((a,b) => voiceRank(b) - voiceRank(a)).map(v => '<option value="' + esc(v.voiceURI || v.name) + '"' + (cur && (cur.voiceURI || cur.name) === (v.voiceURI || v.name) ? " selected" : "") + '>' + esc(voiceLabel(v)) + "</option>").join("") + '</select>';
+    h += '<p style="margin-top:10px">iOS only shares standard and Enhanced voices with web apps. Premium and Siri voices stay inside Apple\'s own apps.</p>';
     h += '<div class="row" style="margin-top:10px"><button class="btn o sm" data-act="testvoice">Hear a sample</button></div>';
   }
   h += "</div>";
