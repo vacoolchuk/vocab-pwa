@@ -7,124 +7,145 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Vocabulary">
-<meta name="theme-color" content="#111114">
+<meta name="theme-color" content="#000000">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
 <title>My Vocabulary</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500&family=Literata:ital,wght@0,400;0,500;1,400&display=swap">
 <style>
 :root{
-  --bg:#fff;--bg2:#f4f4f7;--bg3:#e9e9ef;--text:#1d1d1f;--text2:#55555c;--text3:#8a8a92;--line:#e1e1e8;
-  --acc:#5C6BC0;--acc2:#7E57C2;--pink:#EC407A;--green:#2E7D32;--green2:#E8F5E9;--orange:#E65100;--orange2:#FFF3E0;
-  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --screen:#000;--surface:#17171A;--surface2:#222226;--line:#2B2B30;
+  --milk:#F2EDE3;--dim:#8C877D;--faint:#5B5852;--amber:#D4A24C;
+  --again:#8E3B3B;--hard:#8A6A2C;--good:#3C6B46;--easy:#3B5A7A;
+  --new:#6B675F;--learning:#D4A24C;--review:#7FA0C4;--known:#8DBB8A;
+  --display:"Barlow Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --ui:"Barlow","Helvetica Neue",Arial,sans-serif;
+  --book:"Literata",Georgia,"Times New Roman",serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
-  --nav:58px;--sat:env(safe-area-inset-top);--sab:env(safe-area-inset-bottom);
-}
-@media (prefers-color-scheme:dark){
-  :root{--bg:#111114;--bg2:#1b1b20;--bg3:#26262d;--text:#f2f2f5;--text2:#b6b6be;--text3:#84848c;--line:#2b2b33;--green2:#1b3a1f;--orange2:#3d2a12}
+  --nav:60px;--sat:env(safe-area-inset-top);--sab:env(safe-area-inset-bottom);
+  color-scheme:dark;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:var(--font);overflow:hidden;overscroll-behavior:none}
-button{font-family:inherit;cursor:pointer}
+html,body{margin:0;height:100%;background:var(--screen);color:var(--milk);font-family:var(--ui);overflow:hidden;overscroll-behavior:none;-webkit-font-smoothing:antialiased}
+button{font-family:inherit;cursor:pointer;color:inherit}
 #app{height:100%}
+.row{display:flex;gap:8px;align-items:center}
+
 /* ---------- feed ---------- */
-#feed{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+#feed{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:var(--screen)}
 #feed::-webkit-scrollbar{display:none}
-.slide{height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;padding:calc(var(--sat) + 52px) 18px calc(var(--nav) + var(--sab) + 12px);position:relative}
-.slide .meta{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--text3);font-weight:600;margin-bottom:10px}
-.tag{display:inline-block;font-size:11px;padding:3px 9px;border-radius:6px;background:#EDE7F6;color:#5C35A8;font-weight:600}
-@media (prefers-color-scheme:dark){.tag{background:#2d2546;color:#c9b8ff}}
-.body{flex:1;min-height:0;display:flex;flex-direction:column}
-.front{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer}
-.front img{width:100%;max-height:38vh;object-fit:cover;border-radius:18px;margin-bottom:18px;background:var(--bg2)}
-.front .w{font-size:40px;font-weight:700;letter-spacing:-.8px;margin:0 0 10px;line-height:1.1}
-.ipa{color:var(--acc2);font-family:var(--mono);cursor:pointer;text-decoration:underline dotted}
-.saybtn{font-size:16px;color:var(--acc2);font-family:var(--mono);background:var(--bg2);border:0;border-radius:99px;padding:8px 16px}
-.hint{font-size:12px;color:var(--text3);margin-top:28px}
-.back{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px}
-.back .w{font-size:22px;font-weight:700;margin:0 8px 0 0}
-.mtabs{display:flex;gap:6px;margin:0 0 12px}
-.mtabs button{padding:5px 12px;border-radius:8px;font-size:12px;border:1.5px solid var(--line);background:transparent;color:var(--text2);font-weight:600}
-.mtabs button.on{background:var(--acc);border-color:var(--acc);color:#fff}
-.def{margin:10px 0 6px;font-size:17px;font-weight:600;line-height:1.4}
-.desc{margin:0 0 14px;font-size:14px;color:var(--text2);line-height:1.6}
-.ex{border-top:1px solid var(--line);padding-top:10px}
-.ex h4{margin:0 0 8px;font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em}
-.ex p{margin:0 0 8px;font-size:14px;color:var(--text2);line-height:1.55;font-style:italic;padding-left:12px;position:relative}
-.ex p:before{content:"";position:absolute;left:0;top:9px;width:4px;height:4px;border-radius:99px;background:var(--acc2)}
-.rate{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
-.rate button{padding:12px 4px;border-radius:12px;border:0;font-size:13px;font-weight:700;color:#fff}
-.rate .again{background:#D32F2F}.rate .hard{background:#EF6C00}.rate .good{background:#2E7D32}.rate .easy{background:#1976D2}
-.rate small{display:block;font-size:10px;font-weight:500;opacity:.85;margin-top:2px}
-.rated{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg);font-size:20px;font-weight:700;color:var(--green)}
+.slide{height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;padding:calc(var(--sat) + 52px) 22px calc(var(--nav) + var(--sab) + 14px);position:relative;overflow:hidden;background:var(--screen)}
+.slide .meta{display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-size:14px;letter-spacing:.04em;color:var(--dim);margin-bottom:10px;position:relative;z-index:2}
+.slide .meta .st{color:var(--dim)}
+.slide .meta .st.learning{color:var(--learning)}.slide .meta .st.review{color:var(--review)}.slide .meta .st.known{color:var(--known)}
+.still{position:absolute;inset:0;z-index:0;background:var(--screen)}
+.still img{width:100%;height:100%;object-fit:cover;display:block;opacity:0}
+.still img.on{opacity:.55;transition:opacity .4s ease}
+.still:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.15) 35%,rgba(0,0,0,.25) 60%,rgba(0,0,0,.92) 100%)}
+.body{flex:1;min-height:0;display:flex;flex-direction:column;position:relative;z-index:1}
+.front{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;cursor:pointer;padding-bottom:12vh}
+.front .w{font-family:var(--display);font-weight:600;font-size:64px;line-height:.95;letter-spacing:-.01em;margin:0 0 18px;color:var(--milk);text-shadow:0 2px 24px rgba(0,0,0,.6)}
+.saybtn{font-family:var(--mono);font-size:15px;color:var(--amber);background:rgba(0,0,0,.55);border:1px solid rgba(212,162,76,.35);border-radius:4px;padding:7px 14px;letter-spacing:.02em}
+.saybtn:before{content:"▶";font-size:10px;margin-right:9px;vertical-align:1px}
+.back{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px;cursor:pointer}
+.back .w{font-family:var(--display);font-weight:600;font-size:34px;line-height:1;margin:0 10px 0 0}
+.back .ipa{font-family:var(--mono);font-size:12px;color:var(--amber)}
+.mtabs{display:flex;gap:0;margin:0 0 14px;border-bottom:1px solid var(--line)}
+.mtabs button{padding:8px 14px 10px;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;background:transparent;color:var(--dim);font-family:var(--display);font-size:16px;letter-spacing:.03em}
+.mtabs button.on{color:var(--amber);border-bottom-color:var(--amber)}
+.tag{display:inline-block;font-family:var(--display);font-size:13px;letter-spacing:.05em;color:var(--amber);padding:0;margin:8px 0 2px}
+.def{margin:8px 0 8px;font-family:var(--book);font-size:19px;font-weight:500;line-height:1.4;color:var(--milk)}
+.desc{margin:0 0 16px;font-family:var(--book);font-size:15px;color:var(--dim);line-height:1.6}
+.ex{border-top:1px solid var(--line);padding-top:12px}
+.ex h4{margin:0 0 10px;font-family:var(--display);font-size:13px;font-weight:500;letter-spacing:.05em;color:var(--faint)}
+.ex p{margin:0 0 10px;font-family:var(--book);font-size:15px;color:#C9C3B6;line-height:1.55;padding-left:14px;border-left:2px solid var(--line)}
+.rate{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:12px;background:var(--line);border:1px solid var(--line)}
+.rate button{padding:15px 4px;border:0;font-family:var(--display);font-size:18px;letter-spacing:.04em;color:var(--milk);background:var(--surface)}
+.rate .again{background:var(--again)}.rate .hard{background:var(--hard)}.rate .good{background:var(--good)}.rate .easy{background:var(--easy)}
+.rate small{display:none}
+.rated{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;background:var(--screen);font-family:var(--display);font-size:28px;color:var(--amber);letter-spacing:.02em}
+
 /* ---------- story ---------- */
 .story{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;justify-content:center}
-.story h2{margin:6px 0 14px;font-size:24px;font-weight:700;letter-spacing:-.4px}
-.story p{margin:0 0 12px;font-size:17px;line-height:1.65;white-space:pre-wrap}
-.story .t{border-radius:4px;padding:0 1px}
-.story .t.peeked{background:var(--orange2);color:var(--orange)}
-.story .t.inbox{background:var(--green2);color:var(--green)}
-.story .t:active{background:var(--bg3)}
-.sdone{margin-top:10px}
-.sdone button{width:100%;padding:13px;border-radius:12px;border:0;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:14px;font-weight:700}
-.sreveal{font-size:12px;color:var(--text3);margin:8px 0 0;line-height:1.5}
-.sreveal b{color:var(--text2)}
+.story h2{margin:0 0 16px;font-family:var(--display);font-weight:600;font-size:34px;line-height:1;letter-spacing:-.01em}
+.story p{margin:0 0 12px;font-family:var(--book);font-size:18px;line-height:1.7;white-space:pre-wrap;color:#E6E0D4}
+.story .t{border-radius:2px;padding:0 1px}
+.story .t.peeked{background:rgba(212,162,76,.22);color:var(--amber)}
+.story .t.inbox{background:rgba(141,187,138,.2);color:var(--known)}
+.story .t:active{background:var(--surface2)}
+.sdone{margin-top:12px}
+.sdone button{width:100%;padding:14px;border:1px solid var(--amber);background:transparent;color:var(--amber);font-family:var(--display);font-size:18px;letter-spacing:.05em}
+.sreveal{font-family:var(--ui);font-size:13px;color:var(--dim);margin:6px 0 0;line-height:1.5}
+.sreveal b{color:var(--milk);font-weight:500}
+
 /* ---------- done ---------- */
 .done{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.done .big{font-size:52px;margin:0 0 6px}
-.done h2{margin:0 0 6px;font-size:26px;font-weight:700}
-.done p{margin:0 0 4px;color:var(--text2);font-size:14px}
-.done .row{display:flex;gap:16px;margin:22px 0}
-.done .st{text-align:center}.done .st b{display:block;font-size:26px;font-weight:700}.done .st span{font-size:11px;color:var(--text3)}
+.done .big{display:none}
+.done h2{margin:0 0 8px;font-family:var(--display);font-weight:600;font-size:56px;line-height:.95;letter-spacing:-.01em;color:var(--amber)}
+.done p{margin:0 0 4px;color:var(--dim);font-size:15px}
+.done .row{display:flex;gap:28px;margin:28px 0}
+.done .st{text-align:center}.done .st b{display:block;font-family:var(--display);font-size:36px;font-weight:600;line-height:1}.done .st span{font-size:12px;color:var(--dim)}
+
 /* ---------- popup ---------- */
-#pop{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--bg);border-radius:20px 20px 0 0;padding:18px 20px calc(var(--sab) + 20px);box-shadow:0 -8px 40px rgba(0,0,0,.25);transform:translateY(110%);transition:transform .22s ease;max-height:70vh;overflow-y:auto}
+#pop{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--surface);border-top:1px solid var(--line);padding:20px 22px calc(var(--sab) + 22px);transform:translateY(110%);transition:transform .22s ease;max-height:70vh;overflow-y:auto}
 #pop.show{transform:none}
-#shade{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:40;display:none}
+#shade{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:40;display:none}
 #shade.show{display:block}
-#pop .w{font-size:22px;font-weight:700;margin:0 0 4px}
-#pop .ctx{font-size:13px;color:var(--text2);font-style:italic;margin:10px 0 14px;line-height:1.5}
-#pop .gloss{font-size:16px;color:var(--text);margin:6px 0 16px;line-height:1.5}
+#pop .w{font-family:var(--display);font-weight:600;font-size:34px;line-height:1;margin:0 0 6px}
+#pop .ctx{font-family:var(--book);font-size:14px;color:var(--dim);font-style:italic;margin:10px 0 14px;line-height:1.5}
+#pop .gloss{font-family:var(--book);font-size:17px;color:var(--milk);margin:6px 0 18px;line-height:1.5}
+#pop .tag{margin:0}
+#pop .def{font-size:17px}
+#pop .desc{margin-bottom:10px}
+#pop .ipa{font-family:var(--mono);font-size:13px;color:var(--amber)}
+
 /* ---------- nav ---------- */
-#nav{position:fixed;left:0;right:0;bottom:0;height:calc(var(--nav) + var(--sab));padding-bottom:var(--sab);display:flex;background:var(--bg);border-top:1px solid var(--line);z-index:30}
-#nav button{flex:1;border:0;background:transparent;color:var(--text3);font-size:11px;font-weight:600;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
-#nav button span{font-size:20px}
-#nav button.on{color:var(--acc)}
-#nav button i{position:absolute;margin-left:28px;margin-top:-6px;background:var(--pink);color:#fff;font-style:normal;font-size:10px;font-weight:700;border-radius:99px;padding:1px 5px}
+#nav{position:fixed;left:0;right:0;bottom:0;height:calc(var(--nav) + var(--sab));padding-bottom:var(--sab);display:flex;background:var(--screen);border-top:1px solid var(--line);z-index:30}
+#nav button{flex:1;border:0;background:transparent;color:var(--faint);font-family:var(--display);font-size:17px;letter-spacing:.05em;position:relative}
+#nav button span{display:none}
+#nav button.on{color:var(--amber)}
+#nav button.on:before{content:"";position:absolute;top:-1px;left:22%;right:22%;height:2px;background:var(--amber)}
+#nav button i{position:absolute;top:10px;right:22%;background:var(--amber);color:#000;font-style:normal;font-family:var(--ui);font-size:10px;font-weight:700;border-radius:99px;padding:1px 5px}
+
 /* ---------- pages ---------- */
-.page{height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(var(--sat) + 52px) 16px calc(var(--nav) + var(--sab) + 24px)}
-.title{margin:0 0 16px;font-size:24px;font-weight:700;letter-spacing:-.4px;display:flex;align-items:center;gap:10px}
-.title small{margin-left:auto;font-size:12px;color:var(--text3);font-weight:500}
-.list{border-radius:14px;border:1.5px solid var(--line);overflow:hidden}
-.lr{display:grid;grid-template-columns:1.6fr 1.6fr .9fr;padding:12px;align-items:center;border-bottom:1px solid var(--line);cursor:pointer}
-.lr:last-child{border-bottom:0}
-.lr b{font-size:15px;font-weight:600}
-.lr .ipa{font-size:12px}
-.badge{font-size:10px;font-weight:700;padding:4px 8px;border-radius:99px;text-align:center}
-.badge.new{background:var(--bg3);color:var(--text2)}.badge.learning{background:var(--orange2);color:var(--orange)}.badge.review{background:#E3F2FD;color:#1565C0}.badge.known{background:var(--green2);color:var(--green)}
-@media (prefers-color-scheme:dark){.badge.review{background:#15304a;color:#90caf9}}
-.detail{padding:12px 14px 16px;background:var(--bg2);border-bottom:1px solid var(--line)}
-.detail .def{font-size:14px;margin-top:8px}.detail .desc{font-size:13px}.detail .ex p{font-size:13px}
-.detail .srs{font-size:11px;color:var(--text3);margin:0 0 6px}
-.box{background:var(--bg2);border-radius:14px;padding:16px;margin-bottom:12px}
-.box h3{margin:0 0 6px;font-size:14px;font-weight:700}
-.box p{margin:0 0 10px;font-size:13px;color:var(--text2);line-height:1.5}
-.stats4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
-.stats4 .box{padding:12px 6px;text-align:center;margin:0}
-.stats4 b{display:block;font-size:22px;font-weight:700}.stats4 span{font-size:10px;color:var(--text2)}
-.btn{width:100%;padding:12px;border-radius:12px;border:0;margin-bottom:8px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:13px;font-weight:700}
-.btn.g{background:linear-gradient(135deg,#43A047,#66BB6A)}
-.btn.o{background:transparent;border:1.5px solid var(--line);color:var(--text2)}
-.btn.sm{width:auto;padding:8px 14px;margin:0;font-size:12px}
-input{width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);font-size:14px;background:var(--bg);color:var(--text);font-family:inherit}
-.inbox{list-style:none;margin:0 0 12px;padding:0}
-.inbox li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
-.inbox li small{display:block;font-size:11px;color:var(--text3);font-style:italic;margin-top:2px}
-.inbox li u{margin-left:auto;color:var(--text3);cursor:pointer;font-size:12px;text-decoration:none}
-.msg{margin:6px 0 0;font-size:12px;color:var(--green);word-break:break-all}.msg.err{color:var(--orange)}
-.banner{background:var(--green2);color:var(--green);border-radius:12px;padding:10px 14px;font-size:13px;font-weight:600;margin-bottom:12px;display:flex;justify-content:space-between;gap:8px}
-.banner.warn{background:var(--orange2);color:var(--orange)}
-.banner u{cursor:pointer;text-decoration:none;font-weight:700}
-.row{display:flex;gap:8px;align-items:center}
-.empty{text-align:center;padding:3rem 1rem;color:var(--text2);font-size:14px}
+.page{height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(var(--sat) + 52px) 18px calc(var(--nav) + var(--sab) + 24px);background:var(--screen)}
+.title{margin:0 0 18px;font-family:var(--display);font-weight:600;font-size:40px;line-height:1;letter-spacing:-.01em;display:flex;align-items:baseline;gap:10px}
+.title small{margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;letter-spacing:.04em}
+.list{border-top:1px solid var(--line)}
+.lr{display:grid;grid-template-columns:1.5fr 1.5fr auto;padding:14px 0 14px 14px;align-items:center;border-bottom:1px solid var(--line);cursor:pointer;position:relative}
+.lr:before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;background:var(--new)}
+.lr.learning:before{background:var(--learning)}.lr.review:before{background:var(--review)}.lr.known:before{background:var(--known)}
+.lr b{font-family:var(--display);font-size:22px;font-weight:500;line-height:1}
+.lr .ipa{font-family:var(--mono);font-size:12px;color:var(--amber)}
+.badge{font-family:var(--display);font-size:14px;letter-spacing:.05em;color:var(--dim);cursor:pointer;padding:4px 0 4px 10px}
+.badge.learning{color:var(--learning)}.badge.review{color:var(--review)}.badge.known{color:var(--known)}
+.detail{padding:12px 0 18px 14px;border-bottom:1px solid var(--line);background:var(--surface)}
+.detail .def{font-size:16px}.detail .desc{font-size:14px}.detail .ex p{font-size:14px}
+.box{background:var(--surface);padding:18px;margin-bottom:10px;border:1px solid var(--line)}
+.box h3{margin:0 0 6px;font-family:var(--display);font-size:20px;font-weight:500;letter-spacing:.02em}
+.box p{margin:0 0 12px;font-size:14px;color:var(--dim);line-height:1.5}
+.stats4{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-bottom:10px;background:var(--line);border:1px solid var(--line)}
+.stats4 .box{padding:14px 6px;text-align:center;margin:0;border:0}
+.stats4 b{display:block;font-family:var(--display);font-size:32px;font-weight:600;line-height:1}.stats4 span{font-family:var(--display);font-size:13px;letter-spacing:.05em;color:var(--dim)}
+.bar{height:3px;background:var(--line);margin-top:12px}
+.bar i{display:block;height:100%;background:var(--known)}
+.btn{width:100%;padding:13px;border:1px solid var(--amber);margin-bottom:8px;background:var(--amber);color:#000;font-family:var(--display);font-size:18px;letter-spacing:.05em}
+.btn.g{background:var(--amber);color:#000}
+.btn.o{background:transparent;color:var(--amber)}
+.btn.sm{width:auto;padding:9px 16px;margin:0;font-size:15px}
+input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;background:var(--screen);color:var(--milk);font-family:inherit}
+.inbox{list-style:none;margin:0 0 14px;padding:0}
+.inbox li{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.inbox li b{font-family:var(--display);font-size:20px;font-weight:500}
+.inbox li small{display:block;font-family:var(--book);font-size:12px;color:var(--dim);font-style:italic;margin-top:3px}
+.inbox li u{margin-left:auto;color:var(--faint);cursor:pointer;font-size:13px;text-decoration:none}
+.msg{margin:8px 0 0;font-size:13px;color:var(--known);word-break:break-all}.msg.err{color:var(--amber)}
+.banner{background:var(--surface);border-left:3px solid var(--known);color:var(--milk);padding:12px 14px;font-size:14px;margin-bottom:14px;display:flex;justify-content:space-between;gap:8px}
+.banner.warn{border-left-color:var(--amber)}
+.banner u{cursor:pointer;text-decoration:none;color:var(--amber);font-family:var(--display);letter-spacing:.05em}
+.empty{text-align:center;padding:3rem 1rem;color:var(--dim);font-size:15px}
+@media (prefers-reduced-motion:reduce){*{transition:none !important}}
 </style>
 </head>
 <body>
@@ -138,7 +159,7 @@ input{width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid var(--l
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-9";
+const APP_VERSION = "2026.10.24-10";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -287,7 +308,7 @@ function loadInto(img, w, urls, i){
   if (!img.isConnected) return;
   if (i >= urls.length){ lsSet("wsv.img." + w.word, JSON.stringify({ none: Date.now() })); img.remove(); return; }
   img.onerror = () => loadInto(img, w, urls, i + 1);
-  img.onload = () => { lsSet("wsv.img." + w.word, JSON.stringify({ ok: urls[i] })); img.style.display = "block"; };
+  img.onload = () => { lsSet("wsv.img." + w.word, JSON.stringify({ ok: urls[i] })); img.classList.add("on"); };
   img.referrerPolicy = "no-referrer"; img.src = urls[i];
 }
 async function getImage(w){ const c = await imageCandidates(w); return c[0] || null; }
@@ -301,17 +322,17 @@ function prefetchImages(){
 function wordSlide(f, i){
   const w = f.w, st = slideState[i], d = w.definitions[Math.min(st.defIdx, w.definitions.length-1)];
   const n = feed.filter(x => x.type !== "done").length;
-  let h = '<div class="slide" data-i="' + i + '"><div class="meta"><span>' + (i+1) + " / " + n + '</span><span class="badge ' + status(w.word) + '">' + status(w.word) + "</span></div>";
+  let h = '<div class="slide" data-i="' + i + '">' + (w.image || w.imgQuery ? '<div class="still"><img data-img="' + esc(w.word) + '" alt=""></div>' : "") + '<div class="meta"><span>' + (i+1) + " / " + n + '</span><span class="st ' + status(w.word) + '">' + status(w.word) + "</span></div>";
   if (st.rated) return h + '<div class="rated">' + st.rated + "</div></div>";
   h += '<div class="body">';
   if (!st.flipped){
-    h += '<div class="front" data-act="flip">' + (w.image || w.imgQuery ? '<img data-img="' + esc(w.word) + '" alt="" style="display:none">' : "") + '<p class="w">' + esc(w.word) + '</p><button class="saybtn" data-act="say" data-w="' + esc(w.word) + '">' + esc(w.pronunciation) + ' 🔊</button></div>';
+    h += '<div class="front" data-act="flip"><p class="w">' + esc(w.word) + '</p><button class="saybtn" data-act="say" data-w="' + esc(w.word) + '">' + esc(w.pronunciation) + '</button></div>';
     // (tap anywhere on the back flips it again; buttons stop propagation)
   } else {
     h += '<div class="back" data-act="flip">';
     if (w.definitions.length > 1) h += '<div class="mtabs">' + w.definitions.map((_, k) => '<button data-act="def" data-k="' + k + '" class="' + (st.defIdx === k ? "on" : "") + '">Meaning ' + (k+1) + "</button>").join("") + "</div>";
-    h += '<div class="row" style="flex-wrap:wrap;margin-bottom:4px"><span class="w">' + esc(w.word) + '</span><span class="ipa" data-act="say" data-w="' + esc(w.word) + '" style="font-size:12px">' + esc(w.pronunciation) + ' 🔊</span></div><span class="tag">' + esc(d.context) + '</span><p class="def">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + "</p>" + examplesHTML(d) + "</div>";
-    h += '<div class="rate"><button class="again" data-act="rate" data-g="again">Again</button><button class="hard" data-act="rate" data-g="hard">Hard</button><button class="good" data-act="rate" data-g="good">Good</button><button class="easy" data-act="rate" data-g="easy">Easy<small>' + ivlLabel(w.word,"easy") + "</small></button></div>";
+    h += '<div class="row" style="flex-wrap:wrap;margin-bottom:4px"><span class="w">' + esc(w.word) + '</span><span class="ipa" data-act="say" data-w="' + esc(w.word) + '">▶ ' + esc(w.pronunciation) + '</span></div><span class="tag">' + esc(d.context) + '</span><p class="def">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + "</p>" + examplesHTML(d) + "</div>";
+    h += '<div class="rate"><button class="again" data-act="rate" data-g="again">Again</button><button class="hard" data-act="rate" data-g="hard">Hard</button><button class="good" data-act="rate" data-g="good">Good</button><button class="easy" data-act="rate" data-g="easy">Easy</button></div>';
   }
   return h + "</div></div>";
 }
@@ -332,7 +353,7 @@ function tokenise(text){
 }
 function storySlide(f, i){
   const s = f.s, st = slideState[i];
-  let h = '<div class="slide" data-i="' + i + '"><div class="meta"><span class="tag">' + esc(s.genre) + '</span><span>Story · tap any word</span></div>';
+  let h = '<div class="slide" data-i="' + i + '"><div class="meta"><span style="color:var(--amber)">' + esc(s.genre) + '</span><span>tap any word</span></div>';
   if (st.rated) return h + '<div class="rated">' + st.rated + "</div></div>";
   h += '<div class="body"><div class="story"><h2>' + esc(s.title) + "</h2><p>";
   tokenise(s.text).forEach(tok => {
@@ -346,7 +367,7 @@ function storySlide(f, i){
 }
 function doneSlide(i){
   const t = today(), n = P.days[t] || 0, tmr = dueCount(addDays(t,1));
-  return '<div class="slide" data-i="' + i + '"><div class="done"><p class="big">' + (n ? "🎉" : "☕️") + '</p><h2>' + (n ? "Done for today" : "Nothing due today") + '</h2><p>' + (tmr ? tmr + " word" + (tmr > 1 ? "s" : "") + " due tomorrow." : "Tomorrow is clear too.") + '</p><div class="row"><div class="st"><b>' + n + '</b><span>reviews today</span></div><div class="st"><b>' + streak() + '</b><span>day streak</span></div><div class="st"><b>' + P.inbox.length + '</b><span>to send to Claude</span></div></div><button class="btn o" style="width:auto;padding:10px 18px" data-act="ahead">Practise 10 more</button></div></div>';
+  return '<div class="slide" data-i="' + i + '"><div class="done"><p class="big">' + (n ? "🎉" : "☕️") + '</p><h2>' + (n ? "That's a wrap." : "Nothing due today.") + '</h2><p>' + (tmr ? tmr + " word" + (tmr > 1 ? "s" : "") + " due tomorrow." : "Tomorrow is clear too.") + '</p><div class="row"><div class="st"><b>' + n + '</b><span>reviews today</span></div><div class="st"><b>' + streak() + '</b><span>day streak</span></div><div class="st"><b>' + P.inbox.length + '</b><span>to send to Claude</span></div></div><button class="btn o" style="width:auto;padding:10px 18px" data-act="ahead">10 more words</button></div></div>';
 }
 function renderFeed(){
   let h = '<div id="feed">';
@@ -365,7 +386,7 @@ function renderList(){
   h += '<div class="list">';
   [...WORDS].sort((a,b) => a.word.localeCompare(b.word)).forEach(w => {
     const s = status(w.word);
-    h += '<div class="lr" data-act="open" data-w="' + esc(w.word) + '"><b>' + esc(w.word) + '</b><span class="ipa" data-act="say" data-w="' + esc(w.word) + '">' + esc(w.pronunciation) + ' 🔊</span><span class="badge ' + s + '" data-act="toggle" data-w="' + esc(w.word) + '">' + s + "</span></div>";
+    h += '<div class="lr ' + s + '" data-act="open" data-w="' + esc(w.word) + '"><b>' + esc(w.word) + '</b><span class="ipa" data-act="say" data-w="' + esc(w.word) + '">▶ ' + esc(w.pronunciation) + '</span><span class="badge ' + s + '" data-act="toggle" data-w="' + esc(w.word) + '">' + s + "</span></div>";
     if (ui.open === w.word) h += detailHTML(w);
   });
   return h + "</div></div>";
@@ -398,8 +419,8 @@ function renderStats(){
   const last = P.lastBackup || 0, days = last ? Math.floor((Date.now() - last) / 864e5) : null;
   let h = '<div class="page"><p class="title">Statistics</p>';
   if (ui.banner) h += '<div class="banner ' + (ui.bannerWarn ? "warn" : "") + '"><span>' + esc(ui.banner) + '</span><u data-act="hidebanner">OK</u></div>';
-  h += '<div class="stats4"><div class="box"><b style="color:var(--text3)">' + counts.new + '</b><span>New</span></div><div class="box"><b style="color:var(--orange)">' + counts.learning + '</b><span>Learning</span></div><div class="box"><b style="color:#1976D2">' + counts.review + '</b><span>Review</span></div><div class="box"><b style="color:var(--green)">' + counts.known + "</b><span>Known</span></div></div>";
-  h += '<div class="box"><div class="row" style="justify-content:space-between"><h3 style="margin:0">Known ' + pct + '%</h3><span style="font-size:12px;color:var(--text2)">🔥 ' + streak() + " day streak · " + dueCount(addDays(today(),1)) + ' due tomorrow</span></div><div style="height:8px;background:var(--line);border-radius:99px;margin-top:10px"><div style="height:100%;width:' + pct + '%;border-radius:99px;background:linear-gradient(90deg,#43A047,#66BB6A)"></div></div></div>';
+  h += '<div class="stats4"><div class="box"><b style="color:var(--new)">' + counts.new + '</b><span>New</span></div><div class="box"><b style="color:var(--amber)">' + counts.learning + '</b><span>Learning</span></div><div class="box"><b style="color:var(--review)">' + counts.review + '</b><span>Review</span></div><div class="box"><b style="color:var(--known)">' + counts.known + "</b><span>Known</span></div></div>";
+  h += '<div class="box"><div class="row" style="justify-content:space-between"><h3 style="margin:0">Known ' + pct + '%</h3><span style="font-size:13px;color:var(--dim)">' + streak() + " day streak, " + dueCount(addDays(today(),1)) + ' due tomorrow</span></div><div class="bar"><i style="width:' + pct + '%"></i></div></div>';
   // inbox
   h += '<div class="box"><h3>Want to learn (' + P.inbox.length + ')</h3><p>Words you tapped in stories. Send them to Claude.</p>';
   if (P.inbox.length){
@@ -410,7 +431,7 @@ function renderStats(){
   // backup
   h += '<div class="box"><h3>Backup</h3><p>' + (days === null ? "No backup file yet. Save one now and then." : "Last backup: " + (days === 0 ? "today" : days + " day" + (days > 1 ? "s" : "") + " ago") + ".") + '</p><div class="row"><button class="btn" data-act="export">Save backup</button><button class="btn o" data-act="importbtn">Restore</button></div><input type="file" id="file" accept=".json,application/json" style="display:none">' + (ui.shownCode ? '<p class="msg err">' + esc(ui.shownCode) + "</p>" : "") + '</div>';
   if (ui.msg) h += '<p class="msg ' + (ui.msgErr ? "err" : "") + '">' + esc(ui.msg) + "</p>";
-  h += '<p style="text-align:center;font-size:12px;color:var(--text3);margin-top:16px">Version ' + APP_VERSION + ' · <u data-act="reset" style="cursor:pointer">Reset progress</u></p></div>';
+  h += '<p style="text-align:center;font-size:12px;color:var(--faint);margin-top:18px">Version ' + APP_VERSION + '  <u data-act="reset" style="cursor:pointer;margin-left:10px">Reset progress</u></p></div>';
   return h;
 }
 
@@ -545,13 +566,13 @@ document.addEventListener("click", async e => {
     const w = BY[t.dataset.head]; if (!w) return; const st = slideState[i];
     if (!st.peeked.includes(w.word)){ st.peeked.push(w.word); peek(w.word); rerenderSlide(i); }
     const d = w.definitions[0];
-    return showPop('<p class="w">' + esc(w.word) + ' <span class="ipa" data-act="say" data-w="' + esc(w.word) + '" style="font-size:13px">' + esc(w.pronunciation) + ' 🔊</span></p><span class="tag">' + esc(d.context) + '</span><p class="def" style="font-size:15px">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + '</p><p style="font-size:12px;color:var(--text3);margin:0">Looked up, so this word comes back tomorrow.</p>');
+    return showPop('<p class="w">' + esc(w.word) + ' <span class="ipa" data-act="say" data-w="' + esc(w.word) + '">▶ ' + esc(w.pronunciation) + '</span></p><span class="tag">' + esc(d.context) + '</span><p class="def" style="font-size:15px">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + '</p><p style="font-size:13px;color:var(--dim);margin:0">Looked up, so this word comes back tomorrow.</p>');
   }
   if (a === "plain"){
     const word = t.dataset.word; if (!word || word.length < 2) return;
     if (BY[word]) { t.dataset.act = "peek"; t.dataset.head = word; return t.click(); }
     const already = slideState[i].inboxed.includes(word) || P.inbox.some(x => x.word === word);
-    showPop('<p class="w">' + esc(word) + '</p><p class="gloss" id="gloss">…</p>' + (already ? '<p style="font-size:13px;color:var(--text2)">Already in your "want to learn" list.</p>' : '<button class="btn g" data-act="inbox" data-word="' + esc(word) + '" data-i="' + i + '">Add to "want to learn"</button><button class="btn o" data-act="closepop">Not now</button>'));
+    showPop('<p class="w">' + esc(word) + '</p><p class="gloss" id="gloss">…</p>' + (already ? '<p style="font-size:13px;color:var(--dim)">Already in your "want to learn" list.</p>' : '<button class="btn g" data-act="inbox" data-word="' + esc(word) + '" data-i="' + i + '">Add to "want to learn"</button><button class="btn o" data-act="closepop">Not now</button>'));
     const g = await lookup(word, feed[i].s); const el = document.getElementById("gloss"); if (el) el.textContent = g ? g : g === "" ? "Not in the dictionary. Ask Claude." : "Dictionary not reachable right now.";
     return;
   }
@@ -561,7 +582,7 @@ document.addEventListener("click", async e => {
   if (a === "ahead"){ buildFeed(true); render(); const fe = document.getElementById("feed"); if (fe) fe.scrollTop = 0; return; }
   if (a === "open") return toggleDetail(t.dataset.w);
   if (a === "odef"){ e.stopPropagation(); return switchDetailDef(+t.dataset.k); }
-  if (a === "toggle"){ e.stopPropagation(); const w = t.dataset.w; if (status(w) === "known") delete P.cards[w]; else P.cards[w] = knownCard(false); await saveP(); const s = status(w); t.className = "badge " + s; t.textContent = s; const d = document.querySelector('.detail[data-w="' + CSS.escape(w) + '"]'); if (d){ const tmp = document.createElement("div"); tmp.innerHTML = detailHTML(BY[w]); d.replaceWith(tmp.firstChild); } return; }
+  if (a === "toggle"){ e.stopPropagation(); const w = t.dataset.w; if (status(w) === "known") delete P.cards[w]; else P.cards[w] = knownCard(false); await saveP(); const s = status(w); t.className = "badge " + s; t.textContent = s; const rowEl = t.closest(".lr"); if (rowEl) rowEl.className = "lr " + s; const d = document.querySelector('.detail[data-w="' + CSS.escape(w) + '"]'); if (d){ const tmp = document.createElement("div"); tmp.innerHTML = detailHTML(BY[w]); d.replaceWith(tmp.firstChild); } return; }
   if (a === "hidebanner"){ ui.banner = ""; return render(); }
   if (a === "rminbox"){ P.inbox = P.inbox.filter(x => x.word !== t.dataset.w); await saveP(); return render(); }
   if (a === "sendinbox") return sendInbox();
