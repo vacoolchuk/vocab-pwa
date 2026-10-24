@@ -149,8 +149,8 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 .cword b{font-family:var(--display);font-size:36px;font-weight:600;line-height:1}
 .chead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .cipa{font-family:var(--mono);font-size:14px;color:var(--amber);margin:6px 0 0}
-.playbtn{width:56px;height:56px;border-radius:50%;border:1.5px solid var(--amber);background:rgba(0,0,0,.35);color:var(--amber);padding:0;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.playbtn .tri{width:24px;height:24px;fill:currentColor;margin-left:3px;pointer-events:none}
+.playbtn{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--amber);background:rgba(0,0,0,.35);color:var(--amber);padding:0;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.playbtn .tri{width:18px;height:18px;fill:currentColor;margin-left:3px;pointer-events:none}
 .playbtn:active{background:var(--amber);color:#000}
 .ukline{font-family:var(--ui);font-size:15px;color:var(--dim);margin:8px 0 6px}
 .cdef{font-family:var(--book);font-size:16px;line-height:1.5;margin:8px 0 0;color:var(--milk)}
@@ -183,7 +183,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-19";
+const APP_VERSION = "2026.10.24-20";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -528,7 +528,7 @@ async function wikiIPA(word){
   try {
     const r = await fetch("https://en.wiktionary.org/w/api.php?action=parse&prop=wikitext&format=json&origin=*&page=" + encodeURIComponent(word));
     if (!r.ok) return ""; const j = await r.json(); let t = j.parse && j.parse.wikitext && j.parse.wikitext["*"]; if (!t) return "";
-    const en = t.indexOf("==English=="); if (en >= 0){ const next = t.indexOf("\n==", en + 12); t = next > 0 ? t.slice(en, next) : t.slice(en); }
+    const en = t.indexOf("==English=="); if (en >= 0){ const rest = t.slice(en + 12); const m = rest.match(/\n==[^=]/); t = m ? rest.slice(0, m.index) : rest; }
     const all = [...t.matchAll(/\{\{IPA\|en\|([^}]+)\}\}/g)].map(m => m[1]);
     const pick = all.find(x => /\|a=(RP|UK|GB)|Received|British/i.test(x)) || all.find(x => !/\|a=(US|GA|GenAm)/i.test(x)) || all[0];
     if (!pick) return "";
