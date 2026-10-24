@@ -33,9 +33,9 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 .row{display:flex;gap:8px;align-items:center}
 
 /* ---------- feed ---------- */
-#feed{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:var(--screen)}
+#feed,#reel{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:var(--screen)}
 .tinted{--tint:#1B2A20;background:radial-gradient(130% 75% at 50% -5%,var(--tint) 0%,#0B100D 62%,#050706 100%)}
-#feed::-webkit-scrollbar{display:none}
+#feed::-webkit-scrollbar,#reel::-webkit-scrollbar{display:none}
 .slide{height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;padding:calc(var(--sat) + 52px) 22px calc(var(--nav) + var(--sab) + 14px);position:relative;overflow:hidden}
 .slide .meta{display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-size:14px;letter-spacing:.04em;color:var(--dim);margin-bottom:10px;position:relative;z-index:2}
 .slide .meta .st{color:var(--dim)}
@@ -125,6 +125,12 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 .slide.flipped .back .ex p{color:#EFE9DC;border-left-color:rgba(212,162,76,.45)}
 .slide.flipped .back .ex h4{color:#B8B2A4}
 .slide.flipped .back .tag{color:#E2B35A}
+/* ---------- watch feed (experiment) ---------- */
+#reel .slide{overflow-y:auto;-webkit-overflow-scrolling:touch}
+.rword{font-family:var(--display);font-weight:600;font-size:44px;line-height:1;margin:0 0 6px;color:var(--milk)}
+.rdef{font-family:var(--book);font-size:15px;line-height:1.4;color:#E4DED2;margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.rhint{font-size:12px;color:var(--faint);text-align:center;margin:8px 0 0;font-family:var(--display);letter-spacing:.1em;text-transform:uppercase}
+.wmode{display:flex;gap:8px;margin:-6px 0 14px}
 /* ---------- watch tab ---------- */
 .wsearch{display:flex;gap:8px;margin-bottom:14px}
 .wsearch input{flex:1;min-width:0;background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--milk);font-family:var(--display);font-size:24px;padding:8px 2px;outline:none;border-radius:0}
@@ -248,7 +254,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-38";
+const APP_VERSION = "2026.10.24-39";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -735,7 +741,8 @@ function render(){
   if (view === "catch"){ const q = document.getElementById("catch"); if (q){ q.value = ui.catchQ || ""; } const r = document.getElementById("cres"); if (r && ui.catchHTML) r.innerHTML = ui.catchHTML; if (P.inbox.some(x => !x.def)) fillInboxDefs(); }
   const fe = document.getElementById("feed"); if (fe){ fe.scrollTop = scroll; hydrateImages(); }
   if (view === "news") hydrateNewsImages();
-  if (view === "watch" && ui.watchWord) ygShow("ygw", ui.watchWord);
+  if (view === "watch" && ui.watchMode === "feed") reelSetup();
+  else if (view === "watch" && ui.watchWord) ygShow("ygw", ui.watchWord);
 }
 function rerenderSlide(i){
   const old = document.querySelector('.slide[data-i="' + i + '"]'); if (!old) return;
@@ -775,11 +782,54 @@ function watchSubmit(raw){
   const part = all.filter(x => x.toLowerCase().includes(low));
   watchPlay(exact || (part.length === 1 ? part[0] : q));
 }
+function reelWords(){
+  let ws = WORDS.map(w => w.word).filter(w => ["known", "review"].includes(status(w)));
+  if (ws.length < 3) ws = WORDS.map(w => w.word).filter(w => status(w) !== "new");
+  if (ws.length < 3) ws = WORDS.map(w => w.word);
+  for (let i = ws.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [ws[i], ws[j]] = [ws[j], ws[i]]; }
+  return ws;
+}
+function renderReel(){
+  if (!ui.reelList) ui.reelList = reelWords();
+  const list = ui.reelList, n = list.length;
+  let h = '<div id="reel">';
+  list.forEach((word, i) => {
+    const w = WORDS.find(x => x.word === word); if (!w) return;
+    const d = w.definitions[0];
+    h += '<div class="slide tinted" style="--tint:' + tintFor(word) + '" data-i="' + i + '" data-w="' + esc(word) + '">' +
+      '<div class="meta"><span>' + (i + 1) + " / " + n + '</span><span data-act="watchmode" data-m="list" style="color:var(--amber);cursor:pointer">List</span></div>' +
+      '<div class="body"><p class="rword">' + esc(word) + '</p><p class="rdef">' + esc(d.def) + '</p>' +
+      '<div class="wplayer"><div id="ygr' + i + '"></div></div>' + ygBar("ygr" + i) + '<p class="rhint">Swipe up for the next word</p></div></div>';
+  });
+  h += '<div class="slide tinted" style="--tint:#2A2412"><div class="done"><p class="big">&#9749;</p><h2>That is all of them.</h2><p>' + n + ' word' + (n === 1 ? "" : "s") + ' you already know.</p><button class="wbtn" data-act="watchmode" data-m="feed">Shuffle again</button></div></div>';
+  return h + "</div>";
+}
+let reelIO = null, reelT = null, reelCur = -1;
+function reelSetup(){
+  if (reelIO){ reelIO.disconnect(); reelIO = null; }
+  const root = document.getElementById("reel"); if (!root) return;
+  reelIO = new IntersectionObserver(es => {
+    es.forEach(e => {
+      const sl = e.target; if (sl.dataset.i == null) return;
+      const id = "ygr" + sl.dataset.i;
+      if (e.isIntersecting && e.intersectionRatio >= 0.6){
+        reelCur = +sl.dataset.i; clearTimeout(reelT);
+        reelT = setTimeout(() => { if (reelCur === +sl.dataset.i) ygShow(id, sl.dataset.w); }, 350);
+      } else if (YGW[id]){
+        delete YGW[id]; const b = document.getElementById(id); if (b) b.innerHTML = "";
+        const st = document.getElementById(id + "st"); if (st) st.textContent = "";
+      }
+    });
+  }, { root, threshold: [0, 0.6] });
+  root.querySelectorAll(".slide").forEach(sl => reelIO.observe(sl));
+}
 function renderWatch(){
+  if (ui.watchMode === "feed") return renderReel();
   const { mine, inbox } = watchWords();
   if (!ui.watchWord) ui.watchWord = mine[0] || inbox[0] || "";
   const w = ui.watchWord;
   let h = '<div class="page tinted"><p class="title">Watch<small>Real people saying it</small></p>';
+  h += '<div class="wmode"><button class="wbtn" data-act="watchmode" data-m="feed" style="margin:0">Feed of your known words (beta)</button></div>';
   h += '<div class="wsearch"><input id="watchq" type="search" placeholder="Search your words, or any phrase" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="go"><button data-act="watchgo">Go</button></div>';
   if (w){
     h += '<div class="wnow"><b id="watchnow">' + esc(w) + "</b><span>British accent, from YouTube</span></div>";
@@ -1048,6 +1098,7 @@ document.addEventListener("click", async e => {
   }
   if (a === "inbox"){ const word = t.dataset.word; const src = t.dataset.n ? NEWS_BY[t.dataset.n] : (feed[i] && feed[i].s); const ge = document.getElementById("gloss"); const gt = ge ? ge.textContent : ""; addInbox(word, src ? sentenceAround(src.text, word.split(" ")[0]) : "", /^(…|Not in the dictionary|Dictionary not reachable)/.test(gt) ? "" : gt); if (slideState[i]) slideState[i].inboxed.push(word); hidePop(); render(); return; }
   if (a === "closepop") return hidePop();
+  if (a === "watchmode"){ ui.watchMode = t.dataset.m; ui.reelList = null; for (const k in YGW) delete YGW[k]; render(); return; }
   if (a === "ygprev"){ const c = YGW[t.dataset.id]; if (c) try { c.w.previous(); } catch(e){} return; }
   if (a === "ygnext"){ const c = YGW[t.dataset.id]; if (c) try { c.w.next(); } catch(e){} return; }
   if (a === "watchpick") return watchPlay(t.dataset.w);
