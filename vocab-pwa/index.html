@@ -153,7 +153,6 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 .cdef span{font-family:var(--display);font-size:13px;color:var(--amber);letter-spacing:.04em;margin-right:8px}
 .dimline{font-size:14px;color:var(--dim);margin:10px 0 0}
 .catchadd{display:flex;gap:8px;margin-top:16px}
-.catchadd input{flex:1;font-size:15px}
 .srcname{font-family:var(--display);font-size:15px;letter-spacing:.05em;color:var(--amber);margin:16px 0 0}
 .inbox{list-style:none;margin:0 0 14px;padding:0}
 .inbox li{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
@@ -180,7 +179,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-15";
+const APP_VERSION = "2026.10.24-16";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -466,14 +465,10 @@ function renderCatch(){
   let h = '<div class="page tinted"><p class="title">Catch a word</p>';
   h += '<div class="catchbar"><input id="catch" type="search" placeholder="Type the word you just heard" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="search"></div>';
   h += '<div id="cres"></div>';
-  // inbox grouped by source
-  const groups = {}; P.inbox.forEach(i => { const k = i.src || (i.ctx ? "From stories" : "No source"); (groups[k] = groups[k] || []).push(i); });
-  const keys = Object.keys(groups).sort((a,b) => Math.max(...groups[b].map(x => x.added || 0)) - Math.max(...groups[a].map(x => x.added || 0)));
+  const items = [...P.inbox].sort((a,b) => (b.added || 0) - (a.added || 0));
   h += '<div class="box" style="margin-top:14px"><h3>Want to learn (' + P.inbox.length + ')</h3>' + (P.inbox.length ? '<button class="btn" data-act="sendinbox">Send to Claude</button>' : "");
   if (!P.inbox.length) h += '<p style="margin-top:8px">Nothing here yet. Words you add above, and words you tap in stories, collect here until you send them to Claude.</p>';
-  keys.forEach(k => {
-    h += '<p class="srcname">' + esc(k) + '</p><ul class="inbox">' + groups[k].map(i => '<li data-w="' + esc(i.word) + '"><div><b>' + esc(i.word) + "</b><small>" + esc(i.def || "…") + "</small>" + '</div><u data-act="rminbox" data-w="' + esc(i.word) + '">remove</u></li>').join("") + "</ul>";
-  });
+  else h += '<ul class="inbox">' + items.map(i => '<li data-w="' + esc(i.word) + '"><div><b>' + esc(i.word) + "</b><small>" + esc(i.def || "…") + "</small>" + '</div><u data-act="rminbox" data-w="' + esc(i.word) + '">remove</u></li>').join("") + "</ul>";
   if (P.inbox.length) h += '<div class="row" style="margin-top:12px"><button class="btn o sm" data-act="copyinbox">Copy as text</button><button class="btn o sm" data-act="clearinbox">Clear list</button></div>';
   h += "</div></div>";
   return h;
@@ -494,7 +489,7 @@ async function catchLookup(q){
   else if (!entry) h += '<p class="dimline">Dictionary not reachable. You can still add the word.</p>';
   else h += '<p class="dimline">Not in the dictionary. You can still add it.</p>';
   const have = P.inbox.some(x => x.word === q);
-  if (!inVocab) h += '<div class="catchadd"><input id="src" placeholder="Where? e.g. Berserk 6" value="' + esc(P.lastSource || "") + '"><button class="btn sm" data-act="catchadd" data-word="' + esc(q) + '" data-def="' + esc(entry && entry.defs[0] ? entry.defs[0].text : "") + '">' + (have ? "Added" : "Add") + "</button></div>";
+  if (!inVocab) h += '<div class="catchadd"><button class="btn" data-act="catchadd" data-word="' + esc(q) + '" data-def="' + esc(entry && entry.defs[0] ? entry.defs[0].text : "") + '">' + (have ? "Added" : "Add") + "</button></div>";
   h += "</div>";
   ui.catchHTML = h; res.innerHTML = h;
 }
@@ -635,7 +630,7 @@ async function fillInboxDefs(){
   for (const it of P.inbox){ if (it.def) continue; const g = await lookup(it.word, null); if (g){ it.def = g; const el = document.querySelector('.inbox li[data-w="' + CSS.escape(it.word) + '"] small'); if (el) el.textContent = g; } }
   saveP();
 }
-function inboxText(){ return "Teach me these words (British English, full cards please): " + P.inbox.map(i => i.word + (i.src ? " [" + i.src + "]" : "") + (i.ctx ? ' ("' + i.ctx + '")' : "")).join("; "); }
+function inboxText(){ return "Teach me these words (British English, full cards please): " + P.inbox.map(i => i.word + (i.ctx ? ' ("' + i.ctx + '")' : "")).join("; "); }
 async function sendInbox(){
   const text = inboxText();
   if (navigator.share){ try { await navigator.share({ text }); return; } catch(e){ if (e.name === "AbortError") return; } }
@@ -691,7 +686,7 @@ document.addEventListener("click", async e => {
   if (a === "odef"){ e.stopPropagation(); return switchDetailDef(+t.dataset.k); }
   if (a === "toggle"){ e.stopPropagation(); const w = t.dataset.w; if (status(w) === "known") delete P.cards[w]; else P.cards[w] = knownCard(false); await saveP(); const s = status(w); t.className = "badge " + s; t.textContent = s; const rowEl = t.closest(".lr"); if (rowEl) rowEl.className = "lr " + s; const d = document.querySelector('.detail[data-w="' + CSS.escape(w) + '"]'); if (d){ const tmp = document.createElement("div"); tmp.innerHTML = detailHTML(BY[w]); d.replaceWith(tmp.firstChild); } return; }
   if (a === "hidebanner"){ ui.banner = ""; return render(); }
-  if (a === "catchadd"){ const srcEl = document.getElementById("src"); const src = srcEl ? srcEl.value.trim() : ""; P.lastSource = src; addInbox(t.dataset.word, "", t.dataset.def, src); t.textContent = "Added"; ui.catchHTML = document.getElementById("cres").innerHTML; render(); return; }
+  if (a === "catchadd"){ addInbox(t.dataset.word, "", t.dataset.def, ""); t.textContent = "Added"; ui.catchHTML = document.getElementById("cres").innerHTML; render(); return; }
   if (a === "clearinbox"){ if (!confirm("Clear the whole list?")) return; P.inbox = []; await saveP(); return render(); }
   if (a === "rminbox"){ P.inbox = P.inbox.filter(x => x.word !== t.dataset.w); await saveP(); return render(); }
   if (a === "sendinbox") return sendInbox();

@@ -76,8 +76,8 @@ redundant, irritate, enmity, frail, carrion, scavenger, feeble, petal, at libert
 - Three card types rotate for words already reviewed at least once: see (word first), fill the gap (an example sentence with the word blanked out, definition as a hint) and listen (play button only, recall the word by ear). New words always start with the plain card.
 - 10 new words per day maximum. The feed ends with a "Done for today" card and a "Review ahead" button.
 - **Stories** appear in the feed every 4 cards (max 3 per session). They are picked to contain words whose interval is 7+ days, i.e. words I am about to forget. Words are NOT highlighted. I read, and tap any word I do not recognise: a vocabulary word shows its meaning and comes back tomorrow (interval halved); any other word can be added to **"Want to learn"**. Words I pass without tapping get their interval nudged up by 15% on "Done reading".
-- **Catch** tab: type a word I just heard, see its definition, IPA, pronunciation and a one-word Ukrainian gloss (comprehension only, never shown on cards), then Add with a source ("Berserk 6", "Dark S2"). The app remembers the last source. Deep link: `https://glistening-empanada-935c41.netlify.app/?add=WORD` opens Catch with the word filled in (used by an iOS Shortcut).
-- **Want to learn** (Catch tab, grouped by source): the inbox of words I tapped in stories. "Send to Claude" shares the list via the iOS share sheet. I bring them to this chat, you teach them, and on "update the app" they join `words.json`.
+- **Catch** tab: type a word I just heard, see its definition, IPA, pronunciation and a one-word Ukrainian gloss (comprehension only, never shown on cards), then Add. Deep link: `https://glistening-empanada-935c41.netlify.app/?add=WORD` opens Catch with the word filled in (used by an iOS Shortcut).
+- **Want to learn** (Catch tab, newest first): the inbox of words I tapped in stories. "Send to Claude" shares the list via the iOS share sheet. I bring them to this chat, you teach them, and on "update the app" they join `words.json`.
 - **Images**: words with an `imgQuery` field fetch one free CC photo from Openverse (fallback Wikimedia Commons) on first view and cache it. Only concrete words get `imgQuery`. Abstract words get none. A local `image` path overrides it.
 - Streak counter, backup file (Stats → Save backup file), restore, and the old progress code still work.
 
@@ -87,7 +87,7 @@ redundant, irritate, enmity, frail, carrion, scavenger, feeble, petal, at libert
 
 ### "Update the app" workflow
 When I say **"update the app"**, you:
-1. Add all new words learned in the session to `words.json`. Keep every existing word. Add `imgQuery` only for concrete words (a short English image search phrase). When I send words from the app they come as `word [source]`; put the source into a `"source"` field on the word (e.g. `"source": "Berserk 6"`).
+1. Add all new words learned in the session to `words.json`. Keep every existing word. Add `imgQuery` only for concrete words (a short English image search phrase).
 2. Write 2–3 new stories in `stories.json` that mix new words with older ones (see format). British settings, varied genres (email, WhatsApp, match report, review, letter, fiction, nature narration), 3–6 sentences, 2–4 vocabulary words each, written naturally with no highlighting. Include a few natural words beyond my list so the "want to learn" tap has something to catch, but keep the text readable at B2.
 3. Bump `APP_VERSION` in `index.html` and `SW_VERSION` in `sw.js` to the same new value (date plus counter, e.g. `2026.10.30-1`).
 4. Check both JSON files are valid, no duplicated words, every `{{surface|headword}}` in stories points at a word that exists.
