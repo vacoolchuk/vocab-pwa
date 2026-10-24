@@ -272,7 +272,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-46";
+const APP_VERSION = "2026.10.24-47";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -850,7 +850,7 @@ async function ttMount(i){
   box.innerHTML = '<div class="ttfail">Loading…</div>';
   const id = await ttResolve(v.url);
   if (!TTL[i] || !document.getElementById("tt" + i)) return;
-  if (!id){ box.innerHTML = '<div class="ttfail">This one will not play inside the app.<br><a href="' + esc(v.url) + '" target="_blank" rel="noopener">Open in TikTok</a></div>'; return; }
+  if (!id){ box.innerHTML = '<div class="ttfail">Could not read this link from inside the app.<br><a href="#" data-act="ttretry" data-i="' + i + '" style="margin-right:8px">Try again</a><a href="' + esc(v.url) + '" target="_blank" rel="noopener">Open in TikTok</a></div>'; return; }
   box.innerHTML = '<iframe src="https://www.tiktok.com/embed/v2/' + id + '" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>';
 }
 function ttUnmount(i){ delete TTL[i]; const b = document.getElementById("tt" + i); if (b) b.innerHTML = ""; }
@@ -864,7 +864,7 @@ function renderSaved(){
     h += '<div class="slide tinted" style="--tint:' + TINTS[i % TINTS.length] + '" data-i="' + i + '" data-kind="tt">' +
       '<div class="meta"><span>' + (i + 1) + " / " + n + '</span>' + swHTML("saved") + '<span></span></div>' +
       '<div class="body">' + (v.title ? '<p class="rdef" style="min-height:0">' + esc(v.title) + "</p>" : "") +
-      '<div class="ttbox" id="tt' + i + '"></div><p class="rhint"><a href="' + esc(v.url) + '" target="_blank" rel="noopener">Open in TikTok</a></p></div></div>';
+      '<div class="ttbox" id="tt' + i + '"></div><p class="rhint"><a href="#" data-act="ttretry" data-i="' + i + '">Reload</a> &nbsp;&middot;&nbsp; <a href="' + esc(v.url) + '" target="_blank" rel="noopener">Open in TikTok</a></p></div></div>';
   });
   h += '<div class="slide tinted" style="--tint:#2A2412"><div class="done"><h2>That is all of them.</h2><p>' + n + ' saved video' + (n === 1 ? "" : "s") + '.</p><button class="wbtn" data-act="watchmode" data-m="saved">Back to the first</button></div></div>';
   return h + "</div>";
@@ -887,7 +887,7 @@ function renderReel(){
 let reelIO = null, reelT = null, reelCur = -1;
 function reelEnsure(i){
   const sl = document.querySelector('#reel .slide[data-i="' + i + '"]'); if (!sl) return;
-  if (sl.dataset.kind === "tt"){ if (!TTL[i]) ttMount(i); return; }
+  if (sl.dataset.kind === "tt"){ if (i === reelCur && !TTL[i]) ttMount(i); return; }
   const id = "ygr" + i; if (YGW[id]) return;
   ygShow(id, sl.dataset.w);
 }
@@ -896,7 +896,7 @@ function reelFocus(i){
   setTimeout(() => { if (reelCur === i) reelEnsure(i + 1); }, 600);   // one slide ahead, loaded while you watch this one
   document.querySelectorAll("#reel .slide[data-i]").forEach(sl => {   // anything further away is unloaded
     const k = +sl.dataset.i, id = "ygr" + k;
-    if (sl.dataset.kind === "tt"){ if (Math.abs(k - i) > 1 && TTL[k]) ttUnmount(k); return; }
+    if (sl.dataset.kind === "tt"){ if (k !== i && TTL[k]) ttUnmount(k); return; }
     if (Math.abs(k - i) > 1 && YGW[id]){ delete YGW[id]; const bx = document.getElementById(id); if (bx) bx.innerHTML = ""; const st = document.getElementById(id + "st"); if (st) st.textContent = ""; }
   });
 }
@@ -1193,6 +1193,7 @@ document.addEventListener("click", async e => {
   if (a === "inbox"){ const word = t.dataset.word; const src = t.dataset.n ? NEWS_BY[t.dataset.n] : (feed[i] && feed[i].s); const ge = document.getElementById("gloss"); const gt = ge ? ge.textContent : ""; addInbox(word, src ? sentenceAround(src.text, word.split(" ")[0]) : "", /^(…|Not in the dictionary|Dictionary not reachable)/.test(gt) ? "" : gt); if (slideState[i]) slideState[i].inboxed.push(word); hidePop(); render(); return; }
   if (a === "closepop") return hidePop();
   if (a === "watchmode"){ ui.watchMode = t.dataset.m; ui.reelList = null; for (const k in YGW) delete YGW[k]; for (const k in TTL) delete TTL[k]; render(); return; }
+  if (a === "ttretry"){ e.preventDefault(); const k = +t.dataset.i; ttUnmount(k); setTimeout(() => ttMount(k), 300); return; }
   if (a === "ygprev"){ const c = YGW[t.dataset.id]; if (c) try { c.w.previous(); } catch(e){} return; }
   if (a === "ygnext"){ const c = YGW[t.dataset.id]; if (c) try { c.w.next(); } catch(e){} return; }
   if (a === "watchpick") return watchPlay(t.dataset.w);
