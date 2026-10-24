@@ -277,7 +277,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-49";
+const APP_VERSION = "2026.10.24-50";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -856,7 +856,7 @@ async function ttMount(i){
   const id = await ttResolve(v.url);
   if (!TTL[i] || !document.getElementById("tt" + i)) return;
   if (!id){ box.innerHTML = '<div class="ttfail">TikTok would not play this one here.<br><a href="' + esc(v.url) + '" target="_blank" rel="noopener">Open in TikTok</a></div>'; return; }
-  box.innerHTML = '<iframe src="https://www.tiktok.com/embed/v2/' + id + '" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>';
+  box.innerHTML = '<iframe src="https://www.tiktok.com/player/v1/' + id + '?rel=0&description=1&loop=1" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
 }
 function ttHandle(u){ const m = /tiktok\.com\/(@[^\/?]+)/.exec(u || ""); return m ? m[1] : ""; }
 function ttCard(i){
@@ -875,7 +875,7 @@ function renderSaved(){
   VIDEOS.forEach((v, i) => {
     h += '<div class="slide tinted" style="--tint:' + TINTS[i % TINTS.length] + '" data-i="' + i + '" data-kind="tt">' +
       '<div class="meta"><span>' + (i + 1) + " / " + n + '</span>' + swHTML("saved") + '<span></span></div>' +
-      '<div class="body">' + '<div class="ttbox" id="tt' + i + '">' + ttCard(i) + '</div></div></div>';
+      '<div class="body">' + '<div class="ttbox" id="tt' + i + '">' + ttCard(i) + '</div><p class="rhint"><a href="' + esc(v.url) + '" target="_blank" rel="noopener">Open in TikTok</a></p></div></div>';
   });
   h += '<div class="slide tinted" style="--tint:#2A2412"><div class="done"><h2>That is all of them.</h2><p>' + n + ' saved video' + (n === 1 ? "" : "s") + '.</p><button class="wbtn" data-act="watchmode" data-m="saved">Back to the first</button></div></div>';
   return h + "</div>";
@@ -898,7 +898,7 @@ function renderReel(){
 let reelIO = null, reelT = null, reelCur = -1;
 function reelEnsure(i){
   const sl = document.querySelector('#reel .slide[data-i="' + i + '"]'); if (!sl) return;
-  if (sl.dataset.kind === "tt") return;
+  if (sl.dataset.kind === "tt"){ if (i === reelCur && !TTL[i]) ttMount(i); return; }
   const id = "ygr" + i; if (YGW[id]) return;
   ygShow(id, sl.dataset.w);
 }
