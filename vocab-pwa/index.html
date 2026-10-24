@@ -9,6 +9,8 @@
 <meta name="apple-mobile-web-app-title" content="Vocabulary">
 <meta name="theme-color" content="#000000">
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://youglish.com">
+<link rel="preconnect" href="https://www.youtube.com">
 <link rel="apple-touch-icon" href="icon-180.png">
 <title>My Vocabulary</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -262,7 +264,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-44";
+const APP_VERSION = "2026.10.24-45";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -834,19 +836,28 @@ function renderReel(){
   return h + "</div>";
 }
 let reelIO = null, reelT = null, reelCur = -1;
+function reelEnsure(i){
+  const sl = document.querySelector('#reel .slide[data-i="' + i + '"]'); if (!sl) return;
+  const id = "ygr" + i; if (YGW[id]) return;
+  ygShow(id, sl.dataset.w);
+}
+function reelFocus(i){
+  reelEnsure(i);                                   // the slide on screen
+  setTimeout(() => { if (reelCur === i) reelEnsure(i + 1); }, 600);   // one slide ahead, loaded while you watch this one
+  document.querySelectorAll("#reel .slide[data-i]").forEach(sl => {   // anything further away is unloaded
+    const k = +sl.dataset.i, id = "ygr" + k;
+    if (Math.abs(k - i) > 1 && YGW[id]){ delete YGW[id]; const bx = document.getElementById(id); if (bx) bx.innerHTML = ""; const st = document.getElementById(id + "st"); if (st) st.textContent = ""; }
+  });
+}
 function reelSetup(){
   if (reelIO){ reelIO.disconnect(); reelIO = null; }
   const root = document.getElementById("reel"); if (!root) return;
   reelIO = new IntersectionObserver(es => {
     es.forEach(e => {
       const sl = e.target; if (sl.dataset.i == null) return;
-      const id = "ygr" + sl.dataset.i;
       if (e.isIntersecting && e.intersectionRatio >= 0.6){
-        reelCur = +sl.dataset.i; clearTimeout(reelT);
-        reelT = setTimeout(() => { if (reelCur === +sl.dataset.i) ygShow(id, sl.dataset.w); }, 350);
-      } else if (YGW[id]){
-        delete YGW[id]; const b = document.getElementById(id); if (b) b.innerHTML = "";
-        const st = document.getElementById(id + "st"); if (st) st.textContent = "";
+        const i = +sl.dataset.i; reelCur = i; clearTimeout(reelT);
+        reelT = setTimeout(() => { if (reelCur === i) reelFocus(i); }, 120);
       }
     });
   }, { root, threshold: [0, 0.6] });
@@ -857,8 +868,7 @@ function renderWatch(){
   const { mine, inbox } = watchWords();
   if (!ui.watchWord) ui.watchWord = mine[0] || inbox[0] || "";
   const w = ui.watchWord;
-  let h = '<div class="page tinted"><p class="title">Watch<small>Real people saying it</small></p>';
-  h += '<div class="wmode"><button class="wbtn" data-act="watchmode" data-m="feed" style="margin:0">&larr; Back to the feed</button></div>';
+  let h = '<div class="page tinted"><p class="title">Watch<small><span data-act="watchmode" data-m="feed" style="color:var(--amber);cursor:pointer;font-family:var(--display);font-size:17px;letter-spacing:.05em;padding:8px 0 8px 14px">Back to the feed</span></small></p>';
   h += '<div class="wsearch"><input id="watchq" type="search" placeholder="Search your words, or any phrase" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="go"><button data-act="watchgo">Go</button></div><div id="wsug" class="wsug" style="display:none"></div>';
   if (w){
     h += '<div class="wnow"><b id="watchnow">' + esc(w) + "</b><span>British accent, from YouTube</span></div>";
@@ -1182,6 +1192,7 @@ async function boot(){
   const knownN = WORDS.filter(w => status(w.word) === "known").length;
   if (lastV && lastV !== APP_VERSION) ui.banner = "Updated to " + APP_VERSION + ". Progress kept: " + knownN + " known, " + Object.keys(P.cards).length + " cards in total.";
   lsSet("wsv.version", APP_VERSION);
+  setTimeout(() => { try { ygLoad().catch(() => {}); } catch(e){} }, 1500);
   if (!ui.banner && Object.keys(P.cards).length >= 5 && Date.now() - (P.lastBackup || 0) > 30*864e5){ ui.banner = "Tip: Stats → Save backup file. Five seconds."; ui.bannerWarn = true; }
   buildFeed();
   const addQ = new URLSearchParams(location.search).get("add");
