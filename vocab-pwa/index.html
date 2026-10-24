@@ -116,12 +116,23 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 .ntext .t.inbox{background:rgba(141,187,138,.2);color:var(--known)}
 .nsrc{font-family:var(--display);font-size:14px;letter-spacing:.04em;color:var(--dim);text-decoration:none;border-bottom:1px solid var(--line)}
 
+/* back of the card: dim the photo and brighten the text so it reads on any picture */
+.slide.flipped .still img.on{opacity:.2}
+.slide.flipped .still:after{background:linear-gradient(180deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.72) 45%,rgba(0,0,0,.9) 100%)}
+.slide.flipped .back{text-shadow:0 1px 10px rgba(0,0,0,.85)}
+.slide.flipped .back .def{color:#FFFBF2}
+.slide.flipped .back .desc{color:#E4DED2}
+.slide.flipped .back .ex p{color:#EFE9DC;border-left-color:rgba(212,162,76,.45)}
+.slide.flipped .back .ex h4{color:#B8B2A4}
+.slide.flipped .back .tag{color:#E2B35A}
 /* ---------- watch tab ---------- */
 .wsearch{display:flex;gap:8px;margin-bottom:14px}
 .wsearch input{flex:1;min-width:0;background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--milk);font-family:var(--display);font-size:24px;padding:8px 2px;outline:none;border-radius:0}
 .wsearch button{background:transparent;border:1px solid var(--amber);color:var(--amber);font-family:var(--display);font-size:17px;letter-spacing:.05em;padding:0 16px}
 .wplayer{background:#000;border:1px solid var(--line);margin-bottom:6px}
-.wplayer iframe{display:block;width:100%;height:min(58vh,520px);border:0}
+.wplayer{min-height:200px}
+.wplayer iframe{max-width:100%}
+.wbtn{background:transparent;border:1px solid var(--amber);color:var(--amber);font-family:var(--display);font-size:17px;letter-spacing:.05em;padding:6px 16px;margin:0 0 10px}
 .wnow{display:flex;align-items:baseline;gap:10px;margin:2px 0 8px}
 .wnow b{font-family:var(--display);font-size:26px;font-weight:600}
 .wnow span{font-size:12px;color:var(--dim)}
@@ -140,8 +151,7 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 .wildhead b{font-family:var(--display);font-size:24px;font-weight:600}
 .wildhead span{font-size:12px;color:var(--dim);flex:1}
 .wildhead button{background:transparent;border:0;color:var(--amber);font-family:var(--display);font-size:16px;letter-spacing:.05em;padding:4px 6px}
-.wildbody{background:#000}
-.wildbody iframe{display:block;width:100%;height:min(62vh,560px);border:0}
+.wildbody{background:#000;min-height:200px}
 .wildfoot{margin:0;padding:10px 18px 12px;font-size:12px;color:var(--dim)}
 .wildfoot a{color:var(--amber)}
 
@@ -235,7 +245,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-35";
+const APP_VERSION = "2026.10.24-36";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -483,7 +493,7 @@ function tintFor(word){ let h = 0; for (const ch of word) h = (h * 31 + ch.charC
 function wordSlide(f, i){
   const w = f.w, st = slideState[i], d = w.definitions[Math.min(st.defIdx, w.definitions.length-1)];
   const n = feed.filter(x => x.type !== "done").length;
-  let h = '<div class="slide tinted" style="--tint:' + tintFor(w.word) + '" data-i="' + i + '">' + (w.image || w.imgQuery ? '<div class="still"><img data-img="' + esc(w.word) + '" alt=""></div>' : "") + '<div class="meta"><span>' + (i+1) + " / " + n + (st.mode === "cloze" ? " · fill the gap" : st.mode === "listen" ? " · listen" : "") + '</span><span class="st ' + status(w.word) + '">' + status(w.word) + "</span></div>";
+  let h = '<div class="slide tinted' + (st.flipped && !st.rated ? " flipped" : "") + '" style="--tint:' + tintFor(w.word) + '" data-i="' + i + '">' + (w.image || w.imgQuery ? '<div class="still"><img data-img="' + esc(w.word) + '" alt=""></div>' : "") + '<div class="meta"><span>' + (i+1) + " / " + n + (st.mode === "cloze" ? " · fill the gap" : st.mode === "listen" ? " · listen" : "") + '</span><span class="st ' + status(w.word) + '">' + status(w.word) + "</span></div>";
   if (st.rated) return h + '<div class="rated">' + st.rated + "</div></div>";
   h += '<div class="body">';
   if (!st.flipped){
@@ -722,6 +732,7 @@ function render(){
   if (view === "catch"){ const q = document.getElementById("catch"); if (q){ q.value = ui.catchQ || ""; } const r = document.getElementById("cres"); if (r && ui.catchHTML) r.innerHTML = ui.catchHTML; if (P.inbox.some(x => !x.def)) fillInboxDefs(); }
   const fe = document.getElementById("feed"); if (fe){ fe.scrollTop = scroll; hydrateImages(); }
   if (view === "news") hydrateNewsImages();
+  if (view === "watch" && ui.watchWord) ygShow("ygw", ui.watchWord);
 }
 function rerenderSlide(i){
   const old = document.querySelector('.slide[data-i="' + i + '"]'); if (!old) return;
@@ -749,8 +760,9 @@ function renderWatch(){
   h += '<div class="wsearch"><input id="watchq" type="search" placeholder="Any word or phrase" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="go"><button data-act="watchgo">Go</button></div>';
   if (w){
     h += '<div class="wnow"><b id="watchnow">' + esc(w) + "</b><span>British accent, from YouTube</span></div>";
-    h += '<div class="wplayer"><iframe id="watchframe" src="' + watchSrc(w) + '" allow="autoplay; fullscreen" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></div>';
-    h += '<p class="wfoot">Swipe or tap Next inside the player for another clip. Not loading? <a id="watchlink" href="https://youglish.com/pronounce/' + encodeURIComponent(w) + '/english/uk" target="_blank" rel="noopener">Open in YouGlish</a></p>';
+    h += '<div class="wplayer"><div id="ygw"></div></div>';
+    h += '<div class="row" style="justify-content:space-between;align-items:center;margin-top:8px"><button class="wbtn" data-act="ygnext" data-id="ygw">Next clip</button><span class="wfoot" id="ygwst" style="margin:0"></span></div>';
+    h += '<p class="wfoot">Not loading? <a id="watchlink" href="https://youglish.com/pronounce/' + encodeURIComponent(w) + '/english/uk" target="_blank" rel="noopener">Open in YouGlish</a></p>';
   } else h += '<p class="empty">Add a word and it shows up here.</p>';
   if (mine.length) h += '<p class="wlabel">Your words</p><div class="wchips">' + mine.map(chip).join("") + "</div>";
   if (inbox.length) h += '<p class="wlabel">Want to learn</p><div class="wchips">' + inbox.map(chip).join("") + "</div>";
@@ -759,13 +771,51 @@ function renderWatch(){
 function watchPlay(word){
   word = (word || "").trim(); if (!word) return;
   ui.watchWord = word;
-  const f = document.getElementById("watchframe");
-  if (!f){ render(); return; }
-  f.src = watchSrc(word);
+  if (!document.getElementById("ygw")){ render(); return; }
   document.getElementById("watchnow").textContent = word;
   document.getElementById("watchlink").href = "https://youglish.com/pronounce/" + encodeURIComponent(word) + "/english/uk";
   document.querySelectorAll(".wchips button").forEach(b => b.classList.toggle("on", b.dataset.w === word));
   const pg = document.querySelector(".page"); if (pg) pg.scrollTo({ top: 0, behavior: "smooth" });
+  ygShow("ygw", word);
+}
+
+/* YouGlish widget API: https://youglish.com/api/doc/js-api (the plain ?embed=1 page is blocked inside an app) */
+const YGW = {};
+function ygLoad(){
+  if (window.YG && window.YG.Widget) return Promise.resolve();
+  if (window.__ygp) return window.__ygp;
+  window.__ygp = new Promise((ok, no) => {
+    window.onYouglishAPIReady = () => ok();
+    const sc = document.createElement("script"); sc.src = "https://youglish.com/public/emb/widget.js"; sc.async = true;
+    sc.onerror = () => { window.__ygp = null; no(new Error("load")); };
+    document.head.appendChild(sc);
+    setTimeout(() => { if (!(window.YG && window.YG.Widget)){ window.__ygp = null; no(new Error("timeout")); } }, 15000);
+  });
+  return window.__ygp;
+}
+async function ygShow(id, word){
+  const box = document.getElementById(id); if (!box) return;
+  const st = document.getElementById(id + "st"); const say = t => { if (st) st.textContent = t; };
+  const link = "https://youglish.com/pronounce/" + encodeURIComponent(word) + "/english/uk";
+  const fail = () => { if (st) st.innerHTML = 'Player did not load. <a href="' + link + '" target="_blank" rel="noopener" style="color:var(--amber)">Open in YouGlish</a>'; };
+  say("Loading clips…");
+  try { await ygLoad(); } catch(e){ return fail(); }
+  if (!document.getElementById(id)) return;
+  const cur = YGW[id];
+  if (cur && cur.el === box){ cur.w.fetch(word, "english", "uk"); return; }
+  box.innerHTML = "";
+  try {
+    const w = new YG.Widget(id, {
+      width: Math.max(260, Math.min(box.clientWidth || 340, 560)),
+      components: 8,
+      events: {
+        onFetchDone: ev => say(ev && ev.totalResult === 0 ? "No clips for this one." : ""),
+        onError: () => fail()
+      }
+    });
+    YGW[id] = { w, el: box };
+    w.fetch(word, "english", "uk");
+  } catch(e){ fail(); }
 }
 
 /* ================= hear it in the wild (YouGlish) ================= */
@@ -773,11 +823,14 @@ function wildBtn(word){ return '<button class="wild" data-act="wild" data-w="' +
 function openWild(word){
   const el = document.getElementById("wild"); el.classList.add("show"); document.getElementById("shade").classList.add("show");
   const q = encodeURIComponent(word);
+  delete YGW.ygm;
   el.innerHTML = '<div class="wildhead"><b>' + esc(word) + '</b><span>British accent, from YouTube</span><button data-act="closewild">Close</button></div>' +
-    '<div class="wildbody"><iframe id="wildframe" src="https://youglish.com/pronounce/' + q + '/english/uk?embed=1" allow="autoplay; fullscreen" allowfullscreen loading="eager" referrerpolicy="no-referrer-when-downgrade"></iframe></div>' +
+    '<div class="wildbody"><div id="ygm"></div></div>' +
+    '<div class="row" style="padding:10px 18px 0;justify-content:space-between;align-items:center"><button class="wbtn" data-act="ygnext" data-id="ygm" style="margin:0">Next clip</button><span class="wildfoot" id="ygmst" style="padding:0"></span></div>' +
     '<p class="wildfoot">Not loading? <a href="https://youglish.com/pronounce/' + q + '/english/uk" target="_blank" rel="noopener">Open in YouGlish</a></p>';
+  ygShow("ygm", word);
 }
-function closeWild(){ const el = document.getElementById("wild"); el.classList.remove("show"); el.innerHTML = ""; document.getElementById("shade").classList.remove("show"); }
+function closeWild(){ delete YGW.ygm; const el = document.getElementById("wild"); el.classList.remove("show"); el.innerHTML = ""; document.getElementById("shade").classList.remove("show"); }
 
 /* ================= popup ================= */
 function showPop(html){ document.getElementById("pop").innerHTML = html; document.getElementById("pop").classList.add("show"); document.getElementById("shade").classList.add("show"); }
@@ -972,6 +1025,7 @@ document.addEventListener("click", async e => {
   }
   if (a === "inbox"){ const word = t.dataset.word; const src = t.dataset.n ? NEWS_BY[t.dataset.n] : (feed[i] && feed[i].s); const ge = document.getElementById("gloss"); const gt = ge ? ge.textContent : ""; addInbox(word, src ? sentenceAround(src.text, word.split(" ")[0]) : "", /^(…|Not in the dictionary|Dictionary not reachable)/.test(gt) ? "" : gt); if (slideState[i]) slideState[i].inboxed.push(word); hidePop(); render(); return; }
   if (a === "closepop") return hidePop();
+  if (a === "ygnext"){ const c = YGW[t.dataset.id]; if (c) try { c.w.next(); } catch(e){} return; }
   if (a === "watchpick") return watchPlay(t.dataset.w);
   if (a === "watchgo"){ const q = document.getElementById("watchq"); watchPlay(q ? q.value : ""); if (q) q.blur(); return; }
   if (a === "wild"){ e.stopPropagation(); return openWild(t.dataset.w); }
