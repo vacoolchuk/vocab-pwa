@@ -82,6 +82,11 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 .story .t.peeked{background:rgba(212,162,76,.22);color:var(--amber)}
 .story .t.inbox{background:rgba(141,187,138,.2);color:var(--known)}
 .story .t:active{background:var(--surface2)}
+.storyhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 16px}
+.storyhead h2{margin:0}
+.readbtn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line);background:rgba(0,0,0,.3);color:var(--amber);font-family:var(--display);font-size:15px;letter-spacing:.04em;flex-shrink:0}
+.readbtn .tri{width:11px;height:11px;fill:currentColor;pointer-events:none}
+.readbtn .rs{display:none}.readbtn.on .rl{display:none}.readbtn.on .rs{display:inline}.readbtn.on{border-color:var(--amber)}
 .sdone{margin-top:12px}
 .sdone button{width:100%;padding:14px;border:1px solid var(--amber);background:transparent;color:var(--amber);font-family:var(--display);font-size:18px;letter-spacing:.05em}
 .sreveal{font-family:var(--ui);font-size:13px;color:var(--dim);margin:6px 0 0;line-height:1.5}
@@ -211,7 +216,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-26";
+const APP_VERSION = "2026.10.24-27";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -328,6 +333,20 @@ function buildFeed(ahead){
 /* ================= helpers ================= */
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function speak(text){ if (!window.speechSynthesis) return; speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.lang = "en-GB"; u.rate = .9; const v = speechSynthesis.getVoices().find(v => /en[-_]GB/.test(v.lang)); if (v) u.voice = v; speechSynthesis.speak(u); }
+/* read a whole story or news item aloud, sentence by sentence (Safari cuts long utterances) */
+let readingId = null;
+function readAloud(id, text){
+  if (!window.speechSynthesis) return;
+  if (readingId === id){ stopReading(); return; }
+  stopReading(); readingId = id;
+  const clean = text.replace(/\{\{([^|]+)\|[^}]+\}\}/g, "$1").replace(/\s+/g, " ").trim();
+  const parts = clean.match(/[^.!?]+[.!?]+["”']?|[^.!?]+$/g) || [clean];
+  const v = speechSynthesis.getVoices().find(v => /en[-_]GB/.test(v.lang));
+  parts.forEach((pt, k) => { const u = new SpeechSynthesisUtterance(pt.trim()); u.lang = "en-GB"; u.rate = .92; if (v) u.voice = v; if (k === parts.length - 1) u.onend = () => { if (readingId === id) stopReading(); }; speechSynthesis.speak(u); });
+  document.querySelectorAll('[data-act="read"]').forEach(b => b.classList.toggle("on", b.dataset.id === id));
+}
+function stopReading(){ if (window.speechSynthesis) speechSynthesis.cancel(); readingId = null; document.querySelectorAll('[data-act="read"].on').forEach(b => b.classList.remove("on")); }
+function readBtn(id){ return '<button class="readbtn" data-act="read" data-id="' + esc(id) + '"><svg class="tri" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg><span class="rl">Listen</span><span class="rs">Stop</span></button>'; }
 function say(m, err){ ui.msg = m; ui.msgErr = !!err; render(); setTimeout(() => { ui.msg = ""; render(); }, 3500); }
 function examplesHTML(d, cls){ return '<div class="ex"><h4>Examples</h4>' + d.examples.map(e => "<p>" + esc(e) + "</p>").join("") + "</div>"; }
 
@@ -438,7 +457,7 @@ function storySlide(f, i){
   const s = f.s, st = slideState[i];
   let h = '<div class="slide tinted" data-i="' + i + '"><div class="meta"><span style="color:var(--amber)">' + esc(s.genre) + '</span><span>tap any word</span></div>';
   if (st.rated) return h + '<div class="rated">' + st.rated + "</div></div>";
-  h += '<div class="body"><div class="story"><h2>' + esc(s.title) + "</h2><p>";
+  h += '<div class="body"><div class="story"><div class="storyhead"><h2>' + esc(s.title) + "</h2>" + readBtn("story:" + s.id) + "</div><p>";
   tokenise(s.text).forEach(tok => {
     if (tok.head) h += '<span class="t ' + (st.peeked.includes(tok.head) ? "peeked" : "") + '" data-act="peek" data-head="' + esc(tok.head) + '" data-i="' + i + '">' + esc(tok.t) + "</span>";
     else if (tok.plain){ const clean = tok.t.replace(/^[^A-Za-z']+|[^A-Za-z']+$/g, "").toLowerCase(); h += '<span class="t ' + (st.inboxed.includes(clean) ? "inbox" : "") + '" data-act="plain" data-word="' + esc(clean) + '" data-i="' + i + '">' + esc(tok.t) + "</span>"; }
@@ -590,7 +609,7 @@ function renderNews(){
     h += '<article class="news"' + (n.imgQuery || n.image ? '' : '') + '>';
     if (n.imgQuery || n.image) h += '<div class="nimg"><img data-nimg="' + esc(n.id) + '" alt=""></div>';
     h += '<p class="ncat">' + esc(n.cat) + '</p><h2>' + esc(n.title) + '</h2><p class="ntext">' + newsText(n) + '</p>';
-    h += '<a class="nsrc" href="' + esc(n.url) + '" target="_blank" rel="noopener">Read the original · ' + esc(n.source) + '</a></article>';
+    h += '<div class="row" style="justify-content:space-between;flex-wrap:wrap;gap:10px"><a class="nsrc" href="' + esc(n.url) + '" target="_blank" rel="noopener">Read the original · ' + esc(n.source) + '</a>' + readBtn("news:" + n.id) + '</div></article>';
   });
   return h + "</div>";
 }
@@ -806,7 +825,7 @@ document.addEventListener("input", e => { if (e.target.id !== "catch") return; c
 document.addEventListener("keydown", e => { if (e.target.id === "catch" && e.key === "Enter"){ clearTimeout(catchTimer); catchLookup(e.target.value); e.target.blur(); } });
 
 document.addEventListener("click", async e => {
-  const nb = e.target.closest("[data-nav]"); if (nb){ view = nb.dataset.nav; ui.shownCode = ""; render(); return; }
+  const nb = e.target.closest("[data-nav]"); if (nb){ stopReading(); view = nb.dataset.nav; ui.shownCode = ""; render(); return; }
   if (e.target.id === "shade"){ closeWild(); return hidePop(); }
   const t = e.target.closest("[data-act]"); if (!t) return;
   const a = t.dataset.act, i = +t.dataset.i, slide = t.closest(".slide"), si = slide ? +slide.dataset.i : -1;
@@ -849,6 +868,7 @@ document.addEventListener("click", async e => {
   if (a === "inbox"){ const word = t.dataset.word; const src = t.dataset.n ? NEWS_BY[t.dataset.n] : (feed[i] && feed[i].s); const ge = document.getElementById("gloss"); const gt = ge ? ge.textContent : ""; addInbox(word, src ? sentenceAround(src.text, word.split(" ")[0]) : "", /^(…|Not in the dictionary|Dictionary not reachable)/.test(gt) ? "" : gt); if (slideState[i]) slideState[i].inboxed.push(word); hidePop(); render(); return; }
   if (a === "closepop") return hidePop();
   if (a === "wild"){ e.stopPropagation(); return openWild(t.dataset.w); }
+  if (a === "read"){ e.stopPropagation(); const id = t.dataset.id; const [kind, key] = [id.slice(0, id.indexOf(":")), id.slice(id.indexOf(":") + 1)]; const src = kind === "news" ? NEWS_BY[key] : STORIES.find(x => x.id === key); if (src) readAloud(id, (src.title ? src.title + ". " : "") + src.text); return; }
   if (a === "closewild") return closeWild();
   if (a === "storydone") return storyDone(i);
   if (a === "ahead"){ buildFeed(true); render(); const fe = document.getElementById("feed"); if (fe) fe.scrollTop = 0; return; }
