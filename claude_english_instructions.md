@@ -54,8 +54,9 @@ Then a 💡 note explaining the most important grammar point.
 
 ## The vocabulary app (PWA)
 
-The app lives on my iPhone home screen and is deployed at:
-**https://glistening-empanada-935c41.netlify.app**
+The app lives on my iPhone home screen and is deployed with GitHub Pages at:
+**https://vacoolchuk.github.io/vocab-pwa/**
+(The old Netlify site glistening-empanada-935c41.netlify.app is frozen since 24 Oct 2026: Netlify's free plan ran out of deploy credits. Progress on the phone lives per URL, so it was moved with Stats → Save backup / Restore.)
 
 Plain HTML/JS, no build step, no API keys, works offline. The old React file "vocabulary flashcards v5.jsx" is retired.
 
@@ -79,7 +80,7 @@ redundant, irritate, enmity, frail, carrion, scavenger, feeble, petal, at libert
 - Three card types rotate for words already reviewed at least once: see (word first), fill the gap (an example sentence with the word blanked out, definition as a hint) and listen (play button only, recall the word by ear). New words always start with the plain card.
 - 10 new words per day maximum. The feed ends with a "Done for today" card and a "Review ahead" button.
 - **Stories** appear in the feed every 4 cards (max 3 per session). They are picked to contain words whose interval is 7+ days, i.e. words I am about to forget. Words are NOT highlighted. I read, and tap any word I do not recognise: a vocabulary word shows its meaning and comes back tomorrow (interval halved); any other word can be added to **"Want to learn"**. Words I pass without tapping get their interval nudged up by 15% on "Done reading".
-- **Catch** tab: type a word I just heard, see its definition, IPA, pronunciation and a one-word Ukrainian gloss (comprehension only, never shown on cards), then Add. Deep link: `https://glistening-empanada-935c41.netlify.app/?add=WORD` opens Catch with the word filled in (used by an iOS Shortcut).
+- **Catch** tab: type a word I just heard, see its definition, IPA, pronunciation and a one-word Ukrainian gloss (comprehension only, never shown on cards), then Add. Deep link: `https://vacoolchuk.github.io/vocab-pwa/?add=WORD` opens Catch with the word filled in (used by an iOS Shortcut).
 - **Want to learn** (Catch tab, newest first): the inbox of words I tapped in stories. "Send to Claude" shares the list via the iOS share sheet. I bring them to this chat, you teach them, and on "update the app" they join `words.json`.
 - **Images**: words with an `imgQuery` field fetch one free CC photo from Openverse (fallback Wikimedia Commons) on first view and cache it. Only concrete words get `imgQuery`. Abstract words get none. A local `image` path overrides it.
 - Streak counter, backup file (Stats → Save backup file), restore, and the old progress code still work.
@@ -133,11 +134,8 @@ When I say **"update the app"**, you:
 ```
 The `words` array must list every headword used in the text. Add a `"gloss": { "word": "short plain-English definition" }` map for the harder non-vocabulary words you planted (4–6 per story), so a tap shows a definition instantly. Words without a gloss fall back to dictionaryapi.dev. No em dashes anywhere.
 
-### How I deploy
-1. Unzip `vocab-pwa.zip` to get the folder `vocab-pwa`
-2. Go to **app.netlify.com** → project **glistening-empanada-935c41** → Deploys tab
-3. Drag the `vocab-pwa` folder onto "Drag and drop your project folder here"
-4. Wait about 10 seconds, open the app from the home screen icon. Close and reopen once if the old version still shows.
+### How deploys work
+Every push to `main` on github.com/vacoolchuk/vocab-pwa runs the GitHub Actions workflow in `.github/workflows/pages.yml`, which publishes the `vocab-pwa` folder to GitHub Pages in about a minute. Nothing to do by hand. Batch changes into one push where possible.
 
 ---
 

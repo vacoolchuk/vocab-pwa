@@ -1,6 +1,6 @@
 # vocab-pwa
 
-My English vocabulary app. Netlify deploys the `vocab-pwa` folder on every push to `main`.
+My English vocabulary app. GitHub Pages deploys the `vocab-pwa` folder on every push to `main` (see .github/workflows/pages.yml).
 
 - `vocab-pwa/words.json` – words
 - `vocab-pwa/stories.json` – stories

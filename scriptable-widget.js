@@ -4,7 +4,7 @@
 // Then: home screen, long press -> + -> Scriptable -> pick a size -> Edit Widget -> Script: Vocabulary.
 // Tap the widget to open the full app.
 
-const SITE = "https://glistening-empanada-935c41.netlify.app";
+const SITE = "https://vacoolchuk.github.io/vocab-pwa";
 // Optional: in Edit Widget -> Parameter, type words to skip, e.g.  frail,petal,dense
 const skip = (args.widgetParameter || "").split(",").map(s => s.trim().toLowerCase()).filter(Boolean);
 
