@@ -108,6 +108,11 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 #pop .desc{margin-bottom:10px}
 #pop .ipa{font-family:var(--mono);font-size:13px;color:var(--amber)}
 
+#toast{position:fixed;left:18px;right:18px;bottom:calc(var(--nav) + var(--sab) + 14px);z-index:45;background:var(--surface);border:1px solid var(--line);color:var(--milk);padding:12px 16px;font-size:15px;display:flex;align-items:center;gap:12px;transform:translateY(20px);opacity:0;pointer-events:none;transition:all .2s}
+#toast.show{transform:none;opacity:1;pointer-events:auto}
+#toast b{font-family:var(--display);font-size:18px;font-weight:500}
+#toast button{margin-left:auto;background:transparent;border:0;color:var(--amber);font-family:var(--display);font-size:18px;letter-spacing:.05em;padding:4px 6px}
+
 /* ---------- nav ---------- */
 #nav{position:fixed;left:0;right:0;bottom:0;height:calc(var(--nav) + var(--sab));padding-bottom:var(--sab);display:flex;background:var(--screen);border-top:1px solid var(--line);z-index:30}
 #nav button{flex:1;border:0;background:transparent;color:var(--faint);font-family:var(--display);font-size:17px;letter-spacing:.05em;position:relative}
@@ -169,7 +174,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 </head>
 <body>
 <div id="app"><p class="empty">Loading…</p></div>
-<div id="shade"></div><div id="pop"></div>
+<div id="shade"></div><div id="pop"></div><div id="toast"></div>
 <nav id="nav">
   <button data-nav="feed" class="on"><span>▲</span>Today</button>
   <button data-nav="catch"><span>+</span>Catch</button>
@@ -179,7 +184,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-16";
+const APP_VERSION = "2026.10.24-17";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -554,6 +559,11 @@ function rerenderSlide(i){
 }
 function nextSlide(i){ const el = document.querySelector('.slide[data-i="' + (i+1) + '"]'); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }
 
+/* ================= undo toast ================= */
+let undoTimer = null;
+function showUndo(item){ if (!item) return; ui.undo = item; const el = document.getElementById("toast"); el.innerHTML = 'Removed <b>' + esc(item.word) + '</b><button data-act="undo">Undo</button>'; el.classList.add("show"); clearTimeout(undoTimer); undoTimer = setTimeout(hideUndo, 6000); }
+function hideUndo(){ const el = document.getElementById("toast"); el.classList.remove("show"); ui.undo = null; }
+
 /* ================= popup ================= */
 function showPop(html){ document.getElementById("pop").innerHTML = html; document.getElementById("pop").classList.add("show"); document.getElementById("shade").classList.add("show"); }
 function hidePop(){ document.getElementById("pop").classList.remove("show"); document.getElementById("shade").classList.remove("show"); }
@@ -688,7 +698,8 @@ document.addEventListener("click", async e => {
   if (a === "hidebanner"){ ui.banner = ""; return render(); }
   if (a === "catchadd"){ addInbox(t.dataset.word, "", t.dataset.def, ""); t.textContent = "Added"; ui.catchHTML = document.getElementById("cres").innerHTML; render(); return; }
   if (a === "clearinbox"){ if (!confirm("Clear the whole list?")) return; P.inbox = []; await saveP(); return render(); }
-  if (a === "rminbox"){ P.inbox = P.inbox.filter(x => x.word !== t.dataset.w); await saveP(); return render(); }
+  if (a === "rminbox"){ const item = P.inbox.find(x => x.word === t.dataset.w); P.inbox = P.inbox.filter(x => x.word !== t.dataset.w); await saveP(); render(); return showUndo(item); }
+  if (a === "undo"){ if (ui.undo){ P.inbox.push(ui.undo); ui.undo = null; await saveP(); } hideUndo(); return render(); }
   if (a === "sendinbox") return sendInbox();
   if (a === "copyinbox"){ try { await navigator.clipboard.writeText(inboxText()); say("Copied."); } catch(e){ ui.shownCode = inboxText(); render(); } return; }
   if (a === "export") return exportFile();
