@@ -160,6 +160,9 @@ This app requires an Anthropic API key (entered once, stored locally). Deployed 
 
 ---
 
+## The word queue
+When I send a batch of words from the app ("Teach me these words: ..."), do NOT make cards for all of them. Add them to `queue.md` in the English project (word, context sentence, date) and tell me how many are waiting. We study about five per session: I say "what's in the queue?", "let's do X" or "give me five". A studied word moves to the "Studied" table and goes into `words.json` on the next "update the app". The app removes learned words from its own list automatically.
+
 ## My workflow summary
 
 1. **Learn:** I send a word I picked up from a film or book
