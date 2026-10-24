@@ -97,6 +97,7 @@ When I say **"update the app"**, you:
    - Natural British English with everyday slang and idiom (proper, cracking, quid, lad, nan, binned, fuming, the lot, past it, dead pleased, fancied, kettle's on). The slang is part of the lesson.
    - Varied genres: email, WhatsApp, text message, match report, review, letter, fiction, overheard conversation, nature narration, lab notes, food blog.
    - A `gloss` map of 4–6 entries covering the slang and the harder non-vocabulary words, in plain English.
+   - **Phrasal verbs and multi-word expressions go into `gloss` as whole phrases in base form** ("pull out", "come up with", "have something to do with", "kettle's on"). A tap on any word of the phrase then shows the whole phrase. Unglossed phrasal verbs are looked up in Wiktionary automatically, but my own gloss is always better.
    - No em dashes. British spelling.
 3. Bump `APP_VERSION` in `index.html` and `SW_VERSION` in `sw.js` to the same new value (date plus counter, e.g. `2026.10.30-1`).
 4. Check both JSON files are valid, no duplicated words, every `{{surface|headword}}` in stories points at a word that exists.

@@ -197,7 +197,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-22";
+const APP_VERSION = "2026.10.24-23";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -634,6 +634,52 @@ function showPop(html){ document.getElementById("pop").innerHTML = html; documen
 function hidePop(){ document.getElementById("pop").classList.remove("show"); document.getElementById("shade").classList.remove("show"); }
 /* short definition for any tapped word: my own gloss from the story first, then a free dictionary */
 const glossCache = {};
+/* phrasal verbs and multi-word expressions */
+const PARTICLES = new Set(["up","out","on","off","in","down","away","back","over","through","with","for","into","about","after","along","around","round","across","by","to","at","of","forward","ahead","apart","aside"]);
+function neighbours(el){
+  // words before and after the tapped span, in reading order (same text block)
+  const all = [...el.parentElement.querySelectorAll("[data-word],[data-head]")]; const k = all.indexOf(el);
+  const w = n => { const e = all[n]; return e ? (e.dataset.word || e.dataset.head || "").toLowerCase() : ""; };
+  return { p2: w(k-2), p1: w(k-1), n1: w(k+1), n2: w(k+2) };
+}
+function sameStem(a, b){ if (!a || !b) return false; a = a.toLowerCase(); b = b.toLowerCase(); return a === b || stems(a).includes(b) || stems(b).includes(a); }
+function glossedPhraseAt(word, nb, src){
+  const g = (src && src.gloss) || {}; const seq = [nb.p2, nb.p1, word, nb.n1, nb.n2];
+  for (const key of Object.keys(g).filter(k => k.includes(" ")).sort((a,b) => b.length - a.length)){
+    const parts = key.toLowerCase().split(/\s+/); const idx = parts.findIndex(x => sameStem(x, word)); if (idx < 0) continue;
+    const start = 2 - idx; let ok = true;
+    for (let j = 0; j < parts.length; j++){ const tok = seq[start + j]; if (!tok || !(sameStem(parts[j], tok) || parts[j].replace(/'s$/, "") === tok)) { ok = false; break; } }
+    if (ok) return { phrase: key, def: g[key] };
+  }
+  return null;
+}
+async function phraseLookup(word, nb){
+  // candidate phrasal verbs around the tapped word, longest first; only tried when a particle is involved
+  const cands = [];
+  if (PARTICLES.has(nb.n1) && PARTICLES.has(nb.n2)) cands.push([word, nb.n1, nb.n2]);
+  if (PARTICLES.has(nb.n1)) cands.push([word, nb.n1]);
+  if (PARTICLES.has(word) && nb.p1){ if (PARTICLES.has(nb.n1)) cands.push([nb.p1, word, nb.n1]); if (PARTICLES.has(nb.p1) && nb.p2) cands.push([nb.p2, nb.p1, word]); cands.push([nb.p1, word]); }
+  for (const c of cands){
+    const heads = stems(c[0]).filter(x => x.length > 2);
+    for (const h of heads.slice(0, 3)){
+      const phrase = [h, ...c.slice(1)].join(" ");
+      try {
+        const r = await fetch("https://en.wiktionary.org/api/rest_v1/page/definition/" + encodeURIComponent(phrase.replace(/ /g, "_")) + "?redirect=true", { headers: { Accept: "application/json" } });
+        if (!r.ok) continue; const j = await r.json(); const m = j.en && j.en[0]; const d = m && m.definitions && m.definitions.find(x => String(x.definition).replace(/<[^>]+>/g, "").trim());
+        if (d){
+          let def = String(d.definition).replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim(), ph = phrase;
+          const form = def.match(/^(?:plural|past participle|simple past|past tense|present participle|third-person singular[^ ]*|alternative (?:form|spelling)|inflection)[a-z ,-]* of (.+)$/i);
+          if (form){ // "simple past of call out": fetch the base phrase
+            const base = form[1].trim().replace(/[."]+$/, "");
+            try { const r2 = await fetch("https://en.wiktionary.org/api/rest_v1/page/definition/" + encodeURIComponent(base.replace(/ /g, "_")) + "?redirect=true", { headers: { Accept: "application/json" } }); if (r2.ok){ const j2 = await r2.json(); const m2 = j2.en && j2.en[0]; const d2 = m2 && m2.definitions && m2.definitions.find(x => String(x.definition).replace(/<[^>]+>/g, "").trim()); if (d2){ ph = base; def = String(d2.definition).replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim(); } } } catch(e){}
+          }
+          return { phrase: ph, def: (m.partOfSpeech ? m.partOfSpeech.toLowerCase() + " · " : "") + def };
+        }
+      } catch(e){ return null; }
+    }
+  }
+  return null;
+}
 function phraseGloss(word, story){
   const g = (story && story.gloss) || {};
   if (g[word]) return g[word];
@@ -749,12 +795,29 @@ document.addEventListener("click", async e => {
     const word = t.dataset.word; if (!word || word.length < 2) return;
     if (BY[word]) { t.dataset.act = "peek"; t.dataset.head = word; return t.click(); }
     const src = t.dataset.n ? NEWS_BY[t.dataset.n] : (feed[i] && feed[i].s);
-    const already = (slideState[i] && slideState[i].inboxed.includes(word)) || P.inbox.some(x => x.word === word);
-    showPop('<p class="w">' + esc(word) + '</p><p class="gloss" id="gloss">…</p>' + (already ? '<p style="font-size:13px;color:var(--dim)">Already in your "want to learn" list.</p>' : '<button class="btn g" data-act="inbox" data-word="' + esc(word) + '" data-i="' + i + '"' + (t.dataset.n ? ' data-n="' + esc(t.dataset.n) + '"' : "") + '>Add to "want to learn"</button><button class="btn o" data-act="closepop">Not now</button>'));
+    const nAttr = t.dataset.n ? ' data-n="' + esc(t.dataset.n) + '"' : "";
+    const nb = neighbours(t);
+    const addBtn = (w, extra) => (P.inbox.some(x => x.word === w) ? '<p style="font-size:13px;color:var(--dim)">Already in your "want to learn" list.</p>' : '<button class="btn g" data-act="inbox" data-word="' + esc(w) + '" data-i="' + i + '"' + nAttr + '>Add "' + esc(w) + '"</button>') + (extra || "") + '<button class="btn o" data-act="closepop">Not now</button>';
+    // 1) a phrase I glossed for this text
+    const gp = glossedPhraseAt(word, nb, src);
+    if (gp){ showPop('<p class="w">' + esc(gp.phrase) + '</p><p class="gloss">' + esc(gp.def) + '</p>' + addBtn(gp.phrase, '<p class="dimline" style="margin:-2px 0 10px">or just the word: <u data-act="plainword" data-word="' + esc(word) + '" data-i="' + i + '"' + nAttr + ' style="color:var(--amber);text-decoration:none">' + esc(word) + '</u></p>')); return; }
+    // 2) single word popup, then check the dictionary for a phrasal verb around it
+    showPop('<p class="w" id="popw">' + esc(word) + '</p><p class="gloss" id="gloss">…</p><div id="popact">' + addBtn(word) + '</div>');
+    const [g, ph] = await Promise.all([lookup(word, src), phraseLookup(word, nb)]);
+    const el = document.getElementById("gloss"); if (!el) return;
+    if (ph){
+      document.getElementById("popw").textContent = ph.phrase; el.textContent = ph.def;
+      document.getElementById("popact").innerHTML = addBtn(ph.phrase, '<p class="dimline" style="margin:-2px 0 10px">or just the word: <u data-act="plainword" data-word="' + esc(word) + '" data-i="' + i + '"' + nAttr + ' style="color:var(--amber);text-decoration:none">' + esc(word) + '</u></p>');
+    } else el.textContent = g ? g : g === "" ? "Not in the dictionary. Ask Claude." : "Dictionary not reachable right now.";
+    return;
+  }
+  if (a === "plainword"){
+    const word = t.dataset.word; const src = t.dataset.n ? NEWS_BY[t.dataset.n] : (feed[i] && feed[i].s); const nAttr = t.dataset.n ? ' data-n="' + esc(t.dataset.n) + '"' : "";
+    showPop('<p class="w">' + esc(word) + '</p><p class="gloss" id="gloss">…</p>' + (P.inbox.some(x => x.word === word) ? '<p style="font-size:13px;color:var(--dim)">Already in your "want to learn" list.</p>' : '<button class="btn g" data-act="inbox" data-word="' + esc(word) + '" data-i="' + i + '"' + nAttr + '>Add "' + esc(word) + '"</button>') + '<button class="btn o" data-act="closepop">Not now</button>');
     const g = await lookup(word, src); const el = document.getElementById("gloss"); if (el) el.textContent = g ? g : g === "" ? "Not in the dictionary. Ask Claude." : "Dictionary not reachable right now.";
     return;
   }
-  if (a === "inbox"){ const word = t.dataset.word; const src = t.dataset.n ? NEWS_BY[t.dataset.n] : (feed[i] && feed[i].s); const ge = document.getElementById("gloss"); const gt = ge ? ge.textContent : ""; addInbox(word, src ? sentenceAround(src.text, word) : "", /^(…|Not in the dictionary|Dictionary not reachable)/.test(gt) ? "" : gt); if (slideState[i]) slideState[i].inboxed.push(word); hidePop(); render(); return; }
+  if (a === "inbox"){ const word = t.dataset.word; const src = t.dataset.n ? NEWS_BY[t.dataset.n] : (feed[i] && feed[i].s); const ge = document.getElementById("gloss"); const gt = ge ? ge.textContent : ""; addInbox(word, src ? sentenceAround(src.text, word.split(" ")[0]) : "", /^(…|Not in the dictionary|Dictionary not reachable)/.test(gt) ? "" : gt); if (slideState[i]) slideState[i].inboxed.push(word); hidePop(); render(); return; }
   if (a === "closepop") return hidePop();
   if (a === "storydone") return storyDone(i);
   if (a === "ahead"){ buildFeed(true); render(); const fe = document.getElementById("feed"); if (fe) fe.scrollTop = 0; return; }
