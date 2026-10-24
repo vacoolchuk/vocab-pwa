@@ -108,11 +108,6 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 #pop .desc{margin-bottom:10px}
 #pop .ipa{font-family:var(--mono);font-size:13px;color:var(--amber)}
 
-#toast{position:fixed;left:18px;right:18px;bottom:calc(var(--nav) + var(--sab) + 14px);z-index:45;background:var(--surface);border:1px solid var(--line);color:var(--milk);padding:12px 16px;font-size:15px;display:flex;align-items:center;gap:12px;transform:translateY(20px);opacity:0;pointer-events:none;transition:all .2s}
-#toast.show{transform:none;opacity:1;pointer-events:auto}
-#toast b{font-family:var(--display);font-size:18px;font-weight:500}
-#toast button{margin-left:auto;background:transparent;border:0;color:var(--amber);font-family:var(--display);font-size:18px;letter-spacing:.05em;padding:4px 6px}
-
 /* ---------- nav ---------- */
 #nav{position:fixed;left:0;right:0;bottom:0;height:calc(var(--nav) + var(--sab));padding-bottom:var(--sab);display:flex;background:var(--screen);border-top:1px solid var(--line);z-index:30}
 #nav button{flex:1;border:0;background:transparent;color:var(--faint);font-family:var(--display);font-size:17px;letter-spacing:.05em;position:relative}
@@ -174,7 +169,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 </head>
 <body>
 <div id="app"><p class="empty">Loading…</p></div>
-<div id="shade"></div><div id="pop"></div><div id="toast"></div>
+<div id="shade"></div><div id="pop"></div>
 <nav id="nav">
   <button data-nav="feed" class="on"><span>▲</span>Today</button>
   <button data-nav="catch"><span>+</span>Catch</button>
@@ -184,7 +179,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-17";
+const APP_VERSION = "2026.10.24-18";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -224,6 +219,7 @@ function mergeP(a, b){
   if (!b) return a;
   Object.entries(b.cards || {}).forEach(([w,c]) => { const x = a.cards[w]; if (!x || (c.reps||0) > (x.reps||0) || ((c.reps||0) === (x.reps||0) && c.due > x.due)) a.cards[w] = c; });
   (b.inbox || []).forEach(i => { if (!a.inbox.some(x => x.word === i.word)) a.inbox.push(i); });
+  a.trash = a.trash || []; (b.trash || []).forEach(i => { if (!a.trash.some(x => x.word === i.word) && !a.inbox.some(x => x.word === i.word)) a.trash.push(i); });
   Object.entries(b.days || {}).forEach(([k,n]) => { a.days[k] = Math.max(a.days[k] || 0, n); });
   Object.entries(b.stories || {}).forEach(([k,t]) => { a.stories[k] = Math.max(a.stories[k] || 0, t); });
   a.lastBackup = Math.max(a.lastBackup || 0, b.lastBackup || 0);
@@ -474,8 +470,18 @@ function renderCatch(){
   h += '<div class="box" style="margin-top:14px"><h3>Want to learn (' + P.inbox.length + ')</h3>' + (P.inbox.length ? '<button class="btn" data-act="sendinbox">Send to Claude</button>' : "");
   if (!P.inbox.length) h += '<p style="margin-top:8px">Nothing here yet. Words you add above, and words you tap in stories, collect here until you send them to Claude.</p>';
   else h += '<ul class="inbox">' + items.map(i => '<li data-w="' + esc(i.word) + '"><div><b>' + esc(i.word) + "</b><small>" + esc(i.def || "…") + "</small>" + '</div><u data-act="rminbox" data-w="' + esc(i.word) + '">remove</u></li>').join("") + "</ul>";
-  if (P.inbox.length) h += '<div class="row" style="margin-top:12px"><button class="btn o sm" data-act="copyinbox">Copy as text</button><button class="btn o sm" data-act="clearinbox">Clear list</button></div>';
-  h += "</div></div>";
+  if (P.inbox.length) h += '<div class="row" style="margin-top:12px"><button class="btn o sm" data-act="copyinbox">Copy as text</button></div>';
+  h += "</div>";
+  const trash = P.trash || [];
+  if (trash.length){
+    h += '<div class="box trash"><div class="row" data-act="toggletrash" style="justify-content:space-between;cursor:pointer"><h3 style="margin:0;color:var(--dim)">Removed (' + trash.length + ')</h3><span style="color:var(--faint);font-family:var(--display);font-size:18px">' + (ui.trashOpen ? "−" : "+") + "</span></div>";
+    if (ui.trashOpen){
+      h += '<ul class="inbox" style="margin-top:8px">' + trash.map(i => '<li data-w="' + esc(i.word) + '"><div><b style="color:var(--dim)">' + esc(i.word) + "</b><small>" + esc(i.def || "") + "</small>" + '</div><u data-act="restore" data-w="' + esc(i.word) + '" style="color:var(--amber)">restore</u></li>').join("") + "</ul>";
+      h += '<button class="btn o sm" data-act="emptytrash">Delete for good</button>';
+    }
+    h += "</div>";
+  }
+  h += "</div>";
   return h;
 }
 let catchTimer = null, catchSeq = 0;
@@ -558,11 +564,6 @@ function rerenderSlide(i){
   old.replaceWith(tmp.firstChild); hydrateImages();
 }
 function nextSlide(i){ const el = document.querySelector('.slide[data-i="' + (i+1) + '"]'); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }
-
-/* ================= undo toast ================= */
-let undoTimer = null;
-function showUndo(item){ if (!item) return; ui.undo = item; const el = document.getElementById("toast"); el.innerHTML = 'Removed <b>' + esc(item.word) + '</b><button data-act="undo">Undo</button>'; el.classList.add("show"); clearTimeout(undoTimer); undoTimer = setTimeout(hideUndo, 6000); }
-function hideUndo(){ const el = document.getElementById("toast"); el.classList.remove("show"); ui.undo = null; }
 
 /* ================= popup ================= */
 function showPop(html){ document.getElementById("pop").innerHTML = html; document.getElementById("pop").classList.add("show"); document.getElementById("shade").classList.add("show"); }
@@ -697,9 +698,10 @@ document.addEventListener("click", async e => {
   if (a === "toggle"){ e.stopPropagation(); const w = t.dataset.w; if (status(w) === "known") delete P.cards[w]; else P.cards[w] = knownCard(false); await saveP(); const s = status(w); t.className = "badge " + s; t.textContent = s; const rowEl = t.closest(".lr"); if (rowEl) rowEl.className = "lr " + s; const d = document.querySelector('.detail[data-w="' + CSS.escape(w) + '"]'); if (d){ const tmp = document.createElement("div"); tmp.innerHTML = detailHTML(BY[w]); d.replaceWith(tmp.firstChild); } return; }
   if (a === "hidebanner"){ ui.banner = ""; return render(); }
   if (a === "catchadd"){ addInbox(t.dataset.word, "", t.dataset.def, ""); t.textContent = "Added"; ui.catchHTML = document.getElementById("cres").innerHTML; render(); return; }
-  if (a === "clearinbox"){ if (!confirm("Clear the whole list?")) return; P.inbox = []; await saveP(); return render(); }
-  if (a === "rminbox"){ const item = P.inbox.find(x => x.word === t.dataset.w); P.inbox = P.inbox.filter(x => x.word !== t.dataset.w); await saveP(); render(); return showUndo(item); }
-  if (a === "undo"){ if (ui.undo){ P.inbox.push(ui.undo); ui.undo = null; await saveP(); } hideUndo(); return render(); }
+  if (a === "rminbox"){ const item = P.inbox.find(x => x.word === t.dataset.w); P.inbox = P.inbox.filter(x => x.word !== t.dataset.w); if (item){ P.trash = (P.trash || []).filter(x => x.word !== item.word); item.removed = Date.now(); P.trash.unshift(item); } await saveP(); return render(); }
+  if (a === "restore"){ const item = (P.trash || []).find(x => x.word === t.dataset.w); P.trash = (P.trash || []).filter(x => x.word !== t.dataset.w); if (item && !P.inbox.some(x => x.word === item.word)){ delete item.removed; P.inbox.push(item); } await saveP(); return render(); }
+  if (a === "emptytrash"){ if (!confirm("Delete these " + (P.trash || []).length + " words for good?")) return; P.trash = []; await saveP(); return render(); }
+  if (a === "toggletrash"){ ui.trashOpen = !ui.trashOpen; return render(); }
   if (a === "sendinbox") return sendInbox();
   if (a === "copyinbox"){ try { await navigator.clipboard.writeText(inboxText()); say("Copied."); } catch(e){ ui.shownCode = inboxText(); render(); } return; }
   if (a === "export") return exportFile();
