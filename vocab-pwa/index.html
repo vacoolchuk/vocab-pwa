@@ -262,7 +262,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-41";
+const APP_VERSION = "2026.10.24-42";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -612,10 +612,10 @@ function renderCatch(){
   h += '<div class="catchbar"><input id="catch" type="search" placeholder="Type the word you just heard" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="search"></div>';
   h += '<div id="cres"></div>';
   const items = [...P.inbox].sort((a,b) => (b.added || 0) - (a.added || 0));
-  h += '<div class="box" style="margin-top:14px"><h3>Want to learn (' + P.inbox.length + ')</h3>' + (P.inbox.length ? '<button class="btn" data-act="sendinbox">Send to Claude</button>' : "");
+  h += '<div class="box" style="margin-top:14px"><h3>Want to learn</h3>';
   if (!P.inbox.length) h += '<p style="margin-top:8px">Nothing here yet. Words you add above, and words you tap in stories, collect here until you send them to Claude.</p>';
   else h += '<ul class="inbox">' + items.map(i => '<li data-w="' + esc(i.word) + '"><div><b>' + esc(i.word) + "</b><small>" + esc(i.def || "…") + "</small>" + '</div><u data-act="rminbox" data-w="' + esc(i.word) + '">remove</u></li>').join("") + "</ul>";
-  if (P.inbox.length) h += '<div class="row" style="margin-top:12px"><button class="btn o sm" data-act="copyinbox">Copy as text</button></div>';
+  if (P.inbox.length) h += '<div class="row" style="margin-top:14px;justify-content:space-between"><button class="btn o sm" data-act="copyinbox">Copy as text</button><button class="btn sm" data-act="sendinbox">Send to Claude</button></div>';
   h += "</div>";
   const trash = P.trash || [];
   if (trash.length){
