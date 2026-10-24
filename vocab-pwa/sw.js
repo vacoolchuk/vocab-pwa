@@ -1,7 +1,7 @@
 // Bump this on every deploy. It only affects the offline cache, never your saved progress.
-const SW_VERSION = "2026.10.24-21";
+const SW_VERSION = "2026.10.24-22";
 const CACHE = "vocab-" + SW_VERSION;
-const FILES = ["./", "index.html", "words.json", "stories.json", "manifest.webmanifest", "icon-180.png", "icon-192.png", "icon-512.png"];
+const FILES = ["./", "index.html", "words.json", "stories.json", "news.json", "manifest.webmanifest", "icon-180.png", "icon-192.png", "icon-512.png"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));

@@ -95,6 +95,19 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 .done .row{display:flex;gap:28px;margin:28px 0}
 .done .st{text-align:center}.done .st b{display:block;font-family:var(--display);font-size:36px;font-weight:600;line-height:1}.done .st span{font-size:12px;color:var(--dim)}
 
+/* ---------- news ---------- */
+.news{padding:18px 0 22px;border-bottom:1px solid var(--line)}
+.news:last-child{border-bottom:0}
+.nimg{margin:0 0 14px;background:rgba(255,255,255,.04);aspect-ratio:16/10;overflow:hidden}
+.nimg img{width:100%;height:100%;object-fit:cover;display:block;opacity:0}
+.nimg img.on{opacity:.9;transition:opacity .4s}
+.ncat{font-family:var(--display);font-size:14px;letter-spacing:.05em;color:var(--amber);margin:0 0 6px}
+.news h2{font-family:var(--display);font-weight:600;font-size:28px;line-height:1.05;margin:0 0 10px;letter-spacing:-.01em}
+.ntext{font-family:var(--book);font-size:17px;line-height:1.65;color:#E6E0D4;margin:0 0 12px}
+.ntext .t{border-radius:2px;padding:0 1px}
+.ntext .t.inbox{background:rgba(141,187,138,.2);color:var(--known)}
+.nsrc{font-family:var(--display);font-size:14px;letter-spacing:.04em;color:var(--dim);text-decoration:none;border-bottom:1px solid var(--line)}
+
 /* ---------- popup ---------- */
 #pop{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--surface);border-top:1px solid var(--line);padding:20px 22px calc(var(--sab) + 22px);transform:translateY(110%);transition:transform .22s ease;max-height:70vh;overflow-y:auto}
 #pop.show{transform:none}
@@ -177,19 +190,20 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 <nav id="nav">
   <button data-nav="feed" class="on"><span>▲</span>Today</button>
   <button data-nav="catch"><span>+</span>Catch</button>
+  <button data-nav="news"><span>≡</span>News</button>
   <button data-nav="list"><span>≡</span>Words</button>
   <button data-nav="stats"><span>◔</span>Stats</button>
 </nav>
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-21";
+const APP_VERSION = "2026.10.24-22";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
 const NEW_PER_DAY = 10, STORY_EVERY = 4, MAX_STORIES = 3, KNOWN_IVL = 30, MAX_IVL = 120;
 
-let WORDS = [], STORIES = [], BY = {};
+let WORDS = [], STORIES = [], BY = {}, NEWS = null, NEWS_BY = {};
 let P = null;                 // progress
 let feed = [];                // slides for today
 let slideState = {};          // per slide: flipped, defIdx, rated, peeked, inboxed
@@ -539,6 +553,39 @@ async function ukGloss(word){
   try { const r = await fetch("https://api.mymemory.translated.net/get?q=" + encodeURIComponent(word) + "&langpair=en|uk"); if (!r.ok) return ""; const j = await r.json(); const t = j.responseData && j.responseData.translatedText; return t && t.toLowerCase() !== word.toLowerCase() && !/MYMEMORY WARNING/i.test(t) ? t : ""; } catch(e){ return ""; }
 }
 
+/* ================= render: news ================= */
+function newsText(item){
+  let h = "";
+  item.text.split(/(\s+)/).forEach(part => {
+    if (/^\s+$/.test(part) || !part){ h += esc(part); return; }
+    const clean = part.replace(/^[^A-Za-z']+|[^A-Za-z']+$/g, "").toLowerCase();
+    if (!clean){ h += esc(part); return; }
+    if (BY[clean]) h += '<span class="t" data-act="peek" data-head="' + esc(clean) + '">' + esc(part) + "</span>";
+    else h += '<span class="t ' + (P.inbox.some(x => x.word === clean) ? "inbox" : "") + '" data-act="plain" data-word="' + esc(clean) + '" data-n="' + esc(item.id) + '">' + esc(part) + "</span>";
+  });
+  return h;
+}
+function niceDate(d){ const [y,m,dd] = d.split("-").map(Number); return new Date(y, m-1, dd).toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" }); }
+function renderNews(){
+  let h = '<div class="page tinted"><p class="title">News<small>' + (NEWS ? esc(niceDate(NEWS.date)) : "") + "</small></p>";
+  if (!NEWS) return h + '<p class="empty">No news issue yet.</p></div>';
+  if (NEWS.date !== today()) h += '<p class="dimline" style="margin:-8px 0 14px">This issue is from ' + esc(niceDate(NEWS.date)) + '. A new one arrives when Claude publishes it.</p>';
+  NEWS.items.forEach(n => {
+    h += '<article class="news"' + (n.imgQuery || n.image ? '' : '') + '>';
+    if (n.imgQuery || n.image) h += '<div class="nimg"><img data-nimg="' + esc(n.id) + '" alt=""></div>';
+    h += '<p class="ncat">' + esc(n.cat) + '</p><h2>' + esc(n.title) + '</h2><p class="ntext">' + newsText(n) + '</p>';
+    h += '<a class="nsrc" href="' + esc(n.url) + '" target="_blank" rel="noopener">Read the original · ' + esc(n.source) + '</a></article>';
+  });
+  return h + "</div>";
+}
+function hydrateNewsImages(){
+  document.querySelectorAll("img[data-nimg]").forEach(async img => {
+    const n = NEWS_BY[img.dataset.nimg]; if (!n) return;
+    const fake = { word: "news:" + n.id, image: n.image, imgQuery: n.imgQuery };
+    const urls = await imageCandidates(fake); if (urls.length) loadInto(img, fake, urls, 0); else img.parentElement.remove();
+  });
+}
+
 /* ================= render: stats ================= */
 function renderStats(){
   const total = WORDS.length, counts = { new: 0, learning: 0, review: 0, known: 0 };
@@ -563,7 +610,7 @@ function render(){
   const feedEl = document.getElementById("feed"); const scroll = feedEl ? feedEl.scrollTop : 0;
   const pageEl = document.querySelector(".page"); const pageScroll = pageEl ? pageEl.scrollTop : 0;
   const prevView = app.dataset.view;
-  app.innerHTML = view === "feed" ? renderFeed() : view === "list" ? renderList() : view === "catch" ? renderCatch() : renderStats();
+  app.innerHTML = view === "feed" ? renderFeed() : view === "list" ? renderList() : view === "catch" ? renderCatch() : view === "news" ? renderNews() : renderStats();
   app.dataset.view = view;
   const pg = document.querySelector(".page"); if (pg && prevView === view) pg.scrollTop = pageScroll;
   document.querySelectorAll("#nav button").forEach(b => b.classList.toggle("on", b.dataset.nav === view));
@@ -572,6 +619,7 @@ function render(){
   const f = document.getElementById("file"); if (f) f.onchange = importFile;
   if (view === "catch"){ const q = document.getElementById("catch"); if (q){ q.value = ui.catchQ || ""; } const r = document.getElementById("cres"); if (r && ui.catchHTML) r.innerHTML = ui.catchHTML; if (P.inbox.some(x => !x.def)) fillInboxDefs(); }
   const fe = document.getElementById("feed"); if (fe){ fe.scrollTop = scroll; hydrateImages(); }
+  if (view === "news") hydrateNewsImages();
 }
 function rerenderSlide(i){
   const old = document.querySelector('.slide[data-i="' + i + '"]'); if (!old) return;
@@ -693,19 +741,20 @@ document.addEventListener("click", async e => {
   if (a === "rate"){ e.stopPropagation(); return doRate(si, t.dataset.g); }
   if (a === "peek"){
     const w = BY[t.dataset.head]; if (!w) return; const st = slideState[i];
-    if (!st.peeked.includes(w.word)){ st.peeked.push(w.word); peek(w.word); rerenderSlide(i); }
+    if (st && !st.peeked.includes(w.word)){ st.peeked.push(w.word); peek(w.word); rerenderSlide(i); }
     const d = w.definitions[0];
     return showPop('<p class="w">' + esc(w.word) + ' <span class="ipa" data-act="say" data-w="' + esc(w.word) + '">▶\uFE0E ' + esc(w.pronunciation) + '</span></p><span class="tag">' + esc(d.context) + '</span><p class="def" style="font-size:15px">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + '</p><p style="font-size:13px;color:var(--dim);margin:0">Looked up, so this word comes back tomorrow.</p>');
   }
   if (a === "plain"){
     const word = t.dataset.word; if (!word || word.length < 2) return;
     if (BY[word]) { t.dataset.act = "peek"; t.dataset.head = word; return t.click(); }
-    const already = slideState[i].inboxed.includes(word) || P.inbox.some(x => x.word === word);
-    showPop('<p class="w">' + esc(word) + '</p><p class="gloss" id="gloss">…</p>' + (already ? '<p style="font-size:13px;color:var(--dim)">Already in your "want to learn" list.</p>' : '<button class="btn g" data-act="inbox" data-word="' + esc(word) + '" data-i="' + i + '">Add to "want to learn"</button><button class="btn o" data-act="closepop">Not now</button>'));
-    const g = await lookup(word, feed[i].s); const el = document.getElementById("gloss"); if (el) el.textContent = g ? g : g === "" ? "Not in the dictionary. Ask Claude." : "Dictionary not reachable right now.";
+    const src = t.dataset.n ? NEWS_BY[t.dataset.n] : (feed[i] && feed[i].s);
+    const already = (slideState[i] && slideState[i].inboxed.includes(word)) || P.inbox.some(x => x.word === word);
+    showPop('<p class="w">' + esc(word) + '</p><p class="gloss" id="gloss">…</p>' + (already ? '<p style="font-size:13px;color:var(--dim)">Already in your "want to learn" list.</p>' : '<button class="btn g" data-act="inbox" data-word="' + esc(word) + '" data-i="' + i + '"' + (t.dataset.n ? ' data-n="' + esc(t.dataset.n) + '"' : "") + '>Add to "want to learn"</button><button class="btn o" data-act="closepop">Not now</button>'));
+    const g = await lookup(word, src); const el = document.getElementById("gloss"); if (el) el.textContent = g ? g : g === "" ? "Not in the dictionary. Ask Claude." : "Dictionary not reachable right now.";
     return;
   }
-  if (a === "inbox"){ const word = t.dataset.word; const ge = document.getElementById("gloss"); const gt = ge ? ge.textContent : ""; addInbox(word, sentenceAround(feed[i].s.text, word), /^(…|Not in the dictionary|Dictionary not reachable)/.test(gt) ? "" : gt); slideState[i].inboxed.push(word); hidePop(); render(); return; }
+  if (a === "inbox"){ const word = t.dataset.word; const src = t.dataset.n ? NEWS_BY[t.dataset.n] : (feed[i] && feed[i].s); const ge = document.getElementById("gloss"); const gt = ge ? ge.textContent : ""; addInbox(word, src ? sentenceAround(src.text, word) : "", /^(…|Not in the dictionary|Dictionary not reachable)/.test(gt) ? "" : gt); if (slideState[i]) slideState[i].inboxed.push(word); hidePop(); render(); return; }
   if (a === "closepop") return hidePop();
   if (a === "storydone") return storyDone(i);
   if (a === "ahead"){ buildFeed(true); render(); const fe = document.getElementById("feed"); if (fe) fe.scrollTop = 0; return; }
@@ -734,7 +783,8 @@ async function loadJSON(name){
 }
 async function boot(){
   if (window.speechSynthesis) speechSynthesis.getVoices();
-  [WORDS, STORIES] = await Promise.all([loadJSON("words.json"), loadJSON("stories.json")]);
+  [WORDS, STORIES, NEWS] = await Promise.all([loadJSON("words.json"), loadJSON("stories.json"), loadJSON("news.json")]);
+  if (NEWS && NEWS.items) NEWS.items.forEach(n => NEWS_BY[n.id] = n); else NEWS = null;
   WORDS.forEach(w => BY[w.word] = w);
   await loadP();
   try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch(e){}

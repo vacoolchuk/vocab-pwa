@@ -1,0 +1,76 @@
+{
+ "date": "2026-10-24",
+ "intro": "Seven stories from today, rewritten in plain British English. Tap any word you don't know.",
+ "items": [
+  {
+   "id": "n2026-10-24-1",
+   "cat": "World",
+   "title": "Arrest after fire at Hitler's Eagle's Nest",
+   "text": "A fire broke out at the Eagle's Nest, the mountain-top building in Bavaria that was once used by Hitler and is now a museum and restaurant. Firefighters were called out in large numbers to the Alpine site, and police later arrested one person. Officials have not yet said how the fire started. The building is one of the most visited historic sites in southern Germany.",
+   "source": "BBC News",
+   "url": "https://www.bbc.co.uk/news/articles/cr93zwjw1k4qo",
+   "imgQuery": "Kehlsteinhaus Berchtesgaden mountain",
+   "gloss": {"broke out": "started suddenly (used for fires, wars, illness)", "called out": "sent to deal with an emergency", "site": "a place where something is or happened"}
+  },
+  {
+   "id": "n2026-10-24-2",
+   "cat": "World",
+   "title": "Kim Jong-un crosses new bridge into China",
+   "text": "North Korea's leader, Kim Jong-un, has made a surprise visit to China, travelling over a new bridge across the Yalu River that divides the two countries. The trip was not announced in advance. Analysts say it could change relations on the Korean peninsula and between the big powers in the region. Beijing is North Korea's closest ally and its main trading partner.",
+   "source": "The Korea Herald",
+   "url": "https://www.koreaherald.com/article/10913525",
+   "imgQuery": "Yalu River bridge Dandong",
+   "gloss": {"in advance": "before it happened", "peninsula": "a piece of land almost surrounded by water", "ally": "a country that supports another country", "trading partner": "a country you buy from and sell to"}
+  },
+  {
+   "id": "n2026-10-24-3",
+   "cat": "Europe",
+   "title": "France braces for a weekend of protests",
+   "text": "French authorities are putting about 70,000 police officers on the streets this Saturday to deal with protests that have spread across the country. The demonstrations began over the rising cost of living and have grown since the government brought in new restrictions at the last minute. In Lyon, police used tear gas on Friday to break up a smaller protest. More marches are expected in Paris and other cities.",
+   "source": "The Guardian / Euronews",
+   "url": "https://www.theguardian.com/world/2026/oct/23/france-police-demonstrations-civil-unrest",
+   "imgQuery": "Paris protest march crowd",
+   "gloss": {"braces for": "gets ready for something difficult", "authorities": "the people or organisations in charge, such as the government or police", "cost of living": "how much everyday life costs: rent, food, bills", "tear gas": "a gas that makes your eyes sting, used by police against crowds", "break up": "to make a group of people separate and leave"}
+  },
+  {
+   "id": "n2026-10-24-4",
+   "cat": "Ukraine",
+   "title": "Ukraine says Starlink connection is stable again",
+   "text": "Kyiv says its connection to Starlink, the satellite internet service owned by Elon Musk, has been restored and is now stable. Starlink is used by the Ukrainian military and by civilians in areas where normal networks have been destroyed. The announcement came two days after a Russian missile strike left a large crater in the capital. Officials did not say what had caused the earlier problems with the service.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/2026/10/24/ukraine-restores-stable-connection-to-musks-starlink-kyiv-says",
+   "imgQuery": "Starlink satellite dish",
+   "gloss": {"restored": "brought back to how it was before", "civilians": "people who are not in the army or police", "crater": "a big hole in the ground made by an explosion"}
+  },
+  {
+   "id": "n2026-10-24-5",
+   "cat": "Science and tech",
+   "title": "Japan rehearses cyberattacks over a flaw in PHP",
+   "text": "Japan is running simulated cyberattacks to test its defences after a serious weakness was found in PHP, a piece of software that runs behind a very large share of the world's websites. Experts are worried because the flaw could let attackers take control of servers before they are fixed. Companies around the world have been told to update their systems quickly. The Japanese government wants to know how its own services would cope.",
+   "source": "The Japan Times",
+   "url": "https://www.japantimes.co.jp/news/2026/10/24/japan/japan-cyberattack-simulation/",
+   "imgQuery": "server room data centre cables",
+   "gloss": {"rehearses": "practises before the real thing", "flaw": "a fault or weakness", "defences": "the things that protect you from attack", "cope": "to manage in a difficult situation"}
+  },
+  {
+   "id": "n2026-10-24-6",
+   "cat": "World",
+   "title": "Two Japanese climbers die on unclimbed Himalayan peak",
+   "text": "Two climbers from Japan have died while trying to make the first ever ascent of Gangapurna West, a remote peak in the Nepalese Himalayas. The pair lost contact with their team on the mountain and were later confirmed dead. Autumn is the second main climbing season in Nepal, after spring, and smaller, unclimbed peaks have become popular with experienced mountaineers looking for a first. Rescue teams in the region often have to work in thin air and bad weather.",
+   "source": "The Japan Times",
+   "url": "https://www.japantimes.co.jp/news/2026/10/24/japan/nepal-japan-climbers-dead/",
+   "imgQuery": "Annapurna Himalaya peak snow",
+   "gloss": {"ascent": "a climb to the top of a mountain", "remote": "far away from towns and people", "lost contact": "stopped being able to communicate", "mountaineers": "people who climb mountains as a sport", "thin air": "air high up that has less oxygen"}
+  },
+  {
+   "id": "n2026-10-24-7",
+   "cat": "Asia",
+   "title": "Typhoon Champi batters Taiwan",
+   "text": "Typhoon Champi has hit Taiwan, killing one person and injuring around 350. Strong winds and heavy rain closed schools and offices and left parts of the island without power. Taiwan makes a large share of the world's computer chips, so there are worries about delays for electronics companies if factories stay shut. Weather officials say the storm is now moving away from the island.",
+   "source": "Al Jazeera",
+   "url": "https://www.aljazeera.com/news/2026/10/23/typhoon-champi-hits-taiwan-killing-one-and-injuring-350",
+   "imgQuery": "typhoon waves Taiwan coast",
+   "gloss": {"batters": "hits hard again and again", "without power": "with no electricity", "chips": "the tiny electronic parts inside computers and phones", "shut": "closed"}
+  }
+ ]
+}
