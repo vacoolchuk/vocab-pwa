@@ -176,5 +176,6 @@ When I send a batch of words from the app ("Teach me these words: ..."), do NOT 
 - Watch has a "Words | Saved" switch. Saved is a vertical feed of TikTok videos listed in `vocab-pwa/videos.json`.
 - Format: `{"items":[{"id":"v1","url":"<link as she sent it>","title":"<short note, optional>","added":"YYYY-MM-DD"}]}`.
 - When she sends TikTok links in chat: append them to `items` (new id, today's date, her title if she gives one), bump APP_VERSION and SW_VERSION, validate JSON, push. Do not remove old ones unless she says so.
-- Short links (vm.tiktok.com) are fine: the app turns them into an embed on her phone. Claude's own sandbox cannot open TikTok, so Claude cannot check them.
+- The in-app player (TikTok Embed Player, player/v1) works only with the LONG link `https://www.tiktok.com/@user/video/<id>` (the `?_r=...` part can stay). Short vm.tiktok.com links cannot be resolved (Claude's sandbox is blocked from TikTok, the browser is blocked by CORS), so they show a card with an "Open in TikTok" button. Ask her for the long link (open the short link in Safari, copy it from the address bar).
 - A video that is private, deleted or has embedding disabled shows an "Open in TikTok" button instead of a player.
+- The older embed/v2 endpoint returns "ratelimit triggered" in her app: do not use it.

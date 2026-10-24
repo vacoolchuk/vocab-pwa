@@ -11,6 +11,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="preconnect" href="https://youglish.com">
 <link rel="preconnect" href="https://www.youtube.com">
+<link rel="preconnect" href="https://www.tiktok.com">
 <link rel="apple-touch-icon" href="icon-180.png">
 <title>My Vocabulary</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -277,7 +278,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-50";
+const APP_VERSION = "2026.10.24-51";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -898,7 +899,7 @@ function renderReel(){
 let reelIO = null, reelT = null, reelCur = -1;
 function reelEnsure(i){
   const sl = document.querySelector('#reel .slide[data-i="' + i + '"]'); if (!sl) return;
-  if (sl.dataset.kind === "tt"){ if (i === reelCur && !TTL[i]) ttMount(i); return; }
+  if (sl.dataset.kind === "tt"){ if ((i === reelCur || i === reelCur + 1) && !TTL[i]) ttMount(i); return; }
   const id = "ygr" + i; if (YGW[id]) return;
   ygShow(id, sl.dataset.w);
 }
@@ -907,7 +908,7 @@ function reelFocus(i){
   setTimeout(() => { if (reelCur === i) reelEnsure(i + 1); }, 600);   // one slide ahead, loaded while you watch this one
   document.querySelectorAll("#reel .slide[data-i]").forEach(sl => {   // anything further away is unloaded
     const k = +sl.dataset.i, id = "ygr" + k;
-    if (sl.dataset.kind === "tt"){ if (k !== i && TTL[k]) ttUnmount(k); return; }
+    if (sl.dataset.kind === "tt"){ if (Math.abs(k - i) > 1 && TTL[k]) ttUnmount(k); return; }
     if (Math.abs(k - i) > 1 && YGW[id]){ delete YGW[id]; const bx = document.getElementById(id); if (bx) bx.innerHTML = ""; const st = document.getElementById(id + "st"); if (st) st.textContent = ""; }
   });
 }
