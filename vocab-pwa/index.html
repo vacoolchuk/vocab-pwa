@@ -143,6 +143,18 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 .btn.o{background:transparent;color:var(--amber)}
 .btn.sm{width:auto;padding:9px 16px;margin:0;font-size:15px}
 input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;background:var(--screen);color:var(--milk);font-family:inherit}
+.catchbar input{font-family:var(--display);font-size:24px;padding:12px 14px;border:1px solid var(--amber);background:rgba(0,0,0,.35);color:var(--milk);-webkit-appearance:none;border-radius:0}
+.catchbar input::placeholder{color:var(--faint);font-size:18px}
+.cword{margin-top:14px;padding:16px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
+.cword b{font-family:var(--display);font-size:34px;font-weight:600;line-height:1;margin-right:12px}
+.cword .ipa{font-family:var(--mono);font-size:13px;color:var(--amber)}
+.ukline{font-family:var(--ui);font-size:15px;color:var(--dim);margin:8px 0 6px}
+.cdef{font-family:var(--book);font-size:16px;line-height:1.5;margin:8px 0 0;color:var(--milk)}
+.cdef span{font-family:var(--display);font-size:13px;color:var(--amber);letter-spacing:.04em;margin-right:8px}
+.dimline{font-size:14px;color:var(--dim);margin:10px 0 0}
+.catchadd{display:flex;gap:8px;margin-top:16px}
+.catchadd input{flex:1;font-size:15px}
+.srcname{font-family:var(--display);font-size:15px;letter-spacing:.05em;color:var(--amber);margin:16px 0 0}
 .inbox{list-style:none;margin:0 0 14px;padding:0}
 .inbox li{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
 .inbox li b{font-family:var(--display);font-size:20px;font-weight:500}
@@ -161,13 +173,14 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 <div id="shade"></div><div id="pop"></div>
 <nav id="nav">
   <button data-nav="feed" class="on"><span>▲</span>Today</button>
+  <button data-nav="catch"><span>+</span>Catch</button>
   <button data-nav="list"><span>≡</span>Words</button>
   <button data-nav="stats"><span>◔</span>Stats</button>
 </nav>
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-14";
+const APP_VERSION = "2026.10.24-15";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -448,6 +461,61 @@ function switchDetailDef(k){
   const tmp = document.createElement("div"); tmp.innerHTML = detailHTML(BY[ui.open]); old.replaceWith(tmp.firstChild);
 }
 
+/* ================= render: catch ================= */
+function renderCatch(){
+  let h = '<div class="page tinted"><p class="title">Catch a word</p>';
+  h += '<div class="catchbar"><input id="catch" type="search" placeholder="Type the word you just heard" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="search"></div>';
+  h += '<div id="cres"></div>';
+  // inbox grouped by source
+  const groups = {}; P.inbox.forEach(i => { const k = i.src || (i.ctx ? "From stories" : "No source"); (groups[k] = groups[k] || []).push(i); });
+  const keys = Object.keys(groups).sort((a,b) => Math.max(...groups[b].map(x => x.added || 0)) - Math.max(...groups[a].map(x => x.added || 0)));
+  h += '<div class="box" style="margin-top:14px"><h3>Want to learn (' + P.inbox.length + ')</h3>' + (P.inbox.length ? '<button class="btn" data-act="sendinbox">Send to Claude</button>' : "");
+  if (!P.inbox.length) h += '<p style="margin-top:8px">Nothing here yet. Words you add above, and words you tap in stories, collect here until you send them to Claude.</p>';
+  keys.forEach(k => {
+    h += '<p class="srcname">' + esc(k) + '</p><ul class="inbox">' + groups[k].map(i => '<li data-w="' + esc(i.word) + '"><div><b>' + esc(i.word) + "</b><small>" + esc(i.def || "…") + "</small>" + '</div><u data-act="rminbox" data-w="' + esc(i.word) + '">remove</u></li>').join("") + "</ul>";
+  });
+  if (P.inbox.length) h += '<div class="row" style="margin-top:12px"><button class="btn o sm" data-act="copyinbox">Copy as text</button><button class="btn o sm" data-act="clearinbox">Clear list</button></div>';
+  h += "</div></div>";
+  return h;
+}
+let catchTimer = null, catchSeq = 0;
+async function catchLookup(q){
+  q = q.trim().toLowerCase(); ui.catchQ = q; const res = document.getElementById("cres"); if (!res) return;
+  if (q.length < 2){ ui.catchHTML = ""; res.innerHTML = ""; return; }
+  const seq = ++catchSeq;
+  res.innerHTML = '<p class="dimline">Looking up…</p>';
+  const inVocab = BY[q];
+  const [entry, uk] = await Promise.all([dictEntry(q), ukGloss(q)]);
+  if (seq !== catchSeq) return;
+  let h = '<div class="cword"><div class="row" style="flex-wrap:wrap"><b>' + esc(q) + '</b>' + (entry && entry.ipa ? '<span class="ipa" data-act="say" data-w="' + esc(q) + '">▶\uFE0E ' + esc(entry.ipa) + '</span>' : '<span class="ipa" data-act="say" data-w="' + esc(q) + '">▶\uFE0E listen</span>') + "</div>";
+  if (uk) h += '<p class="ukline">' + esc(uk) + "</p>";
+  if (inVocab) h += '<p class="dimline">Already in your vocabulary (' + status(q) + ').</p>';
+  if (entry && entry.defs.length) h += entry.defs.map(d => '<p class="cdef"><span>' + esc(d.pos) + "</span>" + esc(d.text) + "</p>").join("");
+  else if (!entry) h += '<p class="dimline">Dictionary not reachable. You can still add the word.</p>';
+  else h += '<p class="dimline">Not in the dictionary. You can still add it.</p>';
+  const have = P.inbox.some(x => x.word === q);
+  if (!inVocab) h += '<div class="catchadd"><input id="src" placeholder="Where? e.g. Berserk 6" value="' + esc(P.lastSource || "") + '"><button class="btn sm" data-act="catchadd" data-word="' + esc(q) + '" data-def="' + esc(entry && entry.defs[0] ? entry.defs[0].text : "") + '">' + (have ? "Added" : "Add") + "</button></div>";
+  h += "</div>";
+  ui.catchHTML = h; res.innerHTML = h;
+}
+async function dictEntry(word){
+  const strip = x => String(x).replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+  for (const w of stems(word)){
+    try {
+      const r = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + encodeURIComponent(w));
+      if (r.ok){ const j = await r.json(); const e = j[0]; if (e){ const ph = (e.phonetics || []).map(p => p.text).find(Boolean) || e.phonetic || ""; const defs = []; (e.meanings || []).forEach(m => { (m.definitions || []).slice(0, 2).forEach(d => defs.push({ pos: m.partOfSpeech || "", text: d.definition })); }); return { ipa: ph.replace(/^\/|\/$/g, ""), defs: defs.slice(0, 4) }; } }
+    } catch(e){ return null; }
+    try {
+      const r = await fetch("https://en.wiktionary.org/api/rest_v1/page/definition/" + encodeURIComponent(w) + "?redirect=true", { headers: { Accept: "application/json" } });
+      if (r.ok){ const j = await r.json(); const defs = []; (j.en || []).forEach(m => { (m.definitions || []).filter(d => strip(d.definition)).slice(0, 2).forEach(d => defs.push({ pos: (m.partOfSpeech || "").toLowerCase(), text: strip(d.definition) })); }); if (defs.length) return { ipa: "", defs: defs.slice(0, 4) }; }
+    } catch(e){ return null; }
+  }
+  return { ipa: "", defs: [] };
+}
+async function ukGloss(word){
+  try { const r = await fetch("https://api.mymemory.translated.net/get?q=" + encodeURIComponent(word) + "&langpair=en|uk"); if (!r.ok) return ""; const j = await r.json(); const t = j.responseData && j.responseData.translatedText; return t && t.toLowerCase() !== word.toLowerCase() && !/MYMEMORY WARNING/i.test(t) ? t : ""; } catch(e){ return ""; }
+}
+
 /* ================= render: stats ================= */
 function renderStats(){
   const total = WORDS.length, counts = { new: 0, learning: 0, review: 0, known: 0 };
@@ -458,13 +526,6 @@ function renderStats(){
   if (ui.banner) h += '<div class="banner ' + (ui.bannerWarn ? "warn" : "") + '"><span>' + esc(ui.banner) + '</span><u data-act="hidebanner">OK</u></div>';
   h += '<div class="stats4"><div class="box"><b style="color:var(--new)">' + counts.new + '</b><span>New</span></div><div class="box"><b style="color:var(--amber)">' + counts.learning + '</b><span>Learning</span></div><div class="box"><b style="color:var(--review)">' + counts.review + '</b><span>Review</span></div><div class="box"><b style="color:var(--known)">' + counts.known + "</b><span>Known</span></div></div>";
   h += '<div class="box"><div class="row" style="justify-content:space-between"><h3 style="margin:0">Known ' + pct + '%</h3><span style="font-size:13px;color:var(--dim)">' + streak() + " day streak, " + dueCount(addDays(today(),1)) + ' due tomorrow</span></div><div class="bar"><i style="width:' + pct + '%"></i></div></div>';
-  // inbox
-  h += '<div class="box"><h3>Want to learn (' + P.inbox.length + ')</h3><p>Words you tapped in stories. Send them to Claude.</p>';
-  if (P.inbox.length){
-    h += '<ul class="inbox">' + P.inbox.map(i => '<li data-w="' + esc(i.word) + '"><div><b>' + esc(i.word) + "</b><small>" + esc(i.def || "…") + "</small>" + '</div><u data-act="rminbox" data-w="' + esc(i.word) + '">remove</u></li>').join("") + "</ul>";
-    h += '<div class="row"><button class="btn g" data-act="sendinbox">Send to Claude</button><button class="btn o" data-act="copyinbox">Copy</button></div>';
-  }
-  h += "</div>";
   // backup
   h += '<div class="box"><h3>Backup</h3><p>' + (days === null ? "No backup file yet. Save one now and then." : "Last backup: " + (days === 0 ? "today" : days + " day" + (days > 1 ? "s" : "") + " ago") + ".") + '</p><div class="row"><button class="btn" data-act="export">Save backup</button><button class="btn o" data-act="importbtn">Restore</button></div><input type="file" id="file" accept=".json,application/json" style="display:none">' + (ui.shownCode ? '<p class="msg err">' + esc(ui.shownCode) + "</p>" : "") + '</div>';
   if (ui.msg) h += '<p class="msg ' + (ui.msgErr ? "err" : "") + '">' + esc(ui.msg) + "</p>";
@@ -479,15 +540,15 @@ function render(){
   const feedEl = document.getElementById("feed"); const scroll = feedEl ? feedEl.scrollTop : 0;
   const pageEl = document.querySelector(".page"); const pageScroll = pageEl ? pageEl.scrollTop : 0;
   const prevView = app.dataset.view;
-  app.innerHTML = view === "feed" ? renderFeed() : view === "list" ? renderList() : renderStats();
+  app.innerHTML = view === "feed" ? renderFeed() : view === "list" ? renderList() : view === "catch" ? renderCatch() : renderStats();
   app.dataset.view = view;
   const pg = document.querySelector(".page"); if (pg && prevView === view) pg.scrollTop = pageScroll;
   document.querySelectorAll("#nav button").forEach(b => b.classList.toggle("on", b.dataset.nav === view));
-  const nb = document.querySelector('#nav [data-nav="stats"]'); nb.querySelector("i") && nb.querySelector("i").remove();
+  const nb = document.querySelector('#nav [data-nav="catch"]'); nb.querySelector("i") && nb.querySelector("i").remove();
   if (P.inbox.length){ const i = document.createElement("i"); i.textContent = P.inbox.length; nb.appendChild(i); }
   const p = document.getElementById("paste"); if (p) p.value = keepPaste;
   const f = document.getElementById("file"); if (f) f.onchange = importFile;
-  if (view === "stats" && P.inbox.some(x => !x.def)) fillInboxDefs();
+  if (view === "catch"){ const q = document.getElementById("catch"); if (q){ q.value = ui.catchQ || ""; } const r = document.getElementById("cres"); if (r && ui.catchHTML) r.innerHTML = ui.catchHTML; if (P.inbox.some(x => !x.def)) fillInboxDefs(); }
   const fe = document.getElementById("feed"); if (fe){ fe.scrollTop = scroll; hydrateImages(); }
 }
 function rerenderSlide(i){
@@ -568,13 +629,13 @@ function storyDone(i){
   st.rated = "Read · " + s.words.filter(w => !st.peeked.includes(w)).length + " of " + s.words.length + " recognised";
   rerenderSlide(i); rerenderSlide(feed.length-1); setTimeout(() => nextSlide(i), 350);
 }
-function addInbox(word, ctx, def){ if (!word || P.inbox.some(x => x.word === word)) return false; P.inbox.push({ word, ctx, def: def || "", added: Date.now() }); saveP(); return true; }
+function addInbox(word, ctx, def, src){ if (!word || P.inbox.some(x => x.word === word)) return false; P.inbox.push({ word, ctx: ctx || "", def: def || "", src: src || "", added: Date.now() }); saveP(); return true; }
 // fill in definitions for inbox items saved without one
 async function fillInboxDefs(){
   for (const it of P.inbox){ if (it.def) continue; const g = await lookup(it.word, null); if (g){ it.def = g; const el = document.querySelector('.inbox li[data-w="' + CSS.escape(it.word) + '"] small'); if (el) el.textContent = g; } }
   saveP();
 }
-function inboxText(){ return "Teach me these words (British English, full cards please): " + P.inbox.map(i => i.word + (i.ctx ? ' ("' + i.ctx + '")' : "")).join("; "); }
+function inboxText(){ return "Teach me these words (British English, full cards please): " + P.inbox.map(i => i.word + (i.src ? " [" + i.src + "]" : "") + (i.ctx ? ' ("' + i.ctx + '")' : "")).join("; "); }
 async function sendInbox(){
   const text = inboxText();
   if (navigator.share){ try { await navigator.share({ text }); return; } catch(e){ if (e.name === "AbortError") return; } }
@@ -595,6 +656,9 @@ function importFile(ev){
   };
   r.readAsText(f);
 }
+
+document.addEventListener("input", e => { if (e.target.id !== "catch") return; clearTimeout(catchTimer); const v = e.target.value; catchTimer = setTimeout(() => catchLookup(v), 450); });
+document.addEventListener("keydown", e => { if (e.target.id === "catch" && e.key === "Enter"){ clearTimeout(catchTimer); catchLookup(e.target.value); e.target.blur(); } });
 
 document.addEventListener("click", async e => {
   const nb = e.target.closest("[data-nav]"); if (nb){ view = nb.dataset.nav; ui.shownCode = ""; render(); return; }
@@ -627,6 +691,8 @@ document.addEventListener("click", async e => {
   if (a === "odef"){ e.stopPropagation(); return switchDetailDef(+t.dataset.k); }
   if (a === "toggle"){ e.stopPropagation(); const w = t.dataset.w; if (status(w) === "known") delete P.cards[w]; else P.cards[w] = knownCard(false); await saveP(); const s = status(w); t.className = "badge " + s; t.textContent = s; const rowEl = t.closest(".lr"); if (rowEl) rowEl.className = "lr " + s; const d = document.querySelector('.detail[data-w="' + CSS.escape(w) + '"]'); if (d){ const tmp = document.createElement("div"); tmp.innerHTML = detailHTML(BY[w]); d.replaceWith(tmp.firstChild); } return; }
   if (a === "hidebanner"){ ui.banner = ""; return render(); }
+  if (a === "catchadd"){ const srcEl = document.getElementById("src"); const src = srcEl ? srcEl.value.trim() : ""; P.lastSource = src; addInbox(t.dataset.word, "", t.dataset.def, src); t.textContent = "Added"; ui.catchHTML = document.getElementById("cres").innerHTML; render(); return; }
+  if (a === "clearinbox"){ if (!confirm("Clear the whole list?")) return; P.inbox = []; await saveP(); return render(); }
   if (a === "rminbox"){ P.inbox = P.inbox.filter(x => x.word !== t.dataset.w); await saveP(); return render(); }
   if (a === "sendinbox") return sendInbox();
   if (a === "copyinbox"){ try { await navigator.clipboard.writeText(inboxText()); say("Copied."); } catch(e){ ui.shownCode = inboxText(); render(); } return; }
@@ -653,7 +719,11 @@ async function boot(){
   if (lastV && lastV !== APP_VERSION) ui.banner = "Updated to " + APP_VERSION + ". Progress kept: " + knownN + " known, " + Object.keys(P.cards).length + " cards in total.";
   lsSet("wsv.version", APP_VERSION);
   if (!ui.banner && Object.keys(P.cards).length >= 5 && Date.now() - (P.lastBackup || 0) > 30*864e5){ ui.banner = "Tip: Stats → Save backup file. Five seconds."; ui.bannerWarn = true; }
-  buildFeed(); render(); prefetchImages();
+  buildFeed();
+  const addQ = new URLSearchParams(location.search).get("add");
+  if (addQ){ view = "catch"; ui.catchQ = addQ; history.replaceState(null, "", location.pathname); }
+  render(); prefetchImages();
+  if (addQ) catchLookup(addQ);
 }
 boot();
 if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
