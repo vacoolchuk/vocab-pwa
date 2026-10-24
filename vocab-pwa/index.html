@@ -146,8 +146,12 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 .catchbar input{font-family:var(--display);font-size:24px;padding:12px 14px;border:1px solid var(--amber);background:rgba(0,0,0,.35);color:var(--milk);-webkit-appearance:none;border-radius:0}
 .catchbar input::placeholder{color:var(--faint);font-size:18px}
 .cword{margin-top:14px;padding:16px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
-.cword b{font-family:var(--display);font-size:34px;font-weight:600;line-height:1;margin-right:12px}
-.cword .ipa{font-family:var(--mono);font-size:13px;color:var(--amber)}
+.cword b{font-family:var(--display);font-size:36px;font-weight:600;line-height:1}
+.chead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.cipa{font-family:var(--mono);font-size:14px;color:var(--amber);margin:6px 0 0}
+.playbtn{width:56px;height:56px;border-radius:50%;border:1.5px solid var(--amber);background:rgba(0,0,0,.35);color:var(--amber);padding:0;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.playbtn .tri{width:24px;height:24px;fill:currentColor;margin-left:3px;pointer-events:none}
+.playbtn:active{background:var(--amber);color:#000}
 .ukline{font-family:var(--ui);font-size:15px;color:var(--dim);margin:8px 0 6px}
 .cdef{font-family:var(--book);font-size:16px;line-height:1.5;margin:8px 0 0;color:var(--milk)}
 .cdef span{font-family:var(--display);font-size:13px;color:var(--amber);letter-spacing:.04em;margin-right:8px}
@@ -179,7 +183,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-18";
+const APP_VERSION = "2026.10.24-19";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -493,7 +497,7 @@ async function catchLookup(q){
   const inVocab = BY[q];
   const [entry, uk] = await Promise.all([dictEntry(q), ukGloss(q)]);
   if (seq !== catchSeq) return;
-  let h = '<div class="cword"><div class="row" style="flex-wrap:wrap"><b>' + esc(q) + '</b>' + (entry && entry.ipa ? '<span class="ipa" data-act="say" data-w="' + esc(q) + '">▶\uFE0E ' + esc(entry.ipa) + '</span>' : '<span class="ipa" data-act="say" data-w="' + esc(q) + '">▶\uFE0E listen</span>') + "</div>";
+  let h = '<div class="cword"><div class="chead"><div><b>' + esc(q) + '</b>' + (entry && entry.ipa ? '<p class="cipa">' + esc(entry.ipa) + '</p>' : "") + '</div><button class="playbtn" data-act="say" data-w="' + esc(q) + '"><svg class="tri" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></button></div>';
   if (uk) h += '<p class="ukline">' + esc(uk) + "</p>";
   if (inVocab) h += '<p class="dimline">Already in your vocabulary (' + status(q) + ').</p>';
   if (entry && entry.defs.length) h += entry.defs.map(d => '<p class="cdef"><span>' + esc(d.pos) + "</span>" + esc(d.text) + "</p>").join("");
@@ -506,17 +510,30 @@ async function catchLookup(q){
 }
 async function dictEntry(word){
   const strip = x => String(x).replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+  let reached = false, ipa = "";
   for (const w of stems(word)){
     try {
-      const r = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + encodeURIComponent(w));
-      if (r.ok){ const j = await r.json(); const e = j[0]; if (e){ const ph = (e.phonetics || []).map(p => p.text).find(Boolean) || e.phonetic || ""; const defs = []; (e.meanings || []).forEach(m => { (m.definitions || []).slice(0, 2).forEach(d => defs.push({ pos: m.partOfSpeech || "", text: d.definition })); }); return { ipa: ph.replace(/^\/|\/$/g, ""), defs: defs.slice(0, 4) }; } }
-    } catch(e){ return null; }
+      const r = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + encodeURIComponent(w)); reached = true;
+      if (r.ok){ const j = await r.json(); const e = j[0]; if (e){ const ph = (e.phonetics || []).map(p => p.text).find(Boolean) || e.phonetic || ""; const defs = []; (e.meanings || []).forEach(m => { (m.definitions || []).slice(0, 2).forEach(d => defs.push({ pos: m.partOfSpeech || "", text: d.definition })); }); if (defs.length) return { ipa: ph.replace(/^\/|\/$/g, "") || await wikiIPA(w), defs: defs.slice(0, 4) }; } }
+    } catch(e){}
     try {
-      const r = await fetch("https://en.wiktionary.org/api/rest_v1/page/definition/" + encodeURIComponent(w) + "?redirect=true", { headers: { Accept: "application/json" } });
-      if (r.ok){ const j = await r.json(); const defs = []; (j.en || []).forEach(m => { (m.definitions || []).filter(d => strip(d.definition)).slice(0, 2).forEach(d => defs.push({ pos: (m.partOfSpeech || "").toLowerCase(), text: strip(d.definition) })); }); if (defs.length) return { ipa: "", defs: defs.slice(0, 4) }; }
-    } catch(e){ return null; }
+      const r = await fetch("https://en.wiktionary.org/api/rest_v1/page/definition/" + encodeURIComponent(w) + "?redirect=true", { headers: { Accept: "application/json" } }); reached = true;
+      if (r.ok){ const j = await r.json(); const defs = []; (j.en || []).forEach(m => { (m.definitions || []).filter(d => strip(d.definition)).slice(0, 2).forEach(d => defs.push({ pos: (m.partOfSpeech || "").toLowerCase(), text: strip(d.definition) })); }); if (defs.length) return { ipa: await wikiIPA(w), defs: defs.slice(0, 4) }; }
+    } catch(e){}
   }
-  return { ipa: "", defs: [] };
+  return reached ? { ipa, defs: [] } : null;
+}
+// British IPA from the Wiktionary page source: prefers the RP/UK line, falls back to the first English one
+async function wikiIPA(word){
+  try {
+    const r = await fetch("https://en.wiktionary.org/w/api.php?action=parse&prop=wikitext&format=json&origin=*&page=" + encodeURIComponent(word));
+    if (!r.ok) return ""; const j = await r.json(); let t = j.parse && j.parse.wikitext && j.parse.wikitext["*"]; if (!t) return "";
+    const en = t.indexOf("==English=="); if (en >= 0){ const next = t.indexOf("\n==", en + 12); t = next > 0 ? t.slice(en, next) : t.slice(en); }
+    const all = [...t.matchAll(/\{\{IPA\|en\|([^}]+)\}\}/g)].map(m => m[1]);
+    const pick = all.find(x => /\|a=(RP|UK|GB)|Received|British/i.test(x)) || all.find(x => !/\|a=(US|GA|GenAm)/i.test(x)) || all[0];
+    if (!pick) return "";
+    const first = pick.split("|").map(x => x.trim()).find(x => /^\/.*\/$|^\[.*\]$/.test(x)); return first ? first.replace(/^[\/\[]|[\/\]]$/g, "") : "";
+  } catch(e){ return ""; }
 }
 async function ukGloss(word){
   try { const r = await fetch("https://api.mymemory.translated.net/get?q=" + encodeURIComponent(word) + "&langpair=en|uk"); if (!r.ok) return ""; const j = await r.json(); const t = j.responseData && j.responseData.translatedText; return t && t.toLowerCase() !== word.toLowerCase() && !/MYMEMORY WARNING/i.test(t) ? t : ""; } catch(e){ return ""; }
