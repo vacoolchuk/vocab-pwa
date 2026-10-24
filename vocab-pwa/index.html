@@ -106,6 +106,9 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 .nimg{margin:0 0 14px;background:rgba(255,255,255,.04);aspect-ratio:16/10;overflow:hidden}
 .nimg img{width:100%;height:100%;object-fit:cover;display:block;opacity:0}
 .nimg img.on{opacity:.9;transition:opacity .4s}
+.nimg.press{display:block;position:relative;text-decoration:none}
+.nimg.press img{opacity:1}
+.credit{position:absolute;right:0;bottom:0;font-family:var(--display);font-size:11px;letter-spacing:.05em;color:var(--milk);background:rgba(0,0,0,.6);padding:3px 8px}
 .ncat{font-family:var(--display);font-size:14px;letter-spacing:.05em;color:var(--amber);margin:0 0 6px}
 .news h2{font-family:var(--display);font-weight:600;font-size:28px;line-height:1.05;margin:0 0 10px;letter-spacing:-.01em}
 .ntext{font-family:var(--book);font-size:17px;line-height:1.65;color:#E6E0D4;margin:0 0 12px}
@@ -216,7 +219,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-32";
+const APP_VERSION = "2026.10.24-33";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -653,14 +656,15 @@ function renderNews(){
   if (!NEWS) return h + '<p class="empty">No news issue yet.</p></div>';
   if (NEWS.date !== today()) h += '<p class="dimline" style="margin:-8px 0 14px">This issue is from ' + esc(niceDate(NEWS.date)) + '. A new one arrives when Claude publishes it.</p>';
   NEWS.items.forEach(n => {
-    h += '<article class="news"' + (n.imgQuery || n.image ? '' : '') + '>';
-    if (n.imgQuery || n.image) h += '<div class="nimg"><img data-nimg="' + esc(n.id) + '" alt=""></div>';
+    h += '<article class="news">';
+    if (n.pressImage) h += '<a class="nimg press" href="' + esc(n.url) + '" target="_blank" rel="noopener"><img src="' + esc(n.pressImage) + '" alt="" referrerpolicy="no-referrer-when-downgrade" loading="lazy" onerror="this.parentElement.remove()"><span class="credit">Photo: ' + esc(n.source) + '</span></a>';
     h += '<p class="ncat">' + esc(n.cat) + '</p><h2>' + esc(n.title) + '</h2><p class="ntext">' + newsText(n) + '</p>';
     h += '<div class="row" style="justify-content:space-between;flex-wrap:wrap;gap:10px"><a class="nsrc" href="' + esc(n.url) + '" target="_blank" rel="noopener">Read the original · ' + esc(n.source) + '</a>' + readBtn("news:" + n.id) + '</div></article>';
   });
   return h + "</div>";
 }
 function hydrateNewsImages(){
+  document.querySelectorAll("img.press").forEach(img => { img.onload = () => img.classList.add("on"); if (img.complete && img.naturalWidth) img.classList.add("on"); });
   document.querySelectorAll("img[data-nimg]").forEach(async img => {
     const n = NEWS_BY[img.dataset.nimg]; if (!n) return;
     const fake = { word: "news:" + n.id, image: n.image, imgQuery: n.imgQuery };
@@ -945,7 +949,9 @@ async function loadJSON(name){
 }
 async function boot(){
   if (window.speechSynthesis){ speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged = () => {}; }
-  [WORDS, STORIES, NEWS, AUDIO] = await Promise.all([loadJSON("words.json"), loadJSON("stories.json"), loadJSON("news.json"), loadJSON("audio/index.json")]);
+  let NIMG;
+  [WORDS, STORIES, NEWS, AUDIO, NIMG] = await Promise.all([loadJSON("words.json"), loadJSON("stories.json"), loadJSON("news.json"), loadJSON("audio/index.json"), loadJSON("news-images.json")]);
+  if (NIMG && !Array.isArray(NIMG) && NEWS && NEWS.items) NEWS.items.forEach(n => { const m = NIMG[n.id]; if (m && m.image) n.pressImage = m.image; });
   if (!AUDIO || Array.isArray(AUDIO)) AUDIO = {};
   if (NEWS && NEWS.items) NEWS.items.forEach(n => NEWS_BY[n.id] = n); else NEWS = null;
   WORDS.forEach(w => BY[w.word] = w);
