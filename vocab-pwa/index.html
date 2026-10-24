@@ -262,7 +262,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-43";
+const APP_VERSION = "2026.10.24-44";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -574,17 +574,27 @@ function hydrateImages(){
 }
 
 /* ================= render: list ================= */
-function renderList(){
-  const order = { new: 0, learning: 1, review: 2, known: 3 };
-  let h = '<div class="page tinted"><p class="title">All words<small>' + WORDS.length + " words</small></p>";
-  if (ui.banner) h += '<div class="banner ' + (ui.bannerWarn ? "warn" : "") + '"><span>' + esc(ui.banner) + '</span><u data-act="hidebanner">OK</u></div>';
-  h += '<div class="list">';
-  [...WORDS].sort((a,b) => a.word.localeCompare(b.word)).forEach(w => {
+function listRowsHTML(){
+  const q = (ui.listQ || "").trim().toLowerCase();
+  let ws = [...WORDS].sort((a,b) => a.word.localeCompare(b.word));
+  if (q){
+    const starts = ws.filter(w => w.word.toLowerCase().startsWith(q)), inside = ws.filter(w => !w.word.toLowerCase().startsWith(q) && w.word.toLowerCase().includes(q));
+    ws = [...starts, ...inside];
+    if (!ws.length) return '<p class="empty" style="margin-top:18px">No word like "' + esc(ui.listQ.trim()) + '" in your list.</p>';
+  }
+  let h = "";
+  ws.forEach(w => {
     const s = status(w.word);
     h += '<div class="lr ' + s + '" data-act="open" data-w="' + esc(w.word) + '"><b>' + esc(w.word) + '</b><span class="ipa" data-act="say" data-w="' + esc(w.word) + '">▶\uFE0E ' + esc(w.pronunciation) + '</span><span class="badge ' + s + '" data-act="toggle" data-w="' + esc(w.word) + '">' + s + "</span></div>";
     if (ui.open === w.word) h += detailHTML(w);
   });
-  return h + "</div></div>";
+  return h;
+}
+function renderList(){
+  let h = '<div class="page tinted"><p class="title">All words<small>' + WORDS.length + " words</small></p>";
+  if (ui.banner) h += '<div class="banner ' + (ui.bannerWarn ? "warn" : "") + '"><span>' + esc(ui.banner) + '</span><u data-act="hidebanner">OK</u></div>';
+  h += '<div class="catchbar"><input id="wordq" type="search" value="' + esc(ui.listQ || "") + '" placeholder="Search your words" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="search"></div>';
+  return h + '<div class="list" id="rows">' + listRowsHTML() + "</div></div>";
 }
 function detailHTML(w){
   const c = card(w.word), d = w.definitions[Math.min(ui.openDef, w.definitions.length-1)];
@@ -1073,12 +1083,12 @@ function importFile(ev){
   r.readAsText(f);
 }
 
-document.addEventListener("input", e => { if (e.target.id === "watchq"){ watchSuggest(e.target.value); return; } if (e.target.id !== "catch") return; clearTimeout(catchTimer); const v = e.target.value; catchTimer = setTimeout(() => catchLookup(v), 450); });
-document.addEventListener("keydown", e => { if (e.target.id === "watchq" && e.key === "Enter"){ watchSubmit(e.target.value); e.target.blur(); return; } if (e.target.id === "catch" && e.key === "Enter"){ clearTimeout(catchTimer); catchLookup(e.target.value); e.target.blur(); } });
+document.addEventListener("input", e => { if (e.target.id === "wordq"){ ui.listQ = e.target.value; const r = document.getElementById("rows"); if (r) r.innerHTML = listRowsHTML(); return; } if (e.target.id === "watchq"){ watchSuggest(e.target.value); return; } if (e.target.id !== "catch") return; clearTimeout(catchTimer); const v = e.target.value; catchTimer = setTimeout(() => catchLookup(v), 450); });
+document.addEventListener("keydown", e => { if (e.target.id === "wordq" && e.key === "Enter"){ e.target.blur(); return; } if (e.target.id === "watchq" && e.key === "Enter"){ watchSubmit(e.target.value); e.target.blur(); return; } if (e.target.id === "catch" && e.key === "Enter"){ clearTimeout(catchTimer); catchLookup(e.target.value); e.target.blur(); } });
 
 document.addEventListener("touchstart", () => { const c = ctx(); if (c && c.state === "suspended") c.resume(); }, { once: true, passive: true });
 document.addEventListener("click", async e => {
-  const nb = e.target.closest("[data-nav]"); if (nb){ stopReading(); view = nb.dataset.nav; ui.shownCode = ""; render(); return; }
+  const nb = e.target.closest("[data-nav]"); if (nb){ stopReading(); view = nb.dataset.nav; ui.shownCode = ""; ui.listQ = ""; render(); return; }
   if (e.target.id === "shade"){ closeWild(); return hidePop(); }
   const t = e.target.closest("[data-act]"); if (!t) return;
   const a = t.dataset.act, i = +t.dataset.i, slide = t.closest(".slide"), si = slide ? +slide.dataset.i : -1;
