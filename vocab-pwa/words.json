@@ -503,5 +503,48 @@
     ]
    }
   ]
+ },
+ {
+  "word": "break out",
+  "pronunciation": "breɪk ˈaʊt",
+  "imgQuery": "house fire flames night",
+  "definitions": [
+   {
+    "def": "To start suddenly (fire, fighting, war, disease)",
+    "context": "General use · News",
+    "description": "Used for bad things that begin without warning and spread. The standard news verb for fires and fighting; 'started' sounds flat. Past: broke out. The noun is outbreak.",
+    "examples": [
+     "A fire broke out in the kitchen while everyone was upstairs.",
+     "Fighting broke out between rival fans after the match.",
+     "War broke out in 1939, a few days after the invasion of Poland.",
+     "Panic broke out when the lights went off in the tunnel.",
+     "Measles has broken out at two schools in Birmingham this term."
+    ]
+   },
+   {
+    "def": "To escape from a place you are locked in",
+    "context": "General use · Also humorous",
+    "description": "Prisons, cages, and jokingly a boring meeting. The noun is a breakout.",
+    "examples": [
+     "Three prisoners broke out of Wandsworth last night and are still missing.",
+     "The dog broke out of the garden again and was found at the chip shop.",
+     "We broke out of the conference early and went for a pint.",
+     "It was the biggest prison breakout in British history.",
+     "The cows have broken out of the top field, go and look."
+    ]
+   },
+   {
+    "def": "To suddenly start doing something: break out in a sweat, break into song",
+    "context": "Informal",
+    "description": "With skin and bodies: break out in a sweat, in a rash, in spots. With sounds: break into song, break into applause.",
+    "examples": [
+     "He broke out in a cold sweat when he saw the bill.",
+     "I've broken out in a rash since I changed washing powder.",
+     "The whole pub broke into song when the goal went in.",
+     "She broke out in spots the week before the wedding, naturally.",
+     "The crowd broke into applause before he'd even finished."
+    ]
+   }
+  ]
  }
 ]

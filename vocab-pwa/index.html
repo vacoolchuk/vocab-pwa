@@ -197,7 +197,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-23";
+const APP_VERSION = "2026.10.24-24";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -850,6 +850,9 @@ async function boot(){
   if (NEWS && NEWS.items) NEWS.items.forEach(n => NEWS_BY[n.id] = n); else NEWS = null;
   WORDS.forEach(w => BY[w.word] = w);
   await loadP();
+  // words that have become cards leave the "want to learn" list on their own
+  const inVocab = x => !!BY[x.word] || WORDS.some(w => w.word.includes(" ") ? wordRegex(w.word).test(x.word) : false);
+  if (P.inbox.some(inVocab)){ P.inbox = P.inbox.filter(x => !inVocab(x)); await saveP(); }
   try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch(e){}
   const lastV = lsGet("wsv.version");
   const knownN = WORDS.filter(w => status(w.word) === "known").length;
