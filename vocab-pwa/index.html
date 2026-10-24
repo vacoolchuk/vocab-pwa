@@ -51,10 +51,11 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 .cz{font-family:var(--book);font-size:26px;line-height:1.45;color:var(--milk);margin:0 0 22px;text-shadow:0 2px 24px rgba(0,0,0,.6)}
 .hintdef{font-family:var(--display);font-size:17px;letter-spacing:.03em;color:var(--amber);margin:0;opacity:.9}
 .front.listen{justify-content:center;padding-bottom:8vh}
-.bigplay{width:112px;height:112px;border-radius:50%;border:1.5px solid var(--amber);background:rgba(0,0,0,.45);color:var(--amber);font-size:40px;padding-left:8px;margin-bottom:26px}
+.bigplay{width:112px;height:112px;border-radius:50%;border:1.5px solid var(--amber);background:rgba(0,0,0,.45);color:var(--amber);padding:0;margin-bottom:26px;display:flex;align-items:center;justify-content:center}
+.bigplay .tri{width:44px;height:44px;fill:currentColor;margin-left:6px;pointer-events:none}
 .bigplay:active{background:var(--amber);color:#000}
 .saybtn{font-family:var(--mono);font-size:15px;color:var(--amber);background:rgba(0,0,0,.55);border:1px solid rgba(212,162,76,.35);border-radius:4px;padding:7px 14px;letter-spacing:.02em}
-.saybtn:before{content:"▶";font-size:10px;margin-right:9px;vertical-align:1px}
+.saybtn:before{content:"▶\FE0E";font-size:10px;margin-right:9px;vertical-align:1px}
 .back{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px;cursor:pointer}
 .back .w{font-family:var(--display);font-weight:600;font-size:34px;line-height:1;margin:0 10px 0 0}
 .back .ipa{font-family:var(--mono);font-size:12px;color:var(--amber)}
@@ -166,7 +167,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-13";
+const APP_VERSION = "2026.10.24-14";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -359,7 +360,7 @@ function wordSlide(f, i){
       const cz = clozeFor(w, st.defIdx) || { text: w.definitions[0].examples[0], k: 0 }; st.clozeDef = cz.k;
       h += '<div class="front cloze" data-act="flip"><p class="cz">' + esc(cz.text) + '</p><p class="hintdef">' + esc(w.definitions[cz.k].def) + '</p></div>';
     } else if (st.mode === "listen"){
-      h += '<div class="front listen" data-act="flip"><button class="bigplay" data-act="say" data-w="' + esc(w.word) + '">▶</button><p class="hintdef">' + esc(w.definitions[0].context) + '</p></div>';
+      h += '<div class="front listen" data-act="flip"><button class="bigplay" data-act="say" data-w="' + esc(w.word) + '"><svg class="tri" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></button><p class="hintdef">' + esc(w.definitions[0].context) + '</p></div>';
     } else {
       h += '<div class="front" data-act="flip"><p class="w">' + esc(w.word) + '</p><button class="saybtn" data-act="say" data-w="' + esc(w.word) + '">' + esc(w.pronunciation) + '</button></div>';
     }
