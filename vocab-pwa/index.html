@@ -34,12 +34,13 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 
 /* ---------- feed ---------- */
 #feed{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:var(--screen)}
+.tinted{--tint:#1B2A20;background:radial-gradient(130% 75% at 50% -5%,var(--tint) 0%,#0B100D 62%,#050706 100%)}
 #feed::-webkit-scrollbar{display:none}
-.slide{height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;padding:calc(var(--sat) + 52px) 22px calc(var(--nav) + var(--sab) + 14px);position:relative;overflow:hidden;background:var(--screen)}
+.slide{height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;padding:calc(var(--sat) + 52px) 22px calc(var(--nav) + var(--sab) + 14px);position:relative;overflow:hidden}
 .slide .meta{display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-size:14px;letter-spacing:.04em;color:var(--dim);margin-bottom:10px;position:relative;z-index:2}
 .slide .meta .st{color:var(--dim)}
 .slide .meta .st.learning{color:var(--learning)}.slide .meta .st.review{color:var(--review)}.slide .meta .st.known{color:var(--known)}
-.still{position:absolute;inset:0;z-index:0;background:var(--screen)}
+.still{position:absolute;inset:0;z-index:0}
 .still img{width:100%;height:100%;object-fit:cover;display:block;opacity:0}
 .still img.on{opacity:.55;transition:opacity .4s ease}
 .still:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.15) 35%,rgba(0,0,0,.25) 60%,rgba(0,0,0,.92) 100%)}
@@ -64,7 +65,7 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 .rate button{padding:15px 4px;border:0;font-family:var(--display);font-size:18px;letter-spacing:.04em;color:var(--milk);background:var(--surface)}
 .rate .again{background:var(--again)}.rate .hard{background:var(--hard)}.rate .good{background:var(--good)}.rate .easy{background:var(--easy)}
 .rate small{display:none}
-.rated{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;background:var(--screen);font-family:var(--display);font-size:28px;color:var(--amber);letter-spacing:.02em}
+.rated{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;background:rgba(5,7,6,.92);font-family:var(--display);font-size:28px;color:var(--amber);letter-spacing:.02em}
 
 /* ---------- story ---------- */
 .story{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;justify-content:center}
@@ -109,7 +110,7 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 #nav button i{position:absolute;top:10px;right:22%;background:var(--amber);color:#000;font-style:normal;font-family:var(--ui);font-size:10px;font-weight:700;border-radius:99px;padding:1px 5px}
 
 /* ---------- pages ---------- */
-.page{height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(var(--sat) + 52px) 18px calc(var(--nav) + var(--sab) + 24px);background:var(--screen)}
+.page{height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(var(--sat) + 52px) 18px calc(var(--nav) + var(--sab) + 24px)}
 .title{margin:0 0 18px;font-family:var(--display);font-weight:600;font-size:40px;line-height:1;letter-spacing:-.01em;display:flex;align-items:baseline;gap:10px}
 .title small{margin-left:auto;font-size:15px;color:var(--dim);font-weight:400;letter-spacing:.04em}
 .list{border-top:1px solid var(--line)}
@@ -120,9 +121,9 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 .lr .ipa{font-family:var(--mono);font-size:12px;color:var(--amber)}
 .badge{font-family:var(--display);font-size:14px;letter-spacing:.05em;color:var(--dim);cursor:pointer;padding:4px 0 4px 10px}
 .badge.learning{color:var(--learning)}.badge.review{color:var(--review)}.badge.known{color:var(--known)}
-.detail{padding:12px 0 18px 14px;border-bottom:1px solid var(--line);background:var(--surface)}
+.detail{padding:12px 0 18px 14px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.04)}
 .detail .def{font-size:16px}.detail .desc{font-size:14px}.detail .ex p{font-size:14px}
-.box{background:var(--surface);padding:18px;margin-bottom:10px;border:1px solid var(--line)}
+.box{background:rgba(255,255,255,.04);padding:18px;margin-bottom:10px;border:1px solid var(--line)}
 .box h3{margin:0 0 6px;font-family:var(--display);font-size:20px;font-weight:500;letter-spacing:.02em}
 .box p{margin:0 0 12px;font-size:14px;color:var(--dim);line-height:1.5}
 .stats4{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-bottom:10px;background:var(--line);border:1px solid var(--line)}
@@ -159,7 +160,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-10";
+const APP_VERSION = "2026.10.24-11";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -319,10 +320,12 @@ function prefetchImages(){
 }
 
 /* ================= render: feed ================= */
+const TINTS = ["#1B2A20", "#15292B", "#172236", "#2A1B30", "#30211A", "#262A17"]; // green, teal, blue, plum, rust, olive
+function tintFor(word){ let h = 0; for (const ch of word) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return TINTS[h % TINTS.length]; }
 function wordSlide(f, i){
   const w = f.w, st = slideState[i], d = w.definitions[Math.min(st.defIdx, w.definitions.length-1)];
   const n = feed.filter(x => x.type !== "done").length;
-  let h = '<div class="slide" data-i="' + i + '">' + (w.image || w.imgQuery ? '<div class="still"><img data-img="' + esc(w.word) + '" alt=""></div>' : "") + '<div class="meta"><span>' + (i+1) + " / " + n + '</span><span class="st ' + status(w.word) + '">' + status(w.word) + "</span></div>";
+  let h = '<div class="slide tinted" style="--tint:' + tintFor(w.word) + '" data-i="' + i + '">' + (w.image || w.imgQuery ? '<div class="still"><img data-img="' + esc(w.word) + '" alt=""></div>' : "") + '<div class="meta"><span>' + (i+1) + " / " + n + '</span><span class="st ' + status(w.word) + '">' + status(w.word) + "</span></div>";
   if (st.rated) return h + '<div class="rated">' + st.rated + "</div></div>";
   h += '<div class="body">';
   if (!st.flipped){
@@ -353,7 +356,7 @@ function tokenise(text){
 }
 function storySlide(f, i){
   const s = f.s, st = slideState[i];
-  let h = '<div class="slide" data-i="' + i + '"><div class="meta"><span style="color:var(--amber)">' + esc(s.genre) + '</span><span>tap any word</span></div>';
+  let h = '<div class="slide tinted" data-i="' + i + '"><div class="meta"><span style="color:var(--amber)">' + esc(s.genre) + '</span><span>tap any word</span></div>';
   if (st.rated) return h + '<div class="rated">' + st.rated + "</div></div>";
   h += '<div class="body"><div class="story"><h2>' + esc(s.title) + "</h2><p>";
   tokenise(s.text).forEach(tok => {
@@ -367,7 +370,7 @@ function storySlide(f, i){
 }
 function doneSlide(i){
   const t = today(), n = P.days[t] || 0, tmr = dueCount(addDays(t,1));
-  return '<div class="slide" data-i="' + i + '"><div class="done"><p class="big">' + (n ? "🎉" : "☕️") + '</p><h2>' + (n ? "That's a wrap." : "Nothing due today.") + '</h2><p>' + (tmr ? tmr + " word" + (tmr > 1 ? "s" : "") + " due tomorrow." : "Tomorrow is clear too.") + '</p><div class="row"><div class="st"><b>' + n + '</b><span>reviews today</span></div><div class="st"><b>' + streak() + '</b><span>day streak</span></div><div class="st"><b>' + P.inbox.length + '</b><span>to send to Claude</span></div></div><button class="btn o" style="width:auto;padding:10px 18px" data-act="ahead">10 more words</button></div></div>';
+  return '<div class="slide tinted" style="--tint:#2A2412" data-i="' + i + '"><div class="done"><p class="big">' + (n ? "🎉" : "☕️") + '</p><h2>' + (n ? "That's a wrap." : "Nothing due today.") + '</h2><p>' + (tmr ? tmr + " word" + (tmr > 1 ? "s" : "") + " due tomorrow." : "Tomorrow is clear too.") + '</p><div class="row"><div class="st"><b>' + n + '</b><span>reviews today</span></div><div class="st"><b>' + streak() + '</b><span>day streak</span></div><div class="st"><b>' + P.inbox.length + '</b><span>to send to Claude</span></div></div><button class="btn o" style="width:auto;padding:10px 18px" data-act="ahead">10 more words</button></div></div>';
 }
 function renderFeed(){
   let h = '<div id="feed">';
@@ -381,7 +384,7 @@ function hydrateImages(){
 /* ================= render: list ================= */
 function renderList(){
   const order = { new: 0, learning: 1, review: 2, known: 3 };
-  let h = '<div class="page"><p class="title">All words<small>' + WORDS.length + " words</small></p>";
+  let h = '<div class="page tinted"><p class="title">All words<small>' + WORDS.length + " words</small></p>";
   if (ui.banner) h += '<div class="banner ' + (ui.bannerWarn ? "warn" : "") + '"><span>' + esc(ui.banner) + '</span><u data-act="hidebanner">OK</u></div>';
   h += '<div class="list">';
   [...WORDS].sort((a,b) => a.word.localeCompare(b.word)).forEach(w => {
@@ -417,7 +420,7 @@ function renderStats(){
   WORDS.forEach(w => counts[status(w.word)]++);
   const pct = total ? Math.round(counts.known / total * 100) : 0;
   const last = P.lastBackup || 0, days = last ? Math.floor((Date.now() - last) / 864e5) : null;
-  let h = '<div class="page"><p class="title">Statistics</p>';
+  let h = '<div class="page tinted"><p class="title">Statistics</p>';
   if (ui.banner) h += '<div class="banner ' + (ui.bannerWarn ? "warn" : "") + '"><span>' + esc(ui.banner) + '</span><u data-act="hidebanner">OK</u></div>';
   h += '<div class="stats4"><div class="box"><b style="color:var(--new)">' + counts.new + '</b><span>New</span></div><div class="box"><b style="color:var(--amber)">' + counts.learning + '</b><span>Learning</span></div><div class="box"><b style="color:var(--review)">' + counts.review + '</b><span>Review</span></div><div class="box"><b style="color:var(--known)">' + counts.known + "</b><span>Known</span></div></div>";
   h += '<div class="box"><div class="row" style="justify-content:space-between"><h3 style="margin:0">Known ' + pct + '%</h3><span style="font-size:13px;color:var(--dim)">' + streak() + " day streak, " + dueCount(addDays(today(),1)) + ' due tomorrow</span></div><div class="bar"><i style="width:' + pct + '%"></i></div></div>';
