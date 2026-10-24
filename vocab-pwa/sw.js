@@ -1,5 +1,5 @@
 // Bump this on every deploy. It only affects the offline cache, never your saved progress.
-const SW_VERSION = "2026.10.24-37";
+const SW_VERSION = "2026.10.24-38";
 const CACHE = "vocab-" + SW_VERSION;
 const FILES = ["./", "index.html", "words.json", "stories.json", "news.json", "manifest.webmanifest", "icon-180.png", "icon-192.png", "icon-512.png"];
 

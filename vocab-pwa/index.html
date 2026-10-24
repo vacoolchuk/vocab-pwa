@@ -248,7 +248,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-37";
+const APP_VERSION = "2026.10.24-38";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -754,21 +754,40 @@ function watchWords(){
   const inbox = P.inbox.map(i => i.word).filter(w => !mine.includes(w));
   return { mine, inbox };
 }
+function watchListHTML(q){
+  q = (q || "").trim().toLowerCase();
+  const { mine, inbox } = watchWords(), cur = ui.watchWord, LIM = 12;
+  const chip = x => '<button data-act="watchpick" data-w="' + esc(x) + '" class="' + (x === cur ? "on" : "") + '">' + esc(x) + "</button>";
+  let m = mine, i = inbox, hidden = 0;
+  if (q){ m = m.filter(x => x.toLowerCase().includes(q)); i = i.filter(x => x.toLowerCase().includes(q)); }
+  else if (!ui.watchAll && mine.length > LIM){ hidden = mine.length - LIM; m = mine.slice(0, LIM); }
+  let h = "";
+  if (m.length) h += '<p class="wlabel">' + (q ? "Matches" : "Your words (" + mine.length + ")") + '</p><div class="wchips">' + m.map(chip).join("") + "</div>";
+  if (hidden) h += '<button class="wbtn" data-act="watchall" style="margin-top:12px">Show all ' + mine.length + "</button>";
+  if (i.length) h += '<p class="wlabel">Want to learn</p><div class="wchips">' + i.map(chip).join("") + "</div>";
+  if (q && !m.length && !i.length) h += '<p class="wfoot" style="margin-top:14px">Not in your lists. Press Go to look for clips of "' + esc(q) + '" anyway.</p>';
+  return h;
+}
+function watchSubmit(raw){
+  const q = (raw || "").trim(); if (!q) return;
+  const { mine, inbox } = watchWords(), all = [...mine, ...inbox], low = q.toLowerCase();
+  const exact = all.find(x => x.toLowerCase() === low);
+  const part = all.filter(x => x.toLowerCase().includes(low));
+  watchPlay(exact || (part.length === 1 ? part[0] : q));
+}
 function renderWatch(){
   const { mine, inbox } = watchWords();
   if (!ui.watchWord) ui.watchWord = mine[0] || inbox[0] || "";
   const w = ui.watchWord;
-  const chip = x => '<button data-act="watchpick" data-w="' + esc(x) + '" class="' + (x === w ? "on" : "") + '">' + esc(x) + "</button>";
   let h = '<div class="page tinted"><p class="title">Watch<small>Real people saying it</small></p>';
-  h += '<div class="wsearch"><input id="watchq" type="search" placeholder="Any word or phrase" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="go"><button data-act="watchgo">Go</button></div>';
+  h += '<div class="wsearch"><input id="watchq" type="search" placeholder="Search your words, or any phrase" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="go"><button data-act="watchgo">Go</button></div>';
   if (w){
     h += '<div class="wnow"><b id="watchnow">' + esc(w) + "</b><span>British accent, from YouTube</span></div>";
     h += '<div class="wplayer"><div id="ygw"></div></div>';
     h += ygBar("ygw");
     h += '<p class="wfoot">Not loading? <a id="watchlink" href="https://youglish.com/pronounce/' + encodeURIComponent(w) + '/english/uk" target="_blank" rel="noopener">Open in YouGlish</a></p>';
   } else h += '<p class="empty">Add a word and it shows up here.</p>';
-  if (mine.length) h += '<p class="wlabel">Your words</p><div class="wchips">' + mine.map(chip).join("") + "</div>";
-  if (inbox.length) h += '<p class="wlabel">Want to learn</p><div class="wchips">' + inbox.map(chip).join("") + "</div>";
+  h += '<div id="wlist">' + watchListHTML("") + "</div>";
   return h + "</div>";
 }
 function watchPlay(word){
@@ -982,8 +1001,8 @@ function importFile(ev){
   r.readAsText(f);
 }
 
-document.addEventListener("input", e => { if (e.target.id !== "catch") return; clearTimeout(catchTimer); const v = e.target.value; catchTimer = setTimeout(() => catchLookup(v), 450); });
-document.addEventListener("keydown", e => { if (e.target.id === "watchq" && e.key === "Enter"){ watchPlay(e.target.value); e.target.blur(); return; } if (e.target.id === "catch" && e.key === "Enter"){ clearTimeout(catchTimer); catchLookup(e.target.value); e.target.blur(); } });
+document.addEventListener("input", e => { if (e.target.id === "watchq"){ const l = document.getElementById("wlist"); if (l) l.innerHTML = watchListHTML(e.target.value); return; } if (e.target.id !== "catch") return; clearTimeout(catchTimer); const v = e.target.value; catchTimer = setTimeout(() => catchLookup(v), 450); });
+document.addEventListener("keydown", e => { if (e.target.id === "watchq" && e.key === "Enter"){ watchSubmit(e.target.value); e.target.blur(); return; } if (e.target.id === "catch" && e.key === "Enter"){ clearTimeout(catchTimer); catchLookup(e.target.value); e.target.blur(); } });
 
 document.addEventListener("touchstart", () => { const c = ctx(); if (c && c.state === "suspended") c.resume(); }, { once: true, passive: true });
 document.addEventListener("click", async e => {
@@ -1032,7 +1051,8 @@ document.addEventListener("click", async e => {
   if (a === "ygprev"){ const c = YGW[t.dataset.id]; if (c) try { c.w.previous(); } catch(e){} return; }
   if (a === "ygnext"){ const c = YGW[t.dataset.id]; if (c) try { c.w.next(); } catch(e){} return; }
   if (a === "watchpick") return watchPlay(t.dataset.w);
-  if (a === "watchgo"){ const q = document.getElementById("watchq"); watchPlay(q ? q.value : ""); if (q) q.blur(); return; }
+  if (a === "watchgo"){ const q = document.getElementById("watchq"); watchSubmit(q ? q.value : ""); if (q) q.blur(); return; }
+  if (a === "watchall"){ ui.watchAll = true; const l = document.getElementById("wlist"); if (l) l.innerHTML = watchListHTML(""); return; }
   if (a === "wild"){ e.stopPropagation(); return openWild(t.dataset.w); }
   if (a === "read"){ e.stopPropagation(); const id = t.dataset.id; const [kind, key] = [id.slice(0, id.indexOf(":")), id.slice(id.indexOf(":") + 1)]; const src = kind === "news" ? NEWS_BY[key] : STORIES.find(x => x.id === key); if (src) readAloud(id, (src.title ? src.title + ". " : "") + src.text); return; }
   if (a === "closewild") return closeWild();
