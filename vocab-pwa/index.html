@@ -360,7 +360,7 @@ function prefetchImages(){
 /* ================= card modes: see / cloze / listen ================= */
 function wordRegex(word){
   const parts = word.trim().split(/\s+/).map(x => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
-  if (parts.length > 1){ const forms = Object.keys(IRREGULAR).filter(k => IRREGULAR[k] === parts[0]); if (forms.length) parts[0] = "(?:" + [parts[0], ...forms].join("|") + ")"; }
+  if (parts.length > 1){ const forms = Object.keys(IRREGULAR).filter(k => IRREGULAR[k] === parts[0]); const base = parts[0].length > 4 ? parts[0].replace(/e$/, "") : parts[0]; parts[0] = "(?:" + [base + "[a-z]*", ...forms].join("|") + ")"; }
   const last = parts[parts.length - 1]; const stem = last.length > 4 ? last.replace(/e$/, "") : last;
   parts[parts.length - 1] = stem + "[a-z]*";
   return new RegExp("\\b" + parts.join("\\s+"), "i");
