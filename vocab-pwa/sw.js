@@ -1,5 +1,5 @@
 // Bump this on every deploy. It only affects the offline cache, never your saved progress.
-const SW_VERSION = "2026.10.24-29";
+const SW_VERSION = "2026.10.24-30";
 const CACHE = "vocab-" + SW_VERSION;
 const FILES = ["./", "index.html", "words.json", "stories.json", "news.json", "manifest.webmanifest", "icon-180.png", "icon-192.png", "icon-512.png"];
 
@@ -25,6 +25,11 @@ self.addEventListener("fetch", e => {
     return;
   }
   if (url.origin !== location.origin) return;
+  // generated audio: cache first, it never changes for the same file name + content
+  if (/\/audio\/.*\.mp3$/.test(url.pathname)){
+    e.respondWith(caches.open("vocab-audio").then(c => c.match(e.request).then(r => r || fetch(e.request).then(res => { if (res.ok) c.put(e.request, res.clone()); return res; }))));
+    return;
+  }
   e.respondWith(
     fetch(e.request, { cache: "no-cache" })
       .then(res => {

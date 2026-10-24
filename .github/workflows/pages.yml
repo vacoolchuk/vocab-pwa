@@ -18,6 +18,20 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Restore generated audio
+        uses: actions/cache@v4
+        with:
+          path: vocab-pwa/audio
+          key: audio-${{ github.sha }}
+          restore-keys: |
+            audio-
+      - name: Generate British neural voice audio for stories and news
+        run: |
+          pip install --quiet edge-tts
+          python scripts/make_audio.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

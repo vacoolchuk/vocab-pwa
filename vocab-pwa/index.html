@@ -216,7 +216,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-29";
+const APP_VERSION = "2026.10.24-30";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -343,19 +343,31 @@ function bestVoice(){
   return [...vs].sort((a,b) => voiceRank(b) - voiceRank(a))[0];
 }
 function speak(text){ if (!window.speechSynthesis) return; speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.lang = "en-GB"; u.rate = .9; const v = bestVoice(); if (v) u.voice = v; speechSynthesis.speak(u); }
-/* read a whole story or news item aloud, sentence by sentence (Safari cuts long utterances) */
-let readingId = null;
+/* read a whole story or news item aloud: a pre-generated British neural voice when the mp3 exists, else the phone's voice */
+let readingId = null, AUDIO = {}, player = null;
 function readAloud(id, text){
-  if (!window.speechSynthesis) return;
   if (readingId === id){ stopReading(); return; }
   stopReading(); readingId = id;
+  const key = id.replace(":", ":"); const entry = AUDIO[key];
+  if (entry && entry.file){
+    player = new Audio("audio/" + entry.file); player.preload = "auto";
+    player.onended = () => { if (readingId === id) stopReading(); };
+    player.onerror = () => { if (readingId === id){ player = null; speakFallback(id, text); } };
+    player.play().catch(() => { if (readingId === id){ player = null; speakFallback(id, text); } });
+    document.querySelectorAll('[data-act="read"]').forEach(b => b.classList.toggle("on", b.dataset.id === id));
+    return;
+  }
+  speakFallback(id, text);
+}
+function speakFallback(id, text){
+  if (!window.speechSynthesis) return;
   const clean = text.replace(/\{\{([^|]+)\|[^}]+\}\}/g, "$1").replace(/\s+/g, " ").trim();
   const parts = clean.match(/[^.!?]+[.!?]+["”']?|[^.!?]+$/g) || [clean];
   const v = bestVoice();
   parts.forEach((pt, k) => { const u = new SpeechSynthesisUtterance(pt.trim()); u.lang = "en-GB"; u.rate = .92; if (v) u.voice = v; if (k === parts.length - 1) u.onend = () => { if (readingId === id) stopReading(); }; speechSynthesis.speak(u); });
   document.querySelectorAll('[data-act="read"]').forEach(b => b.classList.toggle("on", b.dataset.id === id));
 }
-function stopReading(){ if (window.speechSynthesis) speechSynthesis.cancel(); readingId = null; document.querySelectorAll('[data-act="read"].on').forEach(b => b.classList.remove("on")); }
+function stopReading(){ if (player){ try { player.pause(); } catch(e){} player = null; } if (window.speechSynthesis) speechSynthesis.cancel(); readingId = null; document.querySelectorAll('[data-act="read"].on').forEach(b => b.classList.remove("on")); }
 function readBtn(id){ return '<button class="readbtn" data-act="read" data-id="' + esc(id) + '"><svg class="tri" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg><span class="rl">Listen</span><span class="rs">Stop</span></button>'; }
 function say(m, err){ ui.msg = m; ui.msgErr = !!err; render(); setTimeout(() => { ui.msg = ""; render(); }, 3500); }
 function examplesHTML(d, cls){ return '<div class="ex"><h4>Examples</h4>' + d.examples.map(e => "<p>" + esc(e) + "</p>").join("") + "</div>"; }
@@ -920,7 +932,8 @@ async function loadJSON(name){
 }
 async function boot(){
   if (window.speechSynthesis){ speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged = () => { if (view === "stats") render(); }; }
-  [WORDS, STORIES, NEWS] = await Promise.all([loadJSON("words.json"), loadJSON("stories.json"), loadJSON("news.json")]);
+  [WORDS, STORIES, NEWS, AUDIO] = await Promise.all([loadJSON("words.json"), loadJSON("stories.json"), loadJSON("news.json"), loadJSON("audio/index.json")]);
+  if (!AUDIO || Array.isArray(AUDIO)) AUDIO = {};
   if (NEWS && NEWS.items) NEWS.items.forEach(n => NEWS_BY[n.id] = n); else NEWS = null;
   WORDS.forEach(w => BY[w.word] = w);
   await loadP();
