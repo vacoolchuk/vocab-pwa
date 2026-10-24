@@ -47,6 +47,12 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 .body{flex:1;min-height:0;display:flex;flex-direction:column;position:relative;z-index:1}
 .front{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;cursor:pointer;padding-bottom:12vh}
 .front .w{font-family:var(--display);font-weight:600;font-size:64px;line-height:.95;letter-spacing:-.01em;margin:0 0 18px;color:var(--milk);text-shadow:0 2px 24px rgba(0,0,0,.6)}
+.front.cloze{justify-content:center;padding-bottom:6vh;text-align:left;align-items:stretch}
+.cz{font-family:var(--book);font-size:26px;line-height:1.45;color:var(--milk);margin:0 0 22px;text-shadow:0 2px 24px rgba(0,0,0,.6)}
+.hintdef{font-family:var(--display);font-size:17px;letter-spacing:.03em;color:var(--amber);margin:0;opacity:.9}
+.front.listen{justify-content:center;padding-bottom:8vh}
+.bigplay{width:112px;height:112px;border-radius:50%;border:1.5px solid var(--amber);background:rgba(0,0,0,.45);color:var(--amber);font-size:40px;padding-left:8px;margin-bottom:26px}
+.bigplay:active{background:var(--amber);color:#000}
 .saybtn{font-family:var(--mono);font-size:15px;color:var(--amber);background:rgba(0,0,0,.55);border:1px solid rgba(212,162,76,.35);border-radius:4px;padding:7px 14px;letter-spacing:.02em}
 .saybtn:before{content:"▶";font-size:10px;margin-right:9px;vertical-align:1px}
 .back{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px;cursor:pointer}
@@ -160,7 +166,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-12";
+const APP_VERSION = "2026.10.24-13";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -270,7 +276,7 @@ function buildFeed(ahead){
   cards.forEach((w,i) => { feed.push({ type: "word", w }); if ((i+1) % STORY_EVERY === 0 && stories.length) feed.push({ type: "story", s: stories.shift() }); });
   stories.forEach(s => feed.push({ type: "story", s }));
   feed.push({ type: "done" });
-  feed.forEach((f,i) => slideState[i] = { flipped: false, defIdx: 0, rated: "", peeked: [], inboxed: [] });
+  feed.forEach((f,i) => slideState[i] = { flipped: false, defIdx: 0, rated: "", peeked: [], inboxed: [], mode: f.type === "word" ? pickMode(f.w) : "see" });
 }
 
 /* ================= helpers ================= */
@@ -319,17 +325,44 @@ function prefetchImages(){
   words.forEach(async w => { const urls = await imageCandidates(w); if (urls.length){ const im = new Image(); loadInto(im, w, urls, 0); } });
 }
 
+/* ================= card modes: see / cloze / listen ================= */
+function wordRegex(word){
+  const parts = word.trim().split(/\s+/).map(x => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const last = parts[parts.length - 1]; const stem = last.length > 4 ? last.replace(/e$/, "") : last;
+  parts[parts.length - 1] = stem + "[a-z]*";
+  return new RegExp("\\b" + parts.join("\\s+"), "i");
+}
+function clozeFor(w, defIdx){
+  const re = wordRegex(w.word);
+  const order = [defIdx, ...w.definitions.map((_, k) => k).filter(k => k !== defIdx)];
+  for (const k of order){ for (const ex of w.definitions[k].examples){ const m = ex.match(re); if (m) return { text: ex.replace(m[0], "____"), k }; } }
+  return null;
+}
+function pickMode(w){
+  const c = card(w.word); if (!c || c.reps < 1) return "see";
+  let h = 0; for (const ch of w.word) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  const m = ["see", "cloze", "listen"][(h + c.reps) % 3];
+  return m === "cloze" && !clozeFor(w, 0) ? "see" : m;
+}
+
 /* ================= render: feed ================= */
 const TINTS = ["#1B2A20", "#15292B", "#172236", "#2A1B30", "#30211A", "#262A17"]; // green, teal, blue, plum, rust, olive
 function tintFor(word){ let h = 0; for (const ch of word) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return TINTS[h % TINTS.length]; }
 function wordSlide(f, i){
   const w = f.w, st = slideState[i], d = w.definitions[Math.min(st.defIdx, w.definitions.length-1)];
   const n = feed.filter(x => x.type !== "done").length;
-  let h = '<div class="slide tinted" style="--tint:' + tintFor(w.word) + '" data-i="' + i + '">' + (w.image || w.imgQuery ? '<div class="still"><img data-img="' + esc(w.word) + '" alt=""></div>' : "") + '<div class="meta"><span>' + (i+1) + " / " + n + '</span><span class="st ' + status(w.word) + '">' + status(w.word) + "</span></div>";
+  let h = '<div class="slide tinted" style="--tint:' + tintFor(w.word) + '" data-i="' + i + '">' + (w.image || w.imgQuery ? '<div class="still"><img data-img="' + esc(w.word) + '" alt=""></div>' : "") + '<div class="meta"><span>' + (i+1) + " / " + n + (st.mode === "cloze" ? " · fill the gap" : st.mode === "listen" ? " · listen" : "") + '</span><span class="st ' + status(w.word) + '">' + status(w.word) + "</span></div>";
   if (st.rated) return h + '<div class="rated">' + st.rated + "</div></div>";
   h += '<div class="body">';
   if (!st.flipped){
-    h += '<div class="front" data-act="flip"><p class="w">' + esc(w.word) + '</p><button class="saybtn" data-act="say" data-w="' + esc(w.word) + '">' + esc(w.pronunciation) + '</button></div>';
+    if (st.mode === "cloze"){
+      const cz = clozeFor(w, st.defIdx) || { text: w.definitions[0].examples[0], k: 0 }; st.clozeDef = cz.k;
+      h += '<div class="front cloze" data-act="flip"><p class="cz">' + esc(cz.text) + '</p><p class="hintdef">' + esc(w.definitions[cz.k].def) + '</p></div>';
+    } else if (st.mode === "listen"){
+      h += '<div class="front listen" data-act="flip"><button class="bigplay" data-act="say" data-w="' + esc(w.word) + '">▶</button><p class="hintdef">' + esc(w.definitions[0].context) + '</p></div>';
+    } else {
+      h += '<div class="front" data-act="flip"><p class="w">' + esc(w.word) + '</p><button class="saybtn" data-act="say" data-w="' + esc(w.word) + '">' + esc(w.pronunciation) + '</button></div>';
+    }
     // (tap anywhere on the back flips it again; buttons stop propagation)
   } else {
     h += '<div class="back" data-act="flip">';
@@ -521,7 +554,7 @@ async function doRate(i, g){
   const w = feed[i].w; rate(w.word, g);
   slideState[i].rated = g === "again" ? "Again soon" : g === "hard" ? "Hard · " + ivlLabelDone(w.word) : g === "good" ? "Good · " + ivlLabelDone(w.word) : "Easy · " + ivlLabelDone(w.word);
   if (g === "again"){ // requeue before the done slide
-    const doneIdx = feed.length - 1; feed.splice(doneIdx, 0, { type: "word", w }); slideState = Object.fromEntries(Object.entries(slideState).map(([k,v]) => [k >= doneIdx ? +k+1 : k, v])); slideState[doneIdx] = { flipped: false, defIdx: 0, rated: "", peeked: [], inboxed: [] };
+    const doneIdx = feed.length - 1; feed.splice(doneIdx, 0, { type: "word", w }); slideState = Object.fromEntries(Object.entries(slideState).map(([k,v]) => [k >= doneIdx ? +k+1 : k, v])); slideState[doneIdx] = { flipped: false, defIdx: 0, rated: "", peeked: [], inboxed: [], mode: "see" };
     render(); setTimeout(() => nextSlide(i), 350); return;
   }
   rerenderSlide(i); rerenderSlide(feed.length-1); setTimeout(() => nextSlide(i), 350);
@@ -568,7 +601,7 @@ document.addEventListener("click", async e => {
   const t = e.target.closest("[data-act]"); if (!t) return;
   const a = t.dataset.act, i = +t.dataset.i, slide = t.closest(".slide"), si = slide ? +slide.dataset.i : -1;
   if (a === "say"){ e.stopPropagation(); return speak(t.dataset.w); }
-  if (a === "flip"){ slideState[si].flipped = !slideState[si].flipped; slideState[si].defIdx = 0; return rerenderSlide(si); }
+  if (a === "flip"){ const ss = slideState[si]; ss.flipped = !ss.flipped; ss.defIdx = (ss.mode === "cloze" && ss.clozeDef != null) ? ss.clozeDef : 0; return rerenderSlide(si); }
   if (a === "def"){ e.stopPropagation(); slideState[si].defIdx = +t.dataset.k; return rerenderSlide(si); }
   if (a === "rate"){ e.stopPropagation(); return doRate(si, t.dataset.g); }
   if (a === "peek"){

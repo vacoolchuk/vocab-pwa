@@ -73,6 +73,7 @@ redundant, irritate, enmity, frail, carrion, scavenger, feeble, petal, at libert
 ### How the app works
 - **Today** tab: a vertical feed, one full-screen card per word, swipe up for the next (like TikTok). Tap the card to reveal the meaning, then rate it: **Again / Hard / Good / Easy**.
 - Spaced repetition (SM-2 style). Each word has an interval and a due date. Again = back today, Hard = ×1.2, Good = ×ease (starts 2.5), Easy = ×ease×1.3. Statuses: new → learning (interval under 7 days) → review (7–29) → known (30+).
+- Three card types rotate for words already reviewed at least once: see (word first), fill the gap (an example sentence with the word blanked out, definition as a hint) and listen (play button only, recall the word by ear). New words always start with the plain card.
 - 10 new words per day maximum. The feed ends with a "Done for today" card and a "Review ahead" button.
 - **Stories** appear in the feed every 4 cards (max 3 per session). They are picked to contain words whose interval is 7+ days, i.e. words I am about to forget. Words are NOT highlighted. I read, and tap any word I do not recognise: a vocabulary word shows its meaning and comes back tomorrow (interval halved); any other word can be added to **"Want to learn"**. Words I pass without tapping get their interval nudged up by 15% on "Done reading".
 - **Want to learn** (Stats tab): the inbox of words I tapped in stories. "Send to Claude" shares the list via the iOS share sheet. I bring them to this chat, you teach them, and on "update the app" they join `words.json`.
