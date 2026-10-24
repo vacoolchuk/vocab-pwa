@@ -116,6 +116,21 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 .ntext .t.inbox{background:rgba(141,187,138,.2);color:var(--known)}
 .nsrc{font-family:var(--display);font-size:14px;letter-spacing:.04em;color:var(--dim);text-decoration:none;border-bottom:1px solid var(--line)}
 
+/* ---------- watch tab ---------- */
+.wsearch{display:flex;gap:8px;margin-bottom:14px}
+.wsearch input{flex:1;min-width:0;background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--milk);font-family:var(--display);font-size:24px;padding:8px 2px;outline:none;border-radius:0}
+.wsearch button{background:transparent;border:1px solid var(--amber);color:var(--amber);font-family:var(--display);font-size:17px;letter-spacing:.05em;padding:0 16px}
+.wplayer{background:#000;border:1px solid var(--line);margin-bottom:6px}
+.wplayer iframe{display:block;width:100%;height:min(58vh,520px);border:0}
+.wnow{display:flex;align-items:baseline;gap:10px;margin:2px 0 8px}
+.wnow b{font-family:var(--display);font-size:26px;font-weight:600}
+.wnow span{font-size:12px;color:var(--dim)}
+.wfoot{font-size:12px;color:var(--dim);margin:0 0 18px}
+.wfoot a{color:var(--amber)}
+.wchips{display:flex;flex-wrap:wrap;gap:8px}
+.wchips button{background:transparent;border:1px solid var(--line);color:var(--milk);font-family:var(--display);font-size:18px;letter-spacing:.02em;padding:6px 12px}
+.wchips button.on{border-color:var(--amber);color:var(--amber)}
+.wlabel{font-family:var(--display);font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:16px 0 8px}
 /* ---------- hear it in the wild ---------- */
 .wild{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:9px 14px;border:1px solid var(--amber);background:transparent;color:var(--amber);font-family:var(--display);font-size:16px;letter-spacing:.04em}
 .wild .tri{width:12px;height:12px;fill:currentColor;pointer-events:none}
@@ -213,13 +228,14 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
   <button data-nav="feed" class="on"><span>▲</span>Today</button>
   <button data-nav="catch"><span>+</span>Catch</button>
   <button data-nav="news"><span>≡</span>News</button>
+  <button data-nav="watch"><span>▶</span>Watch</button>
   <button data-nav="list"><span>≡</span>Words</button>
   <button data-nav="stats"><span>◔</span>Stats</button>
 </nav>
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-34";
+const APP_VERSION = "2026.10.24-35";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -696,7 +712,7 @@ function render(){
   const feedEl = document.getElementById("feed"); const scroll = feedEl ? feedEl.scrollTop : 0;
   const pageEl = document.querySelector(".page"); const pageScroll = pageEl ? pageEl.scrollTop : 0;
   const prevView = app.dataset.view;
-  app.innerHTML = view === "feed" ? renderFeed() : view === "list" ? renderList() : view === "catch" ? renderCatch() : view === "news" ? renderNews() : renderStats();
+  app.innerHTML = view === "feed" ? renderFeed() : view === "list" ? renderList() : view === "catch" ? renderCatch() : view === "news" ? renderNews() : view === "watch" ? renderWatch() : renderStats();
   app.dataset.view = view;
   const pg = document.querySelector(".page"); if (pg && prevView === view) pg.scrollTop = pageScroll;
   document.querySelectorAll("#nav button").forEach(b => b.classList.toggle("on", b.dataset.nav === view));
@@ -714,6 +730,43 @@ function rerenderSlide(i){
   old.replaceWith(tmp.firstChild); hydrateImages();
 }
 function nextSlide(i){ const el = document.querySelector('.slide[data-i="' + (i+1) + '"]'); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }
+
+
+/* ================= render: watch (real speakers saying your words, via YouGlish) ================= */
+function watchSrc(w){ return "https://youglish.com/pronounce/" + encodeURIComponent(w) + "/english/uk?embed=1"; }
+function watchWords(){
+  const rank = { learning: 0, review: 1, new: 2, known: 3 };
+  const mine = WORDS.map(w => w.word).sort((a,b) => rank[status(a)] - rank[status(b)]);
+  const inbox = P.inbox.map(i => i.word).filter(w => !mine.includes(w));
+  return { mine, inbox };
+}
+function renderWatch(){
+  const { mine, inbox } = watchWords();
+  if (!ui.watchWord) ui.watchWord = mine[0] || inbox[0] || "";
+  const w = ui.watchWord;
+  const chip = x => '<button data-act="watchpick" data-w="' + esc(x) + '" class="' + (x === w ? "on" : "") + '">' + esc(x) + "</button>";
+  let h = '<div class="page tinted"><p class="title">Watch<small>Real people saying it</small></p>';
+  h += '<div class="wsearch"><input id="watchq" type="search" placeholder="Any word or phrase" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="go"><button data-act="watchgo">Go</button></div>';
+  if (w){
+    h += '<div class="wnow"><b id="watchnow">' + esc(w) + "</b><span>British accent, from YouTube</span></div>";
+    h += '<div class="wplayer"><iframe id="watchframe" src="' + watchSrc(w) + '" allow="autoplay; fullscreen" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></div>';
+    h += '<p class="wfoot">Swipe or tap Next inside the player for another clip. Not loading? <a id="watchlink" href="https://youglish.com/pronounce/' + encodeURIComponent(w) + '/english/uk" target="_blank" rel="noopener">Open in YouGlish</a></p>';
+  } else h += '<p class="empty">Add a word and it shows up here.</p>';
+  if (mine.length) h += '<p class="wlabel">Your words</p><div class="wchips">' + mine.map(chip).join("") + "</div>";
+  if (inbox.length) h += '<p class="wlabel">Want to learn</p><div class="wchips">' + inbox.map(chip).join("") + "</div>";
+  return h + "</div>";
+}
+function watchPlay(word){
+  word = (word || "").trim(); if (!word) return;
+  ui.watchWord = word;
+  const f = document.getElementById("watchframe");
+  if (!f){ render(); return; }
+  f.src = watchSrc(word);
+  document.getElementById("watchnow").textContent = word;
+  document.getElementById("watchlink").href = "https://youglish.com/pronounce/" + encodeURIComponent(word) + "/english/uk";
+  document.querySelectorAll(".wchips button").forEach(b => b.classList.toggle("on", b.dataset.w === word));
+  const pg = document.querySelector(".page"); if (pg) pg.scrollTo({ top: 0, behavior: "smooth" });
+}
 
 /* ================= hear it in the wild (YouGlish) ================= */
 function wildBtn(word){ return '<button class="wild" data-act="wild" data-w="' + esc(word) + '"><svg class="tri" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>Hear it in the wild</button>'; }
@@ -873,7 +926,7 @@ function importFile(ev){
 }
 
 document.addEventListener("input", e => { if (e.target.id !== "catch") return; clearTimeout(catchTimer); const v = e.target.value; catchTimer = setTimeout(() => catchLookup(v), 450); });
-document.addEventListener("keydown", e => { if (e.target.id === "catch" && e.key === "Enter"){ clearTimeout(catchTimer); catchLookup(e.target.value); e.target.blur(); } });
+document.addEventListener("keydown", e => { if (e.target.id === "watchq" && e.key === "Enter"){ watchPlay(e.target.value); e.target.blur(); return; } if (e.target.id === "catch" && e.key === "Enter"){ clearTimeout(catchTimer); catchLookup(e.target.value); e.target.blur(); } });
 
 document.addEventListener("touchstart", () => { const c = ctx(); if (c && c.state === "suspended") c.resume(); }, { once: true, passive: true });
 document.addEventListener("click", async e => {
@@ -919,6 +972,8 @@ document.addEventListener("click", async e => {
   }
   if (a === "inbox"){ const word = t.dataset.word; const src = t.dataset.n ? NEWS_BY[t.dataset.n] : (feed[i] && feed[i].s); const ge = document.getElementById("gloss"); const gt = ge ? ge.textContent : ""; addInbox(word, src ? sentenceAround(src.text, word.split(" ")[0]) : "", /^(…|Not in the dictionary|Dictionary not reachable)/.test(gt) ? "" : gt); if (slideState[i]) slideState[i].inboxed.push(word); hidePop(); render(); return; }
   if (a === "closepop") return hidePop();
+  if (a === "watchpick") return watchPlay(t.dataset.w);
+  if (a === "watchgo"){ const q = document.getElementById("watchq"); watchPlay(q ? q.value : ""); if (q) q.blur(); return; }
   if (a === "wild"){ e.stopPropagation(); return openWild(t.dataset.w); }
   if (a === "read"){ e.stopPropagation(); const id = t.dataset.id; const [kind, key] = [id.slice(0, id.indexOf(":")), id.slice(id.indexOf(":") + 1)]; const src = kind === "news" ? NEWS_BY[key] : STORIES.find(x => x.id === key); if (src) readAloud(id, (src.title ? src.title + ". " : "") + src.text); return; }
   if (a === "closewild") return closeWild();
