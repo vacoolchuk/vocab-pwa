@@ -197,7 +197,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-24";
+const APP_VERSION = "2026.10.24-25";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -360,6 +360,7 @@ function prefetchImages(){
 /* ================= card modes: see / cloze / listen ================= */
 function wordRegex(word){
   const parts = word.trim().split(/\s+/).map(x => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  if (parts.length > 1){ const forms = Object.keys(IRREGULAR).filter(k => IRREGULAR[k] === parts[0]); if (forms.length) parts[0] = "(?:" + [parts[0], ...forms].join("|") + ")"; }
   const last = parts[parts.length - 1]; const stem = last.length > 4 ? last.replace(/e$/, "") : last;
   parts[parts.length - 1] = stem + "[a-z]*";
   return new RegExp("\\b" + parts.join("\\s+"), "i");
@@ -508,12 +509,12 @@ async function catchLookup(q){
   if (q.length < 2){ ui.catchHTML = ""; res.innerHTML = ""; return; }
   const seq = ++catchSeq;
   res.innerHTML = '<p class="dimline">Looking up…</p>';
-  const inVocab = BY[q];
+  const inVocab = BY[q] || BY[q.split(/\s+/).map(lemma).join(" ")];
   const [entry, uk] = await Promise.all([dictEntry(q), ukGloss(q)]);
   if (seq !== catchSeq) return;
   let h = '<div class="cword"><div class="chead"><div><b>' + esc(q) + '</b>' + (entry && entry.ipa ? '<p class="cipa">' + esc(entry.ipa) + '</p>' : "") + '</div><button class="playbtn" data-act="say" data-w="' + esc(q) + '"><svg class="tri" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></button></div>';
   if (uk) h += '<p class="ukline">' + esc(uk) + "</p>";
-  if (inVocab) h += '<p class="dimline">Already in your vocabulary (' + status(q) + ').</p>';
+  if (inVocab) h += '<p class="dimline">Already in your vocabulary as "' + esc(inVocab.word) + '" (' + status(inVocab.word) + ').</p>';
   if (entry && entry.defs.length) h += entry.defs.map(d => '<p class="cdef"><span>' + esc(d.pos) + "</span>" + esc(d.text) + "</p>").join("");
   else if (!entry) h += '<p class="dimline">Dictionary not reachable. You can still add the word.</p>';
   else h += '<p class="dimline">Not in the dictionary. You can still add it.</p>';
@@ -686,8 +687,10 @@ function phraseGloss(word, story){
   const hit = Object.keys(g).find(k => k.includes(" ") && k.split(" ").includes(word)); // part of a glossed phrase
   return hit ? hit + ": " + g[hit] : null;
 }
+const IRREGULAR = {"broke":"break","broken":"break","came":"come","went":"go","gone":"go","took":"take","taken":"take","gave":"give","given":"give","got":"get","gotten":"get","ran":"run","saw":"see","seen":"see","made":"make","found":"find","brought":"bring","thought":"think","caught":"catch","fell":"fall","fallen":"fall","held":"hold","kept":"keep","left":"leave","lost":"lose","met":"meet","paid":"pay","said":"say","sat":"sit","sold":"sell","sent":"send","shook":"shake","shaken":"shake","spoke":"speak","spoken":"speak","stood":"stand","stuck":"stick","struck":"strike","swept":"sweep","told":"tell","threw":"throw","thrown":"throw","woke":"wake","woken":"wake","wore":"wear","worn":"wear","won":"win","wrote":"write","written":"write","drove":"drive","driven":"drive","ate":"eat","eaten":"eat","drank":"drink","drunk":"drink","began":"begin","begun":"begin","blew":"blow","blown":"blow","built":"build","bought":"buy","chose":"choose","chosen":"choose","did":"do","done":"do","drew":"draw","drawn":"draw","flew":"fly","flown":"fly","forgot":"forget","forgotten":"forget","froze":"freeze","frozen":"freeze","grew":"grow","grown":"grow","hid":"hide","hidden":"hide","hung":"hang","knew":"know","known":"know","laid":"lay","led":"lead","rode":"ride","ridden":"ride","rose":"rise","risen":"rise","sang":"sing","sung":"sing","sank":"sink","sunk":"sink","slept":"sleep","spent":"spend","stole":"steal","stolen":"steal","swam":"swim","swum":"swim","taught":"teach","tore":"tear","torn":"tear","understood":"understand","fed":"feed","fought":"fight","bent":"bend","bit":"bite","bitten":"bite","beaten":"beat","became":"become","felt":"feel","dealt":"deal","meant":"mean","dreamt":"dream","leapt":"leap","lent":"lend","lit":"light","shot":"shoot","sought":"seek","spun":"spin","sprang":"spring","sprung":"spring","stung":"sting","stank":"stink","strode":"stride","swore":"swear","sworn":"swear","wept":"weep","wound":"wind","withdrew":"withdraw","withdrawn":"withdraw","arose":"arise","arisen":"arise","awoke":"awake","bore":"bear","borne":"bear","bred":"breed","clung":"cling","crept":"creep","dug":"dig","fled":"flee","flung":"fling","forbade":"forbid","forgave":"forgive","forgiven":"forgive","ground":"grind","hurt":"hurt","knelt":"kneel","lain":"lie","lay":"lie","mistook":"mistake","overcame":"overcome","overtook":"overtake","shone":"shine","shrank":"shrink","shrunk":"shrink","slid":"slide","sped":"speed","spat":"spit","split":"split","spread":"spread","swung":"swing","trod":"tread","undertook":"undertake","upset":"upset","wrung":"wring","had":"have","has":"have","was":"be","were":"be","been":"be","is":"be","are":"be","am":"be"};
+function lemma(w){ w = String(w).toLowerCase(); return IRREGULAR[w] || w; }
 function stems(w){
-  const out = [w];
+  const out = [w]; if (IRREGULAR[w]) out.push(IRREGULAR[w]);
   if (w.endsWith("ies")) out.push(w.slice(0,-3) + "y");
   if (w.endsWith("es")) out.push(w.slice(0,-2));
   if (w.endsWith("s")) out.push(w.slice(0,-1));
@@ -851,7 +854,8 @@ async function boot(){
   WORDS.forEach(w => BY[w.word] = w);
   await loadP();
   // words that have become cards leave the "want to learn" list on their own
-  const inVocab = x => !!BY[x.word] || WORDS.some(w => w.word.includes(" ") ? wordRegex(w.word).test(x.word) : false);
+  const norm = ph => String(ph).toLowerCase().split(/\s+/).map(lemma).join(" ");
+  const inVocab = x => !!BY[x.word] || !!BY[norm(x.word)] || WORDS.some(w => w.word.includes(" ") && wordRegex(w.word).test(x.word));
   if (P.inbox.some(inVocab)){ P.inbox = P.inbox.filter(x => !inVocab(x)); await saveP(); }
   try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch(e){}
   const lastV = lsGet("wsv.version");
