@@ -171,3 +171,10 @@ When I send a batch of words from the app ("Teach me these words: ..."), do NOT 
 4. **Deploy:** I drag the folder to Netlify (30 seconds)
 5. **Review:** I swipe through the feed on the underground, read the stories, tap words I do not know, and glance at the widget on the home screen
 6. **Inbox:** words from "Want to learn" come back to this chat via "Send to Claude"
+
+## Saved videos (TikTok feed)
+- Watch has a "Words | Saved" switch. Saved is a vertical feed of TikTok videos listed in `vocab-pwa/videos.json`.
+- Format: `{"items":[{"id":"v1","url":"<link as she sent it>","title":"<short note, optional>","added":"YYYY-MM-DD"}]}`.
+- When she sends TikTok links in chat: append them to `items` (new id, today's date, her title if she gives one), bump APP_VERSION and SW_VERSION, validate JSON, push. Do not remove old ones unless she says so.
+- Short links (vm.tiktok.com) are fine: the app turns them into an embed on her phone. Claude's own sandbox cannot open TikTok, so Claude cannot check them.
+- A video that is private, deleted or has embedding disabled shows an "Open in TikTok" button instead of a player.
