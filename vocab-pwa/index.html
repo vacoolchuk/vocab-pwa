@@ -108,6 +108,20 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 .ntext .t.inbox{background:rgba(141,187,138,.2);color:var(--known)}
 .nsrc{font-family:var(--display);font-size:14px;letter-spacing:.04em;color:var(--dim);text-decoration:none;border-bottom:1px solid var(--line)}
 
+/* ---------- hear it in the wild ---------- */
+.wild{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:9px 14px;border:1px solid var(--amber);background:transparent;color:var(--amber);font-family:var(--display);font-size:16px;letter-spacing:.04em}
+.wild .tri{width:12px;height:12px;fill:currentColor;pointer-events:none}
+#wild{position:fixed;left:0;right:0;bottom:0;z-index:55;background:var(--surface);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .22s ease;padding-bottom:var(--sab)}
+#wild.show{transform:none}
+.wildhead{display:flex;align-items:baseline;gap:10px;padding:14px 18px 10px}
+.wildhead b{font-family:var(--display);font-size:24px;font-weight:600}
+.wildhead span{font-size:12px;color:var(--dim);flex:1}
+.wildhead button{background:transparent;border:0;color:var(--amber);font-family:var(--display);font-size:16px;letter-spacing:.05em;padding:4px 6px}
+.wildbody{background:#000}
+.wildbody iframe{display:block;width:100%;height:min(62vh,560px);border:0}
+.wildfoot{margin:0;padding:10px 18px 12px;font-size:12px;color:var(--dim)}
+.wildfoot a{color:var(--amber)}
+
 /* ---------- popup ---------- */
 #pop{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--surface);border-top:1px solid var(--line);padding:20px 22px calc(var(--sab) + 22px);transform:translateY(110%);transition:transform .22s ease;max-height:70vh;overflow-y:auto}
 #pop.show{transform:none}
@@ -186,7 +200,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 </head>
 <body>
 <div id="app"><p class="empty">Loading…</p></div>
-<div id="shade"></div><div id="pop"></div>
+<div id="shade"></div><div id="pop"></div><div id="wild"></div>
 <nav id="nav">
   <button data-nav="feed" class="on"><span>▲</span>Today</button>
   <button data-nav="catch"><span>+</span>Catch</button>
@@ -197,7 +211,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-25";
+const APP_VERSION = "2026.10.24-26";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -400,7 +414,7 @@ function wordSlide(f, i){
   } else {
     h += '<div class="back" data-act="flip">';
     if (w.definitions.length > 1) h += '<div class="mtabs">' + w.definitions.map((_, k) => '<button data-act="def" data-k="' + k + '" class="' + (st.defIdx === k ? "on" : "") + '">Meaning ' + (k+1) + "</button>").join("") + "</div>";
-    h += '<div class="row" style="flex-wrap:wrap;margin-bottom:4px"><span class="w">' + esc(w.word) + '</span><span class="ipa" data-act="say" data-w="' + esc(w.word) + '">▶\uFE0E ' + esc(w.pronunciation) + '</span></div><span class="tag">' + esc(d.context) + '</span><p class="def">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + "</p>" + examplesHTML(d) + "</div>";
+    h += '<div class="row" style="flex-wrap:wrap;margin-bottom:4px"><span class="w">' + esc(w.word) + '</span><span class="ipa" data-act="say" data-w="' + esc(w.word) + '">▶\uFE0E ' + esc(w.pronunciation) + '</span></div><span class="tag">' + esc(d.context) + '</span><p class="def">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + "</p>" + examplesHTML(d) + wildBtn(w.word) + "</div>";
     h += '<div class="rate"><button class="again" data-act="rate" data-g="again">Again</button><button class="hard" data-act="rate" data-g="hard">Hard</button><button class="good" data-act="rate" data-g="good">Good</button><button class="easy" data-act="rate" data-g="easy">Easy</button></div>';
   }
   return h + "</div></div>";
@@ -464,7 +478,7 @@ function detailHTML(w){
   const c = card(w.word), d = w.definitions[Math.min(ui.openDef, w.definitions.length-1)];
   let h = '<div class="detail" data-w="' + esc(w.word) + '">';
   if (w.definitions.length > 1) h += '<div class="mtabs">' + w.definitions.map((_, k) => '<button data-act="odef" data-k="' + k + '" class="' + (ui.openDef === k ? "on" : "") + '">Meaning ' + (k+1) + "</button>").join("") + "</div>";
-  return h + '<span class="tag">' + esc(d.context) + '</span><p class="def">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + "</p>" + examplesHTML(d) + "</div>";
+  return h + '<span class="tag">' + esc(d.context) + '</span><p class="def">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + "</p>" + examplesHTML(d) + wildBtn(w.word) + "</div>";
 }
 // open / close / switch meaning without rebuilding the page, so the scroll position never moves
 function toggleDetail(word){
@@ -518,6 +532,7 @@ async function catchLookup(q){
   if (entry && entry.defs.length) h += entry.defs.map(d => '<p class="cdef"><span>' + esc(d.pos) + "</span>" + esc(d.text) + "</p>").join("");
   else if (!entry) h += '<p class="dimline">Dictionary not reachable. You can still add the word.</p>';
   else h += '<p class="dimline">Not in the dictionary. You can still add it.</p>';
+  h += wildBtn(q);
   const have = P.inbox.some(x => x.word === q);
   if (!inVocab) h += '<div class="catchadd"><button class="btn" data-act="catchadd" data-word="' + esc(q) + '" data-def="' + esc(entry && entry.defs[0] ? entry.defs[0].text : "") + '">' + (have ? "Added" : "Add") + "</button></div>";
   h += "</div>";
@@ -629,6 +644,17 @@ function rerenderSlide(i){
   old.replaceWith(tmp.firstChild); hydrateImages();
 }
 function nextSlide(i){ const el = document.querySelector('.slide[data-i="' + (i+1) + '"]'); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }
+
+/* ================= hear it in the wild (YouGlish) ================= */
+function wildBtn(word){ return '<button class="wild" data-act="wild" data-w="' + esc(word) + '"><svg class="tri" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>Hear it in the wild</button>'; }
+function openWild(word){
+  const el = document.getElementById("wild"); el.classList.add("show"); document.getElementById("shade").classList.add("show");
+  const q = encodeURIComponent(word);
+  el.innerHTML = '<div class="wildhead"><b>' + esc(word) + '</b><span>British accent, from YouTube</span><button data-act="closewild">Close</button></div>' +
+    '<div class="wildbody"><iframe id="wildframe" src="https://youglish.com/pronounce/' + q + '/english/uk?embed=1" allow="autoplay; fullscreen" allowfullscreen loading="eager" referrerpolicy="no-referrer-when-downgrade"></iframe></div>' +
+    '<p class="wildfoot">Not loading? <a href="https://youglish.com/pronounce/' + q + '/english/uk" target="_blank" rel="noopener">Open in YouGlish</a></p>';
+}
+function closeWild(){ const el = document.getElementById("wild"); el.classList.remove("show"); el.innerHTML = ""; document.getElementById("shade").classList.remove("show"); }
 
 /* ================= popup ================= */
 function showPop(html){ document.getElementById("pop").innerHTML = html; document.getElementById("pop").classList.add("show"); document.getElementById("shade").classList.add("show"); }
@@ -781,7 +807,7 @@ document.addEventListener("keydown", e => { if (e.target.id === "catch" && e.key
 
 document.addEventListener("click", async e => {
   const nb = e.target.closest("[data-nav]"); if (nb){ view = nb.dataset.nav; ui.shownCode = ""; render(); return; }
-  if (e.target.id === "shade") return hidePop();
+  if (e.target.id === "shade"){ closeWild(); return hidePop(); }
   const t = e.target.closest("[data-act]"); if (!t) return;
   const a = t.dataset.act, i = +t.dataset.i, slide = t.closest(".slide"), si = slide ? +slide.dataset.i : -1;
   if (a === "say"){ e.stopPropagation(); return speak(t.dataset.w); }
@@ -822,6 +848,8 @@ document.addEventListener("click", async e => {
   }
   if (a === "inbox"){ const word = t.dataset.word; const src = t.dataset.n ? NEWS_BY[t.dataset.n] : (feed[i] && feed[i].s); const ge = document.getElementById("gloss"); const gt = ge ? ge.textContent : ""; addInbox(word, src ? sentenceAround(src.text, word.split(" ")[0]) : "", /^(…|Not in the dictionary|Dictionary not reachable)/.test(gt) ? "" : gt); if (slideState[i]) slideState[i].inboxed.push(word); hidePop(); render(); return; }
   if (a === "closepop") return hidePop();
+  if (a === "wild"){ e.stopPropagation(); return openWild(t.dataset.w); }
+  if (a === "closewild") return closeWild();
   if (a === "storydone") return storyDone(i);
   if (a === "ahead"){ buildFeed(true); render(); const fe = document.getElementById("feed"); if (fe) fe.scrollTop = 0; return; }
   if (a === "open") return toggleDetail(t.dataset.w);
