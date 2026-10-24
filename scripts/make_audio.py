@@ -4,8 +4,21 @@
 Writes vocab-pwa/audio/<kind>-<id>.mp3 and vocab-pwa/audio/index.json.
 Only items whose text changed (or that have no file yet) are generated.
 """
-import asyncio, hashlib, json, os, re, sys
+import asyncio, hashlib, json, os, re, shutil, subprocess, sys
 import edge_tts
+
+def trim(path):
+    """Cut leading/trailing silence and re-encode at 48 kbps mono (ffmpeg, when available)."""
+    if not shutil.which("ffmpeg"):
+        return
+    tmp = path + ".tmp.mp3"
+    cmd = ["ffmpeg", "-loglevel", "error", "-y", "-i", path, "-af",
+           "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.05,areverse,silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.15,areverse",
+           "-ac", "1", "-b:a", "48k", tmp]
+    if subprocess.run(cmd).returncode == 0 and os.path.getsize(tmp) > 1000:
+        os.replace(tmp, path)
+    elif os.path.exists(tmp):
+        os.remove(tmp)
 
 ROOT = os.path.join(os.path.dirname(__file__), "..", "vocab-pwa")
 OUT = os.path.join(ROOT, "audio")
@@ -45,7 +58,7 @@ async def main():
     for kind, id_, raw in items():
         text = clean(raw)
         rate = "-2%" if kind == "word" else RATE
-        h = hashlib.sha1((VOICES[kind] + rate + text).encode("utf-8")).hexdigest()[:10]
+        h = hashlib.sha1(("trim1" + VOICES[kind] + rate + text).encode("utf-8")).hexdigest()[:10]
         fname = f"{kind}-{id_}.mp3"
         key = f"{kind}:{id_}"
         path = os.path.join(OUT, fname)
@@ -53,6 +66,7 @@ async def main():
             new_index[key] = index[key]; kept += 1; continue
         try:
             await edge_tts.Communicate(text, VOICES[kind], rate=rate).save(path)
+            trim(path)
             new_index[key] = {"file": fname, "hash": h, "voice": VOICES[kind]}
             made += 1
         except Exception as e:  # keep going: a missing file just falls back to the phone voice

@@ -216,7 +216,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-31";
+const APP_VERSION = "2026.10.24-32";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -342,13 +342,27 @@ function bestVoice(){
   const want = lsGet("wsv.voice"); const chosen = want && vs.find(v => (v.voiceURI || v.name) === want); if (chosen) return chosen;
   return [...vs].sort((a,b) => voiceRank(b) - voiceRank(a))[0];
 }
-let wordPlayer = null;
+/* instant word audio: decoded into memory ahead of time, played through Web Audio */
+let actx = null, wordPlayer = null; const BUF = {}, BUFP = {};
+function audioKey(text){ return "word:" + String(text).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
+function ctx(){ if (!actx){ const C = window.AudioContext || window.webkitAudioContext; if (C) actx = new C(); } return actx; }
+async function warmWord(text){
+  const entry = AUDIO[audioKey(text)]; if (!entry || !entry.file || BUF[text] || !ctx()) return;
+  if (BUFP[text]) return BUFP[text];
+  BUFP[text] = (async () => { try { const r = await fetch("audio/" + entry.file); const ab = await r.arrayBuffer(); BUF[text] = await ctx().decodeAudioData(ab); } catch(e){} })();
+  return BUFP[text];
+}
 function speak(text){
   stopReading();
-  const key = "word:" + String(text).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); const entry = AUDIO[key];
-  if (entry && entry.file){ if (wordPlayer){ try { wordPlayer.pause(); } catch(e){} } wordPlayer = new Audio("audio/" + entry.file); wordPlayer.play().catch(() => speakSystem(text)); return; }
+  const c = ctx(); if (c && c.state === "suspended") c.resume();
+  if (BUF[text] && c){ const src = c.createBufferSource(); src.buffer = BUF[text]; src.connect(c.destination); src.start(0); return; }
+  const entry = AUDIO[audioKey(text)];
+  if (entry && entry.file){ if (wordPlayer){ try { wordPlayer.pause(); } catch(e){} } wordPlayer = new Audio("audio/" + entry.file); wordPlayer.play().catch(() => speakSystem(text)); warmWord(text); return; }
   speakSystem(text);
 }
+// stories and news: keep a preloaded player per item so Listen starts at once
+const PRE = {};
+function preloadLong(id){ const e = AUDIO[id]; if (!e || !e.file || PRE[id]) return; const a = new Audio("audio/" + e.file); a.preload = "auto"; PRE[id] = a; }
 function speakSystem(text){ if (!window.speechSynthesis) return; speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.lang = "en-GB"; u.rate = .9; const v = bestVoice(); if (v) u.voice = v; speechSynthesis.speak(u); }
 /* read a whole story or news item aloud: a pre-generated British neural voice when the mp3 exists, else the phone's voice */
 let readingId = null, AUDIO = {}, player = null;
@@ -357,7 +371,7 @@ function readAloud(id, text){
   stopReading(); readingId = id;
   const key = id.replace(":", ":"); const entry = AUDIO[key];
   if (entry && entry.file){
-    player = new Audio("audio/" + entry.file); player.preload = "auto";
+    player = PRE[key] || new Audio("audio/" + entry.file); PRE[key] = null; player.preload = "auto"; try { player.currentTime = 0; } catch(e){}
     player.onended = () => { if (readingId === id) stopReading(); };
     player.onerror = () => { if (readingId === id){ player = null; speakFallback(id, text); } };
     player.play().catch(() => { if (readingId === id){ player = null; speakFallback(id, text); } });
@@ -374,7 +388,7 @@ function speakFallback(id, text){
   parts.forEach((pt, k) => { const u = new SpeechSynthesisUtterance(pt.trim()); u.lang = "en-GB"; u.rate = .92; if (v) u.voice = v; if (k === parts.length - 1) u.onend = () => { if (readingId === id) stopReading(); }; speechSynthesis.speak(u); });
   document.querySelectorAll('[data-act="read"]').forEach(b => b.classList.toggle("on", b.dataset.id === id));
 }
-function stopReading(){ if (player){ try { player.pause(); } catch(e){} player = null; } if (window.speechSynthesis) speechSynthesis.cancel(); readingId = null; document.querySelectorAll('[data-act="read"].on').forEach(b => b.classList.remove("on")); }
+function stopReading(){ if (player){ try { player.pause(); player.currentTime = 0; } catch(e){} if (readingId) PRE[readingId] = player; player = null; } if (window.speechSynthesis) speechSynthesis.cancel(); readingId = null; document.querySelectorAll('[data-act="read"].on').forEach(b => b.classList.remove("on")); }
 function readBtn(id){ return '<button class="readbtn" data-act="read" data-id="' + esc(id) + '"><svg class="tri" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg><span class="rl">Listen</span><span class="rs">Stop</span></button>'; }
 function say(m, err){ ui.msg = m; ui.msgErr = !!err; render(); setTimeout(() => { ui.msg = ""; render(); }, 3500); }
 function examplesHTML(d, cls){ return '<div class="ex"><h4>Examples</h4>' + d.examples.map(e => "<p>" + esc(e) + "</p>").join("") + "</div>"; }
@@ -413,6 +427,10 @@ function loadInto(img, w, urls, i){
   img.referrerPolicy = "no-referrer"; img.src = urls[i];
 }
 async function getImage(w){ const c = await imageCandidates(w); return c[0] || null; }
+function prefetchAudio(){
+  feed.forEach(f => { if (f.type === "word") warmWord(f.w.word); else if (f.type === "story") preloadLong("story:" + f.s.id); });
+  if (NEWS) NEWS.items.forEach(n => preloadLong("news:" + n.id));
+}
 function prefetchImages(){
   // warm the cache for today's words so cards show photos the moment they appear
   const words = feed.filter(f => f.type === "word").map(f => f.w).filter(w => w.imgQuery || w.image);
@@ -535,7 +553,7 @@ function toggleDetail(word){
   if (wasOpen === word){ ui.open = null; return; }
   ui.open = word; ui.openDef = 0;
   const row = document.querySelector('.lr[data-w="' + CSS.escape(word) + '"]'); if (!row) return;
-  row.insertAdjacentHTML("afterend", detailHTML(BY[word]));
+  row.insertAdjacentHTML("afterend", detailHTML(BY[word])); warmWord(word);
 }
 function switchDetailDef(k){
   ui.openDef = k; const old = document.querySelector(".detail"); if (!old || !ui.open) return;
@@ -853,6 +871,7 @@ function importFile(ev){
 document.addEventListener("input", e => { if (e.target.id !== "catch") return; clearTimeout(catchTimer); const v = e.target.value; catchTimer = setTimeout(() => catchLookup(v), 450); });
 document.addEventListener("keydown", e => { if (e.target.id === "catch" && e.key === "Enter"){ clearTimeout(catchTimer); catchLookup(e.target.value); e.target.blur(); } });
 
+document.addEventListener("touchstart", () => { const c = ctx(); if (c && c.state === "suspended") c.resume(); }, { once: true, passive: true });
 document.addEventListener("click", async e => {
   const nb = e.target.closest("[data-nav]"); if (nb){ stopReading(); view = nb.dataset.nav; ui.shownCode = ""; render(); return; }
   if (e.target.id === "shade"){ closeWild(); return hidePop(); }
@@ -900,7 +919,7 @@ document.addEventListener("click", async e => {
   if (a === "read"){ e.stopPropagation(); const id = t.dataset.id; const [kind, key] = [id.slice(0, id.indexOf(":")), id.slice(id.indexOf(":") + 1)]; const src = kind === "news" ? NEWS_BY[key] : STORIES.find(x => x.id === key); if (src) readAloud(id, (src.title ? src.title + ". " : "") + src.text); return; }
   if (a === "closewild") return closeWild();
   if (a === "storydone") return storyDone(i);
-  if (a === "ahead"){ buildFeed(true); render(); const fe = document.getElementById("feed"); if (fe) fe.scrollTop = 0; return; }
+  if (a === "ahead"){ buildFeed(true); render(); prefetchAudio(); const fe = document.getElementById("feed"); if (fe) fe.scrollTop = 0; return; }
   if (a === "open") return toggleDetail(t.dataset.w);
   if (a === "odef"){ e.stopPropagation(); return switchDetailDef(+t.dataset.k); }
   if (a === "toggle"){ e.stopPropagation(); const w = t.dataset.w; if (status(w) === "known") delete P.cards[w]; else P.cards[w] = knownCard(false); await saveP(); const s = status(w); t.className = "badge " + s; t.textContent = s; const rowEl = t.closest(".lr"); if (rowEl) rowEl.className = "lr " + s; const d = document.querySelector('.detail[data-w="' + CSS.escape(w) + '"]'); if (d){ const tmp = document.createElement("div"); tmp.innerHTML = detailHTML(BY[w]); d.replaceWith(tmp.firstChild); } return; }
@@ -944,7 +963,7 @@ async function boot(){
   buildFeed();
   const addQ = new URLSearchParams(location.search).get("add");
   if (addQ){ view = "catch"; ui.catchQ = addQ; history.replaceState(null, "", location.pathname); }
-  render(); prefetchImages();
+  render(); prefetchImages(); prefetchAudio();
   if (addQ) catchLookup(addQ);
 }
 boot();
