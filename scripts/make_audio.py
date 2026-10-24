@@ -9,7 +9,7 @@ import edge_tts
 
 ROOT = os.path.join(os.path.dirname(__file__), "..", "vocab-pwa")
 OUT = os.path.join(ROOT, "audio")
-VOICES = {"story": "en-GB-RyanNeural", "news": "en-GB-SoniaNeural"}
+VOICES = {"story": "en-GB-RyanNeural", "news": "en-GB-SoniaNeural", "word": "en-GB-RyanNeural"}
 RATE = "-8%"
 
 def clean(text):
@@ -17,7 +17,13 @@ def clean(text):
     text = text.replace("\n", ". ").replace("..", ".")
     return re.sub(r"\s+", " ", text).strip()
 
+def slug(word):
+    return re.sub(r"[^a-z0-9]+", "-", word.lower()).strip("-")
+
 def items():
+    with open(os.path.join(ROOT, "words.json"), encoding="utf-8") as f:
+        for w in json.load(f):
+            yield "word", slug(w["word"]), w["word"]
     with open(os.path.join(ROOT, "stories.json"), encoding="utf-8") as f:
         for s in json.load(f):
             yield "story", s["id"], s.get("title", "") + ". " + s["text"]
@@ -38,14 +44,15 @@ async def main():
     new_index = {}
     for kind, id_, raw in items():
         text = clean(raw)
-        h = hashlib.sha1((VOICES[kind] + RATE + text).encode("utf-8")).hexdigest()[:10]
+        rate = "-2%" if kind == "word" else RATE
+        h = hashlib.sha1((VOICES[kind] + rate + text).encode("utf-8")).hexdigest()[:10]
         fname = f"{kind}-{id_}.mp3"
         key = f"{kind}:{id_}"
         path = os.path.join(OUT, fname)
         if index.get(key, {}).get("hash") == h and os.path.exists(path):
             new_index[key] = index[key]; kept += 1; continue
         try:
-            await edge_tts.Communicate(text, VOICES[kind], rate=RATE).save(path)
+            await edge_tts.Communicate(text, VOICES[kind], rate=rate).save(path)
             new_index[key] = {"file": fname, "hash": h, "voice": VOICES[kind]}
             made += 1
         except Exception as e:  # keep going: a missing file just falls back to the phone voice
