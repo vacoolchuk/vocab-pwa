@@ -1,6 +1,7 @@
 // Bump this on every deploy. It only affects the offline cache, never your saved progress.
-const SW_VERSION = "2026.10.24-54";
+const SW_VERSION = "2026.10.24-55";
 const CACHE = "vocab-" + SW_VERSION;
+const KEEP = ["vocab-fonts", "vocab-audio", "vocab-dict-1"];  // long-lived caches that must survive a version bump
 const FILES = ["./", "index.html", "words.json", "stories.json", "news.json", "videos.json", "manifest.webmanifest", "icon-180.png", "icon-192.png", "icon-512.png"];
 
 self.addEventListener("install", e => {
@@ -10,7 +11,7 @@ self.addEventListener("install", e => {
 self.addEventListener("activate", e => {
   e.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(keys.filter(k => k.startsWith("vocab-") && k !== CACHE).map(k => caches.delete(k))))
+      .then(keys => Promise.all(keys.filter(k => k.startsWith("vocab-") && k !== CACHE && !KEEP.includes(k)).map(k => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
@@ -25,6 +26,11 @@ self.addEventListener("fetch", e => {
     return;
   }
   if (url.origin !== location.origin) return;
+  // offline dictionary: big, rarely changes, cache first (rename the cache to refresh it)
+  if (/\/dict\.json$/.test(url.pathname)){
+    e.respondWith(caches.open("vocab-dict-1").then(c => c.match(e.request).then(r => r || fetch(e.request).then(res => { if (res.ok) c.put(e.request, res.clone()); return res; }))));
+    return;
+  }
   // generated audio: cache first, it never changes for the same file name + content
   if (/\/audio\/.*\.mp3$/.test(url.pathname)){
     e.respondWith(caches.open("vocab-audio").then(c => c.match(e.request).then(r => r || fetch(e.request).then(res => { if (res.ok) c.put(e.request, res.clone()); return res; }))));

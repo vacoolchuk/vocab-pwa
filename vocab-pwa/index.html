@@ -278,7 +278,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-54";
+const APP_VERSION = "2026.10.24-55";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -668,15 +668,47 @@ async function catchLookup(q){
   if (uk) h += '<p class="ukline">' + esc(uk) + "</p>";
   if (inVocab) h += '<p class="dimline">Already in your vocabulary as "' + esc(inVocab.word) + '" (' + status(inVocab.word) + ').</p>';
   if (entry && entry.defs.length) h += entry.defs.map(d => '<p class="cdef"><span>' + esc(d.pos) + "</span>" + esc(d.text) + "</p>").join("");
-  else if (!entry) h += '<p class="dimline">Dictionary not reachable. You can still add the word.</p>';
+  else if (!entry) h += '<p class="dimline">Dictionary not reachable and not in the offline one. You can still add the word.</p>';
   else h += '<p class="dimline">Not in the dictionary. You can still add it.</p>';
+  if (entry && entry.src === "offline") h += '<p class="dimline">From the offline dictionary: shorter, simpler definitions, no pronunciation.</p>';
   h += wildBtn(q);
   const have = P.inbox.some(x => x.word === q);
   if (!inVocab) h += '<div class="catchadd"><button class="btn" data-act="catchadd" data-word="' + esc(q) + '" data-def="' + esc(entry && entry.defs[0] ? entry.defs[0].text : "") + '">' + (have ? "Added" : "Add") + "</button></div>";
   h += "</div>";
   ui.catchHTML = h; res.innerHTML = h;
 }
+/* ---- lookups that keep working offline: remembered results, your own words, then the bundled dictionary ---- */
+function dcLoad(){ try { return JSON.parse(localStorage.getItem("wsv.dc") || "{}"); } catch(e){ return {}; } }
+function dcSave(key, e){ try { const c = dcLoad(); delete c[key]; c[key] = { ipa: e.ipa || "", defs: e.defs }; const ks = Object.keys(c); if (ks.length > 400) ks.slice(0, ks.length - 400).forEach(k => delete c[k]); localStorage.setItem("wsv.dc", JSON.stringify(c)); } catch(e){} }
+let OFFDICT = null, offP = null;
+function loadOffDict(){
+  if (OFFDICT) return Promise.resolve(OFFDICT);
+  if (!offP) offP = fetch("dict.json").then(r => r.ok ? r.json() : null).then(j => { OFFDICT = j; if (!j) offP = null; return j; }).catch(() => { offP = null; return null; });
+  return offP;
+}
+const POSN = { n: "noun", v: "verb", a: "adjective", r: "adverb" };
+async function offlineEntry(word){
+  const d = await loadOffDict(); if (!d) return null;
+  const w0 = String(word).toLowerCase().trim(), cands = [...stems(w0)];
+  [["ies","y"],["es",""],["s",""],["ed",""],["ed","e"],["ing",""],["ing","e"],["ly",""],["er",""],["est",""]].forEach(([a, b]) => { if (w0.length > a.length + 2 && w0.endsWith(a)) cands.push(w0.slice(0, -a.length) + b); });
+  for (const k of cands){ const hit = d[String(k).toLowerCase()]; if (hit) return { ipa: "", src: "offline", defs: hit.slice(0, 3).map(([p, t]) => ({ pos: POSN[p] || p, text: t })) }; }
+  return null;
+}
+function ownEntry(key){
+  const w = BY[key] || BY[key.split(/\s+/).map(lemma).join(" ")]; if (!w) return null;
+  return { ipa: (w.pronunciation || "").replace(/^\/|\/$/g, ""), src: "own", defs: w.definitions.slice(0, 3).map(d => ({ pos: (d.context || "").toLowerCase(), text: d.def })) };
+}
 async function dictEntry(word){
+  const key = String(word).toLowerCase().trim();
+  let e = null;
+  if (navigator.onLine !== false) e = await dictEntryOnline(word);
+  if (e && e.defs.length){ dcSave(key, e); return e; }
+  const c = dcLoad(); if (c[key] && c[key].defs.length) return c[key];
+  const own = ownEntry(key); if (own) return own;
+  const off = await offlineEntry(word); if (off) return off;
+  return e;
+}
+async function dictEntryOnline(word){
   const strip = x => String(x).replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
   let reached = false, ipa = "";
   for (const w of stems(word)){
@@ -1265,6 +1297,7 @@ async function boot(){
   if (lastV && lastV !== APP_VERSION) ui.banner = "Updated to " + APP_VERSION + ". Progress kept: " + knownN + " known, " + Object.keys(P.cards).length + " cards in total.";
   lsSet("wsv.version", APP_VERSION);
   setTimeout(() => { try { ygLoad().catch(() => {}); } catch(e){} }, 1500);
+  setTimeout(() => { if (navigator.onLine !== false) loadOffDict(); }, 6000);
   if (!ui.banner && Object.keys(P.cards).length >= 5 && Date.now() - (P.lastBackup || 0) > 30*864e5){ ui.banner = "Tip: Stats → Save backup file. Five seconds."; ui.bannerWarn = true; }
   buildFeed();
   const addQ = new URLSearchParams(location.search).get("add");

@@ -179,3 +179,7 @@ When I send a batch of words from the app ("Teach me these words: ..."), do NOT 
 - The in-app player (TikTok Embed Player, player/v1) works only with the LONG link `https://www.tiktok.com/@user/video/<id>` (the `?_r=...` part can stay). Short vm.tiktok.com links cannot be resolved (Claude's sandbox is blocked from TikTok, the browser is blocked by CORS), so they show a card with an "Open in TikTok" button. Ask her for the long link (open the short link in Safari, copy it from the address bar).
 - A video that is private, deleted or has embedding disabled shows an "Open in TikTok" button instead of a player.
 - The older embed/v2 endpoint returns "ratelimit triggered" in her app: do not use it.
+
+## Offline lookups in Catch
+- Catch tries, in order: the online dictionaries (results are remembered on the phone, up to 400), the user's own vocabulary entries, then the bundled WordNet dictionary `dict.json` (short definitions, no IPA).
+- The service worker keeps `dict.json`, fonts and audio in long-lived caches that survive version bumps (`KEEP` in sw.js).
