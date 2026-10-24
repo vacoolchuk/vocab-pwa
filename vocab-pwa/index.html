@@ -139,7 +139,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 .inbox{list-style:none;margin:0 0 14px;padding:0}
 .inbox li{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
 .inbox li b{font-family:var(--display);font-size:20px;font-weight:500}
-.inbox li small{display:block;font-family:var(--book);font-size:12px;color:var(--dim);font-style:italic;margin-top:3px}
+.inbox li small{display:block;font-family:var(--book);font-size:13px;color:var(--dim);margin-top:3px;line-height:1.45}
 .inbox li u{margin-left:auto;color:var(--faint);cursor:pointer;font-size:13px;text-decoration:none}
 .msg{margin:8px 0 0;font-size:13px;color:var(--known);word-break:break-all}.msg.err{color:var(--amber)}
 .banner{background:var(--surface);border-left:3px solid var(--known);color:var(--milk);padding:12px 14px;font-size:14px;margin-bottom:14px;display:flex;justify-content:space-between;gap:8px}
@@ -160,7 +160,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-11";
+const APP_VERSION = "2026.10.24-12";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -427,7 +427,7 @@ function renderStats(){
   // inbox
   h += '<div class="box"><h3>Want to learn (' + P.inbox.length + ')</h3><p>Words you tapped in stories. Send them to Claude.</p>';
   if (P.inbox.length){
-    h += '<ul class="inbox">' + P.inbox.map(i => "<li><div><b>" + esc(i.word) + "</b>" + (i.ctx ? "<small>" + esc(i.ctx) + "</small>" : "") + '</div><u data-act="rminbox" data-w="' + esc(i.word) + '">remove</u></li>').join("") + "</ul>";
+    h += '<ul class="inbox">' + P.inbox.map(i => '<li data-w="' + esc(i.word) + '"><div><b>' + esc(i.word) + "</b><small>" + esc(i.def || "…") + "</small>" + '</div><u data-act="rminbox" data-w="' + esc(i.word) + '">remove</u></li>').join("") + "</ul>";
     h += '<div class="row"><button class="btn g" data-act="sendinbox">Send to Claude</button><button class="btn o" data-act="copyinbox">Copy</button></div>';
   }
   h += "</div>";
@@ -453,6 +453,7 @@ function render(){
   if (P.inbox.length){ const i = document.createElement("i"); i.textContent = P.inbox.length; nb.appendChild(i); }
   const p = document.getElementById("paste"); if (p) p.value = keepPaste;
   const f = document.getElementById("file"); if (f) f.onchange = importFile;
+  if (view === "stats" && P.inbox.some(x => !x.def)) fillInboxDefs();
   const fe = document.getElementById("feed"); if (fe){ fe.scrollTop = scroll; hydrateImages(); }
 }
 function rerenderSlide(i){
@@ -533,7 +534,12 @@ function storyDone(i){
   st.rated = "Read · " + s.words.filter(w => !st.peeked.includes(w)).length + " of " + s.words.length + " recognised";
   rerenderSlide(i); rerenderSlide(feed.length-1); setTimeout(() => nextSlide(i), 350);
 }
-function addInbox(word, ctx){ if (!word || P.inbox.some(x => x.word === word)) return false; P.inbox.push({ word, ctx, added: Date.now() }); saveP(); return true; }
+function addInbox(word, ctx, def){ if (!word || P.inbox.some(x => x.word === word)) return false; P.inbox.push({ word, ctx, def: def || "", added: Date.now() }); saveP(); return true; }
+// fill in definitions for inbox items saved without one
+async function fillInboxDefs(){
+  for (const it of P.inbox){ if (it.def) continue; const g = await lookup(it.word, null); if (g){ it.def = g; const el = document.querySelector('.inbox li[data-w="' + CSS.escape(it.word) + '"] small'); if (el) el.textContent = g; } }
+  saveP();
+}
 function inboxText(){ return "Teach me these words (British English, full cards please): " + P.inbox.map(i => i.word + (i.ctx ? ' ("' + i.ctx + '")' : "")).join("; "); }
 async function sendInbox(){
   const text = inboxText();
@@ -579,7 +585,7 @@ document.addEventListener("click", async e => {
     const g = await lookup(word, feed[i].s); const el = document.getElementById("gloss"); if (el) el.textContent = g ? g : g === "" ? "Not in the dictionary. Ask Claude." : "Dictionary not reachable right now.";
     return;
   }
-  if (a === "inbox"){ const word = t.dataset.word; addInbox(word, sentenceAround(feed[i].s.text, word)); slideState[i].inboxed.push(word); hidePop(); render(); return; }
+  if (a === "inbox"){ const word = t.dataset.word; const ge = document.getElementById("gloss"); const gt = ge ? ge.textContent : ""; addInbox(word, sentenceAround(feed[i].s.text, word), /^(…|Not in the dictionary|Dictionary not reachable)/.test(gt) ? "" : gt); slideState[i].inboxed.push(word); hidePop(); render(); return; }
   if (a === "closepop") return hidePop();
   if (a === "storydone") return storyDone(i);
   if (a === "ahead"){ buildFeed(true); render(); const fe = document.getElementById("feed"); if (fe) fe.scrollTop = 0; return; }
