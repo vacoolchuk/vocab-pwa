@@ -219,7 +219,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-33";
+const APP_VERSION = "2026.10.24-34";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -657,7 +657,7 @@ function renderNews(){
   if (NEWS.date !== today()) h += '<p class="dimline" style="margin:-8px 0 14px">This issue is from ' + esc(niceDate(NEWS.date)) + '. A new one arrives when Claude publishes it.</p>';
   NEWS.items.forEach(n => {
     h += '<article class="news">';
-    if (n.pressImage) h += '<a class="nimg press" href="' + esc(n.url) + '" target="_blank" rel="noopener"><img src="' + esc(n.pressImage) + '" alt="" referrerpolicy="no-referrer-when-downgrade" loading="lazy" onerror="this.parentElement.remove()"><span class="credit">Photo: ' + esc(n.source) + '</span></a>';
+    if (n.pressImage) h += '<a class="nimg press" href="' + esc(n.url) + '" target="_blank" rel="noopener"><img src="' + esc(n.pressImage) + '" alt="" referrerpolicy="no-referrer" loading="lazy" onerror="this.parentElement.remove()"><span class="credit">Photo: ' + esc(n.source) + '</span></a>';
     h += '<p class="ncat">' + esc(n.cat) + '</p><h2>' + esc(n.title) + '</h2><p class="ntext">' + newsText(n) + '</p>';
     h += '<div class="row" style="justify-content:space-between;flex-wrap:wrap;gap:10px"><a class="nsrc" href="' + esc(n.url) + '" target="_blank" rel="noopener">Read the original · ' + esc(n.source) + '</a>' + readBtn("news:" + n.id) + '</div></article>';
   });

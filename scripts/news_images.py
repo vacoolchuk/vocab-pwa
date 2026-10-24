@@ -23,6 +23,15 @@ def og_image(url):
             return html.unescape(m.group(1))
     return None
 
+def reachable(img):
+    """Does the image load without a referrer, the way the app requests it?"""
+    try:
+        req = urllib.request.Request(img, headers={"User-Agent": UA, "Accept": "image/*"})
+        with urllib.request.urlopen(req, timeout=20) as r:
+            return r.status == 200 and r.headers.get("Content-Type", "").startswith("image/")
+    except Exception:
+        return False
+
 def main():
     if not os.path.exists(NEWS):
         return
@@ -34,13 +43,15 @@ def main():
             old = json.load(f)
     out = {}
     for it in news.get("items", []):
-        if it["id"] in old and old[it["id"]].get("url") == it["url"]:
+        if it["id"] in old and old[it["id"]].get("url") == it["url"] and old[it["id"]].get("checked"):
             out[it["id"]] = old[it["id"]]; continue
         try:
             img = og_image(it["url"])
+            if img and not reachable(img):
+                print(f"image blocked for {it['id']}: {img}", file=sys.stderr); img = None
         except Exception as e:
             print(f"no image for {it['id']}: {e}", file=sys.stderr); img = None
-        out[it["id"]] = {"url": it["url"], "image": img, "source": it.get("source", "")}
+        out[it["id"]] = {"url": it["url"], "image": img, "source": it.get("source", ""), "checked": True}
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(out, f, indent=1)
     print("news images:", sum(1 for v in out.values() if v.get("image")), "of", len(out))
