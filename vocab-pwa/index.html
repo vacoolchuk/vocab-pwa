@@ -368,7 +368,7 @@ function wordSlide(f, i){
   } else {
     h += '<div class="back" data-act="flip">';
     if (w.definitions.length > 1) h += '<div class="mtabs">' + w.definitions.map((_, k) => '<button data-act="def" data-k="' + k + '" class="' + (st.defIdx === k ? "on" : "") + '">Meaning ' + (k+1) + "</button>").join("") + "</div>";
-    h += '<div class="row" style="flex-wrap:wrap;margin-bottom:4px"><span class="w">' + esc(w.word) + '</span><span class="ipa" data-act="say" data-w="' + esc(w.word) + '">▶ ' + esc(w.pronunciation) + '</span></div><span class="tag">' + esc(d.context) + '</span><p class="def">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + "</p>" + examplesHTML(d) + "</div>";
+    h += '<div class="row" style="flex-wrap:wrap;margin-bottom:4px"><span class="w">' + esc(w.word) + '</span><span class="ipa" data-act="say" data-w="' + esc(w.word) + '">▶\uFE0E ' + esc(w.pronunciation) + '</span></div><span class="tag">' + esc(d.context) + '</span><p class="def">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + "</p>" + examplesHTML(d) + "</div>";
     h += '<div class="rate"><button class="again" data-act="rate" data-g="again">Again</button><button class="hard" data-act="rate" data-g="hard">Hard</button><button class="good" data-act="rate" data-g="good">Good</button><button class="easy" data-act="rate" data-g="easy">Easy</button></div>';
   }
   return h + "</div></div>";
@@ -423,7 +423,7 @@ function renderList(){
   h += '<div class="list">';
   [...WORDS].sort((a,b) => a.word.localeCompare(b.word)).forEach(w => {
     const s = status(w.word);
-    h += '<div class="lr ' + s + '" data-act="open" data-w="' + esc(w.word) + '"><b>' + esc(w.word) + '</b><span class="ipa" data-act="say" data-w="' + esc(w.word) + '">▶ ' + esc(w.pronunciation) + '</span><span class="badge ' + s + '" data-act="toggle" data-w="' + esc(w.word) + '">' + s + "</span></div>";
+    h += '<div class="lr ' + s + '" data-act="open" data-w="' + esc(w.word) + '"><b>' + esc(w.word) + '</b><span class="ipa" data-act="say" data-w="' + esc(w.word) + '">▶\uFE0E ' + esc(w.pronunciation) + '</span><span class="badge ' + s + '" data-act="toggle" data-w="' + esc(w.word) + '">' + s + "</span></div>";
     if (ui.open === w.word) h += detailHTML(w);
   });
   return h + "</div></div>";
@@ -609,7 +609,7 @@ document.addEventListener("click", async e => {
     const w = BY[t.dataset.head]; if (!w) return; const st = slideState[i];
     if (!st.peeked.includes(w.word)){ st.peeked.push(w.word); peek(w.word); rerenderSlide(i); }
     const d = w.definitions[0];
-    return showPop('<p class="w">' + esc(w.word) + ' <span class="ipa" data-act="say" data-w="' + esc(w.word) + '">▶ ' + esc(w.pronunciation) + '</span></p><span class="tag">' + esc(d.context) + '</span><p class="def" style="font-size:15px">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + '</p><p style="font-size:13px;color:var(--dim);margin:0">Looked up, so this word comes back tomorrow.</p>');
+    return showPop('<p class="w">' + esc(w.word) + ' <span class="ipa" data-act="say" data-w="' + esc(w.word) + '">▶\uFE0E ' + esc(w.pronunciation) + '</span></p><span class="tag">' + esc(d.context) + '</span><p class="def" style="font-size:15px">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + '</p><p style="font-size:13px;color:var(--dim);margin:0">Looked up, so this word comes back tomorrow.</p>');
   }
   if (a === "plain"){
     const word = t.dataset.word; if (!word || word.length < 2) return;
