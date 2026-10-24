@@ -88,7 +88,13 @@ redundant, irritate, enmity, frail, carrion, scavenger, feeble, petal, at libert
 ### "Update the app" workflow
 When I say **"update the app"**, you:
 1. Add all new words learned in the session to `words.json`. Keep every existing word. Add `imgQuery` only for concrete words (a short English image search phrase).
-2. Write 2–3 new stories in `stories.json` that mix new words with older ones (see format). British settings, varied genres (email, WhatsApp, match report, review, letter, fiction, nature narration), 3–6 sentences, 2–4 vocabulary words each, written naturally with no highlighting. Include a few natural words beyond my list so the "want to learn" tap has something to catch, but keep the text readable at B2.
+2. Write 2–3 new stories in `stories.json` that mix new words with older ones (see format). Rules for stories:
+   - **2–3 vocabulary words per story, never more.** A story that forces in five words reads as fake. The words must sit naturally; if one doesn't fit, leave it out.
+   - 5–8 sentences. Room to breathe. A small turn or joke at the end.
+   - Natural British English with everyday slang and idiom (proper, cracking, quid, lad, nan, binned, fuming, the lot, past it, dead pleased, fancied, kettle's on). The slang is part of the lesson.
+   - Varied genres: email, WhatsApp, text message, match report, review, letter, fiction, overheard conversation, nature narration, lab notes, food blog.
+   - A `gloss` map of 4–6 entries covering the slang and the harder non-vocabulary words, in plain English.
+   - No em dashes. British spelling.
 3. Bump `APP_VERSION` in `index.html` and `SW_VERSION` in `sw.js` to the same new value (date plus counter, e.g. `2026.10.30-1`).
 4. Check both JSON files are valid, no duplicated words, every `{{surface|headword}}` in stories points at a word that exists.
 5. Zip the `vocab-pwa` folder and give me the zip.

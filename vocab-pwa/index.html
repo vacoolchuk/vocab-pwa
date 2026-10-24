@@ -183,7 +183,7 @@ input{width:100%;padding:10px 12px;border:1px solid var(--line);font-size:14px;b
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-20";
+const APP_VERSION = "2026.10.24-21";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -568,7 +568,6 @@ function render(){
   const pg = document.querySelector(".page"); if (pg && prevView === view) pg.scrollTop = pageScroll;
   document.querySelectorAll("#nav button").forEach(b => b.classList.toggle("on", b.dataset.nav === view));
   const nb = document.querySelector('#nav [data-nav="catch"]'); nb.querySelector("i") && nb.querySelector("i").remove();
-  if (P.inbox.length){ const i = document.createElement("i"); i.textContent = P.inbox.length; nb.appendChild(i); }
   const p = document.getElementById("paste"); if (p) p.value = keepPaste;
   const f = document.getElementById("file"); if (f) f.onchange = importFile;
   if (view === "catch"){ const q = document.getElementById("catch"); if (q){ q.value = ui.catchQ || ""; } const r = document.getElementById("cres"); if (r && ui.catchHTML) r.innerHTML = ui.catchHTML; if (P.inbox.some(x => !x.def)) fillInboxDefs(); }

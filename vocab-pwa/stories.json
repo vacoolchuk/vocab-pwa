@@ -3,182 +3,96 @@
   "id": "s001",
   "title": "The Leeds office",
   "genre": "Work email",
-  "text": "Dear all, by now you will have heard the rumours, so here is the truth. The Leeds office is being made {{redundant|redundant}} at the end of March, and I am not {{at liberty|at liberty}} to share the figures behind that decision yet. It {{irritates|irritate}} me to break news like this by email, but HR insists on a paper trail. Every affected colleague will get a one-to-one with me next week. I want this to stay {{amicable|amicable}}, whatever the unions decide to do.",
-  "words": [
-   "redundant",
-   "at liberty",
-   "irritate",
-   "amicable"
-  ],
-  "gloss": {
-   "rumours": "stories people pass around that may not be true",
-   "figures": "numbers, especially money",
-   "paper trail": "written records that prove what happened",
-   "one-to-one": "a private meeting between two people",
-   "unions": "organisations that protect workers' rights"
-  }
+  "text": "Morning all. I'll keep this short because you've probably heard it in the kitchen already. The Leeds office is being made {{redundant|redundant}} at the end of March. I'm not {{at liberty|at liberty}} to share the numbers yet, and before anyone asks, no, I don't know who leaked it to the group chat. Everyone affected will get a proper one-to-one with me next week, not a two-minute Teams call. I'd rather we got through this without it turning into a punch-up. Kettle's on if you want to talk. Dan",
+  "words": ["redundant", "at liberty"],
+  "gloss": {"leaked": "told people something that was supposed to stay secret", "punch-up": "a fight (informal)", "one-to-one": "a private meeting between two people", "kettle's on": "a British way of saying 'come and have a cup of tea'"}
  },
  {
   "id": "s002",
   "title": "Gran's flat",
   "genre": "WhatsApp",
-  "text": "Mum: Did you get to Gran's today?\nSam: Yeah. She looked so {{frail|frail}}, Mum. She needed both hands on the kettle.\nMum: She's eighty-nine, love. Was the flat {{damp|damp}} again?\nSam: Worse. Black patches on the bedroom wall. The landlord gave some {{feeble|feeble}} excuse about the gutters.\nMum: Don't start, {{petal|petal}}. I'll ring him on Monday and I won't be polite.",
-  "words": [
-   "frail",
-   "damp",
-   "feeble",
-   "petal"
-  ],
-  "gloss": {
-   "kettle": "a jug you boil water in",
-   "landlord": "the person who owns the flat you rent",
-   "gutters": "the channels on a roof edge that carry rainwater away",
-   "patches": "small areas that look different from the rest"
-  }
+  "text": "Mum: Did you get to Gran's?\nSam: Yeah. She looked proper {{frail|frail}} today, Mum. Both hands on the kettle.\nMum: She's eighty-nine, love. Was the flat {{damp|damp}} again?\nSam: Worse. Black patches on the bedroom wall and that smell. Landlord came out with some {{feeble|feeble}} excuse about the gutters.\nMum: Don't start, petal. I'll ring him Monday and I won't be polite.\nSam: Can I listen in?\nMum: No.",
+  "words": ["frail", "damp", "feeble"],
+  "gloss": {"proper": "really, very (British slang)", "gutters": "the channels on a roof edge that carry rainwater away", "petal": "an affectionate name for someone, like 'love'", "landlord": "the person who owns the flat you rent", "listen in": "secretly listen to a conversation"}
  },
  {
   "id": "s003",
   "title": "Below the ridge",
   "genre": "Nature documentary",
-  "text": "Below the ridge, a {{diminutive|diminutive}} fox waits in the {{dense|dense}} bracken. It is a hunter by instinct and a {{scavenger|scavenger}} by necessity, because the winter here is long and prey is scarce. A red kite has already found the {{carrion|carrion}} of a sheep that fell in the night. The fox will have to wait its turn, and it knows it.",
-  "words": [
-   "diminutive",
-   "dense",
-   "scavenger",
-   "carrion"
-  ],
-  "gloss": {
-   "ridge": "a long narrow top of a hill",
-   "bracken": "a tall fern that covers hillsides",
-   "prey": "an animal hunted by another animal",
-   "scarce": "not enough of it, hard to find",
-   "kite": "a large bird of prey with a forked tail"
-  }
+  "text": "Below the ridge, a fox waits in the {{dense|dense}} bracken. It is a hunter by instinct and a {{scavenger|scavenger}} by necessity, because winter up here is long and the rabbits have had the sense to stay underground. A red kite has already found what the fox is after: a sheep that fell in the night. The kite eats first. That is the rule on the hill. The fox will get its turn, but not before the crows have had theirs.",
+  "words": ["dense", "scavenger"],
+  "gloss": {"ridge": "a long narrow top of a hill", "bracken": "a tall fern that covers hillsides", "kite": "a large bird of prey with a forked tail", "had the sense to": "were clever enough to"}
  },
  {
   "id": "s004",
   "title": "Two brothers and a will",
   "genre": "Film review",
-  "text": "Her third film {{obliterates|obliterate}} any doubt that she can direct actors. Two brothers return to a farmhouse in Cumbria to settle their mother's will, and an old {{enmity|enmity}} wakes up with them. The only warmth comes from an {{amiable|amiable}} vicar who keeps turning up with casseroles nobody asked for. If anything {{dampens|dampen}} the film, it is the score, which tells you what to feel ten seconds before the actors do. Four stars.",
-  "words": [
-   "obliterate",
-   "enmity",
-   "amiable",
-   "dampen"
-  ],
-  "gloss": {
-   "will": "a legal document saying who gets your things when you die",
-   "farmhouse": "the main house on a farm",
-   "vicar": "a priest in the Church of England",
-   "casseroles": "meals cooked slowly in one dish in the oven",
-   "score": "the music written for a film"
-  }
+  "text": "Her third film is the one that shuts the doubters up. Two brothers come back to a farmhouse in Cumbria to sort out their mother's will, and an old {{enmity|enmity}} wakes up with them before the kettle's even boiled. The only warmth comes from an {{amiable|amiable}} vicar who keeps turning up with casseroles nobody asked for. Shame about the score, which tells you what to feel ten seconds before the actors do. Still. Four stars, and I'd watch it again.",
+  "words": ["enmity", "amiable"],
+  "gloss": {"shuts the doubters up": "proves wrong the people who didn't believe in her", "will": "a legal document saying who gets your things when you die", "vicar": "a priest in the Church of England", "casseroles": "meals cooked slowly in one dish in the oven", "shame about": "it's a pity about", "score": "the music written for a film"}
  },
  {
   "id": "s005",
   "title": "Question seven",
   "genre": "Pub quiz",
-  "text": "\"Question seven. Which Latin word meaning 'at the back' is also a polite way of saying your bottom?\"\n\"{{Posterior|posterior}}!\" shouted Dave, before the host had finished.\n\"Thank you, Dave. Three pints in and he has no {{inhibitions|inhibition}} left at all.\"\n\"It's a {{specimen|specimen}} of a quiz, this,\" Dave said, pleased with himself, and nobody had the heart to tell him that wasn't quite how the word worked.",
-  "words": [
-   "posterior",
-   "inhibition",
-   "specimen"
-  ],
-  "gloss": {
-   "host": "the person running the quiz",
-   "heart": "courage (to not have the heart = to feel too kind to do it)"
-  }
+  "text": "\"Question seven. Which Latin word meaning 'at the back' is also a polite way of saying your bottom?\"\n\"{{Posterior|posterior}}!\" Dave shouted, before the host had finished reading.\n\"Thank you, Dave. Three pints in and not a single {{inhibition|inhibition}} left.\"\n\"It's a cracking quiz, this,\" Dave said, dead pleased with himself.\n\"It would be,\" said his wife, \"if you'd let the rest of us answer one.\"",
+  "words": ["posterior", "inhibition"],
+  "gloss": {"host": "the person running the quiz", "three pints in": "after drinking three pints of beer", "cracking": "excellent (British slang)", "dead": "very (northern British slang)"}
  },
  {
   "id": "s006",
   "title": "The jar from Dorset",
   "genre": "Lab notes",
-  "text": "The {{specimen|specimen}} arrived from Dorset in a jar of cloudy spirit, a {{diminutive|diminutive}} beetle no bigger than a grain of rice. Marcus wiped the bench with a {{damp|damp}} cloth, laid out every {{utensil|utensil}} he owned, and then sat looking at it for twenty minutes without touching anything. \"It's the first one found in Britain since 1911,\" he said. \"I'm not going to rush it.\"",
-  "words": [
-   "specimen",
-   "diminutive",
-   "damp",
-   "utensil"
-  ],
-  "gloss": {
-   "spirit": "strong alcohol used to preserve specimens",
-   "grain": "one small piece of rice or sand",
-   "bench": "a long work table in a lab or workshop",
-   "rush": "to do something too quickly"
-  }
+  "text": "The {{specimen|specimen}} came up from Dorset in a jar of cloudy spirit, a beetle no bigger than a grain of rice. Marcus wiped the bench with a {{damp|damp}} cloth, laid out his tools, and then sat and looked at the thing for twenty minutes without touching it. \"First one found in Britain since 1911,\" he said when I asked. \"I'm not going to rush it just because you want your lunch.\"",
+  "words": ["specimen", "damp"],
+  "gloss": {"spirit": "strong alcohol used to preserve specimens", "grain": "one small piece of rice or sand", "bench": "a long work table in a lab or workshop", "rush": "to do something too quickly"}
  },
  {
   "id": "s007",
   "title": "The drawer of shame",
   "genre": "Food blog",
-  "text": "Every kitchen has one drawer that will not close. Mine holds at least one {{redundant|redundant}} {{utensil|utensil}} for every job: three peelers, a {{feeble|feeble}} garlic press that has never crushed a clove in its life, and an avocado slicer, which is simply a spoon with ambitions. This week I emptied it. The only thing I kept was a wooden spoon my gran used, its handle worn pale, and a jar of dried rose {{petals|petal}} I keep meaning to put in a cake.",
-  "words": [
-   "redundant",
-   "utensil",
-   "feeble",
-   "petal"
-  ],
-  "gloss": {
-   "peelers": "tools for removing the skin of vegetables",
-   "clove": "one piece of a garlic bulb",
-   "slicer": "a tool that cuts into thin pieces",
-   "ambitions": "strong wishes to be something better",
-   "worn": "damaged or smooth from long use"
-  }
+  "text": "Every kitchen has one drawer that won't shut. Mine holds a {{redundant|redundant}} {{utensil|utensil}} for every job: three peelers, a garlic press that has never crushed a clove in its life, and an avocado slicer, which is a spoon with ambitions. This weekend I emptied the lot onto the table and was honest with myself. I kept the wooden spoon my gran used, handle worn pale, and binned the rest. The drawer shuts now. I feel like a different person.",
+  "words": ["redundant", "utensil"],
+  "gloss": {"won't shut": "won't close", "peelers": "tools for removing the skin of vegetables", "clove": "one piece of a garlic bulb", "the lot": "everything (informal)", "worn": "damaged or smooth from long use", "binned": "threw away (British: put in the bin)"}
  },
  {
   "id": "s008",
   "title": "Rovers 0, City 5",
   "genre": "Match report",
-  "text": "City {{obliterated|obliterate}} Rovers under a {{dense|dense}} fog that made the far goal a rumour for most of the first half. Rovers' back line was {{feeble|feeble}} from the first minute, and by the fourth goal the home fans had stopped singing and started leaving. Their manager, visibly {{irritated|irritate}}, refused to blame the weather. \"The fog was the same at both ends,\" he said. \"Only one team could see the ball.\"",
-  "words": [
-   "obliterate",
-   "dense",
-   "feeble",
-   "irritate"
-  ],
-  "gloss": {
-   "rumour": "a story people tell that may not be true",
-   "back line": "the defenders in a football team",
-   "visibly": "in a way you can clearly see",
-   "blame": "to say someone is responsible for something bad"
-  }
+  "text": "City {{obliterated|obliterate}} Rovers on a night when the fog was so {{dense|dense}} that the far goal was a rumour for most of the first half. The home defence was all over the place from the first minute, and by the fourth goal the fans had stopped singing and started heading for the car park. Their manager, clearly fuming, refused to blame the weather. \"Fog was the same at both ends,\" he said. \"Only one team could see the ball.\"",
+  "words": ["obliterate", "dense"],
+  "gloss": {"rumour": "a story people tell that may not be true", "all over the place": "disorganised, a mess (informal)", "fuming": "very angry (informal)", "blame": "to say someone is responsible for something bad"}
  },
  {
   "id": "s009",
   "title": "First date, Peckham",
   "genre": "Short fiction",
-  "text": "He was {{amiable|amiable}} enough, in the way estate agents are amiable, and for the first hour Priya was polite. Then the second gin arrived and her {{inhibitions|inhibition}} went with the first. She told him about the flat with the {{damp|damp}} bathroom, the ex, the cat that hated her. Nothing could {{dampen|dampen}} the mood after that, not even when he admitted he had never read a book all the way through. She found, to her surprise, that she wanted a third gin.",
-  "words": [
-   "amiable",
-   "inhibition",
-   "damp",
-   "dampen"
-  ],
-  "gloss": {
-   "estate agents": "people who sell or rent out houses",
-   "gin": "a clear strong alcoholic drink",
-   "ex": "a former boyfriend or girlfriend",
-   "admitted": "said something true that was embarrassing"
-  }
+  "text": "He was {{amiable|amiable}} enough, in the way estate agents are, and for the first hour Priya was polite. Then the second gin turned up and her {{inhibitions|inhibition}} left with the first one. She told him about the flat with the mouldy bathroom, the ex, the cat that hated her. He laughed in the right places. He admitted he'd never finished a book, which should have been a deal-breaker, and somehow wasn't. She found, slightly to her horror, that she fancied a third gin.",
+  "words": ["amiable", "inhibition"],
+  "gloss": {"estate agents": "people who sell or rent out houses", "gin": "a clear strong alcoholic drink, usually with tonic", "mouldy": "covered in mould, the green or black growth in damp places", "ex": "a former boyfriend or girlfriend", "deal-breaker": "a problem that would stop you going ahead", "fancied": "wanted, felt like (British informal)"}
  },
  {
   "id": "s010",
   "title": "Notice to tenants",
   "genre": "Letter",
-  "text": "Dear Resident, following the survey of the {{posterior|posterior}} wall of Block C, the council has agreed that the {{damp|damp}} is structural and not, as previously suggested, caused by residents drying washing indoors. Work begins in June. We are not yet {{at liberty|at liberty}} to confirm the contractor. We understand that some tenants feel a lasting {{enmity|enmity}} towards the housing office after the last two years, and we hope this letter goes some way to repairing that.",
-  "words": [
-   "posterior",
-   "damp",
-   "at liberty",
-   "enmity"
-  ],
-  "gloss": {
-   "survey": "a careful inspection of a building to check its condition",
-   "structural": "to do with the walls and frame of a building",
-   "tenants": "people who rent a home",
-   "contractor": "a company hired to do building work",
-   "housing office": "the council department that manages rented homes"
-  }
+  "text": "Dear Resident, following the survey of the rear wall of Block C, the council now accepts that the {{damp|damp}} is structural and not, as previously suggested, caused by residents drying washing indoors. We apologise for that suggestion. Repairs begin in June. We are not yet {{at liberty|at liberty}} to name the contractor. We know many of you have had a rotten two years with the housing office, and we hope this letter is a start.",
+  "words": ["damp", "at liberty"],
+  "gloss": {"survey": "a careful inspection of a building to check its condition", "rear": "back", "structural": "to do with the walls and frame of a building", "contractor": "a company hired to do building work", "rotten": "very bad (informal)", "housing office": "the council department that manages rented homes"}
+ },
+ {
+  "id": "s011",
+  "title": "The flower stall",
+  "genre": "Overheard",
+  "text": "\"They're a bit past it, these,\" the woman said, poking the roses.\n\"They're fine,\" said the lad on the stall. \"One {{petal|petal}} comes off and suddenly it's a crime scene.\"\n\"I'm paying eight quid.\"\n\"You're paying eight quid for roses that were in Holland on Tuesday. Have the tulips, they're {{diminutive|diminutive}} but they'll last the week.\"\nShe took the tulips. She also took the roses, because it was Mother's Day and she'd left it till the last minute, as usual.",
+  "words": ["petal", "diminutive"],
+  "gloss": {"past it": "too old to be any good (informal)", "lad": "a young man or boy (British informal)", "stall": "a small open-air shop, often at a market", "quid": "pounds (British slang for money)", "left it till the last minute": "waited until the latest possible time"}
+ },
+ {
+  "id": "s012",
+  "title": "The hyena thing",
+  "genre": "Text message",
+  "text": "Right, so your nan's fine, but the vet bill for the dog is not. Turns out he's been eating something dead down by the canal. Vet said he's basically a {{scavenger|scavenger}} with a collar on. Also she said the thing you found in the garden last week was almost certainly {{carrion|carrion}} a fox had left, so stop poking stuff with sticks. Dinner's at seven. Bring the good wine, not the stuff from the garage.",
+  "words": ["scavenger", "carrion"],
+  "gloss": {"nan": "grandmother (British informal)", "turns out": "it has become clear that", "basically": "more or less, in simple terms", "stuff": "things (informal)", "the garage": "here: the petrol station shop, which sells cheap wine"}
  }
 ]
