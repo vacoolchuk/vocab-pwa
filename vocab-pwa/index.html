@@ -126,9 +126,12 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 .slide.flipped .back .ex h4{color:#B8B2A4}
 .slide.flipped .back .tag{color:#E2B35A}
 /* ---------- watch feed (experiment) ---------- */
-#reel .slide{overflow-y:auto;-webkit-overflow-scrolling:touch}
-.rword{font-family:var(--display);font-weight:600;font-size:44px;line-height:1;margin:0 0 6px;color:var(--milk)}
-.rdef{font-family:var(--book);font-size:15px;line-height:1.4;color:#E4DED2;margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+#reel .slide{padding-top:calc(var(--sat) + 26px);padding-bottom:calc(var(--nav) + var(--sab) + 4px);overflow:hidden}
+#reel .body>*{flex-shrink:0}
+#reel .wplayer{margin-bottom:0;height:490px}
+@media (max-height:760px){#reel .slide{overflow-y:auto;-webkit-overflow-scrolling:touch}}
+.rword{font-family:var(--display);font-weight:600;font-size:36px;line-height:1;margin:0 0 4px;color:var(--milk)}
+.rdef{font-family:var(--book);font-size:14px;line-height:1.4;color:#E4DED2;margin:0 0 10px;min-height:39px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .rhint{font-size:12px;color:var(--faint);text-align:center;margin:8px 0 0;font-family:var(--display);letter-spacing:.1em;text-transform:uppercase}
 .wsug{margin:-6px 0 14px;border:1px solid var(--line);background:rgba(0,0,0,.35)}
 .wsug button{display:flex;justify-content:space-between;align-items:baseline;width:100%;text-align:left;background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--milk);font-family:var(--display);font-size:22px;padding:11px 12px}
@@ -259,7 +262,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-40";
+const APP_VERSION = "2026.10.24-41";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -815,7 +818,7 @@ function renderReel(){
     h += '<div class="slide tinted" style="--tint:' + tintFor(word) + '" data-i="' + i + '" data-w="' + esc(word) + '">' +
       '<div class="meta"><span>' + (i + 1) + " / " + n + '</span><span data-act="watchmode" data-m="list" style="color:var(--amber);cursor:pointer">List</span></div>' +
       '<div class="body"><p class="rword">' + esc(word) + '</p><p class="rdef">' + esc(d.def) + '</p>' +
-      '<div class="wplayer"><div id="ygr' + i + '"></div></div>' + ygBar("ygr" + i) + '<p class="rhint">Swipe up for the next word</p></div></div>';
+      '<div class="wplayer fixh"><div id="ygr' + i + '"></div></div>' + ygBar("ygr" + i) + '</div></div>';
   });
   h += '<div class="slide tinted" style="--tint:#2A2412"><div class="done"><p class="big">&#9749;</p><h2>That is all of them.</h2><p>' + n + ' word' + (n === 1 ? "" : "s") + ' you already know.</p><button class="wbtn" data-act="watchmode" data-m="feed">Shuffle again</button></div></div>';
   return h + "</div>";
@@ -894,9 +897,11 @@ async function ygShow(id, word){
   const cur = YGW[id];
   if (cur && cur.el === box){ cur.w.fetch(word, "english", "uk"); return; }
   box.innerHTML = "";
+  const wid = Math.max(260, Math.min(box.clientWidth || 340, 560));
+  if (box.parentElement && box.parentElement.classList.contains("fixh")) box.parentElement.style.height = (Math.round(wid * 9 / 16) + 295) + "px";
   try {
     const w = new YG.Widget(id, {
-      width: Math.max(260, Math.min(box.clientWidth || 340, 560)),
+      width: wid,
       components: 8,
       events: {
         onFetchDone: ev => say(ev && ev.totalResult === 0 ? "No clips for this one." : ""),
