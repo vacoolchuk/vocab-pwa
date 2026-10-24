@@ -89,7 +89,10 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 .storyhead h2{margin:0}
 .readbtn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line);background:rgba(0,0,0,.3);color:var(--amber);font-family:var(--display);font-size:15px;letter-spacing:.04em;flex-shrink:0}
 .readbtn .tri{width:11px;height:11px;fill:currentColor;pointer-events:none}
-.readbtn .rs{display:none}.readbtn.on .rl{display:none}.readbtn.on .rs{display:inline}.readbtn.on{border-color:var(--amber)}
+.readbtn .rs,.readbtn .rr{display:none}.readbtn.on .rl,.readbtn.paused .rl{display:none}.readbtn.on .rs,.readbtn.paused .rr{display:inline}.readbtn.on,.readbtn.paused{border-color:var(--amber)}
+.readwrap{display:inline-flex;align-items:center;gap:6px;flex-shrink:0}
+.rerbtn{display:none;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);background:rgba(0,0,0,.3);color:var(--amber)}
+.rerbtn.show{display:inline-flex}.rerbtn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
 .sdone{margin-top:12px}
 .sdone button{width:100%;padding:14px;border:1px solid var(--amber);background:transparent;color:var(--amber);font-family:var(--display);font-size:18px;letter-spacing:.05em}
 .sreveal{font-family:var(--ui);font-size:13px;color:var(--dim);margin:6px 0 0;line-height:1.5}
@@ -278,7 +281,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-55";
+const APP_VERSION = "2026.10.24-56";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -427,17 +430,17 @@ const PRE = {};
 function preloadLong(id){ const e = AUDIO[id]; if (!e || !e.file || PRE[id]) return; const a = new Audio("audio/" + e.file); a.preload = "auto"; PRE[id] = a; }
 function speakSystem(text){ if (!window.speechSynthesis) return; speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.lang = "en-GB"; u.rate = .9; const v = bestVoice(); if (v) u.voice = v; speechSynthesis.speak(u); }
 /* read a whole story or news item aloud: a pre-generated British neural voice when the mp3 exists, else the phone's voice */
-let readingId = null, AUDIO = {}, player = null;
+let readingId = null, readPaused = false, AUDIO = {}, player = null;
 function readAloud(id, text){
-  if (readingId === id){ stopReading(); return; }
-  stopReading(); readingId = id;
+  if (readingId === id){ pauseToggle(); return; }
+  stopReading(); readingId = id; readPaused = false;
   const key = id.replace(":", ":"); const entry = AUDIO[key];
   if (entry && entry.file){
     player = PRE[key] || new Audio("audio/" + entry.file); PRE[key] = null; player.preload = "auto"; try { player.currentTime = 0; } catch(e){}
     player.onended = () => { if (readingId === id) stopReading(); };
     player.onerror = () => { if (readingId === id){ player = null; speakFallback(id, text); } };
     player.play().catch(() => { if (readingId === id){ player = null; speakFallback(id, text); } });
-    document.querySelectorAll('[data-act="read"]').forEach(b => b.classList.toggle("on", b.dataset.id === id));
+    paintRead();
     return;
   }
   speakFallback(id, text);
@@ -448,10 +451,21 @@ function speakFallback(id, text){
   const parts = clean.match(/[^.!?]+[.!?]+["”']?|[^.!?]+$/g) || [clean];
   const v = bestVoice();
   parts.forEach((pt, k) => { const u = new SpeechSynthesisUtterance(pt.trim()); u.lang = "en-GB"; u.rate = .92; if (v) u.voice = v; if (k === parts.length - 1) u.onend = () => { if (readingId === id) stopReading(); }; speechSynthesis.speak(u); });
-  document.querySelectorAll('[data-act="read"]').forEach(b => b.classList.toggle("on", b.dataset.id === id));
+  paintRead();
 }
-function stopReading(){ if (player){ try { player.pause(); player.currentTime = 0; } catch(e){} if (readingId) PRE[readingId] = player; player = null; } if (window.speechSynthesis) speechSynthesis.cancel(); readingId = null; document.querySelectorAll('[data-act="read"].on').forEach(b => b.classList.remove("on")); }
-function readBtn(id){ return '<button class="readbtn" data-act="read" data-id="' + esc(id) + '"><svg class="tri" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg><span class="rl">Listen</span><span class="rs">Stop</span></button>'; }
+function pauseToggle(){
+  if (!readingId) return;
+  if (player){ if (player.paused){ readPaused = false; player.play().catch(() => {}); } else { readPaused = true; player.pause(); } }
+  else if (window.speechSynthesis){ if (speechSynthesis.paused){ readPaused = false; speechSynthesis.resume(); } else { readPaused = true; speechSynthesis.pause(); } }
+  paintRead();
+}
+function restartReading(id, text){ stopReading(); readAloud(id, text); }
+function paintRead(){
+  document.querySelectorAll(".readbtn").forEach(b => { const mine = b.dataset.id === readingId; b.classList.toggle("on", mine && !readPaused); b.classList.toggle("paused", mine && readPaused); });
+  document.querySelectorAll(".rerbtn").forEach(b => b.classList.toggle("show", b.dataset.id === readingId));
+}
+function stopReading(){ if (player){ try { player.pause(); player.currentTime = 0; } catch(e){} if (readingId) PRE[readingId] = player; player = null; } if (window.speechSynthesis){ speechSynthesis.cancel(); } readingId = null; readPaused = false; paintRead(); }
+function readBtn(id){ const e = esc(id); return '<span class="readwrap"><button class="readbtn" data-act="read" data-id="' + e + '"><svg class="tri" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg><span class="rl">Listen</span><span class="rs">Pause</span><span class="rr">Resume</span></button><button class="rerbtn" data-act="reread" data-id="' + e + '" aria-label="Start again"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button></span>'; }
 function say(m, err){ ui.msg = m; ui.msgErr = !!err; render(); setTimeout(() => { ui.msg = ""; render(); }, 3500); }
 function examplesHTML(d, cls){ return '<div class="ex"><h4>Examples</h4>' + d.examples.map(e => "<p>" + esc(e) + "</p>").join("") + "</div>"; }
 
@@ -1251,6 +1265,7 @@ document.addEventListener("click", async e => {
   if (a === "watchall"){ ui.watchAll = true; const l = document.getElementById("wlist"); if (l) l.innerHTML = watchListHTML(""); return; }
   if (a === "wild"){ e.stopPropagation(); return openWild(t.dataset.w); }
   if (a === "read"){ e.stopPropagation(); const id = t.dataset.id; const [kind, key] = [id.slice(0, id.indexOf(":")), id.slice(id.indexOf(":") + 1)]; const src = kind === "news" ? NEWS_BY[key] : STORIES.find(x => x.id === key); if (src) readAloud(id, (src.title ? src.title + ". " : "") + src.text); return; }
+  if (a === "reread"){ e.stopPropagation(); const id = t.dataset.id; const [kind, key] = [id.slice(0, id.indexOf(":")), id.slice(id.indexOf(":") + 1)]; const src = kind === "news" ? NEWS_BY[key] : STORIES.find(x => x.id === key); if (src) restartReading(id, (src.title ? src.title + ". " : "") + src.text); return; }
   if (a === "closewild") return closeWild();
   if (a === "storydone") return storyDone(i);
   if (a === "ahead"){ buildFeed(true); render(); prefetchAudio(); const fe = document.getElementById("feed"); if (fe) fe.scrollTop = 0; return; }
