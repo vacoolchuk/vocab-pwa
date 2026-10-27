@@ -1,155 +1,155 @@
 {
- "date": "2026-10-26",
+ "date": "2026-10-27",
  "intro": "Ten stories from the last day, rewritten in plain British English. Tap any word you don't know.",
  "items": [
   {
-   "id": "n2026-10-26-1",
+   "id": "n2026-10-27-1",
    "cat": "World",
-   "title": "Lula wins fourth term in Brazil",
-   "text": "Luiz Inácio Lula da Silva has won Brazil's presidential runoff and will serve a fourth term as president. With nearly all votes counted, the 80-year-old received 51.78% of valid votes, against 48.22% for Flávio Bolsonaro. Bolsonaro had led the first round on 4 October. Lula is the first candidate since 1989 to win a runoff after trailing in the first round. Voting hours were extended by two hours because of transport problems and severe weather. Lula will take office on 5 January 2027.",
-   "source": "The Statesman",
-   "url": "https://www.thestatesman.com/world/lula-turns-brazil-election-on-its-head-snatches-fourth-term-from-bolsonaros-son-in-dramatic-runoff-1503655060.html",
+   "title": "Jordan strikes militants in Syria",
+   "text": "Jordan's air force has struck what it called terrorist groups in Syria after a deadly attack on a church. Gunmen killed nine people at a funeral at St George's Church in Karak on Friday. Syrian officials said seven people died in the Jordanian strikes, six of them in Daraa province. Three Jordanian men were arrested after they fired on security forces from an abandoned house. King Abdullah II has promised that the attackers will be punished, and the government has declared three days of national mourning.",
+   "source": "Dawn (AFP)",
+   "url": "https://www.dawn.com/news/2040176/jordan-strikes-militant-groups-in-syria-after-church-attack",
    "gloss": {
-    "runoff": "a second election between the two leading candidates when nobody won enough votes the first time",
-    "valid votes": "votes that were filled in correctly and counted",
-    "trail": "to be behind another person or team in a contest",
-    "take office": "to officially begin a job in government",
-    "incumbent": "the person who currently holds a political job"
+    "air force": "the part of the army that fights with aircraft",
+    "funeral": "a ceremony held when a dead person is buried",
+    "barricade": "to block a door or entrance so that people cannot get in",
+    "retaliation": "an attack made in answer to an earlier attack",
+    "national mourning": "an official period when a whole country shows sadness for people who died"
    }
   },
   {
-   "id": "n2026-10-26-2",
+   "id": "n2026-10-27-2",
    "cat": "World",
-   "title": "Vučić admits defeat in Serbian election",
-   "text": "Serbia's long-time leader Aleksandar Vučić has admitted defeat in a snap parliamentary election. Based on a sample of votes, he said the student-led Student List would win 135 to 140 of the 250 seats, while his own list would take 105. Turnout reached 64.9% by 6pm, the highest since Yugoslavia broke up in 1992. Celebrations broke out in Belgrade, with crowds and fireworks. The movement grew from protests that began in 2024 after a railway station canopy collapsed in Novi Sad.",
-   "source": "Al Jazeera",
-   "url": "https://www.aljazeera.com/news/2026/10/25/serbia-voter-turnout-highest-in-decades-as-students-oppose-longtime-leader",
+   "title": "Israelis vote in key election",
+   "text": "Israelis are voting today in an election that will decide the future of Prime Minister Benjamin Netanyahu. About 7.3 million people are eligible to vote. More than half a million of them are young people voting for the first time. Dawn describes the election as pivotal, because the result will show whether Netanyahu can stay in power. Official results are expected after the polls close.",
+   "source": "Dawn",
+   "url": "https://www.dawn.com/news/2040163/israelis-to-decide-netanyahus-fate-in-pivotal-election-today",
    "gloss": {
-    "concede defeat": "to accept publicly that you have lost",
-    "snap election": "an election called earlier than planned",
-    "turnout": "the number of people who vote, often as a percentage",
-    "break out": "to start suddenly",
-    "canopy": "a roof-like cover over a building entrance or platform"
+    "eligible": "allowed to do something because you meet the rules",
+    "pivotal": "very important because everything else depends on it",
+    "stay in power": "to keep control of a government",
+    "first-time voter": "a person who votes in an election for the first time",
+    "tension": "a feeling of worry and anger between groups or countries"
    }
   },
   {
-   "id": "n2026-10-26-3",
-   "cat": "UK",
-   "title": "Burnham wants talks on free movement",
-   "text": "Prime Minister Andy Burnham has called for an honest discussion about free movement between the UK and the EU. In an interview with The Sunday Times, he said migration has changed since Brexit, with more people now settling permanently. He admitted free movement had very significant challenges, but ruled out joining the euro or Schengen. Nigel Farage called the idea a total betrayal of Brexit Britain. Shadow Home Secretary Chris Philp said it would mean giving up control of the borders.",
-   "source": "LBC",
-   "url": "https://www.lbc.co.uk/article/burnham-honest-discussion-eu-free-movement-5HjdkPm_2/",
+   "id": "n2026-10-27-3",
+   "cat": "World",
+   "title": "Comey faces third prosecution attempt",
+   "text": "Former FBI director James Comey is facing a third attempt to prosecute him. The Justice Department under President Donald Trump has accused him of transmitting national defence information. It has also accused him of conspiring to transmit it. The case is the latest step in a long legal fight between Comey and the administration. Comey has not yet been shown to have broken the law, and the charges must still be tested in court.",
+   "source": "Dawn",
+   "url": "https://www.dawn.com/news/2040174/ex-fbi-chief-comey-faces-third-prosecution-attempt-by-trump-justice-department",
    "gloss": {
-    "free movement": "the right of people to live and work in other countries in a group of states, such as the EU",
-    "rule out": "to say that something will not happen or is not possible",
-    "in the round": "looking at all parts of a subject together",
-    "betrayal": "an act of breaking trust, especially by not keeping a promise",
-    "shadow minister": "an opposition politician who covers the same area as a government minister"
+    "prosecute": "to take someone to court for a crime",
+    "conspire": "to secretly plan with others to do something illegal",
+    "defence information": "secret facts that protect a country's security",
+    "administration": "the government led by a president",
+    "charge": "a formal claim that someone has committed a crime"
    }
   },
   {
-   "id": "n2026-10-26-4",
+   "id": "n2026-10-27-4",
    "cat": "Football",
-   "title": "Liverpool beat Brighton 2-0 at Anfield",
-   "text": "Liverpool beat Brighton 2-0 at Anfield on Sunday. Florian Wirtz's shot was deflected in off Pascal Gross for an own goal in the first half. About four minutes later, Alexander Isak finished a Bradley Barcola cross for his sixth goal of the season. The result leaves Brighton third, with Liverpool one point behind them. Liverpool manager Andoni Iraola said the team needed the win at home to celebrate with supporters.",
-   "source": "NBC Sports",
-   "url": "https://www.nbcsports.com/soccer/live/liverpool-vs-brighton-live-updates-score-goals-highlights-stats-2026-october-25",
+   "title": "Kane wins the Ballon d'Or",
+   "text": "Harry Kane has won the men's Ballon d'Or at a ceremony in London. He is the first English winner for 25 years, since Michael Owen in 2001. Kylian Mbappe finished second and Lamine Yamal third. Kane scored 73 goals for club and country last season. Alexia Putellas won the women's award for the third time, and Bukayo Saka received the Socrates Award for his humanitarian work.",
+   "source": "Sky Sports",
+   "url": "https://www.skysports.com/football/news/13601934/harry-kane-wins-2026-ballon-dor-bayern-munich-striker-becomes-first-english-winner-of-award-in-25-years",
    "gloss": {
-    "own goal": "a goal scored by mistake against your own team",
-    "deflect": "to change the direction of a ball after it hits something",
-    "cross": "a pass kicked from the side of the pitch into the penalty area",
-    "finish": "to score a goal from a chance",
-    "pitch": "the field where football is played"
+    "ceremony": "a formal event held to mark something special",
+    "humanitarian": "connected with helping people who are suffering",
+    "finish second": "to come in second place in a competition",
+    "shortlist": "a short list of the best candidates, chosen from a longer list",
+    "for club and country": "for a team you play for and for your national team"
    }
   },
   {
-   "id": "n2026-10-26-5",
+   "id": "n2026-10-27-5",
    "cat": "Tennis",
-   "title": "Medvedev defends Almaty Open title",
-   "text": "Daniil Medvedev has defended his Almaty Open title, beating Nikoloz Basilashvili 6-7, 6-1, 6-3 in the final. It was the first time he has successfully defended a tour-level title. The win was his 25th career trophy and his fourth this year, after Brisbane, Dubai and Chengdu. Only Jannik Sinner, with six, has won more titles this season. Medvedev is now fifth in the race for the ATP Finals in Turin, and plays next in Vienna.",
-   "source": "ATP Tour",
-   "url": "https://www.atptour.com/en/news/medvedev-basilashvili-almaty-2026-final",
+   "title": "Alcaraz returns to Vienna",
+   "text": "Carlos Alcaraz plays his first match at the Vienna Open today for the first time since 2021. He added the event after the Six Kings Slam in Riyadh was postponed, and he received a late wild card. Alcaraz is a seven-time Major champion and the second seed. He faces Karen Khachanov, whom he has beaten in all six of their meetings. Jannik Sinner, who won in Vienna in 2023 and 2025, has withdrawn.",
+   "source": "Last Word on Sports",
+   "url": "https://lastwordonsports.com/tennis/2026/10/26/alcaraz-vienna-return",
    "gloss": {
-    "defend a title": "to win a competition again after winning it the year before",
-    "qualifier": "a player who reached the main draw by winning early rounds",
-    "trophy": "a cup or prize given for winning",
-    "top seed": "the player ranked highest in a tournament draw",
-    "tour-level": "at the main professional level of a sport's circuit"
+    "wild card": "a special entry that lets a player take part without qualifying",
+    "postpone": "to move an event to a later time",
+    "seed": "a player ranked high enough to be kept apart from other top players in the draw",
+    "withdraw": "to decide not to take part",
+    "Major": "one of the four biggest tennis tournaments"
    }
   },
   {
-   "id": "n2026-10-26-6",
-   "cat": "Tech",
-   "title": "Quantum chips run five qubits accurately",
-   "text": "Researchers at Japan's RIKEN institute have shown that several silicon qubits can work at the same time with high accuracy. The team used an array of five qubits sharing one microwave control line. With all five running together, accuracy was about 99.9%. They found a major source of errors and corrected it with a calibration method based on pairs of qubits. The study has been published in Nature Physics. Higher microwave power still reduces accuracy, so the researchers say better device design is needed.",
-   "source": "ScienceDaily",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261024222024.htm",
-   "gloss": {
-    "qubit": "the basic unit of information in a quantum computer",
-    "calibration": "adjusting equipment so that it measures or works correctly",
-    "array": "an arranged group of similar things",
-    "fidelity": "how accurately an operation is carried out",
-    "simultaneously": "at the same time"
-   }
-  },
-  {
-   "id": "n2026-10-26-7",
-   "cat": "Health",
-   "title": "Liquid treatment stops tooth decay in children",
-   "text": "A liquid painted onto teeth can stop cavities without drilling, according to a large US trial. The study, published in JAMA Pediatrics, included 830 children under six in Michigan, New York and Iowa. A 38% silver diamine fluoride solution, applied every six months, stopped decay in more than half of the affected baby teeth. The treatment permanently darkens the treated area, which can be most noticeable on front teeth. The authors say the results support an application for US approval.",
-   "source": "ScienceDaily",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261025222339.htm",
-   "gloss": {
-    "cavity": "a hole in a tooth caused by decay",
-    "trial": "a scientific test of a treatment on a group of people",
-    "decay": "the slow damage of a tooth or other material",
-    "darken": "to become darker in colour",
-    "affected": "harmed or changed by something, such as a disease"
-   }
-  },
-  {
-   "id": "n2026-10-26-8",
-   "cat": "Business",
-   "title": "Audi plans $4bn factory in Georgia",
-   "text": "Audi plans to invest about $4bn in its first US car factory, in Georgia, near Macon. President Trump announced the plan at a campaign rally on Saturday. The plant could make up to 200,000 vehicles a year and create about 4,500 jobs. Preparatory work starts in 2027, with series production due in the early 2030s. Audi currently imports all its US cars from Europe or Mexico, and tariffs cost it about €1bn last year. The plan still needs approval from Volkswagen committees.",
-   "source": "Euronews",
-   "url": "https://www.euronews.com/2026/10/25/audi-invests-four-billion-in-us-plant-after-trump-deal",
-   "gloss": {
-    "tariff": "a tax on goods brought into a country",
-    "campaign rally": "a large public meeting held to support a politician",
-    "series production": "making a product in large regular numbers",
-    "import": "to bring goods into a country from abroad",
-    "midterms": "US elections held halfway through a president's term"
-   }
-  },
-  {
-   "id": "n2026-10-26-9",
+   "id": "n2026-10-27-6",
    "cat": "Games",
-   "title": "GTA VI TV ads start to air",
-   "text": "Rockstar Games has started showing new television adverts for Grand Theft Auto VI. The 30-second spot drops the shower scenes from the launch trailer and adds slightly longer shots, while the 90-second version keeps them. The Xbox logo has been removed from the ad, which GameSpot links to Rockstar's reported deal with Sony. The game launches on 19 November on PS5 and Xbox Series X|S. Rockstar is also promoting it with real Burger Shot and Cluckin' Bell restaurants selling GTA-branded food.",
-   "source": "GameSpot",
-   "url": "https://www.gamespot.com/articles/gta-6s-new-tv-trailer-is-a-bit-different-see-it-for-yourself/",
-   "gloss": {
-    "spot": "a short advert on TV or radio",
-    "launch": "the day a product first goes on sale",
-    "branded": "carrying the name or logo of a company or product",
-    "promotional deal": "an agreement to advertise a product together",
-    "drop": "to leave something out"
-   }
-  },
-  {
-   "id": "n2026-10-26-10",
-   "cat": "Games",
-   "title": "Sony's new Pulse headset arrives on GTA VI day",
-   "text": "Sony has announced a new Pulse wireless headset for PS5, which launches on 19 November, the same day as GTA VI. Pre-orders open on 29 October in white and midnight black. It costs £89.99 and replaces the 2020 Pulse 3D. It has rotating earcups and PlayStation Link connectivity, which was previously exclusive to the Pulse Elite. A higher-end Pulse Edge is due in 2027. The PlayStation Store says GTA VI is optimised for PS5 Pro.",
+   "title": "PlayStation Pulse launches with GTA VI",
+   "text": "Sony will release a new wireless headset, the PlayStation Pulse, on 19 November, the same day Grand Theft Auto VI launches. Pre-orders open on 29 October, and it costs £89.99. The headset has planar magnetic drivers and PlayStation Link connectivity. Rockstar and PlayStation are promoting the PS5 as the home of the game, which is optimised for the PS5 Pro. A more expensive headset, the Pulse Edge, is due in 2027.",
    "source": "GamingBible",
    "url": "https://www.gamingbible.com/news/platform/playstation/ps5-new-hardware-upgrade-gta-6-bolsters-plays-best-claim-344299-20261023",
    "gloss": {
-    "pre-order": "to order a product before it is released",
-    "headset": "headphones with a microphone, used for gaming",
-    "exclusive": "available only to one group or product",
-    "optimised": "adjusted to work as well as possible",
-    "due": "expected to arrive at a certain time"
+    "pre-order": "to pay for a product before it goes on sale",
+    "optimised": "made to work as well as possible on a particular device",
+    "launch": "to put a new product on sale",
+    "due": "expected to happen or arrive at a certain time",
+    "connectivity": "the ability to connect to other devices"
+   }
+  },
+  {
+   "id": "n2026-10-27-7",
+   "cat": "Science",
+   "title": "Liquid stops tooth decay without drilling",
+   "text": "A large US trial has found that a liquid painted on teeth can stop decay in children without drilling. The trial tested silver diamine fluoride on 830 children younger than six. The treatment stopped decay in more than half of the affected baby teeth when it was applied every six months. It needs no injections or sedation. However, it permanently darkens the treated decay, which may be noticeable on front teeth. The results appeared in JAMA Pediatrics.",
+   "source": "ScienceDaily",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261025222339.htm",
+   "gloss": {
+    "trial": "a scientific test to find out whether a treatment works",
+    "decay": "the slow damage of a tooth by bacteria",
+    "sedation": "medicine that makes a patient calm or sleepy",
+    "drilling": "making a hole with a power tool",
+    "noticeable": "easy to see"
+   }
+  },
+  {
+   "id": "n2026-10-27-8",
+   "cat": "Culture",
+   "title": "Star Trek actor Walter Koenig dies at 90",
+   "text": "Walter Koenig, the actor who played Pavel Chekov in Star Trek, has died at the age of 90. His talent agent said he died at his home in Los Angeles. Koenig played the young Russian officer on the original television series in the 1960s. Chekov became one of the best-known members of the starship's crew, and the character was later played by other actors in new Star Trek films.",
+   "source": "Dawn",
+   "url": "https://www.dawn.com/news/2040020/actor-walter-koenig-star-treks-pavel-chekov-dies-at-90",
+   "gloss": {
+    "talent agent": "a person who finds work for actors and speaks for them",
+    "original series": "the first version of a television programme",
+    "crew": "all the people who work on a ship or spacecraft",
+    "later": "after the time you are talking about",
+    "best-known": "most famous"
+   }
+  },
+  {
+   "id": "n2026-10-27-9",
+   "cat": "Business",
+   "title": "Oil stays near six-month highs",
+   "text": "Oil prices have stayed close to their highest level for six months. Brent crude settled more than $3 higher and recorded a weekly gain of 6 per cent. US benchmark WTI rose 2.3 per cent. Higher fuel costs are already being felt elsewhere. In Pakistan, for example, the government has blamed the closure of the border with Iran for rising prices of liquefied petroleum gas.",
+   "source": "Dawn",
+   "url": "https://www.dawn.com/news/2040060/oil-prices-stay-near-six-month-highs",
+   "gloss": {
+    "crude": "oil in its natural state, before it is refined",
+    "settle": "to end a trading day at a certain price",
+    "benchmark": "a standard price used to compare others",
+    "weekly gain": "a rise in price over one week",
+    "liquefied petroleum gas": "a fuel gas stored as a liquid, used for cooking and heating"
+   }
+  },
+  {
+   "id": "n2026-10-27-10",
+   "cat": "World",
+   "title": "Oil spill off UAE spreads",
+   "text": "An oil spill off the coast of the United Arab Emirates has widened. It is now spreading towards Umm Al Quwain, one of the northern emirates. Authorities have closed more beaches as a result. Spills like this can harm wildlife and damage the local fishing and tourism industries. The cause of the spill was not given in the report, and officials have not said how long the clean-up will take.",
+   "source": "Dawn",
+   "url": "https://www.dawn.com/news/2040106/oil-spill-off-uae-widens-prompting-more-beach-closures",
+   "gloss": {
+    "spill": "liquid that has accidentally flowed out of a container or ship",
+    "widen": "to become larger or cover more area",
+    "emirate": "one of the regions of the UAE, each ruled by an emir",
+    "wildlife": "wild animals and plants",
+    "close": "to stop people from entering a place"
    }
   }
  ]
