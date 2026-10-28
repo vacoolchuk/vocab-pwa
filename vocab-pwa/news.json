@@ -1,155 +1,156 @@
 {
- "date": "2026-10-27",
+ "date": "2026-10-28",
  "intro": "Ten stories from the last day, rewritten in plain British English. Tap any word you don't know.",
  "items": [
   {
-   "id": "n2026-10-27-1",
+   "id": "n2026-10-28-1",
    "cat": "World",
-   "title": "Jordan strikes militants in Syria",
-   "text": "Jordan's air force has struck what it called terrorist groups in Syria after a deadly attack on a church. Gunmen killed nine people at a funeral at St George's Church in Karak on Friday. Syrian officials said seven people died in the Jordanian strikes, six of them in Daraa province. Three Jordanian men were arrested after they fired on security forces from an abandoned house. King Abdullah II has promised that the attackers will be punished, and the government has declared three days of national mourning.",
-   "source": "Dawn (AFP)",
-   "url": "https://www.dawn.com/news/2040176/jordan-strikes-militant-groups-in-syria-after-church-attack",
+   "title": "Israel election leaves both blocs short",
+   "text": "Exit polls from Israel's general election suggest that neither Benjamin Netanyahu's coalition nor the opposition bloc led by Gadi Eisenkot has won a majority. Two broadcasters projected 51 seats for each side in the 120-seat Knesset. Two Arab parties are expected to win 18 or 19 seats, so they could decide who forms the next government. Turnout was 77.7%, the highest at that stage since 1999. About 600,000 absentee ballots will be counted on Thursday.",
+   "source": "Axios",
+   "url": "https://www.axios.com/2026/10/27/netanyahu-eisenkot-israel-election-exit-polls",
    "gloss": {
-    "air force": "the part of the army that fights with aircraft",
-    "funeral": "a ceremony held when a dead person is buried",
-    "barricade": "to block a door or entrance so that people cannot get in",
-    "retaliation": "an attack made in answer to an earlier attack",
-    "national mourning": "an official period when a whole country shows sadness for people who died"
+    "exit poll": "a survey of voters taken as they leave the place where they voted",
+    "bloc": "a group of parties or countries that act together",
+    "majority": "more than half of the votes or seats",
+    "turnout": "the number of people who vote, as a share of those who can",
+    "absentee ballot": "a vote sent in by someone who cannot go to the polling place"
    }
   },
   {
-   "id": "n2026-10-27-2",
+   "id": "n2026-10-28-2",
    "cat": "World",
-   "title": "Israelis vote in key election",
-   "text": "Israelis are voting today in an election that will decide the future of Prime Minister Benjamin Netanyahu. About 7.3 million people are eligible to vote. More than half a million of them are young people voting for the first time. Dawn describes the election as pivotal, because the result will show whether Netanyahu can stay in power. Official results are expected after the polls close.",
-   "source": "Dawn",
-   "url": "https://www.dawn.com/news/2040163/israelis-to-decide-netanyahus-fate-in-pivotal-election-today",
+   "title": "EU tells states to plan for 3C warming",
+   "text": "The European Commission has proposed that member states should prepare for a world that is 3C warmer by 2100. Each country would have to name the authorities responsible for climate risks. Europe is warming at about twice the global average, and extreme weather caused more than €100 billion in damage this summer. Adapting to the changes will cost about €70 billion a year until 2050, but the plan includes no new funding. Only about a quarter of exposed assets are insured.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/2026/10/27/europe-must-prepare-for-a-3c-warmer-world-eu-climate-chief-warns",
    "gloss": {
-    "eligible": "allowed to do something because you meet the rules",
-    "pivotal": "very important because everything else depends on it",
-    "stay in power": "to keep control of a government",
-    "first-time voter": "a person who votes in an election for the first time",
-    "tension": "a feeling of worry and anger between groups or countries"
+    "member state": "a country that belongs to the European Union",
+    "extreme weather": "very strong storms, floods, heatwaves or droughts",
+    "adapt": "to change so that you can deal with a new situation",
+    "funding": "money given for a particular purpose",
+    "insured": "covered by a contract that pays money if something is damaged"
    }
   },
   {
-   "id": "n2026-10-27-3",
-   "cat": "World",
-   "title": "Comey faces third prosecution attempt",
-   "text": "Former FBI director James Comey is facing a third attempt to prosecute him. The Justice Department under President Donald Trump has accused him of transmitting national defence information. It has also accused him of conspiring to transmit it. The case is the latest step in a long legal fight between Comey and the administration. Comey has not yet been shown to have broken the law, and the charges must still be tested in court.",
-   "source": "Dawn",
-   "url": "https://www.dawn.com/news/2040174/ex-fbi-chief-comey-faces-third-prosecution-attempt-by-trump-justice-department",
+   "id": "n2026-10-28-3",
+   "cat": "UK",
+   "title": "Two men charged over RAF Fairford incident",
+   "text": "Two men have been charged under the National Security Act after an incident at RAF Fairford in September. The base is used by US bombers. Prosecutors say five men drove vans loaded with petrol to the site on the orders of a handler who is believed to work for Iranian intelligence. Mohmed Abdulkarim, 24, was released on bail, while Nouman Essghir, 24, was remanded in custody. Both will appear at the Old Bailey on 20 November. Iran denies coordinating the activity.",
+   "source": "The Guardian",
+   "url": "https://www.theguardian.com/uk-news/2026/oct/27/two-men-charged-raf-fairford",
    "gloss": {
-    "prosecute": "to take someone to court for a crime",
-    "conspire": "to secretly plan with others to do something illegal",
-    "defence information": "secret facts that protect a country's security",
-    "administration": "the government led by a president",
-    "charge": "a formal claim that someone has committed a crime"
+    "charge": "to accuse someone officially of a crime",
+    "prosecutor": "a lawyer who presents the case against someone in court",
+    "handler": "a person who gives orders to a secret agent",
+    "bail": "permission to stay free until a trial, often with conditions",
+    "remand": "to keep someone in prison until their trial",
+    "intelligence": "secret information about other countries, or the service that collects it"
    }
   },
   {
-   "id": "n2026-10-27-4",
+   "id": "n2026-10-28-4",
    "cat": "Football",
-   "title": "Kane wins the Ballon d'Or",
-   "text": "Harry Kane has won the men's Ballon d'Or at a ceremony in London. He is the first English winner for 25 years, since Michael Owen in 2001. Kylian Mbappe finished second and Lamine Yamal third. Kane scored 73 goals for club and country last season. Alexia Putellas won the women's award for the third time, and Bukayo Saka received the Socrates Award for his humanitarian work.",
+   "title": "Fleetwood knock Arsenal out of the Cup",
+   "text": "League Two side Fleetwood Town have knocked Arsenal out of the Carabao Cup. The match finished 1-1, and Fleetwood won 5-3 on penalties. Max Dowman was sent off for Arsenal, and manager Mikel Arteta's reaction to the red card has drawn criticism. Elsewhere, Bradford City reached the quarter-finals after they beat Peterborough United 2-0. Macaulay Gillesphey scored the first goal.",
    "source": "Sky Sports",
-   "url": "https://www.skysports.com/football/news/13601934/harry-kane-wins-2026-ballon-dor-bayern-munich-striker-becomes-first-english-winner-of-award-in-25-years",
+   "url": "https://www.skysports.com/football/fleetwood-town-vs-arsenal/report/578610",
    "gloss": {
-    "ceremony": "a formal event held to mark something special",
-    "humanitarian": "connected with helping people who are suffering",
-    "finish second": "to come in second place in a competition",
-    "shortlist": "a short list of the best candidates, chosen from a longer list",
-    "for club and country": "for a team you play for and for your national team"
+    "knock out": "to defeat a team so that it leaves a competition",
+    "penalties": "a way to decide a drawn match, with each team taking shots from close to the goal",
+    "sent off": "ordered to leave the pitch by the referee for a serious foul",
+    "draw criticism": "to make people say that you did something wrong",
+    "quarter-final": "a match with eight teams left, played before the semi-finals"
    }
   },
   {
-   "id": "n2026-10-27-5",
+   "id": "n2026-10-28-5",
    "cat": "Tennis",
-   "title": "Alcaraz returns to Vienna",
-   "text": "Carlos Alcaraz plays his first match at the Vienna Open today for the first time since 2021. He added the event after the Six Kings Slam in Riyadh was postponed, and he received a late wild card. Alcaraz is a seven-time Major champion and the second seed. He faces Karen Khachanov, whom he has beaten in all six of their meetings. Jannik Sinner, who won in Vienna in 2023 and 2025, has withdrawn.",
-   "source": "Last Word on Sports",
-   "url": "https://lastwordonsports.com/tennis/2026/10/26/alcaraz-vienna-return",
+   "title": "Shelton and Fils win in Basel",
+   "text": "Top seed Ben Shelton of the United States won a tough match at the Swiss Indoors in Basel on Tuesday. He beat Aleksandar Kovacevic 6-7, 7-6, 7-6. France's Arthur Fils, the second seed, also went through after a 7-6, 7-5 win over Giovanni Mpetshi Perricard. Stan Wawrinka, who had a wild card, lost to Jiri Lehecka in straight sets. The tournament runs until 1 November.",
+   "source": "ATP Tour",
+   "url": "https://www.atptour.com/en/news/basel-2026-results",
    "gloss": {
-    "wild card": "a special entry that lets a player take part without qualifying",
-    "postpone": "to move an event to a later time",
-    "seed": "a player ranked high enough to be kept apart from other top players in the draw",
-    "withdraw": "to decide not to take part",
-    "Major": "one of the four biggest tennis tournaments"
+    "seed": "a top player placed in a good position in the draw",
+    "tie-break": "a short game used to decide a set when the score is level",
+    "go through": "to win and move on to the next round",
+    "wild card": "a place in a tournament given to a player who did not qualify",
+    "straight sets": "a win without losing a single set"
    }
   },
   {
-   "id": "n2026-10-27-6",
-   "cat": "Games",
-   "title": "PlayStation Pulse launches with GTA VI",
-   "text": "Sony will release a new wireless headset, the PlayStation Pulse, on 19 November, the same day Grand Theft Auto VI launches. Pre-orders open on 29 October, and it costs £89.99. The headset has planar magnetic drivers and PlayStation Link connectivity. Rockstar and PlayStation are promoting the PS5 as the home of the game, which is optimised for the PS5 Pro. A more expensive headset, the Pulse Edge, is due in 2027.",
-   "source": "GamingBible",
-   "url": "https://www.gamingbible.com/news/platform/playstation/ps5-new-hardware-upgrade-gta-6-bolsters-plays-best-claim-344299-20261023",
+   "id": "n2026-10-28-6",
+   "cat": "Tech",
+   "title": "Norwegian media sue Meta over AI plans",
+   "text": "Ten Norwegian media groups, including the broadcaster NRK and Schibsted, have sued Meta in Oslo. Meta announced new terms for business accounts on Facebook and Instagram on 8 October. Publishers say the terms would let the company collect articles, photos and videos, even paywalled ones, to build AI products. They say the only way to opt out is to delete their accounts. Meta has postponed the launch to 20 November, and the publishers want a court to block the terms until the case is decided.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/2026/10/27/norwegian-media-sue-meta-over-plans-to-use-their-journalism-for-ai",
    "gloss": {
-    "pre-order": "to pay for a product before it goes on sale",
-    "optimised": "made to work as well as possible on a particular device",
-    "launch": "to put a new product on sale",
-    "due": "expected to happen or arrive at a certain time",
-    "connectivity": "the ability to connect to other devices"
+    "sue": "to take someone to court to claim money or to stop them doing something",
+    "paywalled": "available only to people who pay a subscription",
+    "opt out": "to choose not to take part in something",
+    "postpone": "to move to a later date",
+    "injunction": "a court order that stops someone doing something"
    }
   },
   {
-   "id": "n2026-10-27-7",
+   "id": "n2026-10-28-7",
    "cat": "Science",
-   "title": "Liquid stops tooth decay without drilling",
-   "text": "A large US trial has found that a liquid painted on teeth can stop decay in children without drilling. The trial tested silver diamine fluoride on 830 children younger than six. The treatment stopped decay in more than half of the affected baby teeth when it was applied every six months. It needs no injections or sedation. However, it permanently darkens the treated decay, which may be noticeable on front teeth. The results appeared in JAMA Pediatrics.",
-   "source": "ScienceDaily",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261025222339.htm",
+   "title": "Scientists test 'mosquito toilets'",
+   "text": "A scientist at Rutgers University in the US has built a device that he calls a mosquito toilet. It is a 3D-printed funnel with a water-repellent coating, and the liquid that mosquitoes leave behind slides into a tube. Researchers then check it for the genetic traces of viruses. In a test, waste from 50 mosquitoes found a complete West Nile virus genome and several viruses that may be new to science. The scientist says there is no reason for alarm.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/2026/10/27/mosquito-toilets-how-scientists-are-using-mosquito-poop-to-detect-viruses",
    "gloss": {
-    "trial": "a scientific test to find out whether a treatment works",
-    "decay": "the slow damage of a tooth by bacteria",
-    "sedation": "medicine that makes a patient calm or sleepy",
-    "drilling": "making a hole with a power tool",
-    "noticeable": "easy to see"
+    "entomologist": "a scientist who studies insects",
+    "funnel": "a tube that is wide at the top and narrow at the bottom",
+    "water-repellent": "made so that water cannot soak into it",
+    "genome": "all the genetic information of a living thing",
+    "early warning": "a sign that tells you about a danger before it becomes serious"
    }
   },
   {
-   "id": "n2026-10-27-8",
+   "id": "n2026-10-28-8",
    "cat": "Culture",
-   "title": "Star Trek actor Walter Koenig dies at 90",
-   "text": "Walter Koenig, the actor who played Pavel Chekov in Star Trek, has died at the age of 90. His talent agent said he died at his home in Los Angeles. Koenig played the young Russian officer on the original television series in the 1960s. Chekov became one of the best-known members of the starship's crew, and the character was later played by other actors in new Star Trek films.",
-   "source": "Dawn",
-   "url": "https://www.dawn.com/news/2040020/actor-walter-koenig-star-treks-pavel-chekov-dies-at-90",
+   "title": "Neil Young sues Trump committee again",
+   "text": "Neil Young has filed a new lawsuit over his 1989 song 'Rockin' in the Free World'. He says Trump's political committee plays the song at rallies without permission. Young sued Donald Trump's campaign over the same song in 2020, and that case ended with a settlement. He now says the committee has broken that agreement and has damaged his reputation. He is asking for $10 million and an order to stop the song being played in public.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/2026/10/27/neil-young-sues-donald-trumps-political-committee-for-copyright-infringement-again",
    "gloss": {
-    "talent agent": "a person who finds work for actors and speaks for them",
-    "original series": "the first version of a television programme",
-    "crew": "all the people who work on a ship or spacecraft",
-    "later": "after the time you are talking about",
-    "best-known": "most famous"
+    "lawsuit": "a case in which one person or company takes another to court",
+    "copyright": "the legal right to control who can use a song, book or film",
+    "settlement": "an agreement that ends a legal dispute",
+    "break an agreement": "to fail to do what you promised to do",
+    "damages": "money that a court orders someone to pay for harm they caused"
    }
   },
   {
-   "id": "n2026-10-27-9",
-   "cat": "Business",
-   "title": "Oil stays near six-month highs",
-   "text": "Oil prices have stayed close to their highest level for six months. Brent crude settled more than $3 higher and recorded a weekly gain of 6 per cent. US benchmark WTI rose 2.3 per cent. Higher fuel costs are already being felt elsewhere. In Pakistan, for example, the government has blamed the closure of the border with Iran for rising prices of liquefied petroleum gas.",
-   "source": "Dawn",
-   "url": "https://www.dawn.com/news/2040060/oil-prices-stay-near-six-month-highs",
+   "id": "n2026-10-28-9",
+   "cat": "Money",
+   "title": "Pentagon puts Iran war cost at $47bn",
+   "text": "The Pentagon has estimated that the war with Iran has cost $47.1 billion up to 16 October. Munitions make up more than 60% of the total, or about $29 billion, and a further $6.1 billion went on replacing damaged equipment. The figure is more than 25% higher than the estimate Pete Hegseth gave in July. It does not include $1.5 billion in other requested costs. The disclosure comes before the US elections on 3 November.",
+   "source": "Arab News",
+   "url": "https://www.arabnews.com/world/us-costs-of-iran-war-rise-to-over-47-billion-according-to-pentagon-estimate-3008600",
    "gloss": {
-    "crude": "oil in its natural state, before it is refined",
-    "settle": "to end a trading day at a certain price",
-    "benchmark": "a standard price used to compare others",
-    "weekly gain": "a rise in price over one week",
-    "liquefied petroleum gas": "a fuel gas stored as a liquid, used for cooking and heating"
+    "estimate": "a rough calculation of the size or cost of something",
+    "munitions": "weapons and ammunition used in war",
+    "damaged": "harmed or broken",
+    "disclosure": "the act of making secret or new information public",
+    "make up": "to form a certain part of a total"
    }
   },
   {
-   "id": "n2026-10-27-10",
-   "cat": "World",
-   "title": "Oil spill off UAE spreads",
-   "text": "An oil spill off the coast of the United Arab Emirates has widened. It is now spreading towards Umm Al Quwain, one of the northern emirates. Authorities have closed more beaches as a result. Spills like this can harm wildlife and damage the local fishing and tourism industries. The cause of the spill was not given in the report, and officials have not said how long the clean-up will take.",
-   "source": "Dawn",
-   "url": "https://www.dawn.com/news/2040106/oil-spill-off-uae-widens-prompting-more-beach-closures",
+   "id": "n2026-10-28-10",
+   "cat": "Games",
+   "title": "GTA VI is a reported 210 GB download",
+   "text": "A report says that Grand Theft Auto VI will need a 210 GB download on consoles. The PlayStation Game Size account on X posted the figure first, and Insider Gaming says it has confirmed it. Players will be able to preload the game on 12 November, a week before the launch on 19 November. The standard edition costs $79.99. Rockstar Games has kept interest high in the game with trailers ahead of the launch.",
+   "source": "Kotaku",
+   "url": "https://kotaku.com/gta-6s-expectedly-massive-file-size-has-been-revealed-2000750298",
    "gloss": {
-    "spill": "liquid that has accidentally flowed out of a container or ship",
-    "widen": "to become larger or cover more area",
-    "emirate": "one of the regions of the UAE, each ruled by an emir",
-    "wildlife": "wild animals and plants",
-    "close": "to stop people from entering a place"
+    "preload": "to download a game before its official release so you can play it at once",
+    "launch": "the day when a new product first goes on sale",
+    "edition": "a particular version of a game or book",
+    "corroborate": "to give more evidence that something is true",
+    "keep up": "to continue doing something at the same level"
    }
   }
  ]
