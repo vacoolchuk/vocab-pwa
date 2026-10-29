@@ -1,157 +1,156 @@
 {
- "date": "2026-10-28",
- "intro": "Ten stories from the last day, rewritten in plain British English. Tap any word you don't know.",
- "items": [
-  {
-   "id": "n2026-10-28-1",
-   "cat": "World",
-   "title": "Israel election leaves both blocs short",
-   "text": "Exit polls from Israel's general election suggest that neither Benjamin Netanyahu's coalition nor the opposition bloc led by Gadi Eisenkot has won a majority. Two broadcasters projected 51 seats for each side in the 120-seat Knesset. Two Arab parties are expected to win 18 or 19 seats, so they could decide who forms the next government. Turnout was 77.7%, the highest at that stage since 1999. About 600,000 absentee ballots will be counted on Thursday.",
-   "source": "Axios",
-   "url": "https://www.axios.com/2026/10/27/netanyahu-eisenkot-israel-election-exit-polls",
-   "gloss": {
-    "exit poll": "a survey of voters taken as they leave the place where they voted",
-    "bloc": "a group of parties or countries that act together",
-    "majority": "more than half of the votes or seats",
-    "turnout": "the number of people who vote, as a share of those who can",
-    "absentee ballot": "a vote sent in by someone who cannot go to the polling place"
-   }
-  },
-  {
-   "id": "n2026-10-28-2",
-   "cat": "World",
-   "title": "EU tells states to plan for 3C warming",
-   "text": "The European Commission has proposed that member states should prepare for a world that is 3C warmer by 2100. Each country would have to name the authorities responsible for climate risks. Europe is warming at about twice the global average, and extreme weather caused more than €100 billion in damage this summer. Adapting to the changes will cost about €70 billion a year until 2050, but the plan includes no new funding. Only about a quarter of exposed assets are insured.",
-   "source": "Euronews",
-   "url": "https://www.euronews.com/2026/10/27/europe-must-prepare-for-a-3c-warmer-world-eu-climate-chief-warns",
-   "gloss": {
-    "member state": "a country that belongs to the European Union",
-    "extreme weather": "very strong storms, floods, heatwaves or droughts",
-    "adapt": "to change so that you can deal with a new situation",
-    "funding": "money given for a particular purpose",
-    "insured": "covered by a contract that pays money if something is damaged"
-   }
-  },
-  {
-   "id": "n2026-10-28-3",
-   "cat": "UK",
-   "title": "Two men charged over RAF Fairford incident",
-   "text": "Two men have been charged under the National Security Act after an incident at RAF Fairford in September. The base is used by US bombers. Prosecutors say five men drove vans loaded with petrol to the site on the orders of a handler who is believed to work for Iranian intelligence. Mohmed Abdulkarim, 24, was released on bail, while Nouman Essghir, 24, was remanded in custody. Both will appear at the Old Bailey on 20 November. Iran denies coordinating the activity.",
-   "source": "The Guardian",
-   "url": "https://www.theguardian.com/uk-news/2026/oct/27/two-men-charged-raf-fairford",
-   "gloss": {
-    "charge": "to accuse someone officially of a crime",
-    "prosecutor": "a lawyer who presents the case against someone in court",
-    "handler": "a person who gives orders to a secret agent",
-    "bail": "permission to stay free until a trial, often with conditions",
-    "remand": "to keep someone in prison until their trial",
-    "intelligence": "secret information about other countries, or the service that collects it"
-   }
-  },
-  {
-   "id": "n2026-10-28-4",
-   "cat": "Football",
-   "title": "Fleetwood knock Arsenal out of the Cup",
-   "text": "League Two side Fleetwood Town have knocked Arsenal out of the Carabao Cup. The match finished 1-1, and Fleetwood won 5-3 on penalties. Max Dowman was sent off for Arsenal, and manager Mikel Arteta's reaction to the red card has drawn criticism. Elsewhere, Bradford City reached the quarter-finals after they beat Peterborough United 2-0. Macaulay Gillesphey scored the first goal.",
-   "source": "Sky Sports",
-   "url": "https://www.skysports.com/football/fleetwood-town-vs-arsenal/report/578610",
-   "gloss": {
-    "knock out": "to defeat a team so that it leaves a competition",
-    "penalties": "a way to decide a drawn match, with each team taking shots from close to the goal",
-    "sent off": "ordered to leave the pitch by the referee for a serious foul",
-    "draw criticism": "to make people say that you did something wrong",
-    "quarter-final": "a match with eight teams left, played before the semi-finals"
-   }
-  },
-  {
-   "id": "n2026-10-28-5",
-   "cat": "Tennis",
-   "title": "Shelton and Fils win in Basel",
-   "text": "Top seed Ben Shelton of the United States won a tough match at the Swiss Indoors in Basel on Tuesday. He beat Aleksandar Kovacevic 6-7, 7-6, 7-6. France's Arthur Fils, the second seed, also went through after a 7-6, 7-5 win over Giovanni Mpetshi Perricard. Stan Wawrinka, who had a wild card, lost to Jiri Lehecka in straight sets. The tournament runs until 1 November.",
-   "source": "ATP Tour",
-   "url": "https://www.atptour.com/en/news/basel-2026-results",
-   "gloss": {
-    "seed": "a top player placed in a good position in the draw",
-    "tie-break": "a short game used to decide a set when the score is level",
-    "go through": "to win and move on to the next round",
-    "wild card": "a place in a tournament given to a player who did not qualify",
-    "straight sets": "a win without losing a single set"
-   }
-  },
-  {
-   "id": "n2026-10-28-6",
-   "cat": "Tech",
-   "title": "Norwegian media sue Meta over AI plans",
-   "text": "Ten Norwegian media groups, including the broadcaster NRK and Schibsted, have sued Meta in Oslo. Meta announced new terms for business accounts on Facebook and Instagram on 8 October. Publishers say the terms would let the company collect articles, photos and videos, even paywalled ones, to build AI products. They say the only way to opt out is to delete their accounts. Meta has postponed the launch to 20 November, and the publishers want a court to block the terms until the case is decided.",
-   "source": "Euronews",
-   "url": "https://www.euronews.com/2026/10/27/norwegian-media-sue-meta-over-plans-to-use-their-journalism-for-ai",
-   "gloss": {
-    "sue": "to take someone to court to claim money or to stop them doing something",
-    "paywalled": "available only to people who pay a subscription",
-    "opt out": "to choose not to take part in something",
-    "postpone": "to move to a later date",
-    "injunction": "a court order that stops someone doing something"
-   }
-  },
-  {
-   "id": "n2026-10-28-7",
-   "cat": "Science",
-   "title": "Scientists test 'mosquito toilets'",
-   "text": "A scientist at Rutgers University in the US has built a device that he calls a mosquito toilet. It is a 3D-printed funnel with a water-repellent coating, and the liquid that mosquitoes leave behind slides into a tube. Researchers then check it for the genetic traces of viruses. In a test, waste from 50 mosquitoes found a complete West Nile virus genome and several viruses that may be new to science. The scientist says there is no reason for alarm.",
-   "source": "Euronews",
-   "url": "https://www.euronews.com/2026/10/27/mosquito-toilets-how-scientists-are-using-mosquito-poop-to-detect-viruses",
-   "gloss": {
-    "entomologist": "a scientist who studies insects",
-    "funnel": "a tube that is wide at the top and narrow at the bottom",
-    "water-repellent": "made so that water cannot soak into it",
-    "genome": "all the genetic information of a living thing",
-    "early warning": "a sign that tells you about a danger before it becomes serious"
-   }
-  },
-  {
-   "id": "n2026-10-28-8",
-   "cat": "Culture",
-   "title": "Neil Young sues Trump committee again",
-   "text": "Neil Young has filed a new lawsuit over his 1989 song 'Rockin' in the Free World'. He says Trump's political committee plays the song at rallies without permission. Young sued Donald Trump's campaign over the same song in 2020, and that case ended with a settlement. He now says the committee has broken that agreement and has damaged his reputation. He is asking for $10 million and an order to stop the song being played in public.",
-   "source": "Euronews",
-   "url": "https://www.euronews.com/2026/10/27/neil-young-sues-donald-trumps-political-committee-for-copyright-infringement-again",
-   "gloss": {
-    "lawsuit": "a case in which one person or company takes another to court",
-    "copyright": "the legal right to control who can use a song, book or film",
-    "settlement": "an agreement that ends a legal dispute",
-    "break an agreement": "to fail to do what you promised to do",
-    "damages": "money that a court orders someone to pay for harm they caused"
-   }
-  },
-  {
-   "id": "n2026-10-28-9",
-   "cat": "Money",
-   "title": "Pentagon puts Iran war cost at $47bn",
-   "text": "The Pentagon has estimated that the war with Iran has cost $47.1 billion up to 16 October. Munitions make up more than 60% of the total, or about $29 billion, and a further $6.1 billion went on replacing damaged equipment. The figure is more than 25% higher than the estimate Pete Hegseth gave in July. It does not include $1.5 billion in other requested costs. The disclosure comes before the US elections on 3 November.",
-   "source": "Arab News",
-   "url": "https://www.arabnews.com/world/us-costs-of-iran-war-rise-to-over-47-billion-according-to-pentagon-estimate-3008600",
-   "gloss": {
-    "estimate": "a rough calculation of the size or cost of something",
-    "munitions": "weapons and ammunition used in war",
-    "damaged": "harmed or broken",
-    "disclosure": "the act of making secret or new information public",
-    "make up": "to form a certain part of a total"
-   }
-  },
-  {
-   "id": "n2026-10-28-10",
-   "cat": "Games",
-   "title": "GTA VI is a reported 210 GB download",
-   "text": "A report says that Grand Theft Auto VI will need a 210 GB download on consoles. The PlayStation Game Size account on X posted the figure first, and Insider Gaming says it has confirmed it. Players will be able to preload the game on 12 November, a week before the launch on 19 November. The standard edition costs $79.99. Rockstar Games has kept interest high in the game with trailers ahead of the launch.",
-   "source": "Kotaku",
-   "url": "https://kotaku.com/gta-6s-expectedly-massive-file-size-has-been-revealed-2000750298",
-   "gloss": {
-    "preload": "to download a game before its official release so you can play it at once",
-    "launch": "the day when a new product first goes on sale",
-    "edition": "a particular version of a game or book",
-    "corroborate": "to give more evidence that something is true",
-    "keep up": "to continue doing something at the same level"
-   }
-  }
- ]
+  "date": "2026-10-29",
+  "intro": "Ten stories from the last day, rewritten in plain British English. Tap any word you don't know.",
+  "items": [
+    {
+      "id": "n2026-10-29-1",
+      "cat": "World",
+      "title": "Deadly high-speed train crash in Spain",
+      "text": "Two high-speed trains collided near Toledo in central Spain, and at least 68 people have died. Nearly 100 others were injured, according to reports. First aerial pictures of the wreckage were released on Wednesday, showing the scene of the crash. Ten South Korean passengers were reportedly on board, and two of them suffered minor injuries. Investigators have not yet said what caused the collision, and the number of victims could still change.",
+      "source": "Euronews",
+      "url": "https://www.euronews.com/2026/10/28/first-aerial-images-show-scene-of-deadly-train-crash-in-toledo-spain",
+      "gloss": {
+        "collide": "to hit another moving thing with great force",
+        "wreckage": "the broken parts left after a crash",
+        "aerial": "seen or taken from above, for example from a plane or drone",
+        "on board": "travelling in a vehicle such as a train or plane",
+        "investigator": "a person whose job is to find out what happened"
+      }
+    },
+    {
+      "id": "n2026-10-29-2",
+      "cat": "World",
+      "title": "India evacuates thousands as cyclone hits",
+      "text": "India has moved tens of thousands of people to safety as Cyclone Arnab made landfall on Wednesday. A cyclone is a powerful storm with strong winds and heavy rain, and it can damage homes and flood roads. Officials ordered people in the most exposed areas to leave before the storm arrived. Emergency teams are now checking the damage along the coast.",
+      "source": "Euronews",
+      "url": "https://www.euronews.com/2026/10/28/india-evacuates-tens-of-thousands-as-cyclone-arnab-makes-landfall",
+      "gloss": {
+        "evacuate": "to move people away from a dangerous place",
+        "make landfall": "to reach land after moving over the sea",
+        "cyclone": "a powerful storm with strong winds that turns in a circle",
+        "exposed": "not protected from bad weather or danger",
+        "flood": "to cover dry land with water"
+      }
+    },
+    {
+      "id": "n2026-10-29-3",
+      "cat": "UK",
+      "title": "Healey's first Budget hits landlords and banks",
+      "text": "Chancellor John Healey delivered his first Autumn Budget on Wednesday. Tax on property and savings income will rise by 2p from next April, taking the rates to 24p, 44p and 49p. The surcharge on bank profits goes up by three percentage points for 15 months, and the plan to cut the cash ISA limit has been dropped. The government says borrowing will fall to 1.8% of national income by 2030. Growth is forecast at 1% next year, down from 1.6%.",
+      "source": "Fidelity International",
+      "url": "https://www.fidelity.co.uk/markets-insights/personal-finance/personal-finance/autumn-budget-2026-what-it-means-for-you-and-your-money/",
+      "gloss": {
+        "chancellor": "the government minister in charge of taxes and public money",
+        "surcharge": "an extra tax added on top of the normal one",
+        "drop": "to decide not to go ahead with a plan",
+        "borrowing": "money a government takes from lenders to pay for its spending",
+        "forecast": "to say what you expect to happen in the future"
+      }
+    },
+    {
+      "id": "n2026-10-29-4",
+      "cat": "Football",
+      "title": "Liverpool and City win League Cup shoot-outs",
+      "text": "Liverpool beat Chelsea on penalties at Anfield after a 1-1 draw in the League Cup fourth round. Morgan Rogers scored for Chelsea from the spot, and Cody Gakpo equalised for Liverpool, also from the penalty spot. Manchester City then won a shoot-out against Brighton after a 2-2 draw at the Etihad. Fleetwood, a fourth-tier club, had knocked out Arsenal on penalties on Tuesday. Liverpool will now face Bournemouth in the quarter-finals.",
+      "source": "Jamaica Observer (AFP)",
+      "url": "https://www.jamaicaobserver.com/2026/10/28/liverpool-beat-chelsea-league-cup-shoot-man-city-survive-scare/",
+      "gloss": {
+        "shoot-out": "a way to decide a drawn match, with players taking turns to shoot from the penalty spot",
+        "equalise": "to score a goal that makes the score level",
+        "knock out": "to remove a team or player from a competition",
+        "quarter-final": "a match with eight teams left, before the semi-finals",
+        "from the spot": "from a penalty kick"
+      }
+    },
+    {
+      "id": "n2026-10-29-5",
+      "cat": "Tennis",
+      "title": "Djokovic through in Basel, Ruud beaten",
+      "text": "Novak Djokovic, who is playing in Basel on a wildcard, beat Ugo Humbert 4-6, 6-3, 6-4 in the round of 32. In the last 16, Nuno Borges upset ninth seed Casper Ruud 1-6, 6-3, 6-4 to reach the quarter-finals. Holger Rune also went through after a tiebreak in the deciding set against Hubert Hurkacz. The Swiss Indoors runs until 1 November.",
+      "source": "ATP Tour",
+      "url": "https://www.atptour.com/en/news/basel-2026-results",
+      "gloss": {
+        "wildcard": "a place in a tournament given to a player without the usual qualifying",
+        "upset": "to beat a player who was expected to win",
+        "seed": "a player ranked highly and placed in the draw to avoid early meetings with other top players",
+        "tiebreak": "a short game used to decide a set at 6-6",
+        "go through": "to win and move on to the next round"
+      }
+    },
+    {
+      "id": "n2026-10-29-6",
+      "cat": "Tech",
+      "title": "OpenAI reportedly plans to buy Google chips",
+      "text": "OpenAI plans to buy artificial intelligence chips from Google, according to a report on Wednesday. The chips are Google's Tensor Processing Units, known as TPUs. OpenAI already rents them, and it uses a large number of Nvidia chips as well. A direct purchase would help it depend less on one supplier. The financial terms and the number of chips have not been made public, and neither company has confirmed a deal.",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/business/openai-plans-buy-googles-ai-chips-information-reports-2026-10-28/",
+      "gloss": {
+        "supplier": "a company that provides goods or services to another",
+        "rent": "to pay to use something for a time",
+        "depend on": "to need something or someone",
+        "terms": "the conditions and details of an agreement",
+        "confirm": "to say officially that something is true"
+      }
+    },
+    {
+      "id": "n2026-10-29-7",
+      "cat": "Health",
+      "title": "Sauna session boosts immune cells, study finds",
+      "text": "A Finnish study has found that one sauna session can raise the number of white blood cells in the body. Researchers at the University of Eastern Finland studied 51 adults with an average age of 50. Each person spent 30 minutes in a sauna, with a short cold shower halfway through. Every type of white blood cell rose, but counts were back to normal within 30 minutes. The scientists say the study does not show lasting health benefits.",
+      "source": "ScienceDaily",
+      "url": "https://www.sciencedaily.com/releases/2026/10/261027231021.htm",
+      "gloss": {
+        "white blood cell": "a cell in the blood that helps the body fight infection",
+        "participant": "a person who takes part in a study",
+        "halfway": "at the middle point",
+        "back to normal": "returned to the usual level",
+        "lasting": "continuing for a long time"
+      }
+    },
+    {
+      "id": "n2026-10-29-8",
+      "cat": "Culture",
+      "title": "Jay-Z to headline 2027 Super Bowl show",
+      "text": "The NFL has confirmed that Jay-Z will headline the halftime show at the 2027 Super Bowl. The rapper and the league announced the deal on Tuesday, after days of speculation. Halftime performances are watched by one of the biggest television audiences of the year. Many fans had doubted that the announcement would happen so soon. Further details of the show have not been published yet.",
+      "source": "Euronews",
+      "url": "https://www.euronews.com/2026/10/27/from-doubt-to-delivery-jay-z-confirmed-as-headliner-for-2027-super-bowl-halftime-show",
+      "gloss": {
+        "headline": "to be the main performer at an event",
+        "halftime": "the break in the middle of a match",
+        "speculation": "guesses about something without clear facts",
+        "audience": "the people who watch or listen to something",
+        "announcement": "a public statement about something new"
+      }
+    },
+    {
+      "id": "n2026-10-29-9",
+      "cat": "Business",
+      "title": "Samsung profit passes 100 trillion won",
+      "text": "Samsung Electronics has reported third-quarter operating profit of more than 107 trillion won, about $80 billion. It is the first Korean company to pass 100 trillion won in a single quarter. Profit rose almost ninefold from a year earlier, driven by memory chips and demand for AI computing. Samsung will pay a total cash dividend of 30 trillion won. Weak smartphone sales may dampen the results of its devices division.",
+      "source": "The Korea Times",
+      "url": "https://www.koreatimes.co.kr/business/companies/20261008/samsung-electronics-1st-korean-firm-to-top-80-bil-in-quarterly-operating-profit",
+      "gloss": {
+        "operating profit": "money a company makes from its main business, before some costs and taxes",
+        "quarter": "a period of three months in a company's financial year",
+        "dividend": "a share of profit paid to the people who own shares",
+        "driven by": "caused mainly by something",
+        "dampen": "to make something weaker or less strong"
+      }
+    },
+    {
+      "id": "n2026-10-29-10",
+      "cat": "Games",
+      "title": "GTA VI reviews expected on 18 November",
+      "text": "Rockstar Games has reportedly started sending review copies of Grand Theft Auto VI to journalists. Insider NateTheHate said first reviews are expected on 18 November, two days before the game's release on PlayStation 5 and Xbox Series X|S. Some players had feared a last-minute delay, but this news has eased those worries. Rockstar has also turned some real places in Miami into Vice City themed locations as part of its marketing. Rockstar has not confirmed the review date.",
+      "source": "iXBT Games",
+      "url": "https://ixbt.games/en/news/2026/10/26/insaider-uspokoil-opasavsixsia-perenosa-gta-vi-insaider-podtverdil-rassylku-kliucei-i-datu-publikacii-obzorov.html",
+      "gloss": {
+        "insider": "a person with private knowledge of a company's plans",
+        "review copy": "a free copy of a game sent to journalists before release",
+        "ease": "to make a worry or problem smaller",
+        "last-minute": "happening very close to the deadline",
+        "themed": "designed to look like a particular idea or place"
+      }
+    }
+  ]
 }
