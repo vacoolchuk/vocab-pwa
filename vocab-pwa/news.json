@@ -1,156 +1,156 @@
 {
-  "date": "2026-10-29",
-  "intro": "Ten stories from the last day, rewritten in plain British English. Tap any word you don't know.",
-  "items": [
-    {
-      "id": "n2026-10-29-1",
-      "cat": "World",
-      "title": "Deadly high-speed train crash in Spain",
-      "text": "Two high-speed trains collided near Toledo in central Spain, and at least 68 people have died. Nearly 100 others were injured, according to reports. First aerial pictures of the wreckage were released on Wednesday, showing the scene of the crash. Ten South Korean passengers were reportedly on board, and two of them suffered minor injuries. Investigators have not yet said what caused the collision, and the number of victims could still change.",
-      "source": "Euronews",
-      "url": "https://www.euronews.com/2026/10/28/first-aerial-images-show-scene-of-deadly-train-crash-in-toledo-spain",
-      "gloss": {
-        "collide": "to hit another moving thing with great force",
-        "wreckage": "the broken parts left after a crash",
-        "aerial": "seen or taken from above, for example from a plane or drone",
-        "on board": "travelling in a vehicle such as a train or plane",
-        "investigator": "a person whose job is to find out what happened"
-      }
-    },
-    {
-      "id": "n2026-10-29-2",
-      "cat": "World",
-      "title": "India evacuates thousands as cyclone hits",
-      "text": "India has moved tens of thousands of people to safety as Cyclone Arnab made landfall on Wednesday. A cyclone is a powerful storm with strong winds and heavy rain, and it can damage homes and flood roads. Officials ordered people in the most exposed areas to leave before the storm arrived. Emergency teams are now checking the damage along the coast.",
-      "source": "Euronews",
-      "url": "https://www.euronews.com/2026/10/28/india-evacuates-tens-of-thousands-as-cyclone-arnab-makes-landfall",
-      "gloss": {
-        "evacuate": "to move people away from a dangerous place",
-        "make landfall": "to reach land after moving over the sea",
-        "cyclone": "a powerful storm with strong winds that turns in a circle",
-        "exposed": "not protected from bad weather or danger",
-        "flood": "to cover dry land with water"
-      }
-    },
-    {
-      "id": "n2026-10-29-3",
-      "cat": "UK",
-      "title": "Healey's first Budget hits landlords and banks",
-      "text": "Chancellor John Healey delivered his first Autumn Budget on Wednesday. Tax on property and savings income will rise by 2p from next April, taking the rates to 24p, 44p and 49p. The surcharge on bank profits goes up by three percentage points for 15 months, and the plan to cut the cash ISA limit has been dropped. The government says borrowing will fall to 1.8% of national income by 2030. Growth is forecast at 1% next year, down from 1.6%.",
-      "source": "Fidelity International",
-      "url": "https://www.fidelity.co.uk/markets-insights/personal-finance/personal-finance/autumn-budget-2026-what-it-means-for-you-and-your-money/",
-      "gloss": {
-        "chancellor": "the government minister in charge of taxes and public money",
-        "surcharge": "an extra tax added on top of the normal one",
-        "drop": "to decide not to go ahead with a plan",
-        "borrowing": "money a government takes from lenders to pay for its spending",
-        "forecast": "to say what you expect to happen in the future"
-      }
-    },
-    {
-      "id": "n2026-10-29-4",
-      "cat": "Football",
-      "title": "Liverpool and City win League Cup shoot-outs",
-      "text": "Liverpool beat Chelsea on penalties at Anfield after a 1-1 draw in the League Cup fourth round. Morgan Rogers scored for Chelsea from the spot, and Cody Gakpo equalised for Liverpool, also from the penalty spot. Manchester City then won a shoot-out against Brighton after a 2-2 draw at the Etihad. Fleetwood, a fourth-tier club, had knocked out Arsenal on penalties on Tuesday. Liverpool will now face Bournemouth in the quarter-finals.",
-      "source": "Jamaica Observer (AFP)",
-      "url": "https://www.jamaicaobserver.com/2026/10/28/liverpool-beat-chelsea-league-cup-shoot-man-city-survive-scare/",
-      "gloss": {
-        "shoot-out": "a way to decide a drawn match, with players taking turns to shoot from the penalty spot",
-        "equalise": "to score a goal that makes the score level",
-        "knock out": "to remove a team or player from a competition",
-        "quarter-final": "a match with eight teams left, before the semi-finals",
-        "from the spot": "from a penalty kick"
-      }
-    },
-    {
-      "id": "n2026-10-29-5",
-      "cat": "Tennis",
-      "title": "Djokovic through in Basel, Ruud beaten",
-      "text": "Novak Djokovic, who is playing in Basel on a wildcard, beat Ugo Humbert 4-6, 6-3, 6-4 in the round of 32. In the last 16, Nuno Borges upset ninth seed Casper Ruud 1-6, 6-3, 6-4 to reach the quarter-finals. Holger Rune also went through after a tiebreak in the deciding set against Hubert Hurkacz. The Swiss Indoors runs until 1 November.",
-      "source": "ATP Tour",
-      "url": "https://www.atptour.com/en/news/basel-2026-results",
-      "gloss": {
-        "wildcard": "a place in a tournament given to a player without the usual qualifying",
-        "upset": "to beat a player who was expected to win",
-        "seed": "a player ranked highly and placed in the draw to avoid early meetings with other top players",
-        "tiebreak": "a short game used to decide a set at 6-6",
-        "go through": "to win and move on to the next round"
-      }
-    },
-    {
-      "id": "n2026-10-29-6",
-      "cat": "Tech",
-      "title": "OpenAI reportedly plans to buy Google chips",
-      "text": "OpenAI plans to buy artificial intelligence chips from Google, according to a report on Wednesday. The chips are Google's Tensor Processing Units, known as TPUs. OpenAI already rents them, and it uses a large number of Nvidia chips as well. A direct purchase would help it depend less on one supplier. The financial terms and the number of chips have not been made public, and neither company has confirmed a deal.",
-      "source": "Reuters",
-      "url": "https://www.reuters.com/business/openai-plans-buy-googles-ai-chips-information-reports-2026-10-28/",
-      "gloss": {
-        "supplier": "a company that provides goods or services to another",
-        "rent": "to pay to use something for a time",
-        "depend on": "to need something or someone",
-        "terms": "the conditions and details of an agreement",
-        "confirm": "to say officially that something is true"
-      }
-    },
-    {
-      "id": "n2026-10-29-7",
-      "cat": "Health",
-      "title": "Sauna session boosts immune cells, study finds",
-      "text": "A Finnish study has found that one sauna session can raise the number of white blood cells in the body. Researchers at the University of Eastern Finland studied 51 adults with an average age of 50. Each person spent 30 minutes in a sauna, with a short cold shower halfway through. Every type of white blood cell rose, but counts were back to normal within 30 minutes. The scientists say the study does not show lasting health benefits.",
-      "source": "ScienceDaily",
-      "url": "https://www.sciencedaily.com/releases/2026/10/261027231021.htm",
-      "gloss": {
-        "white blood cell": "a cell in the blood that helps the body fight infection",
-        "participant": "a person who takes part in a study",
-        "halfway": "at the middle point",
-        "back to normal": "returned to the usual level",
-        "lasting": "continuing for a long time"
-      }
-    },
-    {
-      "id": "n2026-10-29-8",
-      "cat": "Culture",
-      "title": "Jay-Z to headline 2027 Super Bowl show",
-      "text": "The NFL has confirmed that Jay-Z will headline the halftime show at the 2027 Super Bowl. The rapper and the league announced the deal on Tuesday, after days of speculation. Halftime performances are watched by one of the biggest television audiences of the year. Many fans had doubted that the announcement would happen so soon. Further details of the show have not been published yet.",
-      "source": "Euronews",
-      "url": "https://www.euronews.com/2026/10/27/from-doubt-to-delivery-jay-z-confirmed-as-headliner-for-2027-super-bowl-halftime-show",
-      "gloss": {
-        "headline": "to be the main performer at an event",
-        "halftime": "the break in the middle of a match",
-        "speculation": "guesses about something without clear facts",
-        "audience": "the people who watch or listen to something",
-        "announcement": "a public statement about something new"
-      }
-    },
-    {
-      "id": "n2026-10-29-9",
-      "cat": "Business",
-      "title": "Samsung profit passes 100 trillion won",
-      "text": "Samsung Electronics has reported third-quarter operating profit of more than 107 trillion won, about $80 billion. It is the first Korean company to pass 100 trillion won in a single quarter. Profit rose almost ninefold from a year earlier, driven by memory chips and demand for AI computing. Samsung will pay a total cash dividend of 30 trillion won. Weak smartphone sales may dampen the results of its devices division.",
-      "source": "The Korea Times",
-      "url": "https://www.koreatimes.co.kr/business/companies/20261008/samsung-electronics-1st-korean-firm-to-top-80-bil-in-quarterly-operating-profit",
-      "gloss": {
-        "operating profit": "money a company makes from its main business, before some costs and taxes",
-        "quarter": "a period of three months in a company's financial year",
-        "dividend": "a share of profit paid to the people who own shares",
-        "driven by": "caused mainly by something",
-        "dampen": "to make something weaker or less strong"
-      }
-    },
-    {
-      "id": "n2026-10-29-10",
-      "cat": "Games",
-      "title": "GTA VI reviews expected on 18 November",
-      "text": "Rockstar Games has reportedly started sending review copies of Grand Theft Auto VI to journalists. Insider NateTheHate said first reviews are expected on 18 November, two days before the game's release on PlayStation 5 and Xbox Series X|S. Some players had feared a last-minute delay, but this news has eased those worries. Rockstar has also turned some real places in Miami into Vice City themed locations as part of its marketing. Rockstar has not confirmed the review date.",
-      "source": "iXBT Games",
-      "url": "https://ixbt.games/en/news/2026/10/26/insaider-uspokoil-opasavsixsia-perenosa-gta-vi-insaider-podtverdil-rassylku-kliucei-i-datu-publikacii-obzorov.html",
-      "gloss": {
-        "insider": "a person with private knowledge of a company's plans",
-        "review copy": "a free copy of a game sent to journalists before release",
-        "ease": "to make a worry or problem smaller",
-        "last-minute": "happening very close to the deadline",
-        "themed": "designed to look like a particular idea or place"
-      }
-    }
-  ]
+ "date": "2026-10-30",
+ "intro": "Ten stories from the last day, rewritten in plain British English. Tap any word you don't know.",
+ "items": [
+  {
+   "id": "n2026-10-30-1",
+   "cat": "World",
+   "title": "Spain train crash: computer fault blamed",
+   "text": "The death toll from the high-speed train crash near Toledo has risen to 69. Transport Minister Óscar Puente said a computer malfunction disabled a security system. He said controllers let a Renfe train go ahead without speed limits while an Iryo train was standing still in front of it. He added that this broke the rules. Fifty-seven injured people were still in hospital on Thursday, and Spain has declared three days of national mourning.",
+   "source": "Reuters",
+   "url": "https://www.reuters.com/world/europe/spanish-rescuers-search-trains-hope-finding-survivors-deadly-crash-2026-10-29/",
+   "gloss": {
+    "death toll": "the number of people who died in a disaster",
+    "malfunction": "a failure to work properly",
+    "breach": "to break a rule or agreement",
+    "protocol": "the official set of rules for how something must be done",
+    "national mourning": "a period when a whole country shows sadness for people who died"
+   }
+  },
+  {
+   "id": "n2026-10-30-2",
+   "cat": "World",
+   "title": "Russian strike on Dnipro station kills 14",
+   "text": "A Russian strike on a railway platform in the Ukrainian city of Dnipro has killed 14 people. They were waiting for a train to Zaporizhzhia. At least 19 people died across Ukraine on Thursday, including two teenage girls in Chernihiv and three people in a residential building in Poltava. President Zelenskyy condemned the attack and called for stronger sanctions on Russia. Talks mediated by the United States are expected to restart next month.",
+   "source": "CNN",
+   "url": "https://edition.cnn.com/2026/10/29/europe/russia-ukraine-strikes-dnipro-train-station-intl",
+   "gloss": {
+    "strike": "an attack, usually from the air",
+    "residential": "used for people to live in",
+    "condemn": "to say publicly that something is very bad or wrong",
+    "sanctions": "official punishments, usually limits on trade, against a country",
+    "mediate": "to help two sides in a dispute reach an agreement"
+   }
+  },
+  {
+   "id": "n2026-10-30-3",
+   "cat": "UK",
+   "title": "Healey's first Budget: wages up, banks pay more",
+   "text": "Chancellor John Healey presented his first Budget on Wednesday. The National Living Wage will rise from £12.71 to £13.20 an hour. The bank surcharge will go up from 3% to 6% from January 2027 until March 2028. The Office for Budget Responsibility expects growth of 1.2% this year and inflation to average 3.1%. About 20 million households in council tax bands A to D will get a £100 gas payment this winter.",
+   "source": "CPA",
+   "url": "https://cpa.co.uk/uk-business-news-today-29-october-2026-economy-markets-insolvencies/",
+   "gloss": {
+    "Chancellor": "the government minister in charge of the country's money",
+    "surcharge": "an extra amount of tax or payment added to the normal one",
+    "inflation": "the rate at which prices rise over time",
+    "household": "all the people who live together in one home",
+    "council tax": "a local tax paid by people who live in a property in the UK"
+   }
+  },
+  {
+   "id": "n2026-10-30-4",
+   "cat": "Football",
+   "title": "Everton beat Newcastle 3-1 in League Cup",
+   "text": "Everton beat Newcastle United 3-1 in the English League Cup on Thursday. The match finished at full time with a two-goal margin for the home side. It was a disappointing result for Newcastle, who have now gone out of the competition. Elsewhere on Thursday, Frosinone beat Lecce 5-1 in Serie A, and Fiorentina drew 2-2 with Atalanta.",
+   "source": "Sporting Life",
+   "url": "https://www.sportinglife.com/football/live/245086/everton-vs-newcastle-united",
+   "gloss": {
+    "League Cup": "an English knockout competition for clubs from the top four divisions",
+    "knockout": "a type of competition where the loser of each match goes out",
+    "go out": "to lose and leave a competition",
+    "margin": "the difference between two scores",
+    "score": "to put the ball in the goal and win a point"
+   }
+  },
+  {
+   "id": "n2026-10-30-5",
+   "cat": "Football",
+   "title": "Copa del Rey: big wins and a penalty shoot-out",
+   "text": "Several big scores came in the first rounds of the Spanish Copa del Rey. Athletic Club won 6-1 away at Prat, and Osasuna beat Atlético Calatayud 6-0. Sevilla and Granada both won 3-0 against lower-league sides. In Numancia against Real Oviedo, the match finished 3-3 after extra time. Numancia then won 4-2 on penalties and went through to the next round.",
+   "source": "Sporting Life",
+   "url": "https://www.sportinglife.com/football/live/245792/numancia-vs-real-oviedo",
+   "gloss": {
+    "extra time": "additional minutes played when a match is level at the end of normal time",
+    "penalties": "a way to decide a match when both teams have scored the same, with players shooting at the goal one by one",
+    "away": "played at the other team's stadium",
+    "lower-league": "playing in a division below the top one",
+    "go through": "to move on to the next round of a competition"
+   }
+  },
+  {
+   "id": "n2026-10-30-6",
+   "cat": "Tech",
+   "title": "Scientists find way to make EV batteries lighter",
+   "text": "Scientists have developed a new technology that could make batteries for electric cars smaller and lighter. The researchers also say the batteries could last longer. This could allow cars to travel further on a single charge. Range is one of the main worries for people who are thinking about buying an electric vehicle. The work was reported by ScienceDaily on Wednesday.",
+   "source": "ScienceDaily",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261027063708.htm",
+   "gloss": {
+    "battery": "a device that stores electrical power",
+    "long-lasting": "working well for a long time",
+    "range": "the distance a vehicle can travel before it needs more fuel or power",
+    "charge": "the amount of electricity stored in a battery",
+    "electric vehicle": "a car that runs on electricity instead of petrol"
+   }
+  },
+  {
+   "id": "n2026-10-30-7",
+   "cat": "Health",
+   "title": "Daylight linked to lower dementia risk",
+   "text": "A study of more than 87,000 adults has found a link between daytime light and brain health. People who were exposed to more bright light during the day showed a benefit. The headline finding is that spending less than 42 minutes in bright daylight was linked to a higher risk of dementia. The study shows a link only, and it does not prove that light prevents the illness.",
+   "source": "ScienceDaily",
+   "url": "https://www.sciencedaily.com/releases/2026/10/261028232707.htm",
+   "gloss": {
+    "dementia": "an illness that affects memory and thinking, mostly in older people",
+    "exposure": "the state of being in contact with something such as light",
+    "link": "a connection between two things",
+    "risk": "the chance that something bad will happen",
+    "prove": "to show that something is definitely true"
+   }
+  },
+  {
+   "id": "n2026-10-30-8",
+   "cat": "Culture",
+   "title": "Actor Patrick Stewart dies aged 86",
+   "text": "The actor Sir Patrick Stewart has died at the age of 86, according to reports on Thursday. He was best known for playing Captain Jean-Luc Picard in Star Trek and Professor Charles Xavier in the X-Men films. His career lasted for many decades on stage, television and film, and he was widely admired for his deep voice. Reports say he was one of the best-known British actors of his generation.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/2026/10/29/patrick-stewart-star-of-star-trek-and-x-men-dies-aged-86",
+   "gloss": {
+    "career": "the work a person does during their life",
+    "stage": "the world of live theatre",
+    "captain": "the leader of a ship or its crew",
+    "generation": "people born around the same time",
+    "widely": "by many people in many places"
+   }
+  },
+  {
+   "id": "n2026-10-30-9",
+   "cat": "Business",
+   "title": "Lagarde to leave the ECB early",
+   "text": "Christine Lagarde will leave her job as president of the European Central Bank on 7 February, eight months before her term ends. She said the role requires neutrality. The early exit gives Europe time to choose a successor before France's presidential election. The bank also kept interest rates unchanged and warned that energy costs threaten to push up inflation. Klaas Knot and Pablo Hernández de Cos are seen as leading candidates.",
+   "source": "The Japan Times",
+   "url": "https://www.japantimes.co.jp/business/2026/10/30/economy/ecb-lagarde-resignation/",
+   "gloss": {
+    "term": "the fixed period of time a person holds a job",
+    "neutrality": "not supporting any side in a dispute",
+    "successor": "a person who takes over a job from someone else",
+    "interest rate": "the percentage charged for borrowing money",
+    "push up": "to make something such as prices rise"
+   }
+  },
+  {
+   "id": "n2026-10-30-10",
+   "cat": "Games",
+   "title": "GTA VI: PS5 headset and new gameplay",
+   "text": "PlayStation will release its new Pulse wireless headset on 19 November, the same day as Grand Theft Auto VI. Pre-orders opened on 29 October, and the headset costs £89.99. Rockstar Games has also shown new GTA VI gameplay, the first since August, in an episode of South Park. Reports say review codes have been sent to the press, with a review embargo on 18 November. Rockstar has not confirmed that date.",
+   "source": "GamingBible",
+   "url": "https://www.gamingbible.com/news/platform/playstation/ps5-new-hardware-upgrade-gta-6-bolsters-plays-best-claim-344299-20261023",
+   "gloss": {
+    "headset": "a pair of headphones with a microphone, used for gaming and calls",
+    "pre-order": "to ask to buy something before it is on sale",
+    "gameplay": "the way a game looks and feels when you play it",
+    "review embargo": "a date before which journalists must not publish their reviews",
+    "confirm": "to say officially that something is true"
+   }
+  }
+ ]
 }
