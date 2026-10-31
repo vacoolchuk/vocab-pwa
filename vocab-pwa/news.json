@@ -1,155 +1,155 @@
 {
- "date": "2026-10-30",
+ "date": "2026-10-31",
  "intro": "Ten stories from the last day, rewritten in plain British English. Tap any word you don't know.",
  "items": [
   {
-   "id": "n2026-10-30-1",
+   "id": "n2026-10-31-1",
    "cat": "World",
-   "title": "Spain train crash: computer fault blamed",
-   "text": "The death toll from the high-speed train crash near Toledo has risen to 69. Transport Minister Óscar Puente said a computer malfunction disabled a security system. He said controllers let a Renfe train go ahead without speed limits while an Iryo train was standing still in front of it. He added that this broke the rules. Fifty-seven injured people were still in hospital on Thursday, and Spain has declared three days of national mourning.",
-   "source": "Reuters",
-   "url": "https://www.reuters.com/world/europe/spanish-rescuers-search-trains-hope-finding-survivors-deadly-crash-2026-10-29/",
-   "gloss": {
-    "death toll": "the number of people who died in a disaster",
-    "malfunction": "a failure to work properly",
-    "breach": "to break a rule or agreement",
-    "protocol": "the official set of rules for how something must be done",
-    "national mourning": "a period when a whole country shows sadness for people who died"
-   }
-  },
-  {
-   "id": "n2026-10-30-2",
-   "cat": "World",
-   "title": "Russian strike on Dnipro station kills 14",
-   "text": "A Russian strike on a railway platform in the Ukrainian city of Dnipro has killed 14 people. They were waiting for a train to Zaporizhzhia. At least 19 people died across Ukraine on Thursday, including two teenage girls in Chernihiv and three people in a residential building in Poltava. President Zelenskyy condemned the attack and called for stronger sanctions on Russia. Talks mediated by the United States are expected to restart next month.",
-   "source": "CNN",
-   "url": "https://edition.cnn.com/2026/10/29/europe/russia-ukraine-strikes-dnipro-train-station-intl",
-   "gloss": {
-    "strike": "an attack, usually from the air",
-    "residential": "used for people to live in",
-    "condemn": "to say publicly that something is very bad or wrong",
-    "sanctions": "official punishments, usually limits on trade, against a country",
-    "mediate": "to help two sides in a dispute reach an agreement"
-   }
-  },
-  {
-   "id": "n2026-10-30-3",
-   "cat": "UK",
-   "title": "Healey's first Budget: wages up, banks pay more",
-   "text": "Chancellor John Healey presented his first Budget on Wednesday. The National Living Wage will rise from £12.71 to £13.20 an hour. The bank surcharge will go up from 3% to 6% from January 2027 until March 2028. The Office for Budget Responsibility expects growth of 1.2% this year and inflation to average 3.1%. About 20 million households in council tax bands A to D will get a £100 gas payment this winter.",
-   "source": "CPA",
-   "url": "https://cpa.co.uk/uk-business-news-today-29-october-2026-economy-markets-insolvencies/",
-   "gloss": {
-    "Chancellor": "the government minister in charge of the country's money",
-    "surcharge": "an extra amount of tax or payment added to the normal one",
-    "inflation": "the rate at which prices rise over time",
-    "household": "all the people who live together in one home",
-    "council tax": "a local tax paid by people who live in a property in the UK"
-   }
-  },
-  {
-   "id": "n2026-10-30-4",
-   "cat": "Football",
-   "title": "Everton beat Newcastle 3-1 in League Cup",
-   "text": "Everton beat Newcastle United 3-1 in the English League Cup on Thursday. The match finished at full time with a two-goal margin for the home side. It was a disappointing result for Newcastle, who have now gone out of the competition. Elsewhere on Thursday, Frosinone beat Lecce 5-1 in Serie A, and Fiorentina drew 2-2 with Atalanta.",
-   "source": "Sporting Life",
-   "url": "https://www.sportinglife.com/football/live/245086/everton-vs-newcastle-united",
-   "gloss": {
-    "League Cup": "an English knockout competition for clubs from the top four divisions",
-    "knockout": "a type of competition where the loser of each match goes out",
-    "go out": "to lose and leave a competition",
-    "margin": "the difference between two scores",
-    "score": "to put the ball in the goal and win a point"
-   }
-  },
-  {
-   "id": "n2026-10-30-5",
-   "cat": "Football",
-   "title": "Copa del Rey: big wins and a penalty shoot-out",
-   "text": "Several big scores came in the first rounds of the Spanish Copa del Rey. Athletic Club won 6-1 away at Prat, and Osasuna beat Atlético Calatayud 6-0. Sevilla and Granada both won 3-0 against lower-league sides. In Numancia against Real Oviedo, the match finished 3-3 after extra time. Numancia then won 4-2 on penalties and went through to the next round.",
-   "source": "Sporting Life",
-   "url": "https://www.sportinglife.com/football/live/245792/numancia-vs-real-oviedo",
-   "gloss": {
-    "extra time": "additional minutes played when a match is level at the end of normal time",
-    "penalties": "a way to decide a match when both teams have scored the same, with players shooting at the goal one by one",
-    "away": "played at the other team's stadium",
-    "lower-league": "playing in a division below the top one",
-    "go through": "to move on to the next round of a competition"
-   }
-  },
-  {
-   "id": "n2026-10-30-6",
-   "cat": "Tech",
-   "title": "Scientists find way to make EV batteries lighter",
-   "text": "Scientists have developed a new technology that could make batteries for electric cars smaller and lighter. The researchers also say the batteries could last longer. This could allow cars to travel further on a single charge. Range is one of the main worries for people who are thinking about buying an electric vehicle. The work was reported by ScienceDaily on Wednesday.",
-   "source": "ScienceDaily",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261027063708.htm",
-   "gloss": {
-    "battery": "a device that stores electrical power",
-    "long-lasting": "working well for a long time",
-    "range": "the distance a vehicle can travel before it needs more fuel or power",
-    "charge": "the amount of electricity stored in a battery",
-    "electric vehicle": "a car that runs on electricity instead of petrol"
-   }
-  },
-  {
-   "id": "n2026-10-30-7",
-   "cat": "Health",
-   "title": "Daylight linked to lower dementia risk",
-   "text": "A study of more than 87,000 adults has found a link between daytime light and brain health. People who were exposed to more bright light during the day showed a benefit. The headline finding is that spending less than 42 minutes in bright daylight was linked to a higher risk of dementia. The study shows a link only, and it does not prove that light prevents the illness.",
-   "source": "ScienceDaily",
-   "url": "https://www.sciencedaily.com/releases/2026/10/261028232707.htm",
-   "gloss": {
-    "dementia": "an illness that affects memory and thinking, mostly in older people",
-    "exposure": "the state of being in contact with something such as light",
-    "link": "a connection between two things",
-    "risk": "the chance that something bad will happen",
-    "prove": "to show that something is definitely true"
-   }
-  },
-  {
-   "id": "n2026-10-30-8",
-   "cat": "Culture",
-   "title": "Actor Patrick Stewart dies aged 86",
-   "text": "The actor Sir Patrick Stewart has died at the age of 86, according to reports on Thursday. He was best known for playing Captain Jean-Luc Picard in Star Trek and Professor Charles Xavier in the X-Men films. His career lasted for many decades on stage, television and film, and he was widely admired for his deep voice. Reports say he was one of the best-known British actors of his generation.",
+   "title": "Polish president turns back over court raid",
+   "text": "Riot police were deployed outside Poland's Constitutional Tribunal on Friday after police entered the building. The Tribunal's president, Bogdan Święczkowski, was suspended, and Justice Minister Waldemar Żurek asked for his immunity to be lifted. President Karol Nawrocki turned his plane around while flying to Senegal. He wrote on X that the president must be in Poland at a moment like this. The Tribunal called the move a coup d'état.",
    "source": "Euronews",
-   "url": "https://www.euronews.com/2026/10/29/patrick-stewart-star-of-star-trek-and-x-men-dies-aged-86",
+   "url": "https://www.euronews.com/2026/10/30/polish-president-turns-back-mid-flight-amid-coup-detat-allegations",
    "gloss": {
-    "career": "the work a person does during their life",
-    "stage": "the world of live theatre",
-    "captain": "the leader of a ship or its crew",
-    "generation": "people born around the same time",
-    "widely": "by many people in many places"
+    "riot police": "officers trained and equipped to control violent crowds",
+    "suspend": "to stop someone from doing their job for a time",
+    "immunity": "legal protection from being prosecuted",
+    "turn around": "to go back in the direction you came from",
+    "coup d'état": "a sudden, illegal takeover of power"
    }
   },
   {
-   "id": "n2026-10-30-9",
+   "id": "n2026-10-31-2",
+   "cat": "World",
+   "title": "Italy hit by nationwide general strike",
+   "text": "Thousands of people took to the streets across Italy on Friday during a nationwide general strike. Protesters said they were angry about rising living costs and higher spending on defence. Clashes broke out between demonstrators and police near the Colosseum in Rome. Euronews reported that the country was on high alert as the protests spread.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/video/2026/10/30/italy-on-high-alert-as-thousands-take-the-streets-in-nationwide-strike",
+   "gloss": {
+    "general strike": "a strike by workers in many different industries at the same time",
+    "break out": "to start suddenly, usually something bad like a fight",
+    "on high alert": "ready for possible danger or trouble",
+    "living costs": "the money people need to pay for housing, food and bills",
+    "demonstrator": "a person who takes part in a public protest"
+   }
+  },
+  {
+   "id": "n2026-10-31-3",
+   "cat": "UK",
+   "title": "Healey's first Budget raises tax on savings",
+   "text": "Chancellor John Healey has delivered his first Budget since Andy Burnham became prime minister. He said he would raise tax rates on income from property and savings by two percentage points from April 2027. Twenty million households will get a £100 energy payment this winter, and the £12,000 cash ISA limit for under-65s has been scrapped. Healey also said the defence budget was £14 billion higher this year. Conservative leader Kemi Badenoch said the Budget did not come close to meeting the mood.",
+   "source": "MoneyWeek",
+   "url": "https://moneyweek.com/economy/news/live/autumn-budget-2026",
+   "gloss": {
+    "chancellor": "the UK minister in charge of the government's money",
+    "percentage point": "one unit on a percentage scale, for example from 20% to 22%",
+    "scrap": "to get rid of something",
+    "household": "all the people living together in one home",
+    "come close to": "to almost reach or match something"
+   }
+  },
+  {
+   "id": "n2026-10-31-4",
+   "cat": "Football",
+   "title": "Fleetwood knock Arsenal out of League Cup",
+   "text": "Fourth-tier Fleetwood Town beat Premier League leaders Arsenal 5-3 on penalties after a 1-1 draw. Aaron Loupalo-Bi scored first for Fleetwood, and Viktor Gyokeres equalised four minutes into the second half. Arsenal's 16-year-old Max Dowman was sent off near the end after an altercation with Harrison Neal. It was his second red card this month. Fleetwood goalkeeper Ryan Lynch saved a penalty from Bruno Guimaraes, and Conor Haughey scored the winner.",
+   "source": "The National",
+   "url": "https://www.thenationalnews.com/sport/football/2026/10/28/arteta-confronts-teenage-star-dowman-after-arsenal-stunned-by-fourth-tier-fleetwood/",
+   "gloss": {
+    "equalise": "to score a goal that makes the score level",
+    "sent off": "told to leave the pitch by the referee for a serious foul",
+    "altercation": "a short, angry argument or fight",
+    "penalty shoot-out": "a way to decide a match by taking penalty kicks one after another",
+    "quarter-final": "a match in the last eight of a competition"
+   }
+  },
+  {
+   "id": "n2026-10-31-5",
+   "cat": "Tennis",
+   "title": "Zverev set for No. 1 as Paris draw is made",
+   "text": "The draw for the Paris Masters was made on Friday. Alexander Zverev, who reached the semi-finals in Vienna this week, is set to become world number one on Monday. He and Novak Djokovic could meet in the quarter-finals. Djokovic, a seven-time champion in Paris, opens against Valentin Vacherot, who beat him in Shanghai last year. Carlos Alcaraz is the second seed. Jannik Sinner is out for the rest of the season.",
+   "source": "ATP Tour",
+   "url": "https://www.atptour.com/en/news/paris-2026-draw-preview",
+   "gloss": {
+    "draw": "the random selection that decides who plays whom in a tournament",
+    "seed": "a top player placed in the draw so the best players meet later",
+    "semi-final": "a match in the last four of a competition",
+    "open against": "to play your first match against someone",
+    "quarter-final": "a match in the last eight of a competition"
+   }
+  },
+  {
+   "id": "n2026-10-31-6",
+   "cat": "Tech",
+   "title": "Nvidia chief sees Kazakhstan as AI hub",
+   "text": "Nvidia boss Jensen Huang has visited Kazakhstan for the first time. He said the country could become an artificial intelligence hub for Europe. Euronews reported his comments on Friday. It was his first trip to the country, and the report focused on his view of Kazakhstan's future role in AI.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/video/2026/10/30/nvidia-ceo-sees-kazakhstan-as-potential-ai-hub-for-europe",
+   "gloss": {
+    "hub": "a place that is the centre of an activity",
+    "chipmaker": "a company that makes computer chips",
+    "artificial intelligence": "computer systems that can do tasks that normally need human thinking",
+    "CEO": "chief executive officer, the top manager of a company",
+    "potential": "possible in the future"
+   }
+  },
+  {
+   "id": "n2026-10-31-7",
+   "cat": "Science",
+   "title": "Study warns wind turbines kill many bats",
+   "text": "A new study has warned that a shocking number of bats are killed by wind turbines every year. Euronews reported the findings on Saturday, saying the problem is growing as more clean energy is built. Bats can be hurt when they fly close to the moving blades.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/2026/10/31/how-many-bats-are-killed-by-wind-turbines-study-warns-of-shocking-increase-amid-clean-ener",
+   "gloss": {
+    "wind turbine": "a tall machine with large blades that makes electricity from wind",
+    "shocking": "very surprising and upsetting",
+    "clean energy": "power that does not produce much pollution",
+    "blade": "the long flat part of a turbine that turns",
+    "protect": "to keep something safe from harm"
+   }
+  },
+  {
+   "id": "n2026-10-31-8",
+   "cat": "TV",
+   "title": "South Park shows new GTA 6 gameplay",
+   "text": "New footage from Grand Theft Auto VI appeared in the latest episode of South Park. Fans noticed that the TV presenter in the episode was voiced by Tish Hicks, who also voiced the GTA 5 gameplay trailer. Push Square reported the story on Thursday, alongside a gallery of about twelve new screenshots of the game. The game comes out on PlayStation 5 on 19 November 2026.",
+   "source": "Push Square",
+   "url": "https://www.pushsquare.com/news/2026/10/new-gta-6-gameplay-screenshots-details-revealed-as-ps5-launch-nears",
+   "gloss": {
+    "footage": "video that has been filmed",
+    "episode": "one programme in a TV series",
+    "presenter": "a person who introduces and talks on a TV programme",
+    "gallery": "a collection of pictures shown together",
+    "come out": "to be released or become available"
+   }
+  },
+  {
+   "id": "n2026-10-31-9",
    "cat": "Business",
-   "title": "Lagarde to leave the ECB early",
-   "text": "Christine Lagarde will leave her job as president of the European Central Bank on 7 February, eight months before her term ends. She said the role requires neutrality. The early exit gives Europe time to choose a successor before France's presidential election. The bank also kept interest rates unchanged and warned that energy costs threaten to push up inflation. Klaas Knot and Pablo Hernández de Cos are seen as leading candidates.",
-   "source": "The Japan Times",
-   "url": "https://www.japantimes.co.jp/business/2026/10/30/economy/ecb-lagarde-resignation/",
+   "title": "UK debt passes £3 trillion as inflation rises",
+   "text": "UK government debt has passed £3 trillion for the first time, and servicing it takes about 8% of public spending. Inflation has risen to a near one-year high of 3.5%, and the Bank of England is expected to raise interest rates soon. Chancellor John Healey said he wanted to give families and businesses some breathing space from the cost of living. Banks are expected to pay a higher surcharge on their profits.",
+   "source": "AP via ABC News",
+   "url": "https://abcnews.com/Business/wireStory/uk-treasury-chief-faces-headwinds-delivers-budget-new-137630749",
    "gloss": {
-    "term": "the fixed period of time a person holds a job",
-    "neutrality": "not supporting any side in a dispute",
-    "successor": "a person who takes over a job from someone else",
-    "interest rate": "the percentage charged for borrowing money",
-    "push up": "to make something such as prices rise"
+    "inflation": "the rate at which prices rise over time",
+    "interest rate": "the extra money charged for borrowing money",
+    "cost of living": "the amount of money people need for basic things like food and housing",
+    "surcharge": "an extra tax or payment on top of the usual one",
+    "breathing space": "a short period of relief from pressure"
    }
   },
   {
-   "id": "n2026-10-30-10",
+   "id": "n2026-10-31-10",
    "cat": "Games",
-   "title": "GTA VI: PS5 headset and new gameplay",
-   "text": "PlayStation will release its new Pulse wireless headset on 19 November, the same day as Grand Theft Auto VI. Pre-orders opened on 29 October, and the headset costs £89.99. Rockstar Games has also shown new GTA VI gameplay, the first since August, in an episode of South Park. Reports say review codes have been sent to the press, with a review embargo on 18 November. Rockstar has not confirmed that date.",
-   "source": "GamingBible",
-   "url": "https://www.gamingbible.com/news/platform/playstation/ps5-new-hardware-upgrade-gta-6-bolsters-plays-best-claim-344299-20261023",
+   "title": "Rockstar says GTA VI is ready",
+   "text": "Rob Nelson, a development lead at Rockstar North, has said that Grand Theft Auto VI is ready. In an interview in Edge magazine, he said it will soon stop belonging only to its developers. Edge also published new screenshots of gang members, a biker group, the main characters Lucia and Jason, and a hammerhead shark. The game is due out on PlayStation 5 and Xbox Series X|S on 19 November 2026. No PC version has been announced.",
+   "source": "iXBT.games",
+   "url": "https://ixbt.games/en/news/2026/10/29/ona-gotova-rockstar-zaversila-osnovnuiu-razrabotku-gta-vi-i-pokazala-novye-skrinsoty-s-akuloi-molotom-lusiei-i-ne-tolko.html",
    "gloss": {
-    "headset": "a pair of headphones with a microphone, used for gaming and calls",
-    "pre-order": "to ask to buy something before it is on sale",
-    "gameplay": "the way a game looks and feels when you play it",
-    "review embargo": "a date before which journalists must not publish their reviews",
-    "confirm": "to say officially that something is true"
+    "development lead": "the person in charge of making a game",
+    "cover story": "the main article featured on a magazine's front page",
+    "screenshot": "a picture taken of what is shown on a screen",
+    "due out": "expected to be released",
+    "gang": "a group of criminals who work together"
    }
   }
  ]
