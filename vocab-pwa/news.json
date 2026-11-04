@@ -1,83 +1,159 @@
 {
- "date": "2026-11-03",
- "intro": "Five stories from the last day, rewritten in plain British English. Tap any word you don't know.",
+ "date": "2026-11-04",
+ "intro": "Ten stories from the last day, rewritten in plain British English. Tap any word you don't know.",
  "items": [
   {
-   "id": "n2026-11-03-1",
+   "id": "n2026-11-04-1",
    "cat": "World",
-   "title": "Deadly Russian strike hits Zaporizhzhia region",
-   "text": "Russian aerial bombs killed at least 26 people in the Zaporizhzhia region of Ukraine on Monday, according to the State Emergency Service. Two rescue workers and four police officers were among the dead, and five other people were injured. Governor Ivan Fedorov said Russian forces fired at least nine KAB-3000 bombs on the settlement of Komyshuvakha. President Volodymyr Zelenskyy called the attack utterly horrific and said a second strike followed the first. He said it had dampened hopes of progress toward peace after a humanitarian operation in Oleshky.",
+   "title": "Democrats win the US Senate in midterms",
+   "text": "Democrats have won control of the US Senate in the midterm elections, according to Euronews. The party is also heading for a big majority in the House of Representatives, although votes are still being counted on the West Coast. Euronews described the result as a rejection of President Donald Trump. In Texas, Democrat James Talarico said his team had defeated Goliath after a historic Senate win. Analysts are now asking what the result means for the next presidential race in 2028.",
    "source": "Euronews",
-   "url": "https://www.euronews.com/2026/11/02/hopes-of-progress-toward-peace-knocked-by-deadly-russian-attack-on-zaporizhzhia-zelenskyy-",
+   "url": "https://www.euronews.com/2026/11/04/democrats-set-to-seize-control-of-congress-after-long-night-for-republican-party",
    "gloss": {
-    "aerial bomb": "a bomb dropped from an aircraft",
-    "rescue worker": "a person whose job is to save people in danger",
-    "settlement": "a small place where people live",
-    "dampen": "to make hopes or feelings weaker",
-    "humanitarian": "connected with helping people who are suffering",
-    "double-tap strike": "a second attack on the same place soon after the first"
+    "midterm elections": "elections held halfway through a president's term",
+    "House of Representatives": "the larger part of the US Congress",
+    "count": "to add up the votes",
+    "rejection": "the act of saying no to someone or something",
+    "defeat": "to win against someone"
    }
   },
   {
-   "id": "n2026-11-03-2",
-   "cat": "UK",
-   "title": "UK doubles wait for most migrants to settle",
-   "text": "The British government set out new rules on Monday that will double the wait for many foreign workers who want to settle permanently. The qualifying period for indefinite leave to remain will rise from five years to ten for most workers. People earning more than £50,271 and some public service workers, including doctors, nurses and teachers, will still qualify after five years. Care workers earning £25,000 keep their five-year route. More than 200,000 people responded to the consultation. The rules are due to come into force next year and will not affect people who already have settled status.",
+   "id": "n2026-11-04-2",
+   "cat": "World",
+   "title": "Spain's transport minister resigns after crash",
+   "text": "Spain's transport minister, Óscar Puente, has resigned over the Urda train crash, which killed 69 people. He revealed that a high-speed train was allowed to keep running at more than 160 kilometres per hour after its safety system failed. Rail workers have threatened to go on strike. The resignation came late on Monday. The accident has dampened public trust in the country's railways.",
    "source": "Euronews",
-   "url": "https://www.euronews.com/2026/11/02/british-government-sets-out-tougher-rules-for-migrants-looking-to-settle-in-the-uk",
+   "url": "https://www.euronews.com/2026/11/03/spains-transport-minister-oscar-puente-resigns-over-urda-train-crash-that-killed-69",
    "gloss": {
-    "set out": "to explain a plan or idea clearly and in detail",
-    "settle": "to make your permanent home in a country",
-    "indefinite leave to remain": "the right to live in the UK with no time limit",
-    "qualifying period": "the time you must wait before you are allowed to do something",
-    "consultation": "a period when the public is asked for its opinions on a plan",
-    "come into force": "to start to be official or to apply"
+    "resign": "to officially leave your job",
+    "reveal": "to make something known that was secret",
+    "go on strike": "to stop working as a protest about pay or conditions",
+    "dampen": "to make a feeling or hope weaker",
+    "trust": "a feeling that someone or something is honest and safe"
    }
   },
   {
-   "id": "n2026-11-03-3",
-   "cat": "Tennis",
-   "title": "Musetti beats Hurkacz in Paris tie-breaks",
-   "text": "Lorenzo Musetti beat Hubert Hurkacz 7-6, 7-6 in the first round of the Paris Masters on Monday. The match lasted one hour and 43 minutes. Hurkacz saved three match points and held two set points in the second-set tie-break, but Musetti won it 12-10. Musetti now plays top seed Alexander Zverev, who had a first-round bye. Jannik Sinner is missing from the event because of a knee injury. A day earlier, Carlos Alcaraz had beaten Alex de Minaur 6-1, 6-4 in the final of the Vienna Open.",
+   "id": "n2026-11-04-3",
+   "cat": "Football",
+   "title": "Man United beat Roma after a wild comeback",
+   "text": "Manchester United beat Roma 3-2 at Old Trafford in the Champions League on Tuesday after trailing 2-0 at half-time. Matias Soule and Donyell Malen, from a penalty, put the Italian side ahead. Bruno Fernandes scored from a retaken penalty before Matheus Cunha added two late goals. Cunha was then sent off for a second yellow card, so United finished with ten men. It was the club's first win in 54 days in any competition.",
+   "source": "NBC Sports",
+   "url": "https://www.nbcsports.com/soccer/live/manchester-united-vs-roma-team-live-updates-score-goals-highlights-stats-2026-november-3",
+   "gloss": {
+    "comeback": "a win after being behind",
+    "trail": "to be losing in a game",
+    "penalty": "a free shot at goal after a foul",
+    "retake": "to take a shot again",
+    "send off": "to order a player to leave the pitch for a serious foul",
+    "yellow card": "a warning card shown by a referee"
+   }
+  },
+  {
+   "id": "n2026-11-04-4",
+   "cat": "Football",
+   "title": "PSG score six against Villarreal",
+   "text": "Paris Saint-Germain beat Villarreal 6-0 in the Champions League on Tuesday. João Neves, Désiré Doué and Senny Mayulu scored in the first 13 minutes. Fabián Ruiz added two goals, and David Boly scored the sixth. According to The Sports Encounter, PSG scored four goals in 16 minutes and two seconds, which is a record. In other games, Bayern Munich won 2-0 away at Atlético Madrid.",
    "source": "The Sports Encounter",
-   "url": "https://thesportsencounter.com/2026/11/03/paris-masters-2026-alcaraz-zverev-musetti-hurkacz/",
+   "url": "https://thesportsencounter.com/2026/11/03/champions-league-results-november-3-2026-psg-bayern-man-utd/",
    "gloss": {
-    "tie-break": "a short game used to decide a set that is level at six games each",
-    "match point": "a point that would win the match for a player",
-    "seed": "a player ranked highly and kept apart from other top players in the draw",
-    "bye": "a free pass into the next round without playing",
-    "hold": "to have, as in having a chance to win a set"
+    "league phase": "the first stage of the Champions League, where all teams play several games",
+    "record": "the best or fastest result ever achieved",
+    "add": "to score another goal",
+    "away": "at the other team's ground",
+    "in other games": "in other matches played at the same time"
    }
   },
   {
-   "id": "n2026-11-03-4",
-   "cat": "Games",
-   "title": "GTA VI launch is two weeks away",
-   "text": "Grand Theft Auto VI is due to be released on 19 November, according to GameRant. The game will come in a standard edition at $80 and an Ultimate Edition at $100. The Ultimate Edition includes extra content and exclusive access to certain in-game stores. Rockstar Games has built its marketing campaign gradually towards the launch. PlayStation's list of November releases also includes Godzilla: Destroy All Monsters Melee Remastered on 3 November, Void/Breaker on 4 November and Barbie Rewind on 12 November.",
-   "source": "GameRant",
-   "url": "https://gamerant.com/ps5-new-games-releases-coming-out-soon-november-2026-gta-6/",
+   "id": "n2026-11-04-5",
+   "cat": "Tennis",
+   "title": "Tommy Paul beats Holger Rune in Paris",
+   "text": "Tommy Paul beat former Paris champion Holger Rune 7-5, 6-4 at the Paris Masters on Tuesday. The match lasted one hour and 21 minutes. Paul started the day 13th in the Race to Turin, so he needs to reach at least the final in Paris to stay in contention for the ATP Finals. Only the title guarantees him a place. Elsewhere, Novak Djokovic came through a three-set match against Valentin Vacherot.",
+   "source": "Tennis Majors",
+   "url": "https://www.tennismajors.com/atp/rolex-paris-masters-1000-atp/paul-beats-2022-champion-rune-to-keep-his-turin-hopes-alive-in-paris-865340.html",
    "gloss": {
-    "edition": "a particular version of a product, such as a game",
-    "exclusive": "available only to a certain group of people",
-    "campaign": "a planned set of actions to achieve a goal, such as selling a product",
-    "launch": "the time when a new product first goes on sale",
-    "remastered": "improved with better graphics or sound"
+    "in contention": "still having a chance to win or qualify",
+    "guarantee": "to make certain",
+    "come through": "to succeed in a difficult situation",
+    "seed": "a player ranked high so that top players do not meet early",
+    "title": "the winner's prize in a tournament"
    }
   },
   {
-   "id": "n2026-11-03-5",
-   "cat": "Science",
-   "title": "Study: climate change may have halted an ice age",
-   "text": "A new study suggests that human-driven climate change may have stopped a new ice age from starting. Researchers led by Young of the Lamont-Doherty Earth Observatory studied the Barnes Ice Cap, an area of about 6,000 square kilometres on Baffin Island in Canada. Using carbon-14 in plants near the edge of the glacier, they found that the Laurentide Ice Sheet was at its smallest about 3,000 years ago and began growing again around 2,000 years ago. The team argues that this growth should count as the start of the next ice age. They say the ice cap now loses more ice in summer than it gains in winter.",
+   "id": "n2026-11-04-6",
+   "cat": "Tech",
+   "title": "Hundreds of AI apps hid deepfake tools",
+   "text": "WIRED has found more than 400 AI apps that hid abusive deepfake features behind ordinary services such as pet portrait generators. Researchers say the apps could secretly load explicit tools after people installed them. Some were available in the Apple and Google app stores and have been downloaded more than 350,000 times in total. Apple removed 19 apps after WIRED contacted it. Meta said it had taken strong action against related advertising accounts and pages.",
+   "source": "WIRED",
+   "url": "https://www.wired.com/story/hundreds-of-mundane-ai-apps-are-hiding-abusive-deepfake-features/",
+   "gloss": {
+    "deepfake": "a fake video or image made with AI to look real",
+    "disguise": "to hide the real nature of something",
+    "explicit": "showing sexual content openly",
+    "remove": "to take something away",
+    "enforcement": "action to make people follow rules",
+    "network": "a group of connected people or companies"
+   }
+  },
+  {
+   "id": "n2026-11-04-7",
+   "cat": "Health",
+   "title": "France targets 29-year-olds in fertility campaign",
+   "text": "The French government has launched a fertility awareness campaign aimed at 29-year-olds. It is part of a plan against infertility that the government announced in February. The campaign is meant to inform young adults about their fertility. Euronews reported the news on Tuesday evening.",
    "source": "Euronews",
-   "url": "https://www.euronews.com/2026/11/03/study-suggests-human-driven-climate-change-may-have-halted-onset-of-a-new-ice-age",
+   "url": "https://www.euronews.com/2026/11/03/french-government-launches-fertility-awareness-campaign-targeting-29-year-olds",
    "gloss": {
-    "ice age": "a long period when much of the Earth is covered in ice",
-    "ice cap": "a large area of ice covering land",
-    "glacier": "a large mass of ice that moves slowly",
-    "carbon-14": "a form of carbon used to find out how old something is",
-    "halt": "to stop something",
-    "argue": "to give reasons to support an idea"
+    "fertility": "the ability to have children",
+    "infertility": "the inability to have children",
+    "awareness": "knowing about a problem or subject",
+    "campaign": "a planned set of actions to reach a goal",
+    "aim at": "to direct something at a particular group"
+   }
+  },
+  {
+   "id": "n2026-11-04-8",
+   "cat": "Culture",
+   "title": "Cristina Fernández Cubas wins Cervantes Prize",
+   "text": "The Catalan writer Cristina Fernández Cubas has won the 2026 Cervantes Prize. The award is one of the most important prizes in Spanish-language literature. She is the seventh woman to receive it. Euronews reported the announcement on Tuesday.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/2026/11/03/cristina-fernandez-cubas-wins-2026-cervantes-prize-for-spanish-literature",
+   "gloss": {
+    "prize": "an award given for excellent work",
+    "literature": "books, poems and plays considered as art",
+    "Catalan": "from Catalonia, a region of Spain",
+    "receive": "to be given something",
+    "announcement": "a public statement of news"
+   }
+  },
+  {
+   "id": "n2026-11-04-9",
+   "cat": "Business",
+   "title": "Portugal signs TAP sale to Lufthansa",
+   "text": "Portugal has signed a contract to sell the airline TAP to the German group Lufthansa. Lufthansa has said TAP will remain a Portuguese airline. The Portuguese prime minister promised to preserve the TAP brand and identity. The deal follows a long debate over the future of the national carrier.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/2026/11/03/portugal-signs-tap-sale-contract-with-lufthansa-pledging-to-keep-airline-portuguese",
+   "gloss": {
+    "contract": "a legal agreement",
+    "preserve": "to keep something as it is",
+    "brand": "a name and image that identify a company",
+    "carrier": "an airline",
+    "deal": "an agreement, often in business",
+    "pledge": "to promise seriously"
+   }
+  },
+  {
+   "id": "n2026-11-04-10",
+   "cat": "Games",
+   "title": "GTA VI preload starts on 10 November",
+   "text": "Rockstar Games has confirmed that preloading for Grand Theft Auto VI will begin on Tuesday 10 November, nine days before the game's release on 19 November. Players on PlayStation 5 and Xbox Series X|S will be able to download it in advance, and the file needs up to 212GB of space. VICE reports that the game will launch at midnight local time in each region. Digital buyers can therefore start playing as soon as their local clock reaches midnight.",
+   "source": "IBTimes UK",
+   "url": "https://www.ibtimes.co.uk/gta-6-preload-date-times-storage-requirements-1829986",
+   "gloss": {
+    "preload": "to download a game before its official release",
+    "release": "the date a game goes on sale",
+    "storage": "space on a device for saving files",
+    "in advance": "before something happens",
+    "launch": "to make a product available for the first time",
+    "region": "a large area of the world"
    }
   }
  ]
