@@ -1,157 +1,155 @@
 {
- "date": "2026-11-07",
+ "date": "2026-11-09",
  "intro": "Ten stories from the last day, rewritten in plain British English. Tap any word you don't know.",
  "items": [
   {
-   "id": "n2026-11-07-1",
+   "id": "n2026-11-09-1",
    "cat": "World",
-   "title": "Kenyan cult leader jailed for 200 years",
-   "text": "A court in Kenya has sentenced Paul Mackenzie, the leader of a doomsday cult, to 200 years in prison. He was convicted of murdering 191 people, 190 children and one adult. Reports say his followers were moved to a remote area and ordered to fast until they died, and that guards made sure they obeyed. Police later exhumed more than 400 bodies from mass graves. The sentence was announced on Thursday.",
-   "source": "Morning Star",
-   "url": "https://morningstaronline.co.uk/article/world-brief-november-7-2026",
+   "title": "Trump says deportation policy was too tough",
+   "text": "US President Donald Trump has said that his deportation policy was \"too tough\". He made the comments in an interview on the television programme 60 Minutes. The remarks suggest that a deal on immigration with the Democrats may be close. His party recently suffered a heavy defeat in the midterm elections. Critics say the change of tone shows how much pressure he is under.",
+   "source": "The Guardian",
+   "url": "https://www.theguardian.com/us-news/2026/nov/09/trump-tells-60-minutes-deportation-policy-too-tough-ice-immigration",
    "gloss": {
-    "doomsday cult": "a religious group that believes the world will end soon",
-    "sentence": "to officially decide a punishment for a crime",
-    "convict": "to decide in court that someone is guilty",
-    "fast": "to eat nothing for a period of time",
-    "exhume": "to dig up a dead body from the ground",
-    "mass grave": "a large hole where many bodies are buried together"
+    "deportation": "the act of forcing a person to leave a country",
+    "midterm elections": "US elections held halfway through a president's term",
+    "heavy defeat": "a big loss",
+    "tone": "the general feeling or attitude of what someone says",
+    "close": "near, about to happen"
    }
   },
   {
-   "id": "n2026-11-07-2",
+   "id": "n2026-11-09-2",
    "cat": "World",
-   "title": "Herzog to name Israel's next government leader",
-   "text": "Israel's president, Isaac Herzog, says he will announce on Sunday whom he has asked to form the next government. The former military chief Gadi Eisenkot appears to be the favourite. He has been endorsed by 67 members of the Knesset, Israel's parliament, while the current prime minister, Benjamin Netanyahu, has the support of 46. The person Herzog chooses will then try to build a government that can win the support of parliament.",
-   "source": "Morning Star",
-   "url": "https://morningstaronline.co.uk/article/world-brief-november-7-2026",
-   "gloss": {
-    "form a government": "to bring together enough politicians to run a country",
-    "favourite": "the person most likely to win",
-    "endorse": "to say publicly that you support someone",
-    "incumbent": "the person who currently holds a job or position",
-    "Knesset": "the parliament of Israel"
-   }
-  },
-  {
-   "id": "n2026-11-07-3",
-   "cat": "UK",
-   "title": "Russell Brand found guilty of rape",
-   "text": "A jury at Southwark Crown Court in London has convicted the comedian Russell Brand, 51, of one count of rape and three counts of sexual assault. He was cleared of two other rape charges and one count of attempted indecent assault, and he had denied all the allegations. The charges covered incidents between 1999 and 2009, and six women gave evidence. The judge, Joel Bennathan, said Brand will be sentenced on Monday and faces a long prison term. He was taken into custody after the verdict.",
+   "title": "Drone strike causes blackout in Iraqi Kurdistan",
+   "text": "A drone attack on a gas field in Iraqi Kurdistan has stopped gas production there. As a result, about 70 per cent of northern Iraq has been left without electricity. Engineers are trying to restore the supply. The strike came as tension rose across the region, where several attacks have been reported in recent days.",
    "source": "Al Jazeera",
-   "url": "https://www.aljazeera.com/news/2026/11/5/russell-brand-found-guilty-of-rape-and-sexual-assault-by-uk-court",
+   "url": "https://www.aljazeera.com/video/newsfeed/2026/11/9/drone-attack-on-iraqi-kurdistan-gas-field-triggers-mass-blackout",
    "gloss": {
-    "jury": "a group of ordinary people who decide if someone is guilty in court",
-    "count": "one separate charge in a trial",
-    "clear of": "to decide that someone is not guilty of a crime",
-    "allegation": "a claim that someone did something wrong, not yet proved",
-    "take into custody": "to arrest someone and keep them under police control",
-    "verdict": "the final decision of a court or jury"
+    "drone": "an aircraft without a pilot, flown by remote control",
+    "gas field": "an area where natural gas is taken from the ground",
+    "blackout": "a time when there is no electricity",
+    "restore": "to bring something back to how it was",
+    "tension": "a feeling of worry between people or countries"
    }
   },
   {
-   "id": "n2026-11-07-4",
+   "id": "n2026-11-09-3",
+   "cat": "World",
+   "title": "Ten die as overcrowded car falls into Brazilian lake",
+   "text": "An overcrowded car has plunged into a lake in Brazil, killing ten people. Five of the victims were children. The vehicle was carrying far more passengers than it should have. Rescue teams worked at the scene on Sunday. Local authorities have not yet said what caused the accident.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/2026/11/08/overcrowded-car-plunges-into-lake-in-brazil-killing-ten-including-five-children",
+   "gloss": {
+    "overcrowded": "with too many people inside",
+    "plunge": "to fall suddenly and with force",
+    "victim": "a person who is hurt or killed in an accident or crime",
+    "rescue team": "a group of people who save others from danger",
+    "authorities": "the officials who are in charge"
+   }
+  },
+  {
+   "id": "n2026-11-09-4",
+   "cat": "Football",
+   "title": "Man Utd and Aston Villa draw 4-4 at Old Trafford",
+   "text": "Manchester United and Aston Villa shared eight goals in a Premier League thriller on Sunday. Villa went 2-0 up inside a few minutes, but United hit back before half-time. Villa led 4-2 as the match went into stoppage time. Joshua Zirkzee scored to make it 4-3, then Patrick Dorgu headed an equaliser in the 96th minute. It was Unai Emery's 200th Premier League game.",
+   "source": "Aston Villa FC",
+   "url": "https://www.avfc.co.uk/news/2026/november/08/report-manchester-united-4-4-aston-villa",
+   "gloss": {
+    "hit back": "to reply strongly after being attacked or losing ground",
+    "stoppage time": "extra minutes added at the end of a match",
+    "equaliser": "a goal that makes the score level",
+    "thriller": "an exciting match or story",
+    "header": "a goal or pass made with the head"
+   }
+  },
+  {
+   "id": "n2026-11-09-5",
    "cat": "Tennis",
-   "title": "Alcaraz saves two match points in Paris",
-   "text": "Carlos Alcaraz beat Taylor Fritz 6-7, 7-5, 6-3 in the quarter-finals of the Paris Masters on Friday. The Spaniard saved two match points and came back from a break down in the third set. It is the first time he has reached the semi-finals in Paris. He said it was \"one of the most special matches that I ever played\". Alcaraz will now play Casper Ruud, who beat Nuno Borges, while Ben Shelton meets Luca Van Assche in the other semi-final.",
-   "source": "Al Jazeera",
-   "url": "https://www.aljazeera.com/sports/2026/11/7/carlos-alcaraz-match-point-paris-masters-semifinals-tennis",
+   "title": "Eight players set for ATP Finals in Turin",
+   "text": "The field for the ATP Finals is now complete. Rafael Jodar took the last place after Carlos Alcaraz beat Taylor Fritz in Paris. Alexander Zverev, who is the new world number one, will play alongside Alcaraz, Ben Shelton and Daniil Medvedev. Jannik Sinner will miss the event through injury. The tournament runs from 15 to 22 November, and the draw is on Thursday.",
+   "source": "ATP Tour",
+   "url": "https://www.atptour.com/en/news/nitto-atp-finals-2026-field-is-set",
    "gloss": {
-    "match point": "a point which, if won, ends the match",
-    "quarter-final": "a game in the round with eight players left",
-    "break": "winning a game when your opponent is serving",
-    "come back from": "to recover from a bad position and do better",
-    "semi-final": "a game in the round with four players left"
+    "field": "the group of players who take part in a competition",
+    "qualify": "to earn the right to take part",
+    "draw": "the process that decides who plays whom",
+    "miss out": "to not take part in something",
+    "through injury": "because of a physical problem"
    }
   },
   {
-   "id": "n2026-11-07-5",
+   "id": "n2026-11-09-6",
    "cat": "Tech",
-   "title": "Protesters storm Microsoft data centre site",
-   "text": "Protesters broke into the construction site of a new Microsoft data centre in Amsterdam on Thursday. A spokesman for the group Push Back, Nathan Timmer, said: \"We don't want it to be built. Nobody needs it.\" The protesters were clashing with police as the report was published. A data centre is a large building full of computers that store and process information for companies and websites. Euronews also showed the protest in a video report.",
-   "source": "Morning Star",
-   "url": "https://morningstaronline.co.uk/article/world-brief-november-7-2026",
+   "title": "AI beats doctors on complex diagnoses in study",
+   "text": "A study in the journal Science says a Microsoft diagnostic AI system performed better than general doctors on difficult medical cases. The system gave the right answer in 83.2 per cent of cases. The doctors who took part managed 36.1 per cent. Researchers say the tool could help with hard-to-solve cases, but it has not replaced doctors.",
+   "source": "Unite.AI",
+   "url": "https://www.unite.ai/microsoft-diagnostic-ai-outperforms-generalist-physicians-in-science-study/",
    "gloss": {
-    "data centre": "a building full of computers that store and process information",
-    "construction site": "a place where a building is being built",
-    "break into": "to enter a place by force without permission",
-    "clash with": "to fight or argue with someone",
-    "spokesman": "a man who speaks officially for a group"
+    "diagnosis": "the decision about what illness a person has",
+    "journal": "a magazine that publishes scientific research",
+    "generalist": "a doctor who treats many kinds of illness, not one speciality",
+    "perform": "to do a task well or badly",
+    "replace": "to take the place of someone or something"
    }
   },
   {
-   "id": "n2026-11-07-6",
+   "id": "n2026-11-09-7",
+   "cat": "Health",
+   "title": "Stronger flu jab linked to lower Alzheimer's risk",
+   "text": "Researchers have linked a stronger flu vaccine to a much lower risk of Alzheimer's disease. According to ScienceDaily, the risk was nearly 55 per cent lower in people who had the stronger jab. The result shows a link, not proof of cause and effect. Scientists say more research is needed to understand why it may happen.",
+   "source": "ScienceDaily",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261105224609.htm",
+   "gloss": {
+    "flu jab": "an informal British word for a flu vaccine injection",
+    "Alzheimer's disease": "an illness that slowly destroys memory",
+    "link": "a connection between two things",
+    "cause and effect": "when one thing makes another thing happen",
+    "risk": "the chance that something bad will happen"
+   }
+  },
+  {
+   "id": "n2026-11-09-8",
    "cat": "Science",
-   "title": "Scientists give old wind turbine blades a new life",
-   "text": "Researchers have found a way to reuse wind turbine blades, which are hard to recycle. In a study in the journal Chem Circularity, they heated old blades to about 2,000 degrees Celsius for a few seconds. The blades turned into silicon carbide and graphene. Adding just 0.3 per cent of this material to resin made it stronger and stiffer. Euronews says the amount of blade waste in Europe could rise from 20,000 tonnes in 2025 to 55,000 tonnes by 2030.",
-   "source": "Euronews",
-   "url": "https://www.euronews.com/2026/11/07/brief-burst-of-intense-heat-could-give-hard-to-recycle-wind-turbine-blades-a-second-life",
+   "title": "New fish found in the Amazon may be endangered",
+   "text": "Scientists have described a new species of fish in the Amazon. They say it may already be endangered. Many animals in the region are under pressure from changes to rivers and forests. The discovery shows how much of the Amazon is still unknown to researchers. The team hopes the finding will help protect the species.",
+   "source": "ScienceDaily",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261104084019.htm",
    "gloss": {
-    "turbine": "a machine with blades that turns wind into electricity",
-    "resin": "a sticky substance that becomes hard and is used to make plastics",
-    "upcycle": "to reuse something to make a product that is better than the original",
-    "landfill": "a place where rubbish is buried in the ground",
-    "hard to recycle": "difficult to process so that the material can be used again"
+    "species": "a type of animal or plant",
+    "endangered": "in danger of disappearing for ever",
+    "under pressure": "affected by difficult conditions",
+    "discovery": "something found for the first time",
+    "finding": "a result of research"
    }
   },
   {
-   "id": "n2026-11-07-7",
-   "cat": "Business",
-   "title": "Tesla to wind down Cybertruck production",
-   "text": "Tesla will wind down production of its Cybertruck at its Texas Gigafactory next year, Elon Musk has said. Reuters reports that the decision follows years of poor sales in a small number of markets. The Cybertruck is an electric pickup truck made by Tesla. Euronews also reported the news in a video bulletin on Friday, saying Tesla would \"wind down\" production of the vehicle next year.",
-   "source": "Reuters",
-   "url": "https://www.investing.com/news/stock-market-news/tesla-to-wind-down-cybertruck-production-at-texas-gigafactory-next-year-musk-says-5006624",
-   "gloss": {
-    "wind down": "to reduce an activity slowly until it stops",
-    "pickup truck": "a vehicle with an open area at the back for carrying things",
-    "gigafactory": "the name Tesla uses for its very large factories",
-    "poor sales": "when few people buy a product",
-    "market": "a country or area where a product is sold"
-   }
-  },
-  {
-   "id": "n2026-11-07-8",
-   "cat": "Money",
-   "title": "Europeans may need to save more for retirement",
-   "text": "The OECD says mandatory pensions in 22 of 30 European countries studied will not reach its target of 70 per cent of gross pay. The extra share of earnings people need to save is called the contribution gap. For a man on an average wage it is 9.1 per cent in the UK, 6.2 per cent in France and 11.1 per cent in Germany. In Lithuania it is the highest, at 20.7 per cent. In the UK, that means about 494 euros more a month.",
-   "source": "Euronews",
-   "url": "https://www.euronews.com/2026/11/07/are-europeans-saving-enough-for-retirement-here-is-how-much-more-they-need-to-put-aside",
-   "gloss": {
-    "mandatory": "required by law",
-    "gross pay": "the amount you earn before tax is taken off",
-    "contribution": "money paid regularly into a pension",
-    "gap": "a difference between what exists and what is needed",
-    "retirement": "the time of life when you stop working"
-   }
-  },
-  {
-   "id": "n2026-11-07-9",
+   "id": "n2026-11-09-9",
    "cat": "Games",
-   "title": "Rockstar shows GTA VI launch gallery",
-   "text": "Rockstar Games has published a launch gallery for Grand Theft Auto VI on its website. The company said on Thursday that the game is now officially only two weeks away. It added: \"See you in Leonida on November 19.\" The game will come out on PS5 and Xbox Series X and S. Tech Insider reports that Rockstar gave no price or story details with the gallery, and that digital pre-loading starts on 10 November.",
-   "source": "Tech Insider",
-   "url": "https://tech-insider.org/rockstar-gta-6-launch-gallery-39-screenshots-two-weeks-2026/",
+   "title": "GTA VI may launch with 55 single-player trophies",
+   "text": "A new report says Grand Theft Auto VI may launch with 55 trophies and achievements for the single-player campaign. The information has not been confirmed by Rockstar Games. The game is now set to come out on 19 November 2026. Rockstar has apologised for the extra time, saying it needs it for polish. Fans are watching every small detail before the release.",
+   "source": "VGTimes",
+   "url": "https://vgtimes.com/gaming-news/173908-gta-6-may-launch-with-55-single-player-trophies-and-achievements.html",
    "gloss": {
-    "gallery": "a collection of pictures shown together",
-    "launch": "the day a new product is first sold",
-    "pre-load": "to download a game before it is released",
-    "come out": "to be released for people to buy",
-    "officially": "in a way that is announced by the people in charge"
+    "trophy": "a reward you unlock in a PlayStation game",
+    "campaign": "the main story of a video game",
+    "come out": "to be released",
+    "polish": "final improvements that make something smooth and clean",
+    "confirm": "to say officially that something is true"
    }
   },
   {
-   "id": "n2026-11-07-10",
-   "cat": "World",
-   "title": "US states vote on girls' sport",
-   "text": "Voters in two US states have backed rules that would limit girls' and women's sport to people who are female. Colorado's Proposition 134 and Washington's Measure 638 both passed in referendums this week. The rules are based on sex rather than gender. The Morning Star notes that both states usually vote for the Democratic Party. A referendum is a vote in which people decide a single question directly, instead of electing a politician to decide.",
-   "source": "Morning Star",
-   "url": "https://morningstaronline.co.uk/article/world-brief-november-7-2026",
+   "id": "n2026-11-09-10",
+   "cat": "Games",
+   "title": "GTA VI box lists 230 GB for PS5",
+   "text": "A German PS5 box for Grand Theft Auto VI lists a file size of 230 GB. Rockstar had earlier asked players to free up as much as 212 GB. Players may need to delete other games to make room before launch. The release is planned for 19 November. Rockstar has not commented on the new figure.",
+   "source": "VGTimes",
+   "url": "https://vgtimes.com/gaming-news/173905-gta-6-could-take-up-225-gb-on-xbox-series-with-smaller-regional-builds.html",
    "gloss": {
-    "referendum": "a public vote on one question",
-    "measure": "a proposed law that voters decide on",
-    "endorse": "to say publicly that you support something",
-    "limit to": "to allow only a certain group",
-    "back": "to support"
+    "free up": "to make space or time available",
+    "file size": "the amount of storage a file uses",
+    "make room": "to create space for something",
+    "figure": "a number",
+    "comment": "to give an opinion or statement"
    }
   }
  ]
