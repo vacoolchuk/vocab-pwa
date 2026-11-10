@@ -1,155 +1,154 @@
 {
- "date": "2026-11-09",
+ "date": "2026-11-10",
  "intro": "Ten stories from the last day, rewritten in plain British English. Tap any word you don't know.",
  "items": [
   {
-   "id": "n2026-11-09-1",
+   "id": "n2026-11-10-1",
    "cat": "World",
-   "title": "Trump says deportation policy was too tough",
-   "text": "US President Donald Trump has said that his deportation policy was \"too tough\". He made the comments in an interview on the television programme 60 Minutes. The remarks suggest that a deal on immigration with the Democrats may be close. His party recently suffered a heavy defeat in the midterm elections. Critics say the change of tone shows how much pressure he is under.",
-   "source": "The Guardian",
-   "url": "https://www.theguardian.com/us-news/2026/nov/09/trump-tells-60-minutes-deportation-policy-too-tough-ice-immigration",
+   "title": "Ukraine and Russia hold talks in Abu Dhabi",
+   "text": "New talks between Russia and Ukraine begin on Tuesday in Abu Dhabi. The United States has arranged the meeting, and Vladimir Medinsky and Rustem Umerov lead the two delegations. The Kremlin has said that European countries will not take part. Overnight air strikes killed one person and injured seven. President Zelenskyy has said that the EU will use an emergency mechanism to fund Ukraine.",
+   "source": "Anadolu Agency",
+   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-10/4118200",
    "gloss": {
-    "deportation": "the act of forcing a person to leave a country",
-    "midterm elections": "US elections held halfway through a president's term",
-    "heavy defeat": "a big loss",
-    "tone": "the general feeling or attitude of what someone says",
-    "close": "near, about to happen"
+    "delegation": "a group of people who represent a country at a meeting",
+    "air strike": "an attack from aircraft",
+    "take part": "to join an activity or event",
+    "emergency mechanism": "a special system used when a situation is urgent",
+    "overnight": "during the night"
    }
   },
   {
-   "id": "n2026-11-09-2",
+   "id": "n2026-11-10-2",
    "cat": "World",
-   "title": "Drone strike causes blackout in Iraqi Kurdistan",
-   "text": "A drone attack on a gas field in Iraqi Kurdistan has stopped gas production there. As a result, about 70 per cent of northern Iraq has been left without electricity. Engineers are trying to restore the supply. The strike came as tension rose across the region, where several attacks have been reported in recent days.",
-   "source": "Al Jazeera",
-   "url": "https://www.aljazeera.com/video/newsfeed/2026/11/9/drone-attack-on-iraqi-kurdistan-gas-field-triggers-mass-blackout",
+   "title": "France accuses Iran of hacking food sites",
+   "text": "France has accused Iran's Revolutionary Guards of hacking the refrigeration systems of nearly 700 food sites in October. The attacks caused at least 15 fires, according to the French government. Foreign Minister Jean-Noel Barrot called the incident unprecedented. Paris has said it rules nothing out in response. Iran has not yet replied to the accusation.",
+   "source": "Anadolu Agency",
+   "url": "https://www.aa.com.tr/en/europe/france-rules-nothing-out-in-response-to-suspected-iran-linked-cyberattack/4118212",
    "gloss": {
-    "drone": "an aircraft without a pilot, flown by remote control",
-    "gas field": "an area where natural gas is taken from the ground",
-    "blackout": "a time when there is no electricity",
-    "restore": "to bring something back to how it was",
-    "tension": "a feeling of worry between people or countries"
+    "accuse": "to say that someone has done something wrong",
+    "hack": "to get into a computer system without permission",
+    "unprecedented": "never having happened before",
+    "rule out": "to decide that something is not possible",
+    "refrigeration": "the process of keeping food cold"
    }
   },
   {
-   "id": "n2026-11-09-3",
-   "cat": "World",
-   "title": "Ten die as overcrowded car falls into Brazilian lake",
-   "text": "An overcrowded car has plunged into a lake in Brazil, killing ten people. Five of the victims were children. The vehicle was carrying far more passengers than it should have. Rescue teams worked at the scene on Sunday. Local authorities have not yet said what caused the accident.",
-   "source": "Euronews",
-   "url": "https://www.euronews.com/2026/11/08/overcrowded-car-plunges-into-lake-in-brazil-killing-ten-including-five-children",
+   "id": "n2026-11-10-3",
+   "cat": "UK",
+   "title": "Russell Brand sentenced to 10 and a half years",
+   "text": "Comedian Russell Brand has been sentenced to ten and a half years in prison for rape and sexual assault. The sentence followed his conviction. The case has led to difficult questions about the British entertainment industry. CNN reported on the reaction to the verdict over the weekend. Brand had been granted bail earlier in the legal process.",
+   "source": "NBC News",
+   "url": "https://www.nbcnews.com/world/united-kingdom/russell-brand-sentenced-years-british-jail-rcna607799",
    "gloss": {
-    "overcrowded": "with too many people inside",
-    "plunge": "to fall suddenly and with force",
-    "victim": "a person who is hurt or killed in an accident or crime",
-    "rescue team": "a group of people who save others from danger",
-    "authorities": "the officials who are in charge"
+    "sentence": "to officially decide a punishment for a crime",
+    "conviction": "a decision in court that someone is guilty",
+    "verdict": "the official decision of a court",
+    "bail": "permission to stay free until a trial, often after paying money",
+    "follow": "to happen after something else"
    }
   },
   {
-   "id": "n2026-11-09-4",
+   "id": "n2026-11-10-4",
    "cat": "Football",
-   "title": "Man Utd and Aston Villa draw 4-4 at Old Trafford",
-   "text": "Manchester United and Aston Villa shared eight goals in a Premier League thriller on Sunday. Villa went 2-0 up inside a few minutes, but United hit back before half-time. Villa led 4-2 as the match went into stoppage time. Joshua Zirkzee scored to make it 4-3, then Patrick Dorgu headed an equaliser in the 96th minute. It was Unai Emery's 200th Premier League game.",
-   "source": "Aston Villa FC",
-   "url": "https://www.avfc.co.uk/news/2026/november/08/report-manchester-united-4-4-aston-villa",
+   "title": "Man Utd expected to change manager",
+   "text": "Manchester United are expected to change manager before their trip to Anfield in 13 days, according to a report by The Athletic. United are 18th after a 4-4 draw with Aston Villa on Sunday. Michael Carrick has won one league game and drawn five in ten. The club says that no final decision has been made. Mauricio Pochettino, Eddie Howe and Julian Nagelsmann have been named as possible replacements.",
+   "source": "Football Today",
+   "url": "https://footballtoday.com/2026/11/10/man-utd-expected-to-sack-michael-carrick-after-disastrous-start-leaves-club-in-relegation-zone/",
    "gloss": {
-    "hit back": "to reply strongly after being attacked or losing ground",
-    "stoppage time": "extra minutes added at the end of a match",
-    "equaliser": "a goal that makes the score level",
-    "thriller": "an exciting match or story",
-    "header": "a goal or pass made with the head"
+    "draw": "a game in which both teams score the same number of goals",
+    "relegation zone": "the lowest places in a league, where teams may move to a lower division",
+    "replacement": "a person who takes over from someone else",
+    "according to": "as said by a particular source",
+    "final decision": "the last and official choice"
    }
   },
   {
-   "id": "n2026-11-09-5",
+   "id": "n2026-11-10-5",
    "cat": "Tennis",
-   "title": "Eight players set for ATP Finals in Turin",
-   "text": "The field for the ATP Finals is now complete. Rafael Jodar took the last place after Carlos Alcaraz beat Taylor Fritz in Paris. Alexander Zverev, who is the new world number one, will play alongside Alcaraz, Ben Shelton and Daniil Medvedev. Jannik Sinner will miss the event through injury. The tournament runs from 15 to 22 November, and the draw is on Thursday.",
-   "source": "ATP Tour",
-   "url": "https://www.atptour.com/en/news/nitto-atp-finals-2026-field-is-set",
+   "title": "Jodar completes ATP Finals field",
+   "text": "The eight players for the ATP Finals in Turin are now set. Alexander Zverev leads the season Race with 9,350 points. Rafael Jodar was the last to qualify with 3,234 points, 64 more than reserve Alex de Minaur. Jannik Sinner has 7,950 points but misses the event because of injury. Carlos Alcaraz is on 5,500 points.",
+   "source": "Last Word on Sports",
+   "url": "https://lastwordonsports.com/tennis/2026/11/08/atp-finals-eight-turin/",
    "gloss": {
-    "field": "the group of players who take part in a competition",
-    "qualify": "to earn the right to take part",
-    "draw": "the process that decides who plays whom",
-    "miss out": "to not take part in something",
-    "through injury": "because of a physical problem"
+    "qualify": "to reach the standard needed to take part",
+    "reserve": "a player who is ready to replace another",
+    "miss": "to be absent from an event",
+    "injury": "physical harm to the body",
+    "field": "all the players in a competition"
    }
   },
   {
-   "id": "n2026-11-09-6",
+   "id": "n2026-11-10-6",
    "cat": "Tech",
-   "title": "AI beats doctors on complex diagnoses in study",
-   "text": "A study in the journal Science says a Microsoft diagnostic AI system performed better than general doctors on difficult medical cases. The system gave the right answer in 83.2 per cent of cases. The doctors who took part managed 36.1 per cent. Researchers say the tool could help with hard-to-solve cases, but it has not replaced doctors.",
-   "source": "Unite.AI",
-   "url": "https://www.unite.ai/microsoft-diagnostic-ai-outperforms-generalist-physicians-in-science-study/",
+   "title": "Nvidia opens probe into chief executive",
+   "text": "Nvidia's board has opened an independent investigation after reports that chief executive Jensen Huang was targeted by a foreign intelligence operation. The company's shares fell sharply on the news. Mr Huang has apologised for the relationship, and Nvidia says he will remain in his job. China has called the allegations nothing but smears. A shareholder lawsuit has also been filed.",
+   "source": "Anadolu Agency",
+   "url": "https://www.aa.com.tr/en/economy/nvidia-faces-shareholder-lawsuit-over-ceos-ties-to-suspected-chinese-operative/4118229",
    "gloss": {
-    "diagnosis": "the decision about what illness a person has",
-    "journal": "a magazine that publishes scientific research",
-    "generalist": "a doctor who treats many kinds of illness, not one speciality",
-    "perform": "to do a task well or badly",
-    "replace": "to take the place of someone or something"
+    "probe": "an official investigation",
+    "board": "the group of people who manage a company",
+    "shares": "parts of a company that people can buy and sell",
+    "lawsuit": "a case brought to a court by a person or group",
+    "smear": "a false claim made to damage someone's reputation"
    }
   },
   {
-   "id": "n2026-11-09-7",
-   "cat": "Health",
-   "title": "Stronger flu jab linked to lower Alzheimer's risk",
-   "text": "Researchers have linked a stronger flu vaccine to a much lower risk of Alzheimer's disease. According to ScienceDaily, the risk was nearly 55 per cent lower in people who had the stronger jab. The result shows a link, not proof of cause and effect. Scientists say more research is needed to understand why it may happen.",
-   "source": "ScienceDaily",
-   "url": "https://www.sciencedaily.com/releases/2026/11/261105224609.htm",
-   "gloss": {
-    "flu jab": "an informal British word for a flu vaccine injection",
-    "Alzheimer's disease": "an illness that slowly destroys memory",
-    "link": "a connection between two things",
-    "cause and effect": "when one thing makes another thing happen",
-    "risk": "the chance that something bad will happen"
-   }
-  },
-  {
-   "id": "n2026-11-09-8",
+   "id": "n2026-11-10-7",
    "cat": "Science",
-   "title": "New fish found in the Amazon may be endangered",
-   "text": "Scientists have described a new species of fish in the Amazon. They say it may already be endangered. Many animals in the region are under pressure from changes to rivers and forests. The discovery shows how much of the Amazon is still unknown to researchers. The team hopes the finding will help protect the species.",
-   "source": "ScienceDaily",
-   "url": "https://www.sciencedaily.com/releases/2026/11/261104084019.htm",
+   "title": "Fossil fuel emissions set to fall in 2026",
+   "text": "Global carbon dioxide emissions from fossil fuels are expected to fall by 0.4 per cent in 2026, to 38.2 billion tonnes. The Global Carbon Budget report says this would be the first yearly fall since 2020. Researchers link the drop to the war involving Iran, which pushed oil prices up and cut oil use. The growth of renewable energy has also helped. Scientists warn that the fall may not last.",
+   "source": "The Japan Times",
+   "url": "https://www.japantimes.co.jp/environment/2026/11/10/energy/fossil-fuel-emissions-fall/",
    "gloss": {
-    "species": "a type of animal or plant",
-    "endangered": "in danger of disappearing for ever",
-    "under pressure": "affected by difficult conditions",
-    "discovery": "something found for the first time",
-    "finding": "a result of research"
+    "emissions": "gases sent into the air, for example from cars and factories",
+    "fossil fuel": "a fuel such as coal, oil or gas made from ancient plants and animals",
+    "renewable energy": "power from sources that do not run out, such as wind and sun",
+    "budget": "a plan for how much of something can be used",
+    "link": "to say that two things are connected"
    }
   },
   {
-   "id": "n2026-11-09-9",
-   "cat": "Games",
-   "title": "GTA VI may launch with 55 single-player trophies",
-   "text": "A new report says Grand Theft Auto VI may launch with 55 trophies and achievements for the single-player campaign. The information has not been confirmed by Rockstar Games. The game is now set to come out on 19 November 2026. Rockstar has apologised for the extra time, saying it needs it for polish. Fans are watching every small detail before the release.",
-   "source": "VGTimes",
-   "url": "https://vgtimes.com/gaming-news/173908-gta-6-may-launch-with-55-single-player-trophies-and-achievements.html",
+   "id": "n2026-11-10-8",
+   "cat": "Culture",
+   "title": "M John Harrison wins the Booker Prize",
+   "text": "British author M John Harrison has won the 2026 Booker Prize with his novel The End of Everything. At 81, he is the oldest person ever to win the award. The prize is worth 50,000 pounds. The prize was announced on Monday. Harrison is 81 years old, which makes him the oldest winner in the history of the prize.",
+   "source": "Sri Lanka Mirror",
+   "url": "https://srilankamirror.com/2026/11/10/news/british-author-wins-2026-booker-prize-at-81",
    "gloss": {
-    "trophy": "a reward you unlock in a PlayStation game",
-    "campaign": "the main story of a video game",
-    "come out": "to be released",
-    "polish": "final improvements that make something smooth and clean",
-    "confirm": "to say officially that something is true"
+    "novel": "a long written story",
+    "award": "a prize given for achievement",
+    "oldest": "having lived the longest",
+    "announcement": "a public statement giving news"
    }
   },
   {
-   "id": "n2026-11-09-10",
-   "cat": "Games",
-   "title": "GTA VI box lists 230 GB for PS5",
-   "text": "A German PS5 box for Grand Theft Auto VI lists a file size of 230 GB. Rockstar had earlier asked players to free up as much as 212 GB. Players may need to delete other games to make room before launch. The release is planned for 19 November. Rockstar has not commented on the new figure.",
-   "source": "VGTimes",
-   "url": "https://vgtimes.com/gaming-news/173905-gta-6-could-take-up-225-gb-on-xbox-series-with-smaller-regional-builds.html",
+   "id": "n2026-11-10-9",
+   "cat": "Business",
+   "title": "Take-Two raises hopes before GTA VI launch",
+   "text": "Take-Two Interactive has said that pre-orders for Grand Theft Auto VI are far above its first expectations. Chief executive Strauss Zelnick said on a call with investors that Rockstar has finished development of the game. The company expects net bookings of 8.0 to 8.2 billion dollars this financial year. Net bookings in the second quarter were 1.60 billion dollars. No pre-order figure was given.",
+   "source": "Output Lag",
+   "url": "https://outputlag.com/news/gta-6-officially-goes-gold-take-two-pre-orders-unprecedented/",
    "gloss": {
-    "free up": "to make space or time available",
-    "file size": "the amount of storage a file uses",
-    "make room": "to create space for something",
-    "figure": "a number",
-    "comment": "to give an opinion or statement"
+    "pre-order": "to pay for a product before it is on sale",
+    "net bookings": "a measure of the value of sales in a period",
+    "investor": "a person who puts money into a company",
+    "financial year": "a twelve-month period used by a company for its accounts",
+    "far above": "much higher than"
+   }
+  },
+  {
+   "id": "n2026-11-10-10",
+   "cat": "Games",
+   "title": "Rockstar plans a GTA VI festival in Miami",
+   "text": "Rockstar and PlayStation will hold Grand Theft Auto VI: The Festival in Miami on 21 November, two days after the game launches. The event takes place at Mana Wynwood and has two stages. Travis Scott, Cardi B, Metro Boomin and Justice are among the named acts. Winners of a giveaway aged 17 or over can get tickets. Pre-loading of the game began on Tuesday and needs up to 212 GB of space.",
+   "source": "iXBT Games",
+   "url": "https://ixbt.games/en/news/2026/11/10/rockstar-ustroit-muzykalnyi-festival-v-cest-vyxoda-gta-vi.html",
+   "gloss": {
+    "launch": "to put a new product on sale",
+    "giveaway": "a prize draw where people can win free items",
+    "stage": "a raised area where performers stand",
+    "pre-load": "to download a game before its release date",
+    "named": "mentioned by name"
    }
   }
  ]
