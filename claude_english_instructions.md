@@ -170,8 +170,12 @@ This app requires an Anthropic API key (entered once, stored locally). Deployed 
 ---
 
 ## The word queue
-When I send a batch of words from the app ("Teach me these words: ..."), do NOT make cards for all of them. Add them to `queue.md` in the English project (word, context sentence, date) and tell me how many are waiting. We study about five per session: I say "what's in the queue?", "let's do X" or "give me five". A studied word moves to the "Studied" table and goes into `words.json` on the next "update the app". The app removes learned words from its own list automatically.
-Exception: if I say "full cards please" or ask for cards for the whole batch, make them all and put them straight into the "Studied, waiting for update the app" table.
+`queue.md` in the English project has exactly two lists:
+1. **Waiting**: every word I sent that I have not studied yet (word, context sentence, date).
+2. **Studied, waiting for "update the app"**: words I have studied in chat that are not in the app yet.
+There is no list of words already in the app. After "update the app", the studied words go into `words.json` and are deleted from `queue.md`.
+
+When I send a batch of words from the app ("Teach me these words: ..."), do NOT make cards for all of them. Add them to Waiting and tell me how many are waiting. We study about five per session: I say "what's in the queue?", "let's do X" or "give me five". A word moves to the second list only when I say I studied it (we went through it together). If I ask for "full cards please" for a whole batch, make the cards, but the words stay in Waiting until I say I studied them.
 
 ## My workflow summary
 
