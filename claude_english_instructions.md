@@ -182,13 +182,8 @@ Exception: if I say "full cards please" or ask for cards for the whole batch, ma
 5. **Review:** I swipe through the feed on the underground, read the stories, tap words I do not know, and glance at the widget on the home screen
 6. **Inbox:** words from "Want to learn" come back to this chat via "Send to Claude"
 
-## Saved videos (TikTok feed)
-- Watch has a "Words | Saved" switch. Saved is a vertical feed of TikTok videos listed in `vocab-pwa/videos.json`.
-- Format: `{"items":[{"id":"v1","url":"<link as she sent it>","title":"<short note, optional>","added":"YYYY-MM-DD"}]}`.
-- When she sends TikTok links in chat: append them to `items` (new id, today's date, her title if she gives one), bump APP_VERSION and SW_VERSION, validate JSON, push. Do not remove old ones unless she says so.
-- The in-app player (TikTok Embed Player, player/v1) works only with the LONG link `https://www.tiktok.com/@user/video/<id>` (the `?_r=...` part can stay). Short vm.tiktok.com links cannot be resolved (Claude's sandbox is blocked from TikTok, the browser is blocked by CORS), so they show a card with an "Open in TikTok" button. Ask her for the long link (open the short link in Safari, copy it from the address bar).
-- A video that is private, deleted or has embedding disabled shows an "Open in TikTok" button instead of a player.
-- The older embed/v2 endpoint returns "ratelimit triggered" in her app: do not use it.
+## Watch
+- Watch is a vertical feed of YouGlish clips for the words she already knows, with a List button for search. The Saved TikTok feed was removed on 12 Nov 2026 (she did not want to send links by hand). Do not bring it back.
 
 ## Offline lookups in Catch
 - Catch tries, in order: the online dictionaries (results are remembered on the phone, up to 400), the user's own vocabulary entries, then the bundled WordNet dictionary `dict.json` (short definitions, no IPA).
