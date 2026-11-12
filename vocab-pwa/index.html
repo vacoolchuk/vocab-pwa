@@ -276,11 +276,11 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.11.12-2";
+const APP_VERSION = "2026.11.12-3";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
-const NEW_PER_DAY = 10, STORY_EVERY = 4, MAX_STORIES = 3, KNOWN_IVL = 30, MAX_IVL = 120;
+const EASY_FIRST = 14, NEW_PER_DAY = 10, STORY_EVERY = 4, MAX_STORIES = 3, KNOWN_IVL = 30, MAX_IVL = 120;
 
 let WORDS = [], STORIES = [], BY = {}, NEWS = null, NEWS_BY = {};
 let P = null;                 // progress
@@ -319,6 +319,7 @@ function mergeP(a, b){
   a.trash = a.trash || []; (b.trash || []).forEach(i => { if (!a.trash.some(x => x.word === i.word) && !a.inbox.some(x => x.word === i.word)) a.trash.push(i); });
   Object.entries(b.days || {}).forEach(([k,n]) => { a.days[k] = Math.max(a.days[k] || 0, n); });
   Object.entries(b.stories || {}).forEach(([k,t]) => { a.stories[k] = Math.max(a.stories[k] || 0, t); });
+  a.newToday = a.newToday || {}; Object.entries(b.newToday || {}).forEach(([d,arr]) => { a.newToday[d] = [...new Set([...(a.newToday[d] || []), ...arr])]; });
   a.lastBackup = Math.max(a.lastBackup || 0, b.lastBackup || 0);
   return a;
 }
@@ -343,14 +344,19 @@ async function saveP(){ const s = JSON.stringify(P); lsSet(KEY, s); await idbSet
 /* ================= SRS ================= */
 const card = w => P.cards[w];
 function status(w){ const c = card(w); if (!c || c.reps === 0) return "new"; if (c.ivl < 7) return "learning"; if (c.ivl < KNOWN_IVL) return "review"; return "known"; }
+function nextIvl(c, g){
+  if (g === "hard") return c.ivl < 1 ? 1 : Math.ceil(c.ivl * 1.2);
+  if (g === "good") return c.ivl < 1 ? 2 : Math.ceil(c.ivl * c.ease);
+  return c.ivl < 1 ? EASY_FIRST : Math.max(EASY_FIRST, Math.ceil(c.ivl * c.ease * 1.3));
+}
 function rate(w, g){
   const c = P.cards[w] || (P.cards[w] = newCard());
   const t = today();
   const ratedToday = c.lastDay === t && c.reps > 0;   // a second rating on the same day must not compound the interval
   if (g === "again"){ c.lapses++; c.ivl = 0; c.ease = Math.max(1.3, c.ease - 0.2); c.due = t; }
-  else if (g === "hard"){ if (!ratedToday) c.ivl = c.ivl < 1 ? 1 : Math.ceil(c.ivl * 1.2); c.ease = Math.max(1.3, c.ease - 0.15); c.due = addDays(t, Math.max(1, c.ivl)); }
-  else if (g === "good"){ if (!ratedToday) c.ivl = c.ivl < 1 ? 1 : c.ivl < 3 ? 3 : Math.ceil(c.ivl * c.ease); c.due = addDays(t, Math.max(1, c.ivl)); }
-  else { if (!ratedToday){ c.ivl = c.ivl < 1 ? 3 : Math.ceil(c.ivl * c.ease * 1.3); c.ease = Math.min(3, c.ease + 0.15); } c.due = addDays(t, Math.max(1, c.ivl)); }
+  else if (g === "hard"){ if (!ratedToday) c.ivl = nextIvl(c, "hard"); c.ease = Math.max(1.3, c.ease - 0.15); c.due = addDays(t, Math.max(1, c.ivl)); }
+  else if (g === "good"){ if (!ratedToday) c.ivl = nextIvl(c, "good"); c.due = addDays(t, Math.max(1, c.ivl)); }
+  else { if (!ratedToday){ c.ivl = nextIvl(c, "easy"); c.ease = Math.min(3, c.ease + 0.15); } c.due = addDays(t, Math.max(1, c.ivl)); }
   if (c.ivl > MAX_IVL){ c.ivl = MAX_IVL; c.due = addDays(t, MAX_IVL); }
   c.reps++; c.last = Date.now(); c.lastDay = t;
   P.days[t] = (P.days[t] || 0) + 1;
@@ -367,7 +373,7 @@ function buildFeed(ahead){
   const t = today();
   let cards;
   if (ahead){
-    cards = shuffle(WORDS).slice(0, 10);
+    cards = shuffle([...WORDS].sort((a, b) => ((card(a.word) || {}).due || "0").localeCompare((card(b.word) || {}).due || "0")).slice(0, 10));
   } else {
     const due = WORDS.filter(w => { const c = card(w.word); return c && c.reps > 0 && c.due <= t; }).sort((a,b) => card(a.word).due.localeCompare(card(b.word).due));
     const introduced = P.newToday[t] || [];
@@ -570,10 +576,8 @@ function topicSlide(f, i){
     + f.words.map(w => '<button class="trow" data-act="say" data-w="' + esc(w.word) + '"><span class="tw">' + esc(w.word) + '</span><span class="td">' + esc(w.definitions[0].def) + '</span></button>').join("") + '</div></div></div>';
 }
 function ivlLabel(w, g){
-  const c = card(w) || newCard(); let ivl;
-  if (g === "hard") ivl = c.ivl < 1 ? 1 : Math.ceil(c.ivl * 1.2);
-  else if (g === "good") ivl = c.ivl < 1 ? 1 : c.ivl < 3 ? 3 : Math.ceil(c.ivl * c.ease);
-  else ivl = c.ivl < 1 ? 3 : Math.ceil(c.ivl * c.ease * 1.3);
+  const c = card(w) || newCard(); 
+  const ivl = nextIvl(c, g);
   return ivl === 1 ? "1 day" : ivl < 30 ? ivl + " days" : ivl < 365 ? Math.round(ivl/30) + " mo" : Math.round(ivl/365) + " yr";
 }
 function tokenise(text){
