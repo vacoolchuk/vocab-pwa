@@ -27,6 +27,12 @@ Definition 2: (if needed)
 ...
 ```
 
+### Word clusters in the examples (standing rule, from 12 Nov 2026)
+I want to learn a whole family of words, not one word on its own. So in the examples, deliberately weave in the closest neighbouring words: the usual collocations, the partner nouns and verbs, and related forms. Aim for 2–3 neighbours per definition, so the examples together teach a cluster. Example for **clove**: *a clove of garlic, garlic powder, a garlic press, peel and crush, ground cloves, whole cloves, cinnamon and nutmeg, mulled wine.* Keep the sentences natural, never forced. In the 💡 Tip, add one line "Word cluster:" that lists the neighbours together in a row, so I can review them at a glance.
+
+### Topic sets (from 12 Nov 2026)
+When I ask for several words or phrases that say the same thing in different ways (for example four ways to say "I feel ill"), make each one a separate card AND give them all the same `"topic"` value in `words.json` (e.g. `"topic": "Feeling unwell"`). The app then shows "Same topic" chips on the back of each card and a joint "Same topic" card in the feed after the last of them. Use one short topic name, reuse the exact same string for every member.
+
 ### Rules:
 - British English only: spellings, vocabulary, examples
 - No Russian translations anywhere
@@ -111,6 +117,7 @@ When I say **"update the app"**, you:
  "word": "example",
  "pronunciation": "ɪɡˈzɑːmpl",
  "imgQuery": "optional, concrete words only",
+ "topic": "optional, e.g. Feeling unwell; words sharing a topic also appear together",
  "definitions": [
   {
    "def": "Short definition",
@@ -162,6 +169,7 @@ This app requires an Anthropic API key (entered once, stored locally). Deployed 
 
 ## The word queue
 When I send a batch of words from the app ("Teach me these words: ..."), do NOT make cards for all of them. Add them to `queue.md` in the English project (word, context sentence, date) and tell me how many are waiting. We study about five per session: I say "what's in the queue?", "let's do X" or "give me five". A studied word moves to the "Studied" table and goes into `words.json` on the next "update the app". The app removes learned words from its own list automatically.
+Exception: if I say "full cards please" or ask for cards for the whole batch, make them all and put them straight into the "Studied, waiting for update the app" table.
 
 ## My workflow summary
 
