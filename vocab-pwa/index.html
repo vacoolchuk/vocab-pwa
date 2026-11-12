@@ -69,6 +69,15 @@ button{font-family:inherit;cursor:pointer;color:inherit}
 .def{margin:8px 0 8px;font-family:var(--book);font-size:19px;font-weight:500;line-height:1.4;color:var(--milk)}
 .desc{margin:0 0 16px;font-family:var(--book);font-size:15px;color:var(--dim);line-height:1.6}
 .ex{border-top:1px solid var(--line);padding-top:12px}
+.tchips{border-top:1px solid var(--line);padding-top:10px;margin:0 0 10px}
+.tchips h4{margin:0 0 8px;font-family:var(--display);font-size:13px;font-weight:500;letter-spacing:.05em;color:var(--faint)}
+.tchip{display:inline-block;margin:0 8px 6px 0;padding:5px 10px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--amber);font-family:var(--display);font-size:14px}
+.slide.flipped .back .tchips h4{color:#B8B2A4}
+.topicbox{width:100%}.topicbox h2{margin:0 0 6px;font-family:var(--display);font-size:30px;font-weight:500}
+.tsub{margin:0 0 18px;color:var(--faint);font-size:14px}
+.trow{display:block;width:100%;text-align:left;padding:12px 14px;margin-bottom:10px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:inherit}
+.trow .tw{display:block;font-family:var(--display);font-size:20px;color:var(--amber);margin-bottom:2px}
+.trow .td{display:block;font-size:14px;color:var(--faint);line-height:1.35}
 .ex h4{margin:0 0 10px;font-family:var(--display);font-size:13px;font-weight:500;letter-spacing:.05em;color:var(--faint)}
 .ex p{margin:0 0 10px;font-family:var(--book);font-size:15px;color:#C9C3B6;line-height:1.55;padding-left:14px;border-left:2px solid var(--line)}
 .rate{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:12px;background:var(--line);border:1px solid var(--line)}
@@ -281,7 +290,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.10.24-56";
+const APP_VERSION = "2026.11.12-1";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -391,6 +400,10 @@ function buildFeed(ahead){
   feed = []; slideState = {};
   cards.forEach((w,i) => { feed.push({ type: "word", w }); if ((i+1) % STORY_EVERY === 0 && stories.length) feed.push({ type: "story", s: stories.shift() }); });
   stories.forEach(s => feed.push({ type: "story", s }));
+  // words that share a topic also come up together: one joint card after the last of them
+  const tops = {}; feed.forEach((f,i) => { if (f.type === "word" && f.w.topic) (tops[f.w.topic] = tops[f.w.topic] || []).push(i); });
+  Object.entries(tops).filter(([t,ix]) => ix.length >= 2).map(([t,ix]) => [Math.max(...ix), t]).sort((a,b) => b[0] - a[0])
+    .forEach(([at,t]) => feed.splice(at + 1, 0, { type: "topic", t, words: WORDS.filter(w => w.topic === t) }));
   feed.push({ type: "done" });
   feed.forEach((f,i) => slideState[i] = { flipped: false, defIdx: 0, rated: "", peeked: [], inboxed: [], mode: f.type === "word" ? pickMode(f.w) : "see" });
 }
@@ -539,7 +552,7 @@ const TINTS = ["#1B2A20", "#15292B", "#172236", "#2A1B30", "#30211A", "#262A17"]
 function tintFor(word){ let h = 0; for (const ch of word) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return TINTS[h % TINTS.length]; }
 function wordSlide(f, i){
   const w = f.w, st = slideState[i], d = w.definitions[Math.min(st.defIdx, w.definitions.length-1)];
-  const n = feed.filter(x => x.type !== "done").length;
+  const n = feed.filter(x => x.type !== "done" && x.type !== "topic").length;
   let h = '<div class="slide tinted' + (st.flipped && !st.rated ? " flipped" : "") + '" style="--tint:' + tintFor(w.word) + '" data-i="' + i + '">' + (w.image || w.imgQuery ? '<div class="still"><img data-img="' + esc(w.word) + '" alt=""></div>' : "") + '<div class="meta"><span>' + (i+1) + " / " + n + (st.mode === "cloze" ? " · fill the gap" : st.mode === "listen" ? " · listen" : "") + '</span><span class="st ' + status(w.word) + '">' + status(w.word) + "</span></div>";
   if (st.rated) return h + '<div class="rated">' + st.rated + "</div></div>";
   h += '<div class="body">';
@@ -556,10 +569,19 @@ function wordSlide(f, i){
   } else {
     h += '<div class="back" data-act="flip">';
     if (w.definitions.length > 1) h += '<div class="mtabs">' + w.definitions.map((_, k) => '<button data-act="def" data-k="' + k + '" class="' + (st.defIdx === k ? "on" : "") + '">Meaning ' + (k+1) + "</button>").join("") + "</div>";
-    h += '<div class="row" style="flex-wrap:wrap;margin-bottom:4px"><span class="w">' + esc(w.word) + '</span><span class="ipa" data-act="say" data-w="' + esc(w.word) + '">▶\uFE0E ' + esc(w.pronunciation) + '</span></div><span class="tag">' + esc(d.context) + '</span><p class="def">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + "</p>" + examplesHTML(d) + wildBtn(w.word) + "</div>";
+    h += '<div class="row" style="flex-wrap:wrap;margin-bottom:4px"><span class="w">' + esc(w.word) + '</span><span class="ipa" data-act="say" data-w="' + esc(w.word) + '">▶\uFE0E ' + esc(w.pronunciation) + '</span></div><span class="tag">' + esc(d.context) + '</span><p class="def">' + esc(d.def) + '</p><p class="desc">' + esc(d.description) + "</p>" + topicChips(w) + examplesHTML(d) + wildBtn(w.word) + "</div>";
     h += '<div class="rate"><button class="again" data-act="rate" data-g="again">Again</button><button class="hard" data-act="rate" data-g="hard">Hard</button><button class="good" data-act="rate" data-g="good">Good</button><button class="easy" data-act="rate" data-g="easy">Easy</button></div>';
   }
   return h + "</div></div>";
+}
+function topicChips(w){
+  if (!w.topic) return "";
+  const others = WORDS.filter(x => x.topic === w.topic && x.word !== w.word); if (!others.length) return "";
+  return '<div class="tchips"><h4>Same topic: ' + esc(w.topic) + '</h4>' + others.map(o => '<button class="tchip" data-act="say" data-w="' + esc(o.word) + '">' + esc(o.word) + '</button>').join("") + '</div>';
+}
+function topicSlide(f, i){
+  return '<div class="slide tinted" style="--tint:#1B2733" data-i="' + i + '"><div class="meta"><span style="color:var(--amber)">Same topic</span><span>swipe on</span></div><div class="body"><div class="topicbox"><h2>' + esc(f.t) + '</h2><p class="tsub">These words belong together. Tap one to hear it.</p>'
+    + f.words.map(w => '<button class="trow" data-act="say" data-w="' + esc(w.word) + '"><span class="tw">' + esc(w.word) + '</span><span class="td">' + esc(w.definitions[0].def) + '</span></button>').join("") + '</div></div></div>';
 }
 function ivlLabel(w, g){
   const c = card(w) || newCard(); let ivl;
@@ -596,7 +618,7 @@ function doneSlide(i){
 }
 function renderFeed(){
   let h = '<div id="feed">';
-  feed.forEach((f,i) => { h += f.type === "word" ? wordSlide(f,i) : f.type === "story" ? storySlide(f,i) : doneSlide(i); });
+  feed.forEach((f,i) => { h += f.type === "word" ? wordSlide(f,i) : f.type === "story" ? storySlide(f,i) : f.type === "topic" ? topicSlide(f,i) : doneSlide(i); });
   return h + "</div>";
 }
 function hydrateImages(){
@@ -827,7 +849,7 @@ function render(){
 function rerenderSlide(i){
   const old = document.querySelector('.slide[data-i="' + i + '"]'); if (!old) return;
   const f = feed[i]; const tmp = document.createElement("div");
-  tmp.innerHTML = f.type === "word" ? wordSlide(f,i) : f.type === "story" ? storySlide(f,i) : doneSlide(i);
+  tmp.innerHTML = f.type === "word" ? wordSlide(f,i) : f.type === "story" ? storySlide(f,i) : f.type === "topic" ? topicSlide(f,i) : doneSlide(i);
   old.replaceWith(tmp.firstChild); hydrateImages();
 }
 function nextSlide(i){ const el = document.querySelector('.slide[data-i="' + (i+1) + '"]'); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }

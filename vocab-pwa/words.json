@@ -546,5 +546,105 @@
     ]
    }
   ]
+ },
+ {
+  "word": "under the weather",
+  "pronunciation": "ˌʌndə ðə ˈweðə",
+  "topic": "Feeling unwell",
+  "definitions": [
+   {
+    "def": "Slightly ill or low on energy",
+    "context": "Health · Informal",
+    "description": "The most common British way to say you are a bit ill without giving details. It suggests something mild, like the start of a cold, a headache or just feeling run down. It is polite and works at work and with friends.",
+    "examples": [
+     "I'm feeling a bit under the weather, so I'm staying in bed today.",
+     "She was under the weather all week, probably coming down with a cold.",
+     "Sorry I missed the meeting, I've been under the weather.",
+     "If you're under the weather, take it easy and get some rest.",
+     "He looked pale and said he was under the weather."
+    ]
+   }
+  ]
+ },
+ {
+  "word": "a bit rough",
+  "pronunciation": "ə bɪt rʌf",
+  "topic": "Feeling unwell",
+  "definitions": [
+   {
+    "def": "Feeling physically bad, a little ill, tired or hungover",
+    "context": "Health · Very informal",
+    "description": "Casual spoken British English. Usually you say you feel rough or look rough. 'A bit' makes it milder. It is often used after a bad night's sleep or a heavy night out, and it is not for formal situations.",
+    "examples": [
+     "I feel a bit rough this morning, I hardly slept.",
+     "You look a bit rough. Are you coming down with something?",
+     "He sounded a bit rough on the phone, so I left him alone.",
+     "I was a bit rough after the party and stayed in bed until noon.",
+     "Have some water and toast if you're feeling a bit rough."
+    ]
+   }
+  ]
+ },
+ {
+  "word": "run down",
+  "pronunciation": "ˌrʌn ˈdaʊn",
+  "topic": "Feeling unwell",
+  "definitions": [
+   {
+    "def": "Tired and not healthy, with low energy, so you are likely to catch an illness",
+    "context": "Health · Informal",
+    "description": "Describes a body that has had too much work, stress or too little sleep. People say they feel run down before they get ill. It is an adjective, so it follows feel, look or be.",
+    "examples": [
+     "I've been working long hours and I'm feeling really run down.",
+     "When you're run down, you catch every cold going.",
+     "She looked pale and run down after the exam period.",
+     "Take some vitamin C and sleep more if you feel run down.",
+     "He got ill because he was run down."
+    ]
+   },
+   {
+    "def": "In poor condition because it has not been looked after",
+    "context": "Places · Everyday",
+    "description": "Used for buildings, streets and areas that look shabby. Before a noun it is often written with a hyphen: a run-down pub.",
+    "examples": [
+     "The run-down pub on the corner closed last year.",
+     "We rented a run-down flat near the station.",
+     "The area was rather run-down in the nineties.",
+     "They are renovating the run-down cinema.",
+     "It's a lovely street, but a few houses look run-down."
+    ]
+   }
+  ]
+ },
+ {
+  "word": "poorly",
+  "pronunciation": "ˈpɔːli",
+  "topic": "Feeling unwell",
+  "definitions": [
+   {
+    "def": "Ill or unwell",
+    "context": "Health · Very British",
+    "description": "A warm, very British word for being ill. It is often used about children, family members and pets, and also by adults talking kindly. In this meaning it is an adjective that follows be, feel or look.",
+    "examples": [
+     "My daughter's been poorly all week, so she's off school.",
+     "You look poorly, love. Shall I make you a cuppa?",
+     "The cat is poorly, so we're taking her to the vet.",
+     "Nan has been a bit poorly since the weekend.",
+     "He was too poorly to come to work."
+    ]
+   },
+   {
+    "def": "Badly, or not well enough",
+    "context": "General · Adverb",
+    "description": "The ordinary adverb form, meaning in a bad or weak way. It often describes performance or quality.",
+    "examples": [
+     "The team played poorly in the second half.",
+     "She did poorly in the exam.",
+     "The film was poorly received.",
+     "The room was poorly lit.",
+     "Poorly paid staff often leave within a year."
+    ]
+   }
+  ]
  }
 ]
