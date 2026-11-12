@@ -704,5 +704,42 @@
     ]
    }
   ]
+ },
+ {
+  "word": "ridge",
+  "pronunciation": "rɪdʒ",
+  "imgQuery": "mountain ridge",
+  "definitions": [
+   {
+    "def": "A long, narrow area of high ground along the top of a hill or mountain",
+    "context": "Landscape · Walking",
+    "description": "Walkers and climbers use it for the high line between two valleys. You walk along a ridge, and a village can sit below one. It is different from a peak, which is a single point.",
+    "examples": [
+     "We walked along the ridge with the summit ahead of us and the valley far below.",
+     "Striding Edge is a famous ridge walk in the Lake District.",
+     "The village sits just below a ridge of chalk hills.",
+     "It was so windy on the ridge that we could hardly stand up.",
+     "The sun came up behind the ridge and turned the whole valley gold.",
+     "From the ridge you can see all the way to the sea.",
+     "We stopped for lunch on a sheltered part of the ridge, just below the summit.",
+     "He spotted a deer on the ridge above the lake."
+    ]
+   },
+   {
+    "def": "Any long, narrow raised line, including the top of a roof or a weather pattern",
+    "context": "Weather · Roofs · Everyday",
+    "description": "Used for roofs, lines on a surface, and 'a ridge of high pressure' in weather forecasts, which means a dry, settled spell.",
+    "examples": [
+     "A ridge of high pressure is building over the UK, so expect a dry week.",
+     "The ridge will move east on Friday and the rain will return.",
+     "The builder fixed the cracked ridge tile after the storm.",
+     "A pigeon sat on the ridge of the roof, next to the chimney.",
+     "Seagulls love to sit on the ridge of our roof and scream at five in the morning.",
+     "The wind had blown the sand into long ridges.",
+     "There was a ridge of dried mud where the lorry had turned.",
+     "She felt a rough ridge on the back of the old coin."
+    ]
+   }
+  ]
  }
 ]
