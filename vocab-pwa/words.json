@@ -62,7 +62,8 @@
      "The enmity between the two rival gangs had lasted for decades."
     ]
    }
-  ]
+  ],
+  "topic": "Getting on with people"
  },
  {
   "word": "frail",
@@ -79,7 +80,8 @@
     ]
    }
   ],
-  "imgQuery": "elderly hands walking stick"
+  "imgQuery": "elderly hands walking stick",
+  "topic": "Weak"
  },
  {
   "word": "carrion",
@@ -96,7 +98,8 @@
     ]
    }
   ],
-  "imgQuery": "vulture carrion"
+  "imgQuery": "vulture carrion",
+  "topic": "Scavengers"
  },
  {
   "word": "scavenger",
@@ -113,7 +116,8 @@
     ]
    }
   ],
-  "imgQuery": "hyena scavenging"
+  "imgQuery": "hyena scavenging",
+  "topic": "Scavengers"
  },
  {
   "word": "feeble",
@@ -139,7 +143,8 @@
      "The government's response to the crisis was widely criticised as feeble."
     ]
    }
-  ]
+  ],
+  "topic": "Weak"
  },
  {
   "word": "petal",
@@ -198,7 +203,8 @@
      "The dispute was settled in an amicable manner, with both sides satisfied."
     ]
    }
-  ]
+  ],
+  "topic": "Getting on with people"
  },
  {
   "word": "amiable",
@@ -216,7 +222,8 @@
      "Despite the long delay, the amiable host kept everyone entertained."
     ]
    }
-  ]
+  ],
+  "topic": "Getting on with people"
  },
  {
   "word": "diminutive",
@@ -277,7 +284,8 @@
     ]
    }
   ],
-  "imgQuery": "damp wall mould"
+  "imgQuery": "damp wall mould",
+  "topic": "Wet"
  },
  {
   "word": "dampen",
@@ -319,7 +327,8 @@
      "A heavy curtain will dampen the sound of traffic at night."
     ]
    }
-  ]
+  ],
+  "topic": "Wet"
  },
  {
   "word": "posterior",
@@ -643,6 +652,55 @@
      "The film was poorly received.",
      "The room was poorly lit.",
      "Poorly paid staff often leave within a year."
+    ]
+   }
+  ]
+ },
+ {
+  "word": "clove",
+  "pronunciation": "kləʊv",
+  "imgQuery": "garlic cloves",
+  "definitions": [
+   {
+    "def": "One of the small separate sections that make up a bulb of garlic",
+    "context": "Cooking · Everyday",
+    "description": "In British recipes, garlic is counted in cloves. You peel a clove, then crush, slice or chop it. A whole bulb has around ten to fifteen.",
+    "examples": [
+     "Peel and crush two cloves of garlic, then fry them gently.",
+     "The recipe needs three cloves, not three whole bulbs.",
+     "I left my garlic press at my nan's, so I chopped the clove by hand.",
+     "Add a teaspoon of garlic powder if you don't have fresh garlic.",
+     "She rubbed a cut clove of garlic around the bowl."
+    ]
+   },
+   {
+    "def": "A dried flower bud of a tropical tree, used as a spice",
+    "context": "Cooking · Christmas",
+    "description": "It is small, dark brown and nail-shaped, with a strong, sweet, warm smell. It is common in Christmas cooking, baking and hot drinks.",
+    "examples": [
+     "Stick a few whole cloves into the orange for mulled wine.",
+     "Add a cinnamon stick, a pinch of nutmeg and two cloves.",
+     "The ham was studded with cloves and glazed with honey.",
+     "Apple pie tastes better with a pinch of ground cloves.",
+     "Clove oil is a traditional remedy for toothache."
+    ]
+   }
+  ]
+ },
+ {
+  "word": "felony",
+  "pronunciation": "ˈfeləni",
+  "definitions": [
+   {
+    "def": "A serious crime, such as murder or armed robbery, mostly in the US",
+    "context": "Law · American English",
+    "description": "An American legal term. There, a felony is more serious than a misdemeanour and can mean a long prison sentence. England and Wales dropped the difference in 1967, so British speakers say serious crime or indictable offence.",
+    "examples": [
+     "In the US, armed robbery is a felony, but stealing a packet of sweets is usually a misdemeanour.",
+     "She was charged with a felony and released on bail.",
+     "He pleaded guilty to felony fraud and was sentenced to three years in prison.",
+     "A felony conviction can make it hard to get a job.",
+     "The film is about a felon who tries to start again after leaving prison."
     ]
    }
   ]

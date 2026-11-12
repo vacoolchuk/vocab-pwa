@@ -255,5 +255,59 @@
    "pass on": "tell someone something you were told",
    "go ahead": "happen as planned"
   }
+ },
+ {
+  "id": "s016",
+  "title": "Nan and the soup",
+  "genre": "WhatsApp",
+  "text": "Nan: You didn't answer your phone. Are you all right, love?\nMe: Sorry Nan, I'm {{under the weather|under the weather}}. Sore throat and a banging head.\nNan: You sound {{poorly|poorly}}. Stay put, I'm coming round with soup.\nMe: You don't have to, it's miles.\nNan: Two {{cloves|clove}} of garlic, a pinch of ginger and a lot of love. Kettle's on in twenty minutes, so don't you dare fall asleep.\nMe: Yes, Nan.\nNan: And put a jumper on.",
+  "words": [
+   "under the weather",
+   "poorly",
+   "clove"
+  ],
+  "gloss": {
+   "banging head": "a very bad headache",
+   "stay put": "do not move, stay where you are",
+   "come round": "visit someone at their home",
+   "kettle's on": "I am making tea",
+   "don't you dare": "a strong way of saying do not do that"
+  }
+ },
+ {
+  "id": "s017",
+  "title": "The top deck verdict",
+  "genre": "Overheard",
+  "text": "Two women on the top deck of the 36 bus.\n\"Did you finish that crime series?\"\n\"Don't spoil it! Does he get caught?\"\n\"I'll say nothing, except he's facing a {{felony|felony}} charge and his excuse is {{feeble|feeble}}.\"\n\"He was {{at liberty|at liberty}} for ten years, though, and nobody noticed.\"\n\"Ten years! I can't keep a plant alive for ten days.\"\n\"Fair point. Is it worth watching?\"\n\"Dead good. Put it on tonight, and don't text me until you've seen the end.\"",
+  "words": [
+   "felony",
+   "feeble",
+   "at liberty"
+  ],
+  "gloss": {
+   "top deck": "the upper floor of a double-decker bus",
+   "spoil it": "tell someone what happens in a story",
+   "fair point": "you are right about that",
+   "dead good": "very good (informal)",
+   "put on": "start playing a programme"
+  }
+ },
+ {
+  "id": "s018",
+  "title": "November tea",
+  "genre": "Food blog",
+  "text": "I get {{run down|run down}} every November. Work, dark mornings, the lot. By Thursday I feel {{a bit rough|a bit rough}} and all I want is something warm, so here is my mum's tea. Put a cinnamon stick and four whole {{cloves|clove}} in a pan with two mugs of water, simmer for ten minutes, then add honey and a slice of orange. It won't cure anything, but it smells like Christmas and that is half the battle. Drink it in your dressing gown with the telly on.",
+  "words": [
+   "run down",
+   "a bit rough",
+   "clove"
+  ],
+  "gloss": {
+   "the lot": "everything",
+   "simmer": "cook gently, just below boiling",
+   "dressing gown": "a soft robe you wear at home",
+   "the telly": "the television",
+   "half the battle": "a big part of solving a problem"
+  }
  }
 ]
