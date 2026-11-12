@@ -33,6 +33,8 @@ I want to learn a whole family of words, not one word on its own. So in the exam
 ### Topic sets (from 12 Nov 2026)
 When I ask for several words or phrases that say the same thing in different ways (for example four ways to say "I feel ill"), make each one a separate card AND give them all the same `"topic"` value in `words.json` (e.g. `"topic": "Feeling unwell"`). The app then shows "Same topic" chips on the back of each card and a joint "Same topic" card in the feed after the last of them. Use one short topic name, reuse the exact same string for every member.
 
+**Topic check on every new word (standing rule, 12 Nov 2026).** Whenever a word is added to `words.json` (on "update the app", or when a card is made in chat), compare it with ALL existing words, not just the new batch. Read a compact list (word, current topic, first definition), not the whole file. If it clearly says the same idea as an existing word (cold / freezing / blistering, or tired / exhausted / shattered), give them one shared topic, and if the older word had no topic yet, set the topic on it too. The "Same topic" chips on the old cards then update by themselves. Rules: reuse an existing topic string if one fits, invent a new one only when two or more words really belong together, never force a word into a topic, and a single word with no partner gets no topic. At the end of the reply, say in one line which words were grouped (for example "Cold: cold, freezing, blistering") so I can veto. Keep a short topic list in mind: the topics are simply the distinct `topic` values in `words.json`.
+
 ### Rules:
 - British English only: spellings, vocabulary, examples
 - No Russian translations anywhere
