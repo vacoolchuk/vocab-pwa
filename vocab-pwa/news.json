@@ -1,156 +1,111 @@
 {
- "date": "2026-11-13",
- "intro": "Ten stories from the last day, rewritten in plain British English. Tap any word you don't know.",
+ "date": "2026-11-14",
+ "intro": "Seven stories from the last day, rewritten in plain British English. Tap any word you don't know.",
  "items": [
   {
-   "id": "n2026-11-13-1",
+   "id": "n2026-11-14-1",
    "cat": "World",
-   "title": "Europe to join the next Ukraine peace talks",
-   "text": "US envoys Steve Witkoff and Jared Kushner met Vladimir Putin in Moscow and asked Russia to let European representatives join talks on ending the war in Ukraine. President Zelensky said Europe would take part in the next round, but the Kremlin has not confirmed this. Mr Putin has said he opposes European peacekeepers in Ukraine. The meeting followed the first direct talks between Russia and Ukraine for nine months, which were held in Abu Dhabi. No date has been set for the next round.",
-   "source": "Washington Post",
-   "url": "https://www.washingtonpost.com/world/2026/11/12/after-meeting-putin-us-envoys-say-europe-join-talks-ending-ukraine-war/",
+   "title": "River cruise boat hit by larger vessel in New Orleans",
+   "text": "A much larger boat crashed into the paddlewheel cruise boat American Heritage in New Orleans on Friday and partly submerged it. The Port of New Orleans said about 129 passengers were on board. The mayor's office said several people had been rescued and that the search and rescue operation was still going on. The cruise boat had docked two hours early to begin letting passengers off. Passengers were taken to the port's administration building. Officials did not immediately say whether anyone had been hurt or killed.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/2026/11/13/tanker-collides-with-new-orleans-river-cruise-carrying-129-passengers-rescue-operation-und",
    "gloss": {
+    "paddlewheel": "a boat pushed by a large wheel at the back or side",
+    "partly submerged": "partly under the water",
+    "search and rescue": "the work of looking for people in danger and helping them",
+    "let off": "to allow people to leave a vehicle or boat",
+    "dock": "to bring a boat to a stop at a place where people can get on or off"
+   }
+  },
+  {
+   "id": "n2026-11-14-2",
+   "cat": "World",
+   "title": "US pushes for European seat at Ukraine talks",
+   "text": "The United States has pushed for European negotiators to join talks between Russia and Ukraine, but Moscow has refused to confirm that this will happen. Meanwhile, the EU has brought Italy and Poland into its peace talks team. EU foreign policy chief Kaja Kallas has also said that the Russians do not want her as the EU's envoy. Separately, Russian drone attacks hit a hospital in Kyiv.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/video/2026/11/13/european-negotiators-could-be-set-to-join-ukraine-peace-talks",
+   "gloss": {
+    "negotiator": "a person who takes part in talks to reach an agreement",
+    "join": "to become part of a group or activity",
     "envoy": "a person sent to represent their government",
-    "peacekeepers": "soldiers who are sent to keep peace after fighting",
-    "take part": "to join an activity",
-    "round": "one stage of a series of talks",
-    "confirm": "to say officially that something is true"
+    "drone": "an aircraft without a pilot",
+    "bring in": "to include someone in something"
    }
   },
   {
-   "id": "n2026-11-13-2",
-   "cat": "World",
-   "title": "Trump takes Vance off Iran talks",
-   "text": "President Trump has removed Vice President JD Vance from the negotiations with Iran. Mr Trump said the United States no longer needs a deal. The move came after Republican losses in last week's midterm elections, which Mr Vance linked to the war. Oil prices rose, with Brent crude up 3.3% to about $96 a barrel. Iranian forces also reported that two oil tankers hit mines near the Strait of Hormuz on Thursday.",
-   "source": "Los Angeles Times",
-   "url": "https://www.latimes.com/politics/story/2026-11-12/trump-pulls-vance-from-iran-talks-saying-we-dont-need-deal",
+   "id": "n2026-11-14-3",
+   "cat": "Environment",
+   "title": "Finland publishes plan to end fossil fuels",
+   "text": "Finland has published a plan to phase out fossil fuels while the COP31 climate summit in Turkey avoids the issue. More than 96 per cent of Finnish electricity is already non-fossil, and the country aims to be carbon neutral by 2035. However, it has not set a legally binding deadline. The United Nations says fossil fuels cause around 68 per cent of global greenhouse gas emissions. COP31 ends on 20 November.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/2026/11/14/cop31-is-once-again-shying-away-from-a-fossil-fuel-exit-but-one-european-country-is-taking",
    "gloss": {
-    "negotiations": "formal talks to reach an agreement",
-    "midterm elections": "US elections held halfway through a president's term",
-    "link to": "to say that two things are connected",
-    "mine": "a hidden bomb that explodes when something touches it",
-    "crude oil": "oil in its natural form, before it is refined"
+    "phase out": "to stop using something gradually",
+    "carbon neutral": "adding no extra carbon dioxide to the air overall",
+    "legally binding": "required by law",
+    "deadline": "the latest time by which something must be done",
+    "greenhouse gas": "a gas, such as carbon dioxide, that traps heat around the Earth",
+    "shy away from": "to avoid something difficult"
    }
   },
   {
-   "id": "n2026-11-13-3",
-   "cat": "World",
-   "title": "Indonesia's vice president resigns",
-   "text": "Indonesia's Vice President Gibran Rakabuming Raka resigned on Thursday after the highest courts ruled that documents about his education abroad did not meet election rules. President Prabowo Subianto accepted the resignation. Parliament will choose a replacement within 60 days. The rupiah fell to a record low on the day, and about 20,000 soldiers have been deployed in the capital, Jakarta. Mr Gibran is the son of former President Joko Widodo.",
-   "source": "NPR",
-   "url": "https://www.npr.org/2026/11/12/g-s1-153190/indonesias-vp-resigns-as-his-eligibility-and-academic-credentials-are-questioned",
-   "gloss": {
-    "resign": "to leave your job officially",
-    "rule": "to make an official legal decision",
-    "replacement": "a person who takes another person's place",
-    "record low": "the lowest level ever reached",
-    "deploy": "to send soldiers or equipment to a place"
-   }
-  },
-  {
-   "id": "n2026-11-13-4",
-   "cat": "UK",
-   "title": "Two men guilty of spying on Iranian dissidents",
-   "text": "Two Iranian men have been found guilty at Woolwich Crown Court of helping a foreign intelligence service. Mostafa Sepahvand, 41, and Farhad Javadi Manesh, 46, watched journalists at the London-based channel Iran International, as well as a lawyer. Prosecutors said they worked for Iran's Revolutionary Guards. Sepahvand was also convicted of preparing an attack, but Javadi Manesh was cleared of that charge. Police said the pair used ChatGPT for research. They will be sentenced in December, and Tehran denies such operations.",
-   "source": "BBC News",
-   "url": "https://www.bbc.com/news/articles/ck9q8g8209l2o",
-   "gloss": {
-    "dissident": "a person who publicly criticises their government",
-    "intelligence service": "a government organisation that collects secret information",
-    "convict": "to decide in court that someone is guilty",
-    "clear of": "to decide that someone is not guilty",
-    "sentence": "to announce the punishment for a crime",
-    "deny": "to say that something is not true"
-   }
-  },
-  {
-   "id": "n2026-11-13-5",
-   "cat": "Football",
-   "title": "England name squad for Croatia and Spain games",
-   "text": "Thomas Tuchel named his England squad for two Nations League matches this month. England play Croatia at Wembley on Thursday 12 November, then Spain in Madrid on Sunday 15 November. Jobe Bellingham has earned his first call-up and joins his brother Jude, while Josh King of Fulham is also in. Cole Palmer and Phil Foden are not included. Djed Spence and Ben White have returned to the squad.",
-   "source": "NUFC The Mag",
-   "url": "https://www.themag.co.uk/2026/11/thomas-tuchel-has-now-named-this-england-squad-for-the-november-2026-internationals/",
-   "gloss": {
-    "call-up": "an invitation to join a national team",
-    "squad": "the group of players chosen for a team",
-    "Nations League": "a competition between European national teams",
-    "earn": "to get something because of good work",
-    "return to": "to come back to a team or place"
-   }
-  },
-  {
-   "id": "n2026-11-13-6",
+   "id": "n2026-11-14-4",
    "cat": "Tech",
-   "title": "United Airlines blocks AI agents from booking flights",
-   "text": "United Airlines has said that AI assistants may show its flight options, but customers must finish the purchase themselves. The airline gave several reasons, including personal data, accidental bookings and aviation rules. Passengers must still confirm that their checked bags contain nothing dangerous. Chief executive Scott Kirby said he does not want another middleman between the airline and its customers. United said it may look at the policy again as the technology improves.",
-   "source": "The Verge",
-   "url": "https://www.theverge.com/ai-artificial-intelligence/1031623/united-unauthorized-ai-agents",
+   "title": "Microsoft outage hits Outlook, Teams and Copilot",
+   "text": "A Microsoft outage disrupted thousands of users of Outlook, Teams and Copilot this week. The company said it was seeing continued recovery progress across regions. Many people had to look for other ways to read email and keep working while the services were down. Experts have been explaining what went wrong and whether users' data is at risk.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/video/2026/11/12/microsoft-outage-hits-outlook-teams-and-copilot-disrupting-thousands",
    "gloss": {
-    "AI agent": "software that can act for a person without being told every step",
-    "middleman": "a person or company between a seller and a buyer",
-    "accidental": "happening by mistake",
-    "regulations": "official rules",
-    "look at again": "to think about a decision once more"
+    "outage": "a period when a service does not work",
+    "disrupt": "to stop something from working normally",
+    "recovery": "the process of returning to normal",
+    "region": "a large area of a country or the world",
+    "at risk": "in danger of being harmed or lost"
    }
   },
   {
-   "id": "n2026-11-13-7",
-   "cat": "Health",
-   "title": "Forever chemicals linked to aggressive breast cancer",
-   "text": "A study by the US National Institutes of Health has linked two common \"forever chemicals\" to a serious form of breast cancer. Women with high levels of the chemicals in their blood had up to 93% higher rates of an aggressive type of the disease. Forever chemicals are man-made substances that break down very slowly, so they stay in the environment and in the body. The study shows a link, not proof that the chemicals cause the cancer.",
-   "source": "ScienceDaily",
-   "url": "https://www.sciencedaily.com/releases/2026/11/261112025527.htm",
-   "gloss": {
-    "forever chemicals": "man-made chemicals that take a very long time to break down",
-    "aggressive": "growing or spreading quickly and strongly",
-    "link": "a connection between two things",
-    "break down": "to separate into smaller parts",
-    "man-made": "produced by people, not by nature"
-   }
-  },
-  {
-   "id": "n2026-11-13-8",
-   "cat": "Culture",
-   "title": "Streamers add more content from online creators",
-   "text": "US streaming services are showing far more programmes made by online creators. A study by Ampere Analysis found more than 3,700 hours of creator-led shows premiered in the third quarter of 2026, compared with 927 hours a year earlier. Tubi supplied over three-quarters of those hours, and reality made up 65% of the total. Among subscription services, Prime Video led with more than 230 hours. Netflix and Prime Video have also commissioned the most creator-led titles this year.",
-   "source": "Advanced Television",
-   "url": "https://www.advanced-television.com/2026/11/11/research-us-streamers-increasing-adding-creator-content/",
-   "gloss": {
-    "streamer": "a company that offers films and shows online",
-    "creator": "a person who makes videos for the internet",
-    "premiere": "to be shown for the first time",
-    "commission": "to order a new programme to be made",
-    "quarter": "a period of three months"
-   }
-  },
-  {
-   "id": "n2026-11-13-9",
+   "id": "n2026-11-14-5",
    "cat": "Business",
-   "title": "Trump backs Tim Cook to lead Nvidia",
-   "text": "President Trump has said Tim Cook should replace Jensen Huang as chief executive of Nvidia. Mr Huang resigned after reports about his relationship with a businesswoman led the board to open an investigation. Mr Trump called Mr Cook, now Apple's executive chair, the only suitable choice, although he has no formal power over the appointment. Finance chief Colette Kress is acting chief executive. Nvidia faces shareholder legal action, and its shares fell by 5%.",
-   "source": "Politico",
-   "url": "https://www.politico.com/news/2026/11/12/trump-apple-tim-cook-nvidia-01162128",
+   "title": "Mercedes-Benz stops new investment in German plants",
+   "text": "Mercedes-Benz has halted new investment in its German plants and is considering closing some of them. The report was published on 12 November. The news is a further sign of pressure on the European car industry. The company has not been quoted here with any further details.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/video/2026/11/12/mercedes-benz-halts-new-investment-in-german-plants-considers-closures",
    "gloss": {
-    "resign": "to leave your job officially",
-    "appointment": "the act of choosing someone for a job",
-    "acting": "doing a job for a short time until a permanent person is found",
-    "shareholder": "a person who owns part of a company",
-    "investigation": "an official effort to find out the facts"
+    "halt": "to stop something",
+    "plant": "a factory",
+    "investment": "money put into a business to help it grow",
+    "closure": "the permanent shutting of a business or factory",
+    "consider": "to think carefully about doing something"
    }
   },
   {
-   "id": "n2026-11-13-10",
-   "cat": "Games",
-   "title": "GTA VI will target 30 frames per second on consoles",
-   "text": "Rockstar Games has said Grand Theft Auto VI is targeting 30 frames per second on every console, including the PS5 Pro. The game is due on PS5 and Xbox Series X|S on 19 November, and no PC version has been announced. Rockstar said PS5 Pro players will get extra features such as ray-traced shadows. Pre-orders opened in June, with the standard edition priced at $79.99, and players can already pre-load the game. It is the first main Grand Theft Auto game since GTA V in 2013.",
-   "source": "Fandom Pulse",
-   "url": "https://www.fandompulse.com/p/rockstar-confirms-gta-vi-targets",
+   "id": "n2026-11-14-6",
+   "cat": "Business",
+   "title": "EU Russian gas bill reaches 8.7 billion euros",
+   "text": "The European Union spent 8.7 billion euros on Russian Arctic liquefied natural gas (LNG) in 2026, according to a report published on 12 November. An import ban on Russian LNG is coming soon. Separately, the International Energy Agency says European diesel prices are staying high even though global oil supply has overtaken demand.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/video/2026/11/12/eu-spent-87bn-on-russian-arctic-lng-in-2026-as-import-ban-looms",
    "gloss": {
-    "frames per second": "the number of images a screen shows each second",
-    "target": "to aim to reach a goal",
-    "pre-order": "to pay for a product before it is released",
-    "pre-load": "to download a game before it is released",
-    "ray-traced": "using a technique that makes light and shadows look realistic"
+    "import ban": "an official rule that stops goods coming into a country",
+    "liquefied natural gas": "gas cooled into a liquid so it can be shipped",
+    "loom": "to be about to happen, in a worrying way",
+    "supply": "the amount of something available",
+    "demand": "the amount of something people want to buy"
+   }
+  },
+  {
+   "id": "n2026-11-14-7",
+   "cat": "Games",
+   "title": "GTA VI day one patch starts rolling out on PS5",
+   "text": "A day one patch for Grand Theft Auto VI, version 1.002, has started rolling out to some PlayStation 5 players. It is about 1 GB in size. According to a PlayStation Game Size post, Sony is releasing it in stages, with the first half of users getting it now and the rest about 11 hours later. There are no official patch notes yet. The game cannot be played until midnight local time on 19 November.",
+   "source": "Vice",
+   "url": "https://www.vice.com/en/article/gta-6-day-one-patch-ps5-version-1002/",
+   "gloss": {
+    "patch": "a small update that fixes or improves a game",
+    "roll out": "to make something available gradually",
+    "in stages": "in several steps, not all at once",
+    "patch notes": "a list of changes in an update",
+    "local time": "the time in the place where you are"
    }
   }
  ]
