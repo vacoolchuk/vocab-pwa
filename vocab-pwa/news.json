@@ -1,155 +1,155 @@
 {
- "date": "2026-11-15",
+ "date": "2026-11-16",
  "intro": "Ten stories from the last day, rewritten in plain British English. Tap any word you don't know.",
  "items": [
   {
-   "id": "n2026-11-15-1",
+   "id": "n2026-11-16-1",
    "cat": "World",
-   "title": "Two oil tankers hit mines near Strait of Hormuz",
-   "text": "Two oil tankers hit mines and caught fire near the Strait of Hormuz, according to reports on Sunday. Fires and explosions were reported on both ships. Iran's Revolutionary Guard Corps Navy said the tankers had been using an unauthorised route with their navigation systems and AIS tracking switched off. The strait is one of the busiest shipping routes for oil in the world. Separately, the Guards said they had shot down a US MQ-1 drone over Qeshm Island. Officials had not yet said whether anyone on the tankers had been hurt.",
+   "title": "Four countries urge Israel to let tents into Gaza",
+   "text": "The foreign ministers of Australia, Canada, Italy and the UK have jointly urged Israel to stop the delays and let aid into Gaza. They asked for 150,000 tents and other critical supplies to be allowed in before winter. Flooding from the first winter storm has made life harder for people there. The ministers called the crisis entirely reversible and asked Israel to open more crossings. They also asked it to admit so-called dual-use items.",
    "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-15-2026/4125489",
+   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-16-2026/4126094",
    "gloss": {
-    "mine": "a hidden bomb that explodes when a ship touches it",
-    "strait": "a narrow stretch of sea between two areas of land",
-    "AIS": "a system that ships use to send their position to others",
-    "unauthorised": "without official permission",
-    "shoot down": "to hit an aircraft so that it falls from the sky"
+    "urge": "to ask someone strongly to do something",
+    "crossing": "a place where people or goods can pass over a border",
+    "reversible": "able to be changed back to how it was before",
+    "dual-use items": "goods that can be used for both civilian and military purposes",
+    "before winter": "earlier than the start of the cold season"
    }
   },
   {
-   "id": "n2026-11-15-2",
+   "id": "n2026-11-16-2",
    "cat": "World",
-   "title": "US air traffic control stable after nationwide outage",
-   "text": "The US Federal Aviation Administration said air traffic control was stable again after a nationwide outage. Administrator Bryan Bedford told a news conference that the system remained stable and that airlines were recovering. He spoke alongside Transportation Secretary Sean Duffy. Airlines were expected to cancel between 4,000 and 5,000 of about 41,000 scheduled flights. Passengers across the country have faced long delays as carriers try to move planes and crews back to where they are needed.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-15-2026/4125489",
-   "gloss": {
-    "outage": "a period when a system stops working",
-    "air traffic control": "the service that guides aircraft in the sky and on the ground",
-    "scheduled": "planned to happen at a fixed time",
-    "carrier": "an airline company",
-    "cancel": "to decide that a planned trip will not happen"
-   }
-  },
-  {
-   "id": "n2026-11-15-3",
-   "cat": "UK",
-   "title": "Planning papers warn of risk at Piddington asylum camp",
-   "text": "A government planning document for an asylum camp at the Ministry of Defence site near Piddington in Oxfordshire says safety measures cannot eliminate all risk, according to GB News. The plan has attracted 3,177 objections during public consultation. Shadow Home Secretary Chris Philp accused Labour of abusing its emergency powers to approve the camp. About 20 local women have signed up for self-defence classes. The Government has not been quoted in the report seen here.",
-   "source": "GB News",
-   "url": "https://www.gbnews.com/politics/piddington-migrant-camp-women-girls-safety-warning-angela-rayner",
-   "gloss": {
-    "asylum": "protection given to people who have left their own country because of danger",
-    "consultation": "a period when the public can give opinions on a plan",
-    "object to": "to say that you disagree with or oppose something",
-    "emergency powers": "special legal powers a government can use in urgent situations",
-    "sign up for": "to put your name down to join something"
-   }
-  },
-  {
-   "id": "n2026-11-15-4",
-   "cat": "Football",
-   "title": "Denmark beat Ronaldo-less Portugal 4-1",
-   "text": "Denmark won 4-1 in Braga in the Nations League, in Portugal's first match since Cristiano Ronaldo retired from international football. Pierre-Emile Hojbjerg scored a penalty in the 43rd minute after a handball by Ruben Dias. Rasmus Hojlund then scored twice, and Joachim Andersen added a header. Bernardo Silva scored Portugal's only goal. Portugal had already reached the quarter-finals. Denmark will go through if they draw at Norway on Tuesday.",
+   "title": "Estonia to close all border crossings with Russia",
+   "text": "Estonia has said it will close all its border crossings with Russia from 1 December. The foreign minister, Margus Tsahkna, said the decision followed a failed sabotage attempt on an Estonian defence company. Al Jazeera reported that eight people had been arrested over an attempted arson attack on a drone maker. Tallinn says Russian intelligence ordered the attack.",
    "source": "Al Jazeera",
-   "url": "https://www.aljazeera.com/sports/2026/11/14/ronaldo-less-portugal-thrashed-4-1-by-denmark-in-the-nations-league",
+   "url": "https://www.aljazeera.com/news/2026/11/15/estonia-to-close-border-crossings-with-russia-after-attack-on-drone-maker",
    "gloss": {
-    "penalty": "a free shot at goal given after a foul in the box",
-    "handball": "a foul when a player touches the ball with a hand or arm",
-    "header": "a goal scored with the head",
-    "quarter-final": "a match in the last eight of a competition",
-    "go through": "to move on to the next stage"
+    "sabotage": "deliberate damage to stop something from working",
+    "arson": "the crime of setting fire to a building on purpose",
+    "arrest": "to take someone away because the police think they broke the law",
+    "intelligence": "secret information about other countries, or the agency that collects it",
+    "border crossing": "an official place where people pass from one country to another"
    }
   },
   {
-   "id": "n2026-11-15-5",
+   "id": "n2026-11-16-3",
+   "cat": "UK",
+   "title": "Thousands march in Edinburgh against AI data centres",
+   "text": "Thousands of people have protested in Edinburgh against plans for large AI data centres in Scotland. Data centres are large buildings full of computers that store information and run artificial intelligence programs. Campaigners have raised concerns about the plans.",
+   "source": "Anadolu Agency",
+   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-16-2026/4126094",
+   "gloss": {
+    "data centre": "a building that holds many computers for storing and processing information",
+    "demonstrator": "a person who takes part in a public protest",
+    "campaigner": "a person who works to bring about a change",
+    "raise concerns": "to say that you are worried about something",
+    "large-scale": "very big in size or number"
+   }
+  },
+  {
+   "id": "n2026-11-16-4",
    "cat": "Football",
-   "title": "Haaland sets Nations League goal record",
-   "text": "Erling Haaland scored a late penalty as Norway beat Wales 3-1 in Oslo. It was his 23rd goal in the Nations League, a competition record. Antonio Nusa gave Norway the lead just before the hour and Oliver Schjelderup added a second. Brooks scored a goal for Wales. Wales are expected to finish bottom of Group A4 and face possible relegation to League B. Norway play Denmark on Tuesday.",
-   "source": "UEFA",
-   "url": "https://www.uefa.com/uefanationsleague/news/02ab-220e66a3c090-9304054ed1ca-1000--uefa-nations-league-matchday-5-highlights-round-up-denmar/",
+   "title": "England beat Spain 3-2 with ten men in Madrid",
+   "text": "England have beaten Spain 3-2 in Madrid in the Nations League, even though they played with ten men. Spain came back late in the game but could not level the score. The result ended Spain's run of 43 matches without defeat. England finished top of the group on goal difference. In the same round, France beat Turkey 2-1 in Bordeaux to win Group A1.",
+   "source": "Anadolu Agency",
+   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-16-2026/4126094",
    "gloss": {
-    "record": "the best result ever achieved",
-    "relegation": "moving down to a lower division",
-    "open the scoring": "to score the first goal",
-    "late": "near the end of a match",
-    "finish bottom": "to end in last place"
+    "unbeaten run": "a series of matches without a loss",
+    "level the score": "to score a goal that makes the result equal",
+    "goal difference": "the number of goals scored minus the number conceded",
+    "come back": "to improve after being behind",
+    "with ten men": "with one player fewer after a sending-off"
    }
   },
   {
-   "id": "n2026-11-15-6",
+   "id": "n2026-11-16-5",
+   "cat": "Tennis",
+   "title": "Zverev beats Jodar in ATP Finals opener",
+   "text": "Alexander Zverev opened his ATP Finals campaign in Turin with a 6-4, 6-4 win over Rafael Jodar on Sunday. The German hit ten aces and did not serve a double fault. He broke Jodar in the seventh game of the first set and again early in the second. Jodar, aged 20, is playing in the event for the first time. Zverev, a two-time champion, now looks ahead to a meeting with Ben Shelton on Tuesday.",
+   "source": "Tribune India",
+   "url": "https://www.tribuneindia.com/news/sports/atp-finals-2026-zverev-opens-campaign-with-straight-sets-win-over-jodar-in-turin/",
+   "gloss": {
+    "ace": "a serve that the opponent cannot touch",
+    "double fault": "two bad serves in a row, which gives the opponent a point",
+    "break": "to win a game when your opponent is serving",
+    "campaign": "a series of matches or actions with one aim",
+    "look ahead to": "to think about something that will happen soon"
+   }
+  },
+  {
+   "id": "n2026-11-16-6",
    "cat": "Tech",
-   "title": "SpaceX catches Starship upper stage with tower arms",
-   "text": "SpaceX has caught the upper stage of its Starship rocket using the robotic arms of its launch tower in Texas. The stage returned after a mission of more than 22 hours. Anadolu Agency described it as the first time an upper stage coming back from orbit has been caught by a tower. Catching rockets in this way is meant to let the company use them again quickly. Starship is the vehicle SpaceX hopes to use for flights to the Moon and Mars.",
+   "title": "Vulcan rocket fails to deliver Amazon Leo satellites",
+   "text": "ULA's Vulcan rocket has failed to put 40 Amazon Leo broadband satellites into orbit. The problem happened shortly after liftoff from Florida, when the rocket suffered what ULA called an in-flight anomaly. Amazon Leo is a planned network of satellites that will provide internet access. The rocket did not deliver the satellites to orbit.",
    "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-15-2026/4125489",
+   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-16-2026/4126094",
    "gloss": {
-    "upper stage": "the top part of a rocket that goes into space",
-    "robotic": "controlled by a machine, not a person",
-    "orbit": "the curved path around the Earth",
-    "reuse": "to use again",
-    "launch tower": "a tall structure that supports a rocket before and after flight"
+    "liftoff": "the moment a rocket leaves the ground",
+    "anomaly": "something that is not normal or expected",
+    "orbit": "the curved path of an object around the Earth",
+    "broadband": "fast internet connection",
+    "fault": "a problem that stops a machine from working properly"
    }
   },
   {
-   "id": "n2026-11-15-7",
+   "id": "n2026-11-16-7",
    "cat": "Science",
-   "title": "Study: drugs, diet and exercise slow biological ageing",
-   "text": "Researchers at Yale have found that some medicines, healthy diets and exercise can reduce biological age. The team reviewed 51 clinical studies and looked at more than 110 DNA biomarkers in Nature Medicine. Metformin, semaglutide and anti-TNF therapies showed the strongest effects. Mediterranean, low-fat and low-carb diets also helped. Over-the-counter supplements showed no measurable benefit. The authors said it is not yet proven that a lower biological age leads to a longer or healthier life.",
-   "source": "ScienceDaily",
-   "url": "https://www.sciencedaily.com/releases/2026/11/261112230452.htm",
+   "title": "Voyager 1 is about to reach one light-day from Earth",
+   "text": "Voyager 1 will reach a distance of one light-day from Earth on Wednesday, according to NASA. It will be the first human-made object to do so. The spacecraft is about 16.1 billion miles away. A radio signal now takes at least 48 hours to travel there and back. NASA launched Voyager 1 on 5 September 1977.",
+   "source": "Anadolu Agency",
+   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-16-2026/4126094",
    "gloss": {
-    "biological age": "how old your body seems from its cells, not from your birthday",
-    "biomarker": "a measurable sign in the body that shows what is happening inside it",
-    "clinical study": "research that tests treatments on people",
-    "over-the-counter": "sold without a doctor's prescription",
-    "measurable": "big enough to be counted or measured"
+    "light-day": "the distance that light travels in one day",
+    "human-made": "created by people, not by nature",
+    "spacecraft": "a vehicle that travels in space",
+    "signal": "a message sent by radio waves",
+    "round trip": "a journey to a place and back again"
    }
   },
   {
-   "id": "n2026-11-15-8",
+   "id": "n2026-11-16-8",
    "cat": "Culture",
-   "title": "Philippines wins first Eurovision Song Contest Asia",
-   "text": "The Philippines has won the first Eurovision Song Contest Asia. Nineteen-year-old Carmelle won in Bangkok with the song Sobra-Sobra. She scored 211 points, including 93 from the juries and 118 from viewers at home. Ten other Asian countries took part in the contest. The event follows the format of the long-running European competition, in which countries send singers to compete in a live television final.",
+   "title": "Wu-Tang Clan and Phil Collins join Rock Hall",
+   "text": "The Rock & Roll Hall of Fame held its 2026 ceremony at the Peacock Theater in Los Angeles. Eighteen inductees were honoured. Wu-Tang Clan were inducted by Chris Rock and performed a medley that included C.R.E.A.M. Queen Latifah received the Early Influence Award and performed U.N.I.T.Y. with MC Lyte. Phil Collins was also inducted.",
    "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-15-2026/4125489",
+   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-16-2026/4126094",
    "gloss": {
-    "jury": "a small group of experts who judge a contest",
-    "take part": "to join an activity with others",
-    "format": "the way an event is organised",
-    "long-running": "having continued for many years",
-    "compete": "to try to win against others"
+    "induct": "to officially welcome someone as a member of a group or hall of fame",
+    "medley": "several songs played one after another as one piece",
+    "ceremony": "a formal event held to mark something special",
+    "honour": "to show great respect for someone with a prize or title",
+    "early influence": "someone who shaped music before others followed"
    }
   },
   {
-   "id": "n2026-11-15-9",
+   "id": "n2026-11-16-9",
    "cat": "Business",
-   "title": "Italy fines Meta 805 million euros over Android data",
-   "text": "Italy's data protection authority has fined Meta 805 million euros, about 900 million dollars. The regulator said the company had accessed photos, videos and metadata on Android devices without specific, informed consent from users. Metadata is information about files, such as when and where a picture was taken. The fine is one of the largest of its kind in Europe. Meta has not been quoted in the report seen here.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-15-2026/4125489",
+   "title": "US Treasury gives Nvidia ten days over export rules",
+   "text": "US Treasury Secretary Scott Bessent has said Nvidia needs an outsider to lead the company. He has given its board ten days to show that it follows US export controls. Jensen Huang, Nvidia's co-founder, resigned as chief executive last week amid controversy. A petition asking for his return had more than 130,000 signatures by Sunday. Elon Musk said he had signed it.",
+   "source": "Al Jazeera",
+   "url": "https://www.aljazeera.com/news/2026/11/15/us-treasury-chief-calls-for-outsider-to-lead-embattled-tech-firm-nvidia",
    "gloss": {
-    "fine": "to make someone pay money as a punishment",
-    "regulator": "an official body that checks that companies follow the rules",
-    "metadata": "data that describes other data, such as the date of a photo",
-    "consent": "permission that someone gives freely",
-    "authority": "an official organisation with legal power"
+    "export controls": "government rules that limit which goods can be sold to other countries",
+    "board": "the group of people who direct a company",
+    "resign": "to leave your job by choice",
+    "petition": "a written request signed by many people",
+    "embattled": "under pressure and facing many problems"
    }
   },
   {
-   "id": "n2026-11-15-10",
+   "id": "n2026-11-16-10",
    "cat": "Games",
-   "title": "GTA VI launches on Thursday after record preorders",
-   "text": "Grand Theft Auto VI arrives on 19 November on PlayStation 5 and Xbox Series X and S, thirteen years after its predecessor. Sensor Tower estimates about 12.1 million digital preorders worth roughly 1.18 billion dollars. Rockstar opened the 212 GB preload last week and is not making discs. It will offer a free printable poster and a map of Leonida on launch day. Several publishers have moved their releases away from the date.",
-   "source": "Fortune",
-   "url": "https://fortune.com/2026/11/14/gta-vi-biggest-entertainment-launch-preorders-hollywood",
+   "title": "GTA VI pre-load opens on PS5 ahead of 19 November",
+   "text": "Rockstar Games has opened pre-loading for Grand Theft Auto VI on PS5, so players can download the game before it goes on sale. The launch is set for 19 November, according to reports. Yahoo reported that GTA 6 is the most preordered game in both Sony and Xbox history. Rockstar has also said that the game encourages empathy, which is a first for the series.",
+   "source": "PlayStation Blog",
+   "url": "https://blog.playstation.com/2026/11/10/pre-load-grand-theft-auto-vi-on-ps5-starting-today/",
    "gloss": {
-    "preorder": "an order for a product before it is on sale",
-    "preload": "to download a game before its official release",
-    "predecessor": "the earlier thing in a series",
-    "move away from": "to change a date so it does not clash with something else",
-    "launch": "the start of selling a product"
+    "pre-load": "to download a game before its official release date",
+    "preorder": "to pay for a product before it is on sale",
+    "launch": "the start of selling a new product",
+    "empathy": "the ability to understand how other people feel",
+    "go on sale": "to become available to buy"
    }
   }
  ]
