@@ -276,7 +276,7 @@ input,select{width:100%;padding:10px 12px;border:1px solid var(--line);font-size
 
 <script>
 "use strict";
-const APP_VERSION = "2026.11.12-5";
+const APP_VERSION = "2026.11.17-1";
 const KEY = "wsv.progress.v4";
 const KEY_V3 = "wsv.progress.v3";
 const LEGACY_KEYS = ["vocabstatus2","vocabstatus","vocab_status","vocabProgress","vocab-progress"];
@@ -1275,6 +1275,13 @@ async function boot(){
   if (addQ) catchLookup(addQ);
 }
 boot();
+/* the phone keeps the app alive in the background for days: after a long break, or on a new day, start fresh so news, words and the app itself are current */
+const BOOT_DAY = today(); let hiddenAt = 0;
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden){ hiddenAt = Date.now(); return; }
+  if (hiddenAt && (Date.now() - hiddenAt > 15 * 60 * 1000 || today() !== BOOT_DAY) && navigator.onLine !== false) location.reload();
+});
+window.addEventListener("pageshow", e => { if (e.persisted && navigator.onLine !== false) location.reload(); });
 if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
 </script>
 </body>
