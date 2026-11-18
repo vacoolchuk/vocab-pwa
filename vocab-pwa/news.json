@@ -1,155 +1,155 @@
 {
- "date": "2026-11-17",
+ "date": "2026-11-18",
  "intro": "Ten stories from the last day, rewritten in plain British English. Tap any word you don't know.",
  "items": [
   {
-   "id": "n2026-11-17-1",
+   "id": "n2026-11-18-1",
    "cat": "World",
-   "title": "Germany urges Israel to allow more aid into Gaza",
-   "text": "Germany's foreign minister, Johann Wadephul, has urged Israel to let significantly more humanitarian aid into Gaza before the rainy, stormy winter arrives. He spoke before a meeting of EU foreign ministers in Brussels. He said the European message on aid was clear. Meanwhile, a UN official said nearly four million Syrians have returned home since the fall of the Assad government. The official added that humanitarian needs there remain acute.",
+   "title": "Iran claims drone attacks on US forces in Gulf",
+   "text": "Iran's army has said it launched drones at Ali Al Salem Air Base in Kuwait, where US forces are based. Kuwait said its air defences engaged hostile drones but did not confirm a hit. Bahrain said it intercepted several Iranian aerial attacks early on Wednesday and urged residents to take shelter. A day earlier, US officials said American aircraft had struck an Iranian missile launch site on Qeshm Island. Talks between the two countries remain stalled over safe passage through the Strait of Hormuz.",
    "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-17-2026/4127219",
+   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-18-2026/4128568",
    "gloss": {
-    "urge": "to ask someone strongly to do something",
-    "humanitarian aid": "food, medicine and shelter sent to people in need",
-    "acute": "very serious or severe",
-    "fall": "the end of a government or ruler's power",
-    "remain": "to continue to be"
+    "intercept": "to stop something before it reaches its target",
+    "shelter": "to go somewhere safe from danger",
+    "air defences": "weapons and systems used to stop attacks from the sky",
+    "stalled": "not making any progress",
+    "strike": "a military attack, usually from the air"
    }
   },
   {
-   "id": "n2026-11-17-2",
+   "id": "n2026-11-18-2",
    "cat": "World",
-   "title": "Trump heads to Asia as Putin plans China visit",
-   "text": "President Trump arrives in Manila on Tuesday for talks with ASEAN and the Quad, a group of the US, Australia, India and Japan. He said he may meet North Korean leader Kim Jong Un in China during the tour, but that depends on Kim and on Xi Jinping. A Kremlin aide, Yury Ushakov, said a first three-way meeting of Putin, Trump and Xi will be the centrepiece of Putin's visit to Shenzhen on 18 and 19 November. Mr Trump said the trip is focused largely on economic issues.",
+   "title": "Putin and Xi meet at APEC summit in China",
+   "text": "Russian President Vladimir Putin and Chinese President Xi Jinping met on the sidelines of the APEC summit in Shenzhen on Wednesday. The meeting took place a day before three-way talks with US President Donald Trump on Thursday. Mr Putin said economic pressure on other countries was a thing of the past. He added that he expected the talks with Mr Trump to be useful. Separately, the Quad group of countries held its first leaders' meeting in more than two years in Manila.",
    "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-17-2026/4127219",
+   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-18-2026/4128568",
    "gloss": {
-    "tour": "a trip to several places in a row",
-    "depend on": "to be decided by something else",
-    "centrepiece": "the most important part of an event",
-    "aide": "a person who helps a leader with their work",
-    "three-way": "involving three people or groups"
+    "on the sidelines": "at the edge of a main event, in separate smaller meetings",
+    "summit": "an important meeting between leaders of countries",
+    "trilateral": "involving three sides",
+    "economic coercion": "using economic pressure to force another country to act",
+    "take place": "to happen"
    }
   },
   {
-   "id": "n2026-11-17-3",
+   "id": "n2026-11-18-3",
    "cat": "UK",
-   "title": "King opens new Church of England General Synod",
-   "text": "The King is inaugurating the new General Synod of the Church of England today at Church House in Westminster. The ceremony follows a service at Westminster Abbey. It is the first time he has opened a synod in this way. Archbishop Sarah Mullally is leading the Church. The synod has 487 members, who serve five-year terms, and its November session lasts two days. Members remain deeply divided over same-sex marriage.",
-   "source": "Church of England",
-   "url": "https://www.churchofengland.org/news/his-majesty-king-inaugurate-12th-general-synod-church-england",
+   "title": "Mauritius threatens legal action over Chagos Islands",
+   "text": "Mauritius has said it will start a legal challenge in the New Year unless Britain sets out a clear plan to approve the Chagos Islands agreement by December. Prime Minister Navin Ramgoolam said he would prefer the deal to come into force without a legal process. The agreement would hand control of the islands to Mauritius, while the joint US-UK base on Diego Garcia stays open. Progress on the law needed to carry it out was paused in April. Andy Burnham met Mr Ramgoolam earlier this month.",
+   "source": "Brit Brief",
+   "url": "https://britbrief.co.uk/politics/diplomacy/mauritius-warns-of-legal-action-over-chagos-deal.html",
    "gloss": {
-    "inaugurate": "to open or start something with a formal ceremony",
-    "synod": "an official meeting of church members and leaders",
-    "session": "a period of time when a group meets",
-    "divided": "holding strongly different opinions",
-    "serve a term": "to hold a position for a fixed period"
+    "legal challenge": "a formal attempt to stop or change something through the courts",
+    "ratify": "to approve a treaty officially so that it becomes valid",
+    "roadmap": "a plan showing the steps needed to reach a goal",
+    "come into force": "to start to apply as a law or agreement",
+    "carry out": "to do or complete something"
    }
   },
   {
-   "id": "n2026-11-17-4",
+   "id": "n2026-11-18-4",
    "cat": "Football",
-   "title": "Crystal Palace name Thomas Frank as new manager",
-   "text": "Crystal Palace have appointed Thomas Frank, 53, as their new manager on a contract that runs until June 2029. He replaces Pierre Sage, who was sacked on 12 November after only two wins in ten Premier League matches. Chairman Steve Parish said Frank is the perfect fit for the club. Separately, UEFA has backed Philippe Diallo, head of the French football federation, to challenge Gianni Infantino for the FIFA presidency in March.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-17-2026/4127219",
+   "title": "England win Nations League group in Madrid",
+   "text": "England have finished top of their Nations League group after beating Spain in Madrid on Sunday. They had already reached the knockout stage before the match. The win means England go into the quarter-finals as group winners. The last-eight ties are due to be played in March. Sky Sports said the draw would decide which of the other qualified teams England will face.",
+   "source": "Sky Sports",
+   "url": "https://www.skysports.com/football/news/13611876/nations-league-2026-27-england-into-quarter-finals-but-who-will-they-play-in-last-eight-in-march",
    "gloss": {
-    "appoint": "to choose someone for a job",
-    "replace": "to take the place of someone",
-    "sack": "to remove someone from their job",
-    "fit": "a person or thing that suits a situation well",
-    "challenge": "to compete against someone for a position"
+    "progress": "to move forward to the next stage",
+    "knockout stage": "the part of a competition where losing teams go out",
+    "quarter-final": "one of the four matches before the semi-finals",
+    "draw": "the process that decides which teams play each other",
+    "qualify": "to earn a place in a competition"
    }
   },
   {
-   "id": "n2026-11-17-5",
+   "id": "n2026-11-18-5",
    "cat": "Tennis",
-   "title": "Alcaraz beats Tiafoe in ATP Finals opener",
-   "text": "Carlos Alcaraz won his opening match at the ATP Finals in Turin, beating Frances Tiafoe 6-2, 6-2 in 69 minutes. He led 4-0 early on and saved three break points in the second set before serving out the win. Alcaraz missed four months with a wrist injury, but has won 20 of 22 matches since returning at the US Open. He has also won consecutive titles in Paris and Vienna. Tiafoe, 28, is making his debut at the event.",
+   "title": "Zverev reaches ATP Finals semi-finals in Turin",
+   "text": "Alexander Zverev beat American Ben Shelton 6-2, 7-6 (4) on Tuesday to reach the semi-finals of the ATP Finals in Turin. The German is the top seed in the John McEnroe Group. In the same group, France's Arthur Fils beat Spain's Rafael Jodar 4-6, 6-2, 6-2 for his first win at the event. In the doubles, Marcelo Arevalo and Mate Pavic beat the defending champions, Harri Heliovaara and Henry Patten. The tournament runs until 22 November.",
    "source": "ATP Tour",
-   "url": "https://www.atptour.com/en/news/alcaraz-tiafoe-nitto-atp-finals-2026-monday",
+   "url": "https://www.atptour.com/en/news/nitto-atp-finals-2026-results",
    "gloss": {
-    "break point": "a chance for a player to win a game against the opponent's serve",
-    "serve out": "to win the final game of a match on your own serve",
-    "wrist": "the joint between the hand and the arm",
-    "consecutive": "coming one after another",
-    "debut": "a first appearance"
+    "seed": "a player ranked high enough to be kept apart from other top players in the draw",
+    "defending champion": "the winner of the previous year's event",
+    "round robin": "a format where every player plays all the others in a group",
+    "semi-final": "the match before the final",
+    "qualify for": "to earn a place in"
    }
   },
   {
-   "id": "n2026-11-17-6",
+   "id": "n2026-11-18-6",
    "cat": "Tech",
-   "title": "ChatGPT Wallet lets AI agents shop for you",
-   "text": "OpenAI has launched ChatGPT Wallet, a tool that lets AI agents buy things for users. Each purchase needs separate approval with Face ID or a fingerprint. Card details stay hidden from both the agent and the seller. OpenAI built the system with American Express, Mastercard and Visa. For now, it is available only to ChatGPT Pro subscribers in the US, and OpenAI is rolling it out step by step. The company says the design keeps people in control of every payment their agent makes.",
-   "source": "OpenAI",
-   "url": "https://openai.com/index/introducing-chatgpt-wallet/",
-   "gloss": {
-    "agent": "a program that carries out tasks for a person",
-    "approval": "official permission",
-    "purchase": "something you buy",
-    "subscriber": "a person who pays regularly for a service",
-    "roll out": "to make a new product available step by step"
-   }
-  },
-  {
-   "id": "n2026-11-17-7",
-   "cat": "Health",
-   "title": "WHO warns of 39 million deaths from resistant infections",
-   "text": "The World Health Organization has warned that drug-resistant bacterial infections could directly cause more than 39 million deaths by 2050. The warning came during World Antimicrobial Resistance Awareness Week. Resistance happens when bacteria change so that medicines no longer work against them. Officials have called for more careful use of antibiotics around the world. They say the problem is already making common infections harder to treat. The figures were reported through the EFE news agency, and health workers are asking governments to act now.",
+   "title": "Google denies widespread Gmail outage",
+   "text": "Google has said it is not seeing evidence of a broad Gmail disruption, after users reported problems on Tuesday. The outage-tracking site Downdetector logged more than 2,800 reports by midday in New York. Most of them were about receiving email. Google's own Workspace Status Dashboard showed no active Gmail problem at 1.45pm Eastern time. A Google spokesperson told Anadolu that the company was not currently seeing a service disruption of that kind.",
    "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-17-2026/4127219",
+   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-18-2026/4128568",
    "gloss": {
-    "drug-resistant": "not killed by the medicines that used to work",
-    "antibiotic": "a medicine that kills bacteria",
-    "awareness": "knowledge that something exists or is important",
-    "bacteria": "very small living things that can cause disease",
-    "call for": "to ask publicly for something to happen"
+    "outage": "a period when a service does not work",
+    "disruption": "something that stops a system from working normally",
+    "log": "to record officially",
+    "spokesperson": "a person who speaks officially for a company or group",
+    "broad": "affecting many people or areas"
    }
   },
   {
-   "id": "n2026-11-17-8",
-   "cat": "Culture",
-   "title": "BBC plans to move the Daily Service to local radio",
-   "text": "The BBC is moving the Daily Service, a religious radio programme, from 9.45am on Radio 4 Extra to 5.45am on BBC local radio and online. The BBC says the local audience at that hour is broadly comparable to the current one. Canon Philip Billson, a former producer who worked at the BBC for 32 years, has prepared a motion for the General Synod. He told The Telegraph the programme would become a minority sport at that time.",
-   "source": "The Telegraph",
-   "url": "https://www.telegraph.co.uk/news/2026/11/16/bbc-radio-4-drops-daily-service-century-national-schedule/",
+   "id": "n2026-11-18-7",
+   "cat": "Science",
+   "title": "Study finds the heart ages unevenly",
+   "text": "Scientists say the heart does not age in the way they had thought. New research suggests that inflammation and scarring build up mainly in the heart valves and the major blood vessels, rather than in the heart muscle itself. The findings, reported by ScienceDaily on 16 November, could change how doctors look for early signs of age-related heart disease. The work also raises questions about how treatments should be targeted in older patients.",
+   "source": "ScienceDaily",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261115085550.htm",
    "gloss": {
-    "broadly comparable": "similar in most ways",
-    "motion": "a formal proposal to be discussed and voted on",
-    "producer": "a person who makes a programme",
-    "minority sport": "something that only a small number of people follow",
-    "audience": "the people who listen to or watch something"
+    "inflammation": "swelling and redness in the body, often caused by injury or infection",
+    "scarring": "marks of damaged tissue that stay after healing",
+    "valve": "a part that controls the flow of liquid, such as blood in the heart",
+    "build up": "to increase slowly over time",
+    "target": "to aim a treatment at a particular thing"
    }
   },
   {
-   "id": "n2026-11-17-9",
+   "id": "n2026-11-18-8",
    "cat": "Business",
-   "title": "Fed survey: AI is now the top worry for finance",
-   "text": "A new Federal Reserve survey has found that artificial intelligence is now the most-cited concern for the stability of the financial system. In total, 87% of those surveyed named AI-related risks, up from 50% in May. The European Central Bank's vice president, Boris Vujcic, gave a similar warning in Frankfurt. He said AI could magnify cyberattacks and lead to market manipulation. Other officials at the US central bank have raised the same concerns in recent weeks.",
-   "source": "Reuters",
-   "url": "https://www.reuters.com/business/finance/ai-rockets-top-worries-about-financial-system-latest-fed-survey-2026-11-13/",
+   "title": "Nvidia revenue doubles in first report without Huang",
+   "text": "Nvidia has reported third-quarter revenue of $115.84 billion, which was higher than analysts expected. It is the first earnings report since co-founder Jensen Huang left his role as chief executive. Board chair Harvey Jones said there were no plans to bring him back. Mr Huang has apologised in his first public statement and said he would return if the board decided it was in the company's best interest. He has also agreed to speak to three House committees.",
+   "source": "Anadolu Agency",
+   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-18-2026/4128568",
    "gloss": {
-    "survey": "a set of questions asked to many people",
-    "financial stability": "a situation where banks and markets work safely",
-    "cyberattack": "an attempt to damage computer systems",
-    "magnify": "to make something bigger or stronger",
-    "market manipulation": "illegally influencing prices"
+    "revenue": "the total money a company earns from sales",
+    "earnings report": "a company's official statement of its profits and sales",
+    "beat expectations": "to do better than experts predicted",
+    "reinstate": "to give someone their old job or position back",
+    "board": "the group of people who direct a company"
    }
   },
   {
-   "id": "n2026-11-17-10",
+   "id": "n2026-11-18-9",
    "cat": "Games",
-   "title": "Rockstar shares new GTA VI details before launch",
-   "text": "Grand Theft Auto VI launches on 19 November for PS5 and Xbox Series X|S. Pre-loading opened on 10 November, and the download is up to 212 GB. Rockstar is also adding a free printable poster and a map of Leonida to the official website on launch day. After a guided demo at Rockstar North in Edinburgh, reports said hotwiring any parked car has gone. Some cars now stay locked until players get a key cloner or a slim jim.",
-   "source": "KeenGamer",
-   "url": "https://www.keengamer.com/articles/news/rockstar-reveals-new-grand-theft-auto-vi-gameplay-details-days-before-launch/",
+   "title": "GTA VI launches at midnight on PS5 and Xbox",
+   "text": "Grand Theft Auto VI goes on sale on Thursday 19 November at midnight local time, according to Rockstar. It is out on PS5 and Xbox Series X|S, and no PC release is planned for now. In the US the Standard Edition costs $79.99 and the Ultimate Edition $99.99. Digital preorders opened for preloading on 10 November, and Rockstar says the game needs up to 212 GB of free space. Preloading does not give early access.",
+   "source": "Forbes",
+   "url": "https://www.forbes.com/sites/erikkain/2026/11/16/gta-6-release-date-time-ps5-xbox-series-x-download-size-day-one-update/",
    "gloss": {
-    "pre-load": "to download a game before its release date",
-    "hotwire": "to start a car without a key by joining wires",
-    "guided demo": "a short game presentation led by the developers",
-    "lock": "to fasten something so it cannot be opened",
-    "launch": "the day a product first goes on sale"
+    "preload": "to download a game before its official release so you can play when it launches",
+    "go on sale": "to become available to buy",
+    "edition": "a particular version of a product",
+    "free space": "storage on a device that is not yet used",
+    "early access": "permission to use something before its official release"
+   }
+  },
+  {
+   "id": "n2026-11-18-10",
+   "cat": "Games",
+   "title": "GTA VI preorders reach about $1.45 billion",
+   "text": "Take-Two has reported strong demand for Grand Theft Auto VI before its launch, 13 years after the last main game in the series. Sensor Tower estimated 14.9 million digital preorders by 16 November, worth about $1.45 billion. The research firm Newzoo has projected global sales of between $3.25 billion and $5.2 billion in the first week. The game launches at midnight on Thursday, after a long marketing campaign by Rockstar Games.",
+   "source": "Anadolu Agency",
+   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-18-2026/4128568",
+   "gloss": {
+    "preorder": "an order for a product before it is released",
+    "estimate": "to give a rough figure based on available information",
+    "project": "to predict a future amount",
+    "demand": "how much people want to buy something",
+    "campaign": "a planned set of activities to promote something"
    }
   }
  ]
