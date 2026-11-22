@@ -1,155 +1,162 @@
 {
- "date": "2026-11-21",
+ "date": "2026-11-22",
  "intro": "Ten stories from the last day, rewritten in plain British English. Tap any word you don't know.",
  "items": [
   {
-   "id": "n2026-11-21-1",
+   "id": "n2026-11-22-1",
    "cat": "World",
-   "title": "Trump warns Iran over reported bomb plot",
-   "text": "At his first news conference since returning from Asia, US President Donald Trump warned Iran over a reported plot against Washington. He said that if Iran carries it out, \"we're going to fight\". He added that his administration is watching Tehran closely and has extensive intelligence. Mr Trump also said a wave of banking, technology and service outages had separate causes. Meanwhile, Iran's foreign minister has said the US naval blockade must end before Iran can restart its oil exports.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-21-2026/4132676",
+   "title": "Iran attacks US bases in Bahrain",
+   "text": "Iran launched two waves of drone and missile attacks on four US bases in Bahrain on Saturday night, according to Iranian media. Bahrain said its air defences stopped several of the attacks and told residents to shelter. At least three oil tankers were also attacked in or near the Strait of Hormuz, and no casualties were reported. More than 14 Iranian tankers were said to be ready to break the US blockade. President Trump told Fox News that he wanted a \"permanent deal\" with Iran.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/2026/11/21/iran-attacks-us-bases-in-bahrain-as-its-tankers-get-ready-to-break-the-us-blockade",
    "gloss": {
-    "plot": "a secret plan to do something harmful",
-    "outage": "a period when a service stops working",
+    "intercept": "to stop something before it reaches its target",
+    "shelter": "to go somewhere safe to avoid danger",
+    "tanker": "a large ship that carries oil",
     "blockade": "the use of ships to stop people or goods entering or leaving a place",
-    "intelligence": "secret information about an enemy or a threat",
-    "close": "careful and detailed, as in watching someone closely"
+    "break the blockade": "to get past a blockade by force",
+    "permanent": "lasting for a very long time or for ever"
    }
   },
   {
-   "id": "n2026-11-21-2",
+   "id": "n2026-11-22-2",
    "cat": "World",
-   "title": "Denmark expels Russian defence attaché",
-   "text": "Denmark has ordered a Russian defence attaché to leave the country within seven days. Foreign Minister Lars Løkke Rasmussen called the move a strong signal to Moscow. Denmark will also stop non-essential visas for Russians and discuss wider visa limits with its Schengen partners. Prime Minister Mette Frederiksen said Danish authorities had linked a foiled plot to kill a US-Ukrainian citizen to Russian intelligence. Denmark will not expel all Russian diplomats.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-21-2026/4132676",
+   "title": "Macron warns of Russian aggression",
+   "text": "French President Emmanuel Macron warned on Friday of a \"new level\" of Russian aggression after a series of incidents in Europe. Polish authorities said two Russian missiles and a jet-powered drone had crashed in Poland during allied exercises. Estonia said it will suspend all road border crossings with Russia from 1 December after what it called a sabotage attempt. Moldova closed its airspace after a drone was detected heading for its capital. Ukraine's president said Russia had fired more than 400 drones and over 110 missiles overnight.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/2026/11/21/french-president-macron-warns-of-new-level-of-russian-aggression",
    "gloss": {
-    "expel": "to officially force someone to leave a country",
-    "attaché": "an official who works at an embassy and has a special job, such as defence",
-    "foiled": "stopped before it could succeed",
-    "non-essential": "not absolutely necessary",
-    "diplomat": "an official who represents their country abroad"
+    "aggression": "hostile or violent behaviour towards another country",
+    "sabotage": "deliberate damage to stop something working",
+    "suspend": "to stop something for a period of time",
+    "airspace": "the sky above a country that it controls",
+    "exercise": "a military training operation",
+    "overnight": "during the night"
    }
   },
   {
-   "id": "n2026-11-21-3",
+   "id": "n2026-11-22-3",
    "cat": "UK",
-   "title": "UK and EU agree closer security links",
-   "text": "The UK and the European Union held their second annual summit in Brussels. Both sides agreed to deepen cooperation on security, defence, youth mobility and migration. The UK will also take part more regularly in EU civilian missions.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-21-2026/4132676",
+   "title": "UK and EU agree post-Brexit reset deal",
+   "text": "Prime Minister Andy Burnham travelled to Brussels on Friday for a summit between the United Kingdom and the European Union. He was welcomed by European Council President Antonio Costa. Euronews reported that the two sides struck a post-Brexit reset deal at the meeting. A reset is an attempt to improve relations after years of tension since Britain left the EU. Commentators said the next big question is how far Britain wants to move closer to Europe.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/2026/11/20/burnham-drew-a-line-under-brexit-at-the-eu-uk-summit-but-where-does-britain-go-next",
    "gloss": {
-    "summit": "an important meeting between leaders or senior officials",
-    "deepen": "to make something stronger or closer",
-    "youth mobility": "a scheme that lets young people live and work in another country for a time",
-    "civilian mission": "an overseas project run by non-military staff",
-    "take part": "to join in an activity"
+    "summit": "a formal meeting between the leaders of countries",
+    "strike a deal": "to reach an agreement",
+    "reset": "a fresh start, especially in a relationship",
+    "tension": "a feeling of worry or conflict between people or countries",
+    "commentator": "a person who gives opinions on the news"
    }
   },
   {
-   "id": "n2026-11-21-4",
+   "id": "n2026-11-22-4",
    "cat": "Football",
-   "title": "UEFA fines FA over England fans' chants",
-   "text": "UEFA has fined the English Football Association €15,000 for racist or discriminatory behaviour by England fans. The incident happened at a Nations League match in Madrid, which England won 3-2 against Spain. UEFA also banned the sale of tickets to England fans for one away national-team match. This ban is suspended for two years. British media reported that the chants were anti-Catholic and anti-Irish.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-21-2026/4132676",
+   "title": "Leeds win 4-1 at Chelsea",
+   "text": "Leeds United won 4-1 at Stamford Bridge on Saturday, their first win at Chelsea since 1999. Noah Okafor scored twice for Leeds, and Dominic Calvert-Lewin added a penalty after a long VAR check. Substitute Brenden Aaronson scored in stoppage time. Chelsea midfielder Moises Caicedo was injured and had to come off. Elsewhere, Newcastle drew 2-2 with Arsenal, Manchester City drew 1-1 with Fulham and Tottenham beat Ipswich 2-0.",
+   "source": "NBC Sports",
+   "url": "https://www.nbcsports.com/soccer/live/chelsea-vs-leeds-live-updates-score-goals-highlights-stats-2026-november-21",
    "gloss": {
-    "fine": "to make someone pay money as a punishment",
-    "discriminatory": "treating a group of people unfairly because of who they are",
-    "suspended": "officially delayed and only applied if the rules are broken again",
-    "probation": "a period when someone must behave well or face a punishment",
-    "chant": "a word or phrase shouted again and again by a crowd"
+    "penalty": "a free shot at goal given after a foul in the box",
+    "VAR": "video technology used to check referee decisions",
+    "stoppage time": "extra minutes added at the end of a match",
+    "substitute": "a player who comes on to replace another",
+    "come off": "to leave the pitch during a match",
+    "draw": "to finish a match with the same score"
    }
   },
   {
-   "id": "n2026-11-21-5",
-   "cat": "Games",
-   "title": "Grand Theft Auto VI is out at last",
-   "text": "Rockstar Games has announced that Grand Theft Auto VI is now available. The game launched on 19 November 2026 after a long wait. PlayStation players could pre-load it on PS5 from 10 November. A last-minute PS5 software update was needed to play it. Reports described gamers taking time off work to play on launch day.",
-   "source": "Rockstar Games",
-   "url": "https://www.rockstargames.com/newswire/article/39akk424a9oo53/grand-theft-auto-vi-now-available",
+   "id": "n2026-11-22-5",
+   "cat": "Tennis",
+   "title": "Zverev and Alcaraz reach ATP semis",
+   "text": "The semi-final line-up is set at the ATP Finals in Turin. Top seed Alexander Zverev plays Daniil Medvedev, and Carlos Alcaraz plays Ben Shelton. On Friday, Alcaraz beat Flavio Cobolli 6-1 6-4, and Medvedev beat Frances Tiafoe 6-3 6-4. Zverev had already qualified for the last four earlier in the week after beating Shelton in straight sets. The tournament runs until Sunday, when the final takes place at the Inalpi Arena.",
+   "source": "ATP Tour",
+   "url": "https://www.atptour.com/en/news/nitto-atp-finals-2026-schedule",
    "gloss": {
-    "launch": "to release a product to the public for the first time",
-    "delay": "a period when something happens later than planned",
-    "pre-load": "to download a game before its release date so you can play at once",
-    "take time off": "to be away from work for a short period",
-    "last-minute": "done at the final moment before something happens"
+    "semi-final": "one of the two matches that decide who plays in the final",
+    "line-up": "the list of people or teams taking part",
+    "seed": "a player ranked and placed in the draw according to their level",
+    "qualify": "to earn a place in a competition",
+    "in straight sets": "without losing a set",
+    "run": "to continue for a period of time"
    }
   },
   {
-   "id": "n2026-11-21-6",
-   "cat": "Games",
-   "title": "GTA VI sales near $4bn in a day",
-   "text": "Deadline has reported that Grand Theft Auto VI sales came close to $4bn on its first day. The figure shows how much demand there was for the game after a 13-year wait since the previous main title. Deadline described it as a very large first day.",
-   "source": "Deadline",
-   "url": "https://deadline.com/2026/11/gta6-first-day-sales-4-billion-1237230465/",
-   "gloss": {
-    "demand": "how much people want to buy something",
-    "campaign": "a planned set of activities to promote something",
-    "build up": "to increase gradually over time",
-    "release": "the date when a product becomes available to the public",
-    "industry watcher": "a person who follows and comments on a business sector"
-   }
-  },
-  {
-   "id": "n2026-11-21-7",
+   "id": "n2026-11-22-6",
    "cat": "Tech",
-   "title": "Signal limits screenshots to block AI tools",
-   "text": "The messaging app Signal is restricting screenshots on mobile devices. The aim is to stop AI assistants built into phone software from capturing private messages. Signal president Meredith Whittaker said agentic AI integrations are making the environment increasingly hostile to privacy. Screenshots are blocked on iOS 27, and AI screen capture is limited on supported Android devices. Users can switch the setting off, but Signal warned that this puts their messages at risk.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-21-2026/4132676",
+   "title": "Hackers leak data of 16,000 bank customers",
+   "text": "Hackers have published stolen data linked to about 16,000 customers of Visa, Mastercard and JPMorgan, Euronews reported on Friday. A data leak happens when criminals take private information and then make it public. Details of how the data was stolen have not been confirmed in the report. After leaks like this, banks and card companies often advise customers to check their statements and change their passwords.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/2026/11/20/hackers-leak-stolen-data-on-16000-visa-mastercard-and-jpmorgan-customers",
    "gloss": {
-    "restrict": "to limit what is allowed",
-    "capture": "to record or copy what is on a screen",
-    "hostile": "unfriendly or opposed to something",
-    "integration": "a feature that is built into another system",
-    "switch off": "to turn a setting or device off"
+    "leak": "to make secret information public",
+    "hacker": "a person who gets into computer systems without permission",
+    "stolen": "taken without permission",
+    "confirm": "to say that something is definitely true",
+    "statement": "a document showing money paid into or out of a bank account",
+    "password": "a secret word used to log in to an account"
    }
   },
   {
-   "id": "n2026-11-21-8",
+   "id": "n2026-11-22-7",
    "cat": "Health",
-   "title": "Pill shrinks pancreatic tumours in early trial",
-   "text": "An early trial of a daily pill called daraxonrasib has shown promising results in advanced pancreatic cancer. Patients took it together with chemotherapy. Tumours shrank in 60.7% of the 61 patients, and five had no detectable tumours. Researchers said larger studies are needed before any firm conclusions can be drawn.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-21-2026/4132676",
+   "title": "Keto diet cuts liver fat by 67%",
+   "text": "A US trial has found that a ketogenic diet reduced liver fat more than two other diets. The study, published in Cell Metabolism, followed 42 adults with obesity, prediabetes and fatty liver disease. All groups lost about 10% of their body weight over four to five months. Average liver fat fell by 67% on the keto diet, compared with 45% on Mediterranean and low-fat diets. About half of the keto group no longer met the criteria for prediabetes.",
+   "source": "ScienceDaily",
+   "url": "https://www.sciencedaily.com/releases/2026/11/261120070904.htm",
    "gloss": {
-    "trial": "a test of a new treatment on patients",
-    "tumour": "a lump of cells growing in the body",
-    "chemotherapy": "cancer treatment using strong drugs",
-    "detectable": "able to be found or measured",
-    "promising": "showing signs of future success"
+    "trial": "a scientific test of a treatment or method",
+    "ketogenic diet": "an eating plan very low in carbohydrates and high in fat",
+    "fatty liver disease": "a condition in which too much fat builds up in the liver",
+    "prediabetes": "a condition where blood sugar is higher than normal but not yet diabetes",
+    "criteria": "the standards used to decide something",
+    "compared with": "when you look at two things to see how they differ"
    }
   },
   {
-   "id": "n2026-11-21-9",
+   "id": "n2026-11-22-8",
    "cat": "Culture",
-   "title": "Christie's pulls Frida Kahlo painting",
-   "text": "Christie's has withdrawn a 1952 Frida Kahlo painting from a sale in New York. Mexico asked for more information about who owns the work and where it came from. The Frida Kahlo Museum in Mexico City said the painting is part of an ongoing investigation involving several works. The estimate was between $2.5m and $3.5m. Christie's and the seller agreed to withdraw it for more research and hope to offer it later.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-21-2026/4132676",
+   "title": "Kate speaks about cancer in documentary",
+   "text": "Catherine, Princess of Wales, speaks openly about how cancer changed her body and mind in a new documentary, Euronews reported on Saturday. The Princess announced in March 2024 that she was receiving chemotherapy. She said in January 2025 that she was in remission. Her willingness to talk about the illness has drawn wide attention in Britain.",
+   "source": "Euronews",
+   "url": "https://www.euronews.com/2026/11/21/new-documentary-princess-kate-speaks-candidly-about-how-cancer-changed-her-body-and-mind",
    "gloss": {
-    "withdraw": "to take something back or remove it",
-    "provenance": "the history of who has owned a work of art",
-    "estimate": "a rough guess of the price something will sell for",
-    "ongoing": "still continuing",
-    "seller": "the person or company selling something"
+    "documentary": "a film or TV programme about real events or people",
+    "chemotherapy": "medical treatment for cancer using strong drugs",
+    "remission": "a period when an illness gets better or cannot be detected",
+    "openly": "in an honest way, without hiding anything",
+    "draw attention": "to make people notice something"
    }
   },
   {
-   "id": "n2026-11-21-10",
+   "id": "n2026-11-22-9",
    "cat": "Business",
-   "title": "Lufthansa to cut 1,000 jobs at main hubs",
-   "text": "Lufthansa plans to cut 1,000 full-time jobs at its hubs in Frankfurt and Munich. The airline will also reduce short- and medium-haul capacity. It reported an operating loss of €180m in the first nine months of 2026. A hub is a main airport where an airline connects many routes.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-21-2026/4132676",
+   "title": "Bending Spoons buys Mailchimp for $3.68bn",
+   "text": "The Italian company Bending Spoons has agreed to buy the email marketing firm Mailchimp from Intuit for $3.68 billion in cash. Intuit bought Mailchimp for about $12 billion five years ago. Reports say Intuit will reinvest $368 million in the deal. The sale shows how much the business has fallen in value since then.",
+   "source": "Panabee",
+   "url": "https://www.panabee.com/news/bending-spoons-agrees-to-buy-mailchimp-for-3-68-billion-with-368-million-intuit-reinvest",
    "gloss": {
-    "hub": "a main airport where many flights connect",
-    "capacity": "the number of seats or flights an airline offers",
-    "operating loss": "money lost from running the main business, before some other costs",
-    "cut": "to reduce or remove",
-    "short-haul": "a flight over a short distance"
+    "acquire": "to get a company by buying it",
+    "reinvest": "to put money back into a business",
+    "in cash": "paid in money rather than shares",
+    "firm": "a company",
+    "fall in value": "to be worth less than before"
+   }
+  },
+  {
+   "id": "n2026-11-22-10",
+   "cat": "Games",
+   "title": "GTA VI sets $3.79bn first-day record",
+   "text": "Take-Two says Grand Theft Auto VI earned $3.79 billion in its first day, a record for entertainment, based on company estimates. The game had already sold 32.5 million copies before release. It has a Metacritic score of 99, according to the company. Rockstar Games founder Sam Houser said the team was \"incredibly humbled\" by the response. The game is set in Vice City and the state of Leonida, and it is out on PlayStation 5 and Xbox Series X|S.",
+   "source": "Take-Two Interactive",
+   "url": "https://www.take2games.com/ir/news/grand-theft-auto-vi-shatters-entertainment-box-office-records",
+   "gloss": {
+    "estimate": "a rough calculation of an amount",
+    "record": "the best or highest result ever achieved",
+    "copies": "individual units of a game sold",
+    "humbled": "feeling thankful and not proud",
+    "launch": "the time when a product first goes on sale",
+    "set in": "taking place in a particular place or time"
    }
   }
  ]
