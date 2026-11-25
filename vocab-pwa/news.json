@@ -1,155 +1,160 @@
 {
- "date": "2026-11-24",
+ "date": "2026-11-25",
  "intro": "Ten stories from the last day, rewritten in plain British English. Tap any word you don't know.",
  "items": [
   {
-   "id": "n2026-11-24-1",
+   "id": "n2026-11-25-1",
    "cat": "World",
-   "title": "Three oil tankers hit mines in Hormuz",
-   "text": "Iran's Revolutionary Guard navy said late on Monday that three oil tankers had struck mines in the Strait of Hormuz. Two of the ships hit mines in the eastern part of the strait, and fires broke out on all three vessels. The Guard said US air cover had failed to prevent the incidents. It promised to release video of the blasts and warned ships against using \"unauthorized routes\". Iran announced on 12 July that it had closed the strait after US strikes resumed.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/middle-east/iran-s-revolutionary-guard-corps-navy-says-mine-blasts-set-3-oil-tankers-ablaze-in-strait-of-hormuz/4135182",
+   "title": "Huawei found guilty on 10 of 12 US counts",
+   "text": "A jury in New York has convicted the Chinese technology company Huawei on 10 of 12 criminal counts. The charges included bank fraud, wire fraud, breaking sanctions and a conspiracy to steal trade secrets. The jury cleared the company of two other counts, obstruction conspiracy and racketeering conspiracy. The trial lasted about two months and was linked to the firm's business in Iran. A judge will pass sentence in September 2027. Huawei has long denied wrongdoing, and the result is likely to raise tension between Washington and Beijing.",
+   "source": "Reuters",
+   "url": "https://www.reuters.com/legal/litigation/chinas-huawei-convicted-us-criminal-trial-stemming-iran-business-2026-11-24/",
    "gloss": {
-    "strait": "a narrow area of sea between two pieces of land",
-    "mine": "a hidden bomb that explodes when a ship touches it",
-    "break out": "to start suddenly, usually a fire or a fight",
-    "vessel": "a ship or large boat",
-    "unauthorized": "without official permission"
+    "convict": "to decide in court that someone is guilty of a crime",
+    "count": "one separate charge in a criminal case",
+    "sanctions": "official penalties that stop trade with a country",
+    "conspiracy": "a secret plan by several people to do something illegal",
+    "clear of": "to decide officially that someone is not guilty of",
+    "pass sentence": "for a judge to announce a punishment"
    }
   },
   {
-   "id": "n2026-11-24-2",
+   "id": "n2026-11-25-2",
    "cat": "World",
-   "title": "Allies warn of Russian nuclear weapon in space",
-   "text": "Western intelligence services have warned that Russia could launch a satellite carrying a nuclear warhead as early as December. Kremlin spokesman Dmitry Peskov dismissed the reports on Monday. A nuclear weapon in orbit would break the 1967 Outer Space Treaty, which Russia has signed. The US Defence Intelligence Agency has said such a weapon could damage or destroy thousands of satellites, including those used for telecoms and traffic control.",
-   "source": "The Guardian",
-   "url": "https://www.theguardian.com/world/2026/nov/23/russia-nuclear-weapons-space-german-intelligence",
+   "title": "Houthis hit Riyadh tower for second time",
+   "text": "Yemen's Houthi group has attacked the headquarters of Saudi Arabia's Public Investment Fund in Riyadh for the second time in less than a week. The building stands in the King Abdullah Financial District and is the tallest tower in the Saudi capital. Eleven people were injured in the latest strike. A Saudi-led coalition condemned the incident as a terrorist attack. The Houthis have not yet explained how the weapon got past the city's air defences. The strikes come while the region is already tense after weeks of fighting around the Gulf.",
+   "source": "Al Jazeera",
+   "url": "https://www.aljazeera.com/news/2026/11/24/saudi-led-coalition-condemns-terrorist-attack-on-tower-in-riyadh",
    "gloss": {
-    "warhead": "the explosive part of a missile or bomb",
-    "dismiss": "to say that something is not worth considering",
-    "orbit": "the path of an object moving around the Earth",
-    "treaty": "a formal written agreement between countries",
-    "satellite": "a machine sent into space to circle the Earth"
+    "headquarters": "the main office of an organisation",
+    "coalition": "a group of countries or groups that work together",
+    "condemn": "to say publicly that something is very bad or wrong",
+    "strike": "a military attack, often from the air",
+    "air defences": "systems that protect a place from attack by aircraft or missiles",
+    "tense": "nervous and likely to turn into conflict"
    }
   },
   {
-   "id": "n2026-11-24-3",
+   "id": "n2026-11-25-3",
    "cat": "UK",
-   "title": "Burnham rules out rejoining EU without vote",
-   "text": "Prime Minister Andy Burnham told Parliament on Monday that rejoining the EU without another referendum would be \"unthinkable\". He said he personally favours renewed membership, but that the government has no fixed position. Ministers will set out options for closer ties with Europe next month. Mr Burnham has ruled out rejoining the single market or the customs union in this Parliament. Four former Conservative prime ministers have warned against reopening the Brexit debate.",
-   "source": "The Guardian",
-   "url": "https://www.theguardian.com/politics/2026/nov/23/andy-burnham-brexit-deal-eu",
+   "title": "Capita chief resigns over pensions problems",
+   "text": "The chief executive of the British outsourcing firm Capita, Adolfo Hernandez, has resigned with immediate effect. The company has had problems running the Civil Service Pension Scheme, which has about 1.7 million members. Capita is also raising £190m of new capital. Its share price has fallen by roughly 70 per cent to 72p. Separately, a new survey showed that UK business activity grew for the fifth month in a row in November, although hiring has weakened and services lagged behind factories.",
+   "source": "CPA UK Business News",
+   "url": "https://cpa.co.uk/uk-business-news-today-24-november-2026-economy-markets-insolvencies/",
    "gloss": {
-    "referendum": "a vote by all the people on one important question",
-    "unthinkable": "too extreme or unlikely to be considered",
-    "set out": "to explain or present something clearly",
-    "customs union": "a group of countries that charge the same taxes on imported goods",
-    "rule out": "to say that something will not happen or is not possible"
+    "outsourcing": "paying another company to do work for you",
+    "with immediate effect": "starting right now",
+    "raise capital": "to collect money for a company from investors",
+    "share price": "the cost of one part of a company on the stock market",
+    "in a row": "one after another without a break",
+    "lag behind": "to do worse than others"
    }
   },
   {
-   "id": "n2026-11-24-4",
+   "id": "n2026-11-25-4",
    "cat": "Football",
-   "title": "UK to host 2035 Women's World Cup",
-   "text": "FIFA has awarded the 2035 Women's World Cup to the United Kingdom. The decision was made at a virtual extraordinary congress, and the bid was approved without opposition. The 2031 tournament will go to the United States, Mexico, Costa Rica and Jamaica. That edition will be the first to feature 48 teams, up from 32. The number of matches will rise from 64 to 104.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/sports/fifa-awards-2031-womens-world-cup-to-us-mexico-costa-rica-jamaica-2035-to-uk/4135073",
+   "title": "Real Madrid beat PSV 5-1 in Champions League",
+   "text": "Real Madrid hammered PSV Eindhoven 5-1 in the Champions League on Tuesday night. The Dutch side took the lead from a penalty by Ivan Perisic in the 32nd minute. Federico Valverde then equalised, and Jude Bellingham put the hosts ahead. Kylian Mbappe scored twice and Vinicius Junior added another goal to complete the win. The result was a strong response from the Spanish club after the early setback. PSV are managed by Jose Mourinho.",
+   "source": "Ukraine News (ua.news)",
+   "url": "https://ua.news/en/sport/liga-chempioniv-matchi-24-listopada-rezultati-ta-ogliad-golovnikh-podii",
    "gloss": {
-    "award": "to officially give something to someone",
-    "bid": "a formal offer to host or do something",
-    "congress": "a formal meeting of members of an organisation",
-    "without opposition": "with nobody voting against",
-    "edition": "one version of a regular event"
+    "hammer": "to beat someone very easily",
+    "take the lead": "to go ahead in a game",
+    "equalise": "to score a goal that makes the score level",
+    "penalty": "a free shot at goal after a foul in the box",
+    "setback": "a problem that stops progress"
    }
   },
   {
-   "id": "n2026-11-24-5",
+   "id": "n2026-11-25-5",
    "cat": "Football",
-   "title": "LaLiga says fan data stolen in cyberattack",
-   "text": "The Spanish football league LaLiga has said that a cyberattack on one of its fan platforms exposed personal data. The attack took place between 14 and 16 November. LaLiga said an unauthorised person had stolen information belonging to fans registered with its digital services and with some clubs. Security teams contained the attack on 16 November. The league has not said how many people were affected.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/sports/spanish-football-league-laliga-suffers-cyberattack-exposing-fans-personal-data/4134729",
+   "title": "Man City draw 2-2 with Napoli at the Etihad",
+   "text": "Manchester City and Napoli drew 2-2 at the Etihad Stadium in the Champions League on Tuesday. Napoli scored twice through Rasmus Hojlund and Noah Lang, but City fought back to share the points. The game was also the first time Kevin De Bruyne had returned to Manchester as an opponent. The Belgian midfielder spent ten years at City before leaving the club. The draw leaves both teams with work to do in the league phase table. In another match, Galatasaray beat Aston Villa with a late goal.",
+   "source": "Ukraine News (ua.news)",
+   "url": "https://ua.news/en/sport/liga-chempioniv-matchi-24-listopada-rezultati-ta-ogliad-golovnikh-podii",
    "gloss": {
-    "cyberattack": "an attempt to damage or steal from computer systems",
-    "expose": "to make something private visible to others",
-    "unauthorised": "without official permission",
-    "contain": "to stop something from spreading",
-    "register": "to put your name on an official list"
+    "draw": "a game that ends with the same score for both teams",
+    "fight back": "to start playing better after losing",
+    "opponent": "a person or team you play against",
+    "midfielder": "a football player who plays in the middle of the pitch",
+    "league phase": "the first stage of the competition where all teams play each other"
    }
   },
   {
-   "id": "n2026-11-24-6",
+   "id": "n2026-11-25-6",
    "cat": "Tech",
-   "title": "Nvidia reinstates Jensen Huang as chief executive",
-   "text": "Nvidia's board has reinstated Jensen Huang as president, chief executive and director, with immediate effect. The vote was unanimous. The company praised Mr Huang's \"candor and ability to lead\". It said the board had spoken to senior US government officials, who helped persuade it that his return \"poses no national security risk\". The decision has caused a lot of discussion in Washington.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/science-technology/nvidia-board-reinstates-jensen-huang-as-president-ceo-director/4134739",
+   "title": "Nvidia brings back Jensen Huang as chief executive",
+   "text": "Nvidia has reinstated Jensen Huang as chief executive, less than two weeks after he resigned. The decision was announced on Monday. Shares in the chip maker jumped, and US stocks rose sharply as investors welcomed the news. Huang is due to appear before Congress next week. The US attorney general, Todd Blanche, called Nvidia a good corporate citizen but would not say whether the company or its boss is under federal investigation. The firm has not explained in detail why Huang stepped down.",
+   "source": "CPA UK Business News",
+   "url": "https://cpa.co.uk/uk-business-news-today-24-november-2026-economy-markets-insolvencies/",
    "gloss": {
     "reinstate": "to give someone their old job or position back",
-    "with immediate effect": "starting right now",
-    "unanimous": "agreed by everyone",
-    "board": "the group of people who run a company",
-    "candor": "honesty and openness"
+    "resign": "to leave a job by your own choice",
+    "shares": "small parts of a company that people can buy",
+    "step down": "to leave an important job",
+    "federal": "relating to the national government of the US",
+    "investor": "a person who puts money into a company to make a profit"
    }
   },
   {
-   "id": "n2026-11-24-7",
+   "id": "n2026-11-25-7",
    "cat": "Science",
-   "title": "Ten-thousand-year-old artefacts go on show in Ankara",
-   "text": "Thirty-four prehistoric artefacts from four sites in Şanlıurfa were displayed at the Presidential National Library in Ankara from 17 to 23 November. The sites are Göbeklitepe, Karahantepe, Sefertepe and Sayburç. The objects come from the Stone Hills Project and date from the Pre-Pottery Neolithic period, about 10,000 to 7,000 BC. Göbeklitepe is among the oldest known monumental sites in the world.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/turkiye/turkiye-displays-34-prehistoric-artifacts-from-ancient-settlement-sites-in-ankara/4134504",
+   "title": "China sends first foreign astronaut to Tiangong",
+   "text": "China has launched the Shenzhou-24 spacecraft from the Jiuquan centre in the Gobi Desert. On board are two Chinese astronauts and Muhammad Zeeshan Ali from Pakistan. He is the first foreign astronaut to fly to China's Tiangong space station. The mission shows how Beijing wants to work with other countries in space while it builds its own programme. The crew will spend several months on the station, carrying out experiments before they return to Earth.",
+   "source": "Associated Press",
+   "url": "https://apnews.com/article/china-space-shenzhou-24-543306bfe17419395d10fae107500564",
    "gloss": {
-    "artefact": "an old object made by people, often found by archaeologists",
-    "prehistoric": "from the time before written history",
-    "date from": "to have existed since a certain time",
-    "site": "a place where something important happened or was found",
-    "monumental": "very large and impressive"
+    "launch": "to send a rocket or spacecraft into the air",
+    "on board": "inside a ship, plane or spacecraft",
+    "space station": "a large spacecraft where people live and work in orbit",
+    "programme": "a planned set of activities with a goal",
+    "experiment": "a scientific test to find out something"
    }
   },
   {
-   "id": "n2026-11-24-8",
+   "id": "n2026-11-25-8",
    "cat": "Culture",
-   "title": "Australian music legend Molly Meldrum dies at 83",
-   "text": "Ian \"Molly\" Meldrum, the Australian music journalist and television presenter, died on Monday morning at Epworth Hospital in Melbourne after a long illness. He was 83. Victoria's premier, Ben Carroll, said the family had accepted an offer of a state funeral. The date and place have not yet been announced. Meldrum was famous for his cowboy hat and for the pop show Countdown, which ran on ABC from 1974 to 1987.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/world/morning-briefing-nov-24-2026/4135240",
+   "title": "BIFA announces its craft award winners",
+   "text": "The British Independent Film Awards has named the winners of its craft categories. I See Buildings Fall Like Lightning, directed by Clio Barnard, won three awards, for casting, editing and music supervision. Savage House took two, for make-up and hair, and for costume design. Other winners included A Long Winter for cinematography and Rose of Nevada for sound. The remaining categories will be revealed at a ceremony at the Roundhouse in London on Sunday 6 December.",
+   "source": "BIFA",
+   "url": "https://www.bifa.film/news/bifa-2026-craft-award-winners-announced/",
    "gloss": {
-    "journalist": "a person who writes or reports the news",
-    "presenter": "a person who introduces a TV or radio programme",
-    "state funeral": "a public funeral paid for by the government",
-    "long illness": "a sickness lasting a long time",
-    "pass away": "a polite way to say someone has died"
+    "craft award": "a prize for technical skills in film, such as editing or costumes",
+    "casting": "choosing actors for a film",
+    "cinematography": "the art of filming and lighting a movie",
+    "take": "to win a prize",
+    "reveal": "to show or tell something that was secret",
+    "ceremony": "a formal event to give out prizes"
    }
   },
   {
-   "id": "n2026-11-24-9",
+   "id": "n2026-11-25-9",
    "cat": "Business",
-   "title": "Trump says China may buy 250 more Boeings",
-   "text": "President Donald Trump has said China may buy another 250 Boeing aircraft. Speaking to CNBC, he said he had \"sold 250 Boeings to China, and I think they're going to do another 250\". Such an order could expand an earlier agreement between the two countries. Boeing is one of the biggest US exporters. The company has not yet commented on the president's remarks.",
-   "source": "Anadolu Agency",
-   "url": "https://www.aa.com.tr/en/americas/trump-says-china-may-buy-another-250-boeing-aircraft/4134981",
+   "title": "CrowdStrike to buy Zscaler in $44bn deal",
+   "text": "The cyber security firm CrowdStrike has agreed to buy its rival Zscaler in an all-share deal worth about $44bn. Under the plan, Zscaler's owners will be paid in CrowdStrike shares rather than cash. Investors reacted in different ways. Shares in CrowdStrike fell by about nine per cent, while Zscaler's rose by around 18 per cent. If it goes ahead, the takeover would be one of the biggest deals in the technology sector this year.",
+   "source": "CPA UK Business News",
+   "url": "https://cpa.co.uk/uk-business-news-today-24-november-2026-economy-markets-insolvencies/",
    "gloss": {
-    "aircraft": "a plane or other flying machine",
-    "expand": "to make something bigger",
-    "exporter": "a company or country that sells goods abroad",
-    "order": "a request to make and supply goods",
-    "remarks": "words spoken in public"
+    "cyber security": "the protection of computers and data from attack",
+    "all-share deal": "a purchase paid for with shares instead of cash",
+    "rival": "a person or company that competes with another",
+    "takeover": "when one company buys control of another",
+    "go ahead": "to happen as planned"
    }
   },
   {
-   "id": "n2026-11-24-10",
+   "id": "n2026-11-25-10",
    "cat": "Games",
-   "title": "GTA VI is the biggest launch in PlayStation history",
-   "text": "Sony says Grand Theft Auto VI was the biggest game launch in PlayStation history. More than 39 million players tried it on PS5 between 19 and 22 November. They played 683 million hours in total, an average of 17.4 hours each. Sony also said GTA VI was the first game played on 70 per cent of new PS5 consoles. The figures come from Sony's own internal data. Rockstar released its first free update on 23 November.",
-   "source": "PlayStation Blog",
-   "url": "https://blog.playstation.com/2026/11/23/thank-you-for-making-grand-theft-auto-vi-the-biggest-launch-in-playstation-history/",
+   "title": "GTA VI sets record with $3.79bn on day one",
+   "text": "Rockstar Games has said that Grand Theft Auto VI made $3.79bn in retail sales on its first day. The company called it a record and said the figure covered launch day, Thursday 19 November. It also said that 32.5 million copies were sold before release, another record across all platforms. For comparison, GTA V took three days to earn $1bn in 2013. The standard edition costs around $80 in the US. Studio co-founder Sam Houser said the team was humbled by the response.",
+   "source": "AP via ABC News",
+   "url": "https://abcnews.com/US/wireStory/grand-theft-auto-vi-sets-record-379b-day-138335808",
    "gloss": {
-    "launch": "the time when a new product first goes on sale",
-    "unique": "counted only once, even if repeated",
-    "cumulative": "added up over a period of time",
-    "internal": "coming from inside a company",
-    "update": "a new version of software that fixes problems"
+    "retail sales": "money from selling products to customers",
+    "launch day": "the first day a product is on sale",
+    "pre-release": "before something is officially on sale",
+    "for comparison": "to show the difference with something else",
+    "humbled": "feeling thankful and not proud"
    }
   }
  ]
