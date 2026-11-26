@@ -1,160 +1,157 @@
 {
- "date": "2026-11-25",
+ "date": "2026-11-26",
  "intro": "Ten stories from the last day, rewritten in plain British English. Tap any word you don't know.",
  "items": [
   {
-   "id": "n2026-11-25-1",
+   "id": "n2026-11-26-1",
    "cat": "World",
-   "title": "Huawei found guilty on 10 of 12 US counts",
-   "text": "A jury in New York has convicted the Chinese technology company Huawei on 10 of 12 criminal counts. The charges included bank fraud, wire fraud, breaking sanctions and a conspiracy to steal trade secrets. The jury cleared the company of two other counts, obstruction conspiracy and racketeering conspiracy. The trial lasted about two months and was linked to the firm's business in Iran. A judge will pass sentence in September 2027. Huawei has long denied wrongdoing, and the result is likely to raise tension between Washington and Beijing.",
-   "source": "Reuters",
-   "url": "https://www.reuters.com/legal/litigation/chinas-huawei-convicted-us-criminal-trial-stemming-iran-business-2026-11-24/",
+   "title": "Ukraine's refinery strikes raise food aid fears",
+   "text": "Ukraine has hit at least 14 Russian oil refineries since early November, despite a request from President Trump to stop. President Putin has said Russia will take retaliatory measures. Zelensky has defended the strikes. Meanwhile, the World Food Programme has warned that the war is disrupting grain shipments. It says food aid for 7.3 million people is now at risk. In Odesa region, a Russian strike killed two people and injured three, including a child.",
+   "source": "Democracy Now!",
+   "url": "https://www.democracynow.org/2026/11/25/headlines/world_food_programme_warns_wars_in_ukraine_and_mideast_are_jeopardizing_food_aid_for_millions",
    "gloss": {
-    "convict": "to decide in court that someone is guilty of a crime",
-    "count": "one separate charge in a criminal case",
-    "sanctions": "official penalties that stop trade with a country",
-    "conspiracy": "a secret plan by several people to do something illegal",
-    "clear of": "to decide officially that someone is not guilty of",
-    "pass sentence": "for a judge to announce a punishment"
+    "refinery": "a factory where crude oil is turned into fuel",
+    "retaliatory": "done to hit back at an attack",
+    "defend": "to say that something is right or justified",
+    "disrupt": "to interrupt something so that it cannot continue normally",
+    "at risk": "in danger of being harmed or lost"
    }
   },
   {
-   "id": "n2026-11-25-2",
+   "id": "n2026-11-26-2",
    "cat": "World",
-   "title": "Houthis hit Riyadh tower for second time",
-   "text": "Yemen's Houthi group has attacked the headquarters of Saudi Arabia's Public Investment Fund in Riyadh for the second time in less than a week. The building stands in the King Abdullah Financial District and is the tallest tower in the Saudi capital. Eleven people were injured in the latest strike. A Saudi-led coalition condemned the incident as a terrorist attack. The Houthis have not yet explained how the weapon got past the city's air defences. The strikes come while the region is already tense after weeks of fighting around the Gulf.",
-   "source": "Al Jazeera",
-   "url": "https://www.aljazeera.com/news/2026/11/24/saudi-led-coalition-condemns-terrorist-attack-on-tower-in-riyadh",
+   "title": "Iowa plans huge blast at ammunition plant",
+   "text": "The US Army has prepared to destroy nearly five tons of lead azide, an explosive chemical, at an ammunition plant near Middletown, Iowa. Governor Kim Reynolds has declared a disaster emergency in three counties. Officials recommended that people leave Middletown and a five-mile area to the south-west. People up to 20 miles away were told to stay indoors. An Army map shows that lead dust could drift more than 100 miles, as far as northern Missouri.",
+   "source": "Democracy Now!",
+   "url": "https://www.democracynow.org/2026/11/25/iowa_ammo_detonation_lead_azide",
    "gloss": {
-    "headquarters": "the main office of an organisation",
-    "coalition": "a group of countries or groups that work together",
-    "condemn": "to say publicly that something is very bad or wrong",
-    "strike": "a military attack, often from the air",
-    "air defences": "systems that protect a place from attack by aircraft or missiles",
-    "tense": "nervous and likely to turn into conflict"
+    "detonate": "to make a bomb or explosive go off",
+    "evacuate": "to leave a dangerous place",
+    "disaster emergency": "an official state of crisis that allows extra help",
+    "plume": "a long cloud of smoke or dust rising from a place",
+    "drift": "to be carried slowly by wind or water"
    }
   },
   {
-   "id": "n2026-11-25-3",
+   "id": "n2026-11-26-3",
    "cat": "UK",
-   "title": "Capita chief resigns over pensions problems",
-   "text": "The chief executive of the British outsourcing firm Capita, Adolfo Hernandez, has resigned with immediate effect. The company has had problems running the Civil Service Pension Scheme, which has about 1.7 million members. Capita is also raising £190m of new capital. Its share price has fallen by roughly 70 per cent to 72p. Separately, a new survey showed that UK business activity grew for the fifth month in a row in November, although hiring has weakened and services lagged behind factories.",
-   "source": "CPA UK Business News",
-   "url": "https://cpa.co.uk/uk-business-news-today-24-november-2026-economy-markets-insolvencies/",
+   "title": "Unilever cuts Channel 4 advertising by 92%",
+   "text": "Unilever has cut about 92 per cent of its advertising spending with Channel 4, the Guardian reported on 24 November. The company is also reducing its UK television budget, which was close to £100 million, by more than half compared with last year. Unilever is moving more of its money towards influencer marketing, where social media personalities promote products. The change is a blow for traditional broadcasters, which depend on advertising income to pay for programmes.",
+   "source": "The Guardian",
+   "url": "https://www.theguardian.com/media/2026/nov/24/channel-4-unilever-tv-influencer-marketing",
    "gloss": {
-    "outsourcing": "paying another company to do work for you",
-    "with immediate effect": "starting right now",
-    "raise capital": "to collect money for a company from investors",
-    "share price": "the cost of one part of a company on the stock market",
-    "in a row": "one after another without a break",
-    "lag behind": "to do worse than others"
+    "spending": "money that is used to pay for things",
+    "budget": "the amount of money planned for a particular purpose",
+    "influencer": "a person with many social media followers who promotes products",
+    "a blow": "a sudden shock or disappointment",
+    "depend on": "to need something in order to survive",
+    "broadcaster": "a company that sends out TV or radio programmes"
    }
   },
   {
-   "id": "n2026-11-25-4",
+   "id": "n2026-11-26-4",
    "cat": "Football",
-   "title": "Real Madrid beat PSV 5-1 in Champions League",
-   "text": "Real Madrid hammered PSV Eindhoven 5-1 in the Champions League on Tuesday night. The Dutch side took the lead from a penalty by Ivan Perisic in the 32nd minute. Federico Valverde then equalised, and Jude Bellingham put the hosts ahead. Kylian Mbappe scored twice and Vinicius Junior added another goal to complete the win. The result was a strong response from the Spanish club after the early setback. PSV are managed by Jose Mourinho.",
-   "source": "Ukraine News (ua.news)",
-   "url": "https://ua.news/en/sport/liga-chempioniv-matchi-24-listopada-rezultati-ta-ogliad-golovnikh-podii",
+   "title": "Isak scores twice as Liverpool beat Brugge",
+   "text": "Liverpool won 3-0 at Club Brugge in the Champions League on Wednesday. Alexander Isak scored in the 13th minute to give the visitors an early lead. Florian Wirtz made it 2-0 in the 79th minute. Isak then added a second goal three minutes later to finish the match. The result was a comfortable night for Liverpool, who did not concede a goal. Elsewhere, Paris Saint-Germain drew 2-2 with Roma, which ended their run of 12 wins.",
+   "source": "ESPN",
+   "url": "https://www.espn.com/soccer/report/_/gameId/401915292",
    "gloss": {
-    "hammer": "to beat someone very easily",
-    "take the lead": "to go ahead in a game",
-    "equalise": "to score a goal that makes the score level",
-    "penalty": "a free shot at goal after a foul in the box",
-    "setback": "a problem that stops progress"
+    "concede": "to let the other team score a goal",
+    "comfortable": "easy, without much difficulty or worry",
+    "end a run": "to stop a series of wins or successes",
+    "visitors": "the team playing away from home",
+    "draw": "to finish a match with the same score for both teams"
    }
   },
   {
-   "id": "n2026-11-25-5",
-   "cat": "Football",
-   "title": "Man City draw 2-2 with Napoli at the Etihad",
-   "text": "Manchester City and Napoli drew 2-2 at the Etihad Stadium in the Champions League on Tuesday. Napoli scored twice through Rasmus Hojlund and Noah Lang, but City fought back to share the points. The game was also the first time Kevin De Bruyne had returned to Manchester as an opponent. The Belgian midfielder spent ten years at City before leaving the club. The draw leaves both teams with work to do in the league phase table. In another match, Galatasaray beat Aston Villa with a late goal.",
-   "source": "Ukraine News (ua.news)",
-   "url": "https://ua.news/en/sport/liga-chempioniv-matchi-24-listopada-rezultati-ta-ogliad-golovnikh-podii",
+   "id": "n2026-11-26-5",
+   "cat": "Tennis",
+   "title": "Czechia reach Davis Cup semi-finals",
+   "text": "Czechia have reached the semi-finals of the Davis Cup Finals after beating Canada 2-0. Tomas Machac won the first match against Liam Draxl 6-2, 3-6, 6-2. Jiri Lehecka then defeated Felix Auger-Aliassime 7-6, 6-2 to win the tie. Lehecka saved all nine break points he faced. He had lost his last three meetings with Auger-Aliassime, but this win cut the deficit to 2-3. Lehecka said it was a very tough match.",
+   "source": "ATP Tour",
+   "url": "https://www.atptour.com/en/news/canada-czechia-davis-cup-2026",
    "gloss": {
-    "draw": "a game that ends with the same score for both teams",
-    "fight back": "to start playing better after losing",
-    "opponent": "a person or team you play against",
-    "midfielder": "a football player who plays in the middle of the pitch",
-    "league phase": "the first stage of the competition where all teams play each other"
+    "tie": "a match between two countries made up of several games",
+    "break point": "a chance to win a game when your opponent is serving",
+    "save": "to stop the opponent from winning a point",
+    "deficit": "the amount by which one side is behind",
+    "clinch": "to win something in a way that cannot be changed"
    }
   },
   {
-   "id": "n2026-11-25-6",
+   "id": "n2026-11-26-6",
    "cat": "Tech",
-   "title": "Nvidia brings back Jensen Huang as chief executive",
-   "text": "Nvidia has reinstated Jensen Huang as chief executive, less than two weeks after he resigned. The decision was announced on Monday. Shares in the chip maker jumped, and US stocks rose sharply as investors welcomed the news. Huang is due to appear before Congress next week. The US attorney general, Todd Blanche, called Nvidia a good corporate citizen but would not say whether the company or its boss is under federal investigation. The firm has not explained in detail why Huang stepped down.",
-   "source": "CPA UK Business News",
-   "url": "https://cpa.co.uk/uk-business-news-today-24-november-2026-economy-markets-insolvencies/",
+   "title": "Meta brings Muse AI assistant into Instagram",
+   "text": "Meta has added its AI assistant, Muse, directly to Instagram direct messages, TechCrunch reported on 24 November. Users can now chat with the assistant inside their private conversations. Meta has also teamed up with Walmart so that Muse can help shoppers find Black Friday deals. The move is part of a wider push by large technology companies to put AI tools in the apps that people already use every day.",
+   "source": "TechCrunch",
+   "url": "https://techcrunch.com/2026/11/24/meta-brings-its-muse-ai-assistant-directly-into-instagram-dms/",
    "gloss": {
-    "reinstate": "to give someone their old job or position back",
-    "resign": "to leave a job by your own choice",
-    "shares": "small parts of a company that people can buy",
-    "step down": "to leave an important job",
-    "federal": "relating to the national government of the US",
-    "investor": "a person who puts money into a company to make a profit"
+    "assistant": "a computer program that helps users do tasks",
+    "team up": "to join with another person or company to work together",
+    "direct message": "a private message sent to one person or a small group",
+    "push": "a strong effort to achieve or promote something",
+    "shopper": "a person who buys things in shops or online"
    }
   },
   {
-   "id": "n2026-11-25-7",
-   "cat": "Science",
-   "title": "China sends first foreign astronaut to Tiangong",
-   "text": "China has launched the Shenzhou-24 spacecraft from the Jiuquan centre in the Gobi Desert. On board are two Chinese astronauts and Muhammad Zeeshan Ali from Pakistan. He is the first foreign astronaut to fly to China's Tiangong space station. The mission shows how Beijing wants to work with other countries in space while it builds its own programme. The crew will spend several months on the station, carrying out experiments before they return to Earth.",
-   "source": "Associated Press",
-   "url": "https://apnews.com/article/china-space-shenzhou-24-543306bfe17419395d10fae107500564",
+   "id": "n2026-11-26-7",
+   "cat": "Health",
+   "title": "Few heart attack patients get a flu jab",
+   "text": "A Swedish study has found that only 6 per cent of heart attack patients received a flu vaccine in hospital, even though guidelines recommend it. Researchers at Örebro University studied patients and found that those who were vaccinated had a 41 per cent lower risk of death in the following year. The study was published in The Lancet Regional Health – Europe. It is observational, so it shows a link but cannot prove that the vaccine caused the benefit.",
+   "source": "BrightSurf (Örebro University)",
+   "url": "https://www.brightsurf.com/news/LMJYYWVL/few-heart-attack-patients-receive-influenza-vaccination-despite-guidelines.html",
    "gloss": {
-    "launch": "to send a rocket or spacecraft into the air",
-    "on board": "inside a ship, plane or spacecraft",
-    "space station": "a large spacecraft where people live and work in orbit",
-    "programme": "a planned set of activities with a goal",
-    "experiment": "a scientific test to find out something"
+    "flu jab": "an informal British word for a flu vaccination",
+    "guidelines": "official advice about how something should be done",
+    "observational": "based on watching what happens, not on a controlled experiment",
+    "link": "a connection between two things",
+    "vaccinate": "to give someone a vaccine to protect them from disease"
    }
   },
   {
-   "id": "n2026-11-25-8",
+   "id": "n2026-11-26-8",
    "cat": "Culture",
-   "title": "BIFA announces its craft award winners",
-   "text": "The British Independent Film Awards has named the winners of its craft categories. I See Buildings Fall Like Lightning, directed by Clio Barnard, won three awards, for casting, editing and music supervision. Savage House took two, for make-up and hair, and for costume design. Other winners included A Long Winter for cinematography and Rose of Nevada for sound. The remaining categories will be revealed at a ceremony at the Roundhouse in London on Sunday 6 December.",
-   "source": "BIFA",
-   "url": "https://www.bifa.film/news/bifa-2026-craft-award-winners-announced/",
+   "title": "A24 box office passes $526 million",
+   "text": "The film studio A24 has taken more than $526 million at the US box office this year, up to 15 November, CNBC reported. That is more than 50 per cent above its total for the whole of 2025. The studio's success has been driven by the horror film Backrooms, the romance The Drama and the Elizabeth Holmes documentary You Can See Everything. A24 is known for independent films with a distinctive style.",
+   "source": "CNBC",
+   "url": "https://www.cnbc.com/2026/11/20/a24-box-office-hbo-max.html",
    "gloss": {
-    "craft award": "a prize for technical skills in film, such as editing or costumes",
-    "casting": "choosing actors for a film",
-    "cinematography": "the art of filming and lighting a movie",
-    "take": "to win a prize",
-    "reveal": "to show or tell something that was secret",
-    "ceremony": "a formal event to give out prizes"
+    "box office": "the money earned from cinema tickets",
+    "drive": "to be the main cause of something's success or growth",
+    "documentary": "a film that gives facts about real events or people",
+    "distinctive": "clearly different and easy to recognise",
+    "independent": "made without money or control from a big studio"
    }
   },
   {
-   "id": "n2026-11-25-9",
+   "id": "n2026-11-26-9",
    "cat": "Business",
-   "title": "CrowdStrike to buy Zscaler in $44bn deal",
-   "text": "The cyber security firm CrowdStrike has agreed to buy its rival Zscaler in an all-share deal worth about $44bn. Under the plan, Zscaler's owners will be paid in CrowdStrike shares rather than cash. Investors reacted in different ways. Shares in CrowdStrike fell by about nine per cent, while Zscaler's rose by around 18 per cent. If it goes ahead, the takeover would be one of the biggest deals in the technology sector this year.",
-   "source": "CPA UK Business News",
-   "url": "https://cpa.co.uk/uk-business-news-today-24-november-2026-economy-markets-insolvencies/",
+   "title": "US inflation rises to highest since 2023",
+   "text": "Inflation in the United States has accelerated, SBS News reported on 26 November. The growth of the personal consumption expenditures price index rose in October. Core inflation, which leaves out food and energy, reached its highest level since 2023. Prices are moving further from the Federal Reserve's target. As a result, many investors now expect the central bank to raise interest rates again next month.",
+   "source": "SBS News",
+   "url": "https://news.sbs.co.kr/english/article.do?news_id=N1008863933",
    "gloss": {
-    "cyber security": "the protection of computers and data from attack",
-    "all-share deal": "a purchase paid for with shares instead of cash",
-    "rival": "a person or company that competes with another",
-    "takeover": "when one company buys control of another",
-    "go ahead": "to happen as planned"
+    "inflation": "the rate at which prices rise over time",
+    "accelerate": "to speed up",
+    "core inflation": "a measure of price rises that leaves out food and energy",
+    "target": "a level that someone aims to reach",
+    "interest rate": "the percentage charged for borrowing money",
+    "investor": "a person who puts money into something to make a profit"
    }
   },
   {
-   "id": "n2026-11-25-10",
+   "id": "n2026-11-26-10",
    "cat": "Games",
-   "title": "GTA VI sets record with $3.79bn on day one",
-   "text": "Rockstar Games has said that Grand Theft Auto VI made $3.79bn in retail sales on its first day. The company called it a record and said the figure covered launch day, Thursday 19 November. It also said that 32.5 million copies were sold before release, another record across all platforms. For comparison, GTA V took three days to earn $1bn in 2013. The standard edition costs around $80 in the US. Studio co-founder Sam Houser said the team was humbled by the response.",
-   "source": "AP via ABC News",
-   "url": "https://abcnews.com/US/wireStory/grand-theft-auto-vi-sets-record-379b-day-138335808",
+   "title": "PS5 owners report crashes after GTA VI launch",
+   "text": "Some PlayStation 5 owners have reported shutdowns and graphics problems after playing Grand Theft Auto VI for several hours, GAMINGbible reported on 25 November. A user on X wrote that a console blackout had started and said his PS5 was using about 220 watts. The writer played about 100 hours on a launch-day console and had one crash. The site asked Rockstar Games and Sony for comment but had not received a reply. It said there could be many causes and that it was too soon to blame the game.",
+   "source": "GAMINGbible",
+   "url": "https://www.gamingbible.com/news/gta-6-blackouts-begin-ps5-consoles-shut-down-293316-20261125",
    "gloss": {
-    "retail sales": "money from selling products to customers",
-    "launch day": "the first day a product is on sale",
-    "pre-release": "before something is officially on sale",
-    "for comparison": "to show the difference with something else",
-    "humbled": "feeling thankful and not proud"
+    "shut down": "to stop working or switch off",
+    "launch": "the first release of a product to the public",
+    "framerate": "the number of images a game shows each second",
+    "cause": "the reason why something happens",
+    "blame": "to say that someone or something is responsible for a problem"
    }
   }
  ]
