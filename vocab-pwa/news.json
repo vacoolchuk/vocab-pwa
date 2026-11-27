@@ -1,157 +1,155 @@
 {
- "date": "2026-11-26",
+ "date": "2026-11-27",
  "intro": "Ten stories from the last day, rewritten in plain British English. Tap any word you don't know.",
  "items": [
   {
-   "id": "n2026-11-26-1",
+   "id": "n2026-11-27-1",
    "cat": "World",
-   "title": "Ukraine's refinery strikes raise food aid fears",
-   "text": "Ukraine has hit at least 14 Russian oil refineries since early November, despite a request from President Trump to stop. President Putin has said Russia will take retaliatory measures. Zelensky has defended the strikes. Meanwhile, the World Food Programme has warned that the war is disrupting grain shipments. It says food aid for 7.3 million people is now at risk. In Odesa region, a Russian strike killed two people and injured three, including a child.",
-   "source": "Democracy Now!",
-   "url": "https://www.democracynow.org/2026/11/25/headlines/world_food_programme_warns_wars_in_ukraine_and_mideast_are_jeopardizing_food_aid_for_millions",
+   "title": "Two Italians killed in Kuwait drone attack",
+   "text": "Two Italian defence technicians were killed in a drone attack on Kuwait on Thursday. Kuwaiti and Italian authorities have blamed Iran. The men worked for Rheinmetall and were maintaining detection equipment for Kuwait's air defence systems. A Kuwaiti and a Pakistani national were also injured. Iran has denied responsibility, and an armed forces spokesman called the attack a false flag operation. Italy's foreign minister said the drone was made in Iran. Iran's foreign minister has offered to work with Kuwait and Italy to find out where it came from.",
+   "source": "CNN",
+   "url": "https://edition.cnn.com/2026/11/26/middleeast/italians-killed-iranian-attack-kuwait-intl",
    "gloss": {
-    "refinery": "a factory where crude oil is turned into fuel",
-    "retaliatory": "done to hit back at an attack",
-    "defend": "to say that something is right or justified",
-    "disrupt": "to interrupt something so that it cannot continue normally",
-    "at risk": "in danger of being harmed or lost"
+    "defence technician": "a skilled worker who looks after military equipment",
+    "blame": "to say that someone is responsible for something bad",
+    "deny responsibility": "to say that you did not do something",
+    "false flag operation": "an attack made to look as if another side did it",
+    "spokesman": "a person who speaks officially for a group"
    }
   },
   {
-   "id": "n2026-11-26-2",
+   "id": "n2026-11-27-2",
    "cat": "World",
-   "title": "Iowa plans huge blast at ammunition plant",
-   "text": "The US Army has prepared to destroy nearly five tons of lead azide, an explosive chemical, at an ammunition plant near Middletown, Iowa. Governor Kim Reynolds has declared a disaster emergency in three counties. Officials recommended that people leave Middletown and a five-mile area to the south-west. People up to 20 miles away were told to stay indoors. An Army map shows that lead dust could drift more than 100 miles, as far as northern Missouri.",
-   "source": "Democracy Now!",
-   "url": "https://www.democracynow.org/2026/11/25/iowa_ammo_detonation_lead_azide",
+   "title": "Trump says he urged Putin to pull back",
+   "text": "President Trump said on Thursday that he had urged Vladimir Putin to end military aggression across Europe. The two men met in Shenzhen last week. Mr Trump did not say which Russian actions he wanted to stop. His comments came after Russian missiles and drones entered Polish airspace during attacks on Ukraine earlier this week. Mr Trump and NATO's Secretary General, Mark Rutte, issued a joint statement asking Russia not to widen the conflict. The Kremlin has blamed Kyiv for trying to expand the war.",
+   "source": "Reuters",
+   "url": "https://www.reuters.com/world/europe/trump-says-hed-like-see-putin-pull-back-military-aggression-europe-2026-11-26/",
    "gloss": {
-    "detonate": "to make a bomb or explosive go off",
-    "evacuate": "to leave a dangerous place",
-    "disaster emergency": "an official state of crisis that allows extra help",
-    "plume": "a long cloud of smoke or dust rising from a place",
-    "drift": "to be carried slowly by wind or water"
+    "pull back": "to stop doing something or move away from it",
+    "aggression": "hostile action against another country",
+    "airspace": "the sky above a country",
+    "widen": "to make something larger or wider",
+    "blame": "to say that someone is responsible for something bad"
    }
   },
   {
-   "id": "n2026-11-26-3",
+   "id": "n2026-11-27-3",
    "cat": "UK",
-   "title": "Unilever cuts Channel 4 advertising by 92%",
-   "text": "Unilever has cut about 92 per cent of its advertising spending with Channel 4, the Guardian reported on 24 November. The company is also reducing its UK television budget, which was close to £100 million, by more than half compared with last year. Unilever is moving more of its money towards influencer marketing, where social media personalities promote products. The change is a blow for traditional broadcasters, which depend on advertising income to pay for programmes.",
-   "source": "The Guardian",
-   "url": "https://www.theguardian.com/media/2026/nov/24/channel-4-unilever-tv-influencer-marketing",
+   "title": "Britain contacts 100,000 former troops",
+   "text": "Britain has reportedly contacted about 100,000 former military personnel to find out whether they could return to service in a war. The Ministry of Defence has invited members of its Strategic Reserve to volunteer for training, including NATO exercises in spring 2027. Former personnel were asked to update their contact details and give information about their jobs and skills. Officials say taking part is voluntary and that no immediate mobilisation is planned. The regular army is approaching 73,000 people, its smallest size for more than 200 years.",
+   "source": "BBC News",
+   "url": "https://www.bbc.com/news/articles/cvrlgznd9z4po",
    "gloss": {
-    "spending": "money that is used to pay for things",
-    "budget": "the amount of money planned for a particular purpose",
-    "influencer": "a person with many social media followers who promotes products",
-    "a blow": "a sudden shock or disappointment",
-    "depend on": "to need something in order to survive",
-    "broadcaster": "a company that sends out TV or radio programmes"
+    "personnel": "the people who work in an organisation, such as the army",
+    "reserve": "a group of trained people who can be called on when needed",
+    "volunteer": "to offer to do something without being forced",
+    "voluntary": "done by choice, not because you must",
+    "mobilisation": "preparing and organising troops for war"
    }
   },
   {
-   "id": "n2026-11-26-4",
+   "id": "n2026-11-27-4",
    "cat": "Football",
-   "title": "Isak scores twice as Liverpool beat Brugge",
-   "text": "Liverpool won 3-0 at Club Brugge in the Champions League on Wednesday. Alexander Isak scored in the 13th minute to give the visitors an early lead. Florian Wirtz made it 2-0 in the 79th minute. Isak then added a second goal three minutes later to finish the match. The result was a comfortable night for Liverpool, who did not concede a goal. Elsewhere, Paris Saint-Germain drew 2-2 with Roma, which ended their run of 12 wins.",
-   "source": "ESPN",
-   "url": "https://www.espn.com/soccer/report/_/gameId/401915292",
+   "title": "Real Madrid thrash PSV in Champions League",
+   "text": "Real Madrid beat PSV Eindhoven 5-1 in the Champions League on Tuesday. Kylian Mbappe scored twice, and Jude Bellingham, Federico Valverde and Vinicius Junior each scored once. In other games, Arsenal drew 1-1 at home to Borussia Dortmund, and Manchester City drew 2-2 with Napoli. Galatasaray beat Aston Villa 1-0. Real Madrid now lead the league phase table. Arsenal and City each dropped points.",
+   "source": "DID Press",
+   "url": "https://en.didpress.com/40999/",
    "gloss": {
-    "concede": "to let the other team score a goal",
-    "comfortable": "easy, without much difficulty or worry",
-    "end a run": "to stop a series of wins or successes",
-    "visitors": "the team playing away from home",
-    "draw": "to finish a match with the same score for both teams"
+    "thrash": "to beat a team very easily",
+    "league phase": "the first stage of the Champions League, where every team plays several matches",
+    "draw": "to finish a match with the same score for both teams",
+    "lead the table": "to be in first place",
+    "drop points": "to fail to win a match"
    }
   },
   {
-   "id": "n2026-11-26-5",
+   "id": "n2026-11-27-5",
    "cat": "Tennis",
-   "title": "Czechia reach Davis Cup semi-finals",
-   "text": "Czechia have reached the semi-finals of the Davis Cup Finals after beating Canada 2-0. Tomas Machac won the first match against Liam Draxl 6-2, 3-6, 6-2. Jiri Lehecka then defeated Felix Auger-Aliassime 7-6, 6-2 to win the tie. Lehecka saved all nine break points he faced. He had lost his last three meetings with Auger-Aliassime, but this win cut the deficit to 2-3. Lehecka said it was a very tough match.",
-   "source": "ATP Tour",
-   "url": "https://www.atptour.com/en/news/canada-czechia-davis-cup-2026",
+   "title": "Spain beat Austria to reach Davis Cup semis",
+   "text": "Spain beat Austria 2-0 in the Davis Cup quarter-finals in Bologna on Thursday. Daniel Merida won the first match 6-4, 6-4 against Joel Schwaerzler. Rafael Jodar then beat Jurij Rodionov 2-6, 6-0, 6-1, winning 12 of the last 13 games. Carlos Alcaraz did not play and was on standby for the doubles. Spain will now face Great Britain in the semi-final on Saturday.",
+   "source": "The Hans India",
+   "url": "https://www.thehansindia.com/sports/jodar-stages-stunning-comeback-as-spain-storm-into-davis-cup-sfs-1146236",
    "gloss": {
-    "tie": "a match between two countries made up of several games",
-    "break point": "a chance to win a game when your opponent is serving",
-    "save": "to stop the opponent from winning a point",
-    "deficit": "the amount by which one side is behind",
-    "clinch": "to win something in a way that cannot be changed"
+    "quarter-final": "a match in the last eight of a competition",
+    "on standby": "ready to act if needed",
+    "doubles": "a tennis match with two players on each side",
+    "semi-final": "a match in the last four of a competition",
+    "comeback": "a recovery after playing badly or losing"
    }
   },
   {
-   "id": "n2026-11-26-6",
+   "id": "n2026-11-27-6",
    "cat": "Tech",
-   "title": "Meta brings Muse AI assistant into Instagram",
-   "text": "Meta has added its AI assistant, Muse, directly to Instagram direct messages, TechCrunch reported on 24 November. Users can now chat with the assistant inside their private conversations. Meta has also teamed up with Walmart so that Muse can help shoppers find Black Friday deals. The move is part of a wider push by large technology companies to put AI tools in the apps that people already use every day.",
-   "source": "TechCrunch",
-   "url": "https://techcrunch.com/2026/11/24/meta-brings-its-muse-ai-assistant-directly-into-instagram-dms/",
+   "title": "New York bans AI chatbot toys for five years",
+   "text": "New York's governor, Kathy Hochul, has signed a law banning the making and selling of toys that use AI chatbots. The ban will last for five years and starts in February. The law shows growing worry about how children use artificial intelligence. The governor signed the bill this week.",
+   "source": "The Guardian",
+   "url": "https://www.theguardian.com/us-news/2026/nov/25/new-york-bans-ai-toys",
    "gloss": {
-    "assistant": "a computer program that helps users do tasks",
-    "team up": "to join with another person or company to work together",
-    "direct message": "a private message sent to one person or a small group",
-    "push": "a strong effort to achieve or promote something",
-    "shopper": "a person who buys things in shops or online"
+    "ban": "to officially forbid something",
+    "chatbot": "a computer program that talks with people in writing or speech",
+    "artificial intelligence": "computer systems that can do tasks that usually need human thinking",
+    "growing worry": "concern that is getting bigger",
+    "state": "a region with its own government inside a country"
    }
   },
   {
-   "id": "n2026-11-26-7",
+   "id": "n2026-11-27-7",
    "cat": "Health",
-   "title": "Few heart attack patients get a flu jab",
-   "text": "A Swedish study has found that only 6 per cent of heart attack patients received a flu vaccine in hospital, even though guidelines recommend it. Researchers at Örebro University studied patients and found that those who were vaccinated had a 41 per cent lower risk of death in the following year. The study was published in The Lancet Regional Health – Europe. It is observational, so it shows a link but cannot prove that the vaccine caused the benefit.",
-   "source": "BrightSurf (Örebro University)",
-   "url": "https://www.brightsurf.com/news/LMJYYWVL/few-heart-attack-patients-receive-influenza-vaccination-despite-guidelines.html",
+   "title": "Congo Ebola outbreak passes 12,000 cases",
+   "text": "Congo's government said on Thursday that its Ebola outbreak has reached 12,021 confirmed cases and 5,904 deaths. The outbreak began in May in Ituri province and has spread to 8 of the country's 26 provinces. It is caused by the rare Bundibugyo strain, for which there is no approved vaccine or treatment. Fighting between government forces and rebels has blocked response teams from some communities. A WHO official said it has also disrupted contact tracing.",
+   "source": "Associated Press",
+   "url": "https://apnews.com/article/congo-ebola-outbreak-violence-0a0bc05d76d3278319472178a16be14b",
    "gloss": {
-    "flu jab": "an informal British word for a flu vaccination",
-    "guidelines": "official advice about how something should be done",
-    "observational": "based on watching what happens, not on a controlled experiment",
-    "link": "a connection between two things",
-    "vaccinate": "to give someone a vaccine to protect them from disease"
+    "outbreak": "a sudden rise in cases of a disease",
+    "strain": "a particular type of a virus",
+    "rebel": "a person who fights against the government",
+    "contact tracing": "finding people who may have caught a disease from an infected person",
+    "disrupt": "to interrupt something so that it cannot work normally"
    }
   },
   {
-   "id": "n2026-11-26-8",
+   "id": "n2026-11-27-8",
    "cat": "Culture",
-   "title": "A24 box office passes $526 million",
-   "text": "The film studio A24 has taken more than $526 million at the US box office this year, up to 15 November, CNBC reported. That is more than 50 per cent above its total for the whole of 2025. The studio's success has been driven by the horror film Backrooms, the romance The Drama and the Elizabeth Holmes documentary You Can See Everything. A24 is known for independent films with a distinctive style.",
-   "source": "CNBC",
-   "url": "https://www.cnbc.com/2026/11/20/a24-box-office-hbo-max.html",
+   "title": "V&A to open punk and pop exhibition",
+   "text": "The V&A in London will open a new exhibition called Punk to Pop in March 2027. It will show around 300 objects from 1972 to 1985. The display will be at the museum's South Kensington site. It covers a period that started in the early 1970s and ended in the mid-1980s. The announcement was made on Wednesday.",
+   "source": "Dork",
+   "url": "https://readdork.com/news/v-open-punk-pop-march-2027-sex",
    "gloss": {
-    "box office": "the money earned from cinema tickets",
-    "drive": "to be the main cause of something's success or growth",
-    "documentary": "a film that gives facts about real events or people",
-    "distinctive": "clearly different and easy to recognise",
-    "independent": "made without money or control from a big studio"
+    "exhibition": "a public display of art or objects",
+    "object": "a thing that can be seen or touched, such as clothing or a poster",
+    "organiser": "a person who plans an event",
+    "site": "a place where something is located",
+    "announcement": "a public statement about something new"
    }
   },
   {
-   "id": "n2026-11-26-9",
+   "id": "n2026-11-27-9",
    "cat": "Business",
-   "title": "US inflation rises to highest since 2023",
-   "text": "Inflation in the United States has accelerated, SBS News reported on 26 November. The growth of the personal consumption expenditures price index rose in October. Core inflation, which leaves out food and energy, reached its highest level since 2023. Prices are moving further from the Federal Reserve's target. As a result, many investors now expect the central bank to raise interest rates again next month.",
-   "source": "SBS News",
-   "url": "https://news.sbs.co.kr/english/article.do?news_id=N1008863933",
+   "title": "Europe picks De Cos as next ECB president",
+   "text": "European leaders have chosen Pablo Hernandez de Cos to lead the European Central Bank when Christine Lagarde steps down on 7 February. He is a former governor of Spain's central bank. If confirmed, he will be the first Spaniard to hold the job. He won the support of France and Germany over the former Dutch central banker Klaas Knot. Eurozone inflation stands at 4%, double the ECB's target.",
+   "source": "Associated Press",
+   "url": "https://apnews.com/article/ecb-eurozone-pablo-hernandez-de-cos-lagarde-d308b6cfbe6399b131255f2a678b10e4",
    "gloss": {
-    "inflation": "the rate at which prices rise over time",
-    "accelerate": "to speed up",
-    "core inflation": "a measure of price rises that leaves out food and energy",
-    "target": "a level that someone aims to reach",
-    "interest rate": "the percentage charged for borrowing money",
-    "investor": "a person who puts money into something to make a profit"
+    "step down": "to leave an important job",
+    "governor": "the head of a central bank",
+    "central bank": "the national bank that controls money supply and interest rates",
+    "inflation": "the rate at which prices rise",
+    "target": "a number or goal that you try to reach"
    }
   },
   {
-   "id": "n2026-11-26-10",
+   "id": "n2026-11-27-10",
    "cat": "Games",
-   "title": "PS5 owners report crashes after GTA VI launch",
-   "text": "Some PlayStation 5 owners have reported shutdowns and graphics problems after playing Grand Theft Auto VI for several hours, GAMINGbible reported on 25 November. A user on X wrote that a console blackout had started and said his PS5 was using about 220 watts. The writer played about 100 hours on a launch-day console and had one crash. The site asked Rockstar Games and Sony for comment but had not received a reply. It said there could be many causes and that it was too soon to blame the game.",
-   "source": "GAMINGbible",
-   "url": "https://www.gamingbible.com/news/gta-6-blackouts-begin-ps5-consoles-shut-down-293316-20261125",
+   "title": "GTA VI is biggest launch in PlayStation history",
+   "text": "Sony says Grand Theft Auto VI is the biggest game launch in PlayStation history. More than 39 million players played it on PS5 between 19 and 22 November, according to Sony's own data. Players logged 683 million hours in total. Sony also said it was the first game played on 70% of new PS5 consoles. To build excitement, Sony and Rockstar offered two Vice City DualSense controllers and held a launch festival in Miami.",
+   "source": "PlayStation Blog",
+   "url": "https://blog.playstation.com/2026/11/23/thank-you-for-making-grand-theft-auto-vi-the-biggest-launch-in-playstation-history/",
    "gloss": {
-    "shut down": "to stop working or switch off",
     "launch": "the first release of a product to the public",
-    "framerate": "the number of images a game shows each second",
-    "cause": "the reason why something happens",
-    "blame": "to say that someone or something is responsible for a problem"
+    "log hours": "to record the time spent doing something",
+    "limited-edition": "made in small numbers only",
+    "build excitement": "to make people more interested and eager",
+    "console": "a device used to play video games"
    }
   }
  ]
